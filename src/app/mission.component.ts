@@ -11,7 +11,7 @@ import { Location} from "@angular/common";
       <button (click)="update()">Zapisz</button>
       <button (click)="remove()">Usuń</button>
       <button (click)="goBack()">Powrót do listy</button>
-
+      <button (click)="done()">Wykonane!</button>
   `,
   styles: [],
 
@@ -27,6 +27,15 @@ export class MissionComponent implements OnInit {
   ) { }
 
   mission = {};
+  doneMission = {};
+
+  done(){
+    this.doneMission['doneDate']= new Date();
+    this.doneMission['missionId']=this.mission['id'];
+    this.http.post('http://localhost:3000/doneMissions/', this.doneMission)
+      .subscribe( );
+    }
+  }
 
    ngOnInit(){
       this.mission['id']=this.route.snapshot.paramMap.get('missionId');
@@ -47,4 +56,5 @@ export class MissionComponent implements OnInit {
    goBack(){
      this.location.back();
    }
+   
 }

@@ -31,7 +31,6 @@ export class CreateMissionComponent implements OnInit {
 
   save(){
   this.mission['kidId']=this.kid['id'];
-  console.log(this.mission)
   this.http.post('http://localhost:3000/userMissions/', this.mission)
     .subscribe( mission=> {this.mission= mission; this.goBack(); this.goBack();});
   }
