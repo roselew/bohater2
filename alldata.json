@@ -242,6 +242,11 @@
       "name": "Kacper",
       "parentId": "2",
       "id": 21
+    },
+    {
+      "name": "Daniel",
+      "parentId": "2",
+      "id": 22
     }
   ],
   "userMissions": [
@@ -316,9 +321,312 @@
       "name": "Poskładać zabawki",
       "kidId": "16",
       "id": 27
+    },
+    {
+      "name": "Zęby rano",
+      "kidId": "22",
+      "id": 28
+    },
+    {
+      "name": "Poskładać zabawki",
+      "kidId": "22",
+      "id": 29
+    },
+    {
+      "name": "Próba",
+      "points": "5",
+      "icon": "mm",
+      "kidId": "19",
+      "id": 30
+    },
+    {
+      "kidId": "19",
+      "days": [
+        {
+          "name": "PN",
+          "value": "1",
+          "checked": false
+        },
+        {
+          "name": "WT",
+          "value": "2",
+          "checked": false
+        },
+        {
+          "name": "ŚR",
+          "value": "3",
+          "checked": true
+        },
+        {
+          "name": "CZ",
+          "value": "4",
+          "checked": true
+        },
+        {
+          "name": "PT",
+          "value": "5",
+          "checked": false
+        },
+        {
+          "name": "SB",
+          "value": "6",
+          "checked": false
+        },
+        {
+          "name": "ND",
+          "value": "7",
+          "checked": false
+        }
+      ],
+      "id": 31
+    },
+    {
+      "name": "Próba",
+      "points": "5",
+      "icon": "jakas.png",
+      "kidId": "19",
+      "days": [
+        "3",
+        "4"
+      ],
+      "id": 32
+    },
+    {
+      "name": "Jakaś",
+      "points": "inna",
+      "icon": "kk",
+      "kidId": "19",
+      "days": [
+        4,
+        5
+      ],
+      "id": 33
+    },
+    {
+      "name": "aha",
+      "points": "hf",
+      "icon": "hf",
+      "kidId": "19",
+      "days": [
+        3,
+        4
+      ],
+      "id": 34
+    },
+    {
+      "name": "dd",
+      "points": "dd",
+      "icon": "dd",
+      "kidId": "19",
+      "days": [],
+      "id": 35
+    },
+    {
+      "confirmation": true,
+      "name": "ss",
+      "points": "ss",
+      "icon": "ss",
+      "kidId": "19",
+      "days": [
+        4
+      ],
+      "id": 36
+    },
+    {
+      "name": "tt",
+      "points": "ert",
+      "icon": "ert",
+      "kidId": "19",
+      "days": [
+        3,
+        4
+      ],
+      "id": 37
+    },
+    {
+      "confirmation": false,
+      "name": "gg",
+      "points": "jj",
+      "icon": "jj",
+      "kidId": "19",
+      "days": [
+        4
+      ],
+      "id": 38
+    },
+    {
+      "name": "ff",
+      "points": "jj",
+      "icon": "jj",
+      "kidId": "19",
+      "days": [
+        2
+      ],
+      "id": 39
+    },
+    {
+      "name": "gg",
+      "points": "kk",
+      "icon": "kk",
+      "kidId": "19",
+      "days": [
+        3,
+        4
+      ],
+      "id": 40
+    },
+    {
+      "name": "gfd",
+      "points": "kj",
+      "icon": "kj",
+      "kidId": "19",
+      "days": [
+        2,
+        3
+      ],
+      "id": 41
+    },
+    {
+      "confirmation": true,
+      "name": "dd",
+      "points": "dd",
+      "icon": "dd",
+      "kidId": "19",
+      "days": [
+        1
+      ],
+      "id": 42
+    },
+    {
+      "confirmation": false,
+      "name": "sd",
+      "points": "sd",
+      "icon": "sd",
+      "kidId": "19",
+      "days": [
+        4
+      ],
+      "id": 43
+    },
+    {
+      "confirmation": true,
+      "name": "ko",
+      "points": "ko",
+      "icon": "ko",
+      "kidId": "19",
+      "days": [
+        {
+          "name": "PN",
+          "value": 1,
+          "checked": false
+        },
+        {
+          "name": "WT",
+          "value": 2,
+          "checked": true
+        },
+        {
+          "name": "ŚR",
+          "value": 3,
+          "checked": true
+        },
+        {
+          "name": "CZ",
+          "value": 4,
+          "checked": false
+        },
+        {
+          "name": "PT",
+          "value": 5,
+          "checked": false
+        },
+        {
+          "name": "SB",
+          "value": 6,
+          "checked": false
+        },
+        {
+          "name": "ND",
+          "value": 7,
+          "checked": false
+        }
+      ],
+      "id": 44
+    },
+    {
+      "confirmation": true,
+      "name": "klj",
+      "points": "lkj",
+      "icon": "lkj",
+      "kidId": "19",
+      "days": [
+        {
+          "name": "PN",
+          "value": 1,
+          "checked": false
+        },
+        {
+          "name": "WT",
+          "value": 2,
+          "checked": true
+        },
+        {
+          "name": "ŚR",
+          "value": 3,
+          "checked": false
+        },
+        {
+          "name": "CZ",
+          "value": 4,
+          "checked": false
+        },
+        {
+          "name": "PT",
+          "value": 5,
+          "checked": true
+        },
+        {
+          "name": "SB",
+          "value": 6,
+          "checked": false
+        },
+        {
+          "name": "ND",
+          "value": 7,
+          "checked": false
+        }
+      ],
+      "id": 45
     }
   ],
-  "waitMissions": [],
-  "doneMissions": [],
+  "waitMissions": [
+    {
+      "doneDate": "2017-11-10T20:04:30.459Z",
+      "missionId": 24,
+      "id": 1
+    }
+  ],
+  "doneMissions": [
+    {
+      "doneDate": "2017-11-10T19:52:56.482Z",
+      "missionId": 12,
+      "id": 1
+    },
+    {
+      "doneDate": "2017-11-10T19:55:45.958Z",
+      "missionId": 8,
+      "id": 2
+    },
+    {
+      "doneDate": "2017-11-10T20:05:20.515Z",
+      "missionId": 28,
+      "id": 3
+    },
+    {
+      "doneDate": "2017-11-10T20:05:24.045Z",
+      "missionId": 29,
+      "id": 4
+    }
+  ],
   "userGifts": []
 }

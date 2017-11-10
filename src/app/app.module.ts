@@ -15,6 +15,9 @@ import { MissionComponent } from './mission.component';
 import { NewMissionComponent } from './new-mission.component';
 import { ExpertMissionsComponent } from './expert-missions.component';
 import { ExpertMissionComponent } from './expert-mission.component';
+import { ProgressComponent } from './progress.component';
+import { OneDayComponent } from './one-day.component';
+import { OneWeekComponent } from './one-week.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { ExpertMissionComponent } from './expert-mission.component';
     MissionComponent,
     NewMissionComponent,
     ExpertMissionsComponent,
-    ExpertMissionComponent
+    ExpertMissionComponent,
+    ProgressComponent,
+    OneDayComponent,
+    OneWeekComponent
   ],
   imports: [
     BrowserModule,

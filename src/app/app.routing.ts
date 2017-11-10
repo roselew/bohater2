@@ -9,6 +9,7 @@ import { CreateMissionComponent } from "./create-mission.component";
 import { MissionComponent } from "./mission.component";
 import { NewMissionComponent } from "./new-mission.component";
 import { ExpertMissionComponent } from "./expert-mission.component";
+import { OneDayComponent } from './one-day.component';
 
 
 const routes:Routes = [
@@ -22,6 +23,7 @@ const routes:Routes = [
     { path: 'parents',                                  component: ParentsComponent},
     { path: 'parents/:parentId',                        component: ParentComponent},
     { path: 'parents/:parentId/create-kid',             component: CreateKidComponent},    
+    { path: 'kids/:kidId/one-day/:dayId',               component: OneDayComponent}
 ]
 
 export const Routing = RouterModule.forRoot(routes,{

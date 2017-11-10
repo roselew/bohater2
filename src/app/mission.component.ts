@@ -11,7 +11,8 @@ import { Location} from "@angular/common";
       <button (click)="update()">Zapisz</button>
       <button (click)="remove()">Usuń</button>
       <button (click)="goBack()">Powrót do listy</button>
-      <button (click)="done()">Wykonane!</button>
+      <button (click)="addDone()">Wykonane!</button>
+      <button (click)="addWait()">Prześlij do akcpetacji</button>
   `,
   styles: [],
 
@@ -28,20 +29,27 @@ export class MissionComponent implements OnInit {
 
   mission = {};
   doneMission = {};
+  waitMission = {};
 
-  done(){
+  ngOnInit(){
+    this.mission['id']=this.route.snapshot.paramMap.get('missionId');
+    this.http.get('http://localhost:3000/userMissions/'+this.mission['id'])
+      .subscribe( mission => this.mission = mission )
+ }
+
+  addDone(){
     this.doneMission['doneDate']= new Date();
     this.doneMission['missionId']=this.mission['id'];
     this.http.post('http://localhost:3000/doneMissions/', this.doneMission)
       .subscribe( );
-    }
   }
 
-   ngOnInit(){
-      this.mission['id']=this.route.snapshot.paramMap.get('missionId');
-      this.http.get('http://localhost:3000/userMissions/'+this.mission['id'])
-        .subscribe( mission => this.mission = mission )
-   }
+  addWait(){
+    this.waitMission['doneDate']= new Date();
+    this.waitMission['missionId']=this.mission['id'];
+    this.http.post('http://localhost:3000/waitMissions/', this.waitMission)
+      .subscribe( );
+  }
 
    update(){
       this.http.put('http://localhost:3000/userMissions/'+ this.mission['id'], this.mission)
