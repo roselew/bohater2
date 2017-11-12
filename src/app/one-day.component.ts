@@ -1,14 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
 
 @Component({
   selector: 'one-day',
   template: `
-    <p>
-      one-day works!
-    </p>
+
+  <button [routerLink]="['../../']"> Powrót do menu dziecka </button>
+  <button [routerLink]="['../../one-day/',dayId -1]"> Poprzedni </button>
+  <button [routerLink]="['../../one-day/',dayId +1]"> Następny </button>
+  
+  <p>Łącznie tego dnia</p>
+  <p> {{nDone}} - zrobione <p>
+  <p> {{nWait}} - oczekujące </p>
+  <p> {{nUndone}} - niezrobione </p>
+  
+  <one-day-view (onChange)="show($event)" [dayId]="dayId"></one-day-view>
+  
+
   `,
   styles: [],
 
@@ -17,45 +25,32 @@ export class OneDayComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private http: HttpClient,
-    private route:ActivatedRoute,
-    private location:Location,
-    
+    private route:ActivatedRoute,  
+
   ) { }
 
-  kid = {};
-  userMissions = {};
-  doneMission = {};
-  waitMission = {};
+  nDone
+  nWait
+  nUndone
+
+  show([nDone,nWait,nUndone]){
+    this.nDone=nDone;
+    this.nWait=nWait;
+    this.nUndone=nUndone;
+  }
+
+  @Input()
   dayId
 
+
   ngOnInit(){
-    this.dayId=this.route.snapshot.paramMap.get('dayId');
 
-    this.kid['id']=this.route.snapshot.paramMap.get('kidId');
+    //get day difference from today from routing
+    if (this.dayId || this.dayId==0){
+    } else {
+    this.dayId = parseInt(this.route.snapshot.paramMap.get('dayId'));
+    }
 
-    //get all user Missions
-    this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userMissions')
-      .subscribe( userMissions => this.userMissions = userMissions );
-
-
-  // addDone(){
-  //   this.doneMission['doneDate']= new Date();
-  //   this.doneMission['missionId']=this.mission['id'];
-  //   this.http.post('http://localhost:3000/doneMissions/', this.doneMission)
-  //     .subscribe( );
-  // }
-
-  // addWait(){
-  //   this.waitMission['doneDate']= new Date();
-  //   this.waitMission['missionId']=this.mission['id'];
-  //   this.http.post('http://localhost:3000/waitMissions/', this.waitMission)
-  //     .subscribe( );
-  // 
   }
-
-  goBack(){
-    this.location.back();
-  }
-
+  
 }

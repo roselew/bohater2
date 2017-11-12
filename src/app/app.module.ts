@@ -18,6 +18,13 @@ import { ExpertMissionComponent } from './expert-mission.component';
 import { ProgressComponent } from './progress.component';
 import { OneDayComponent } from './one-day.component';
 import { OneWeekComponent } from './one-week.component';
+import { OneDayViewComponent } from './one-day-view.component';
+import { MissionViewComponent } from './mission-view.component';
+import { NewGiftComponent } from './new-gift.component';
+import { CreateGiftComponent } from './create-gift.component';
+import { ExpertGiftComponent } from './expert-gift.component';
+import { GiftComponent } from './gift.component';
+import { ExpertGiftsComponent } from './expert-gifts.component';
 
 
 @NgModule({
@@ -35,7 +42,14 @@ import { OneWeekComponent } from './one-week.component';
     ExpertMissionComponent,
     ProgressComponent,
     OneDayComponent,
-    OneWeekComponent
+    OneWeekComponent,
+    OneDayViewComponent,
+    MissionViewComponent,
+    NewGiftComponent,
+    CreateGiftComponent,
+    ExpertGiftComponent,
+    GiftComponent,
+    ExpertGiftsComponent
   ],
   imports: [
     BrowserModule,

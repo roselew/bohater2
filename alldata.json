@@ -214,419 +214,250 @@
   ],
   "kids": [
     {
-      "name": "Bogdan",
-      "id": 13,
-      "parentId": 1
-    },
-    {
-      "name": "Ania",
-      "id": 16,
-      "parentId": 2
-    },
-    {
-      "name": "Weronika",
+      "name": "Kasia",
       "parentId": "1",
-      "id": 18
+      "id": 1
     },
     {
-      "name": "Andrzejek",
-      "parentId": "2",
-      "id": 19
+      "name": "Basia",
+      "parentId": "1",
+      "id": 2
     },
     {
-      "name": "Halina",
+      "name": "Romek",
       "parentId": "2",
-      "id": 20
-    },
-    {
-      "name": "Kacper",
-      "parentId": "2",
-      "id": 21
-    },
-    {
-      "name": "Daniel",
-      "parentId": "2",
-      "id": 22
+      "id": 3
     }
   ],
   "userMissions": [
     {
-      "icon": "assets/gift.svg",
-      "name": "Podlać kwiatki",
-      "points": 6,
-      "id": 7,
-      "kidId": 13
-    },
-    {
-      "name": "Posprzątaj po sobie",
-      "kidId": "19",
-      "id": 8
-    },
-    {
-      "name": "Przeczytaj książkę",
-      "kidId": "19",
-      "id": 12
-    },
-    {
-      "name": "Zęby rano",
-      "kidId": "21",
-      "id": 17
-    },
-    {
-      "name": "Wstawić pranie",
-      "kidId": "21",
-      "id": 18
-    },
-    {
-      "name": "Posprzątać po zwierzątku",
-      "kidId": "21",
-      "id": 19
-    },
-    {
-      "name": "Nakryj do stołu",
-      "kidId": "21",
-      "id": 20
-    },
-    {
-      "name": "Posprzątać po zwierzątku",
-      "kidId": "13",
-      "id": 21
-    },
-    {
-      "name": "Nakryć do stołu",
-      "kidId": "13",
-      "id": 22
-    },
-    {
-      "name": "Wstawić pranie",
-      "kidId": "19",
-      "id": 23
-    },
-    {
-      "name": "Nakryć stół",
-      "kidId": "19",
-      "id": 24
-    },
-    {
-      "name": "Inna",
-      "kidId": "19",
-      "id": 25
-    },
-    {
-      "name": "Posprzątać pokój",
-      "kidId": "16",
-      "id": 26
-    },
-    {
-      "name": "Poskładać zabawki",
-      "kidId": "16",
-      "id": 27
-    },
-    {
-      "name": "Zęby rano",
-      "kidId": "22",
-      "id": 28
-    },
-    {
-      "name": "Poskładać zabawki",
-      "kidId": "22",
-      "id": 29
-    },
-    {
-      "name": "Próba",
-      "points": "5",
-      "icon": "mm",
-      "kidId": "19",
-      "id": 30
-    },
-    {
-      "kidId": "19",
-      "days": [
-        {
-          "name": "PN",
-          "value": "1",
-          "checked": false
-        },
-        {
-          "name": "WT",
-          "value": "2",
-          "checked": false
-        },
-        {
-          "name": "ŚR",
-          "value": "3",
-          "checked": true
-        },
-        {
-          "name": "CZ",
-          "value": "4",
-          "checked": true
-        },
-        {
-          "name": "PT",
-          "value": "5",
-          "checked": false
-        },
-        {
-          "name": "SB",
-          "value": "6",
-          "checked": false
-        },
-        {
-          "name": "ND",
-          "value": "7",
-          "checked": false
-        }
-      ],
-      "id": 31
-    },
-    {
-      "name": "Próba",
-      "points": "5",
-      "icon": "jakas.png",
-      "kidId": "19",
-      "days": [
-        "3",
-        "4"
-      ],
-      "id": 32
-    },
-    {
-      "name": "Jakaś",
-      "points": "inna",
-      "icon": "kk",
-      "kidId": "19",
-      "days": [
-        4,
-        5
-      ],
-      "id": 33
-    },
-    {
-      "name": "aha",
-      "points": "hf",
-      "icon": "hf",
-      "kidId": "19",
-      "days": [
-        3,
-        4
-      ],
-      "id": 34
-    },
-    {
-      "name": "dd",
-      "points": "dd",
-      "icon": "dd",
-      "kidId": "19",
-      "days": [],
-      "id": 35
-    },
-    {
       "confirmation": true,
-      "name": "ss",
-      "points": "ss",
-      "icon": "ss",
-      "kidId": "19",
+      "name": "Zęby rano",
+      "icon": "assets/toothbrush.svg",
+      "points": "5",
+      "kidId": "1",
+      "start": "2017-11-11T23:00:00.000Z",
       "days": [
-        4
-      ],
-      "id": 36
-    },
-    {
-      "name": "tt",
-      "points": "ert",
-      "icon": "ert",
-      "kidId": "19",
-      "days": [
-        3,
-        4
-      ],
-      "id": 37
-    },
-    {
-      "confirmation": false,
-      "name": "gg",
-      "points": "jj",
-      "icon": "jj",
-      "kidId": "19",
-      "days": [
-        4
-      ],
-      "id": 38
-    },
-    {
-      "name": "ff",
-      "points": "jj",
-      "icon": "jj",
-      "kidId": "19",
-      "days": [
+        0,
         2
       ],
-      "id": 39
+      "id": 1
     },
     {
-      "name": "gg",
-      "points": "kk",
-      "icon": "kk",
-      "kidId": "19",
+      "confirmation": true,
+      "name": "Poskładać zabawki",
+      "icon": "assets/block.svg",
+      "points": "3",
+      "kidId": "1",
+      "start": "2017-11-11T23:00:00.000Z",
       "days": [
         3,
         4
       ],
-      "id": 40
-    },
-    {
-      "name": "gfd",
-      "points": "kj",
-      "icon": "kj",
-      "kidId": "19",
-      "days": [
-        2,
-        3
-      ],
-      "id": 41
+      "id": 2
     },
     {
       "confirmation": true,
-      "name": "dd",
-      "points": "dd",
-      "icon": "dd",
-      "kidId": "19",
+      "name": "Umyć podłogę",
+      "icon": "assets/cleaning.svg",
+      "points": "5",
+      "kidId": "2",
+      "start": "2017-11-11T23:00:00.000Z",
       "days": [
-        1
+        1,
+        5
       ],
-      "id": 42
+      "id": 3
     },
     {
-      "confirmation": false,
-      "name": "sd",
-      "points": "sd",
-      "icon": "sd",
-      "kidId": "19",
+      "confirmation": true,
+      "name": "Pozamiatać",
+      "points": "4",
+      "icon": "assets/cleaning.svg",
+      "kidId": "3",
+      "start": "2017-11-11T23:00:00.000Z",
       "days": [
+        0,
+        1,
+        2,
         4
       ],
-      "id": 43
+      "id": 4
     },
     {
       "confirmation": true,
-      "name": "ko",
-      "points": "ko",
-      "icon": "ko",
-      "kidId": "19",
+      "name": "Pościelić łóżko",
+      "icon": "assets/bed.svg",
+      "points": "2",
+      "kidId": "3",
+      "start": "2017-11-11T23:00:00.000Z",
       "days": [
-        {
-          "name": "PN",
-          "value": 1,
-          "checked": false
-        },
-        {
-          "name": "WT",
-          "value": 2,
-          "checked": true
-        },
-        {
-          "name": "ŚR",
-          "value": 3,
-          "checked": true
-        },
-        {
-          "name": "CZ",
-          "value": 4,
-          "checked": false
-        },
-        {
-          "name": "PT",
-          "value": 5,
-          "checked": false
-        },
-        {
-          "name": "SB",
-          "value": 6,
-          "checked": false
-        },
-        {
-          "name": "ND",
-          "value": 7,
-          "checked": false
-        }
+        0,
+        1
       ],
-      "id": 44
+      "id": 5
     },
     {
       "confirmation": true,
-      "name": "klj",
-      "points": "lkj",
-      "icon": "lkj",
-      "kidId": "19",
+      "name": "Opróżnić zmywarkę",
+      "icon": "assets/dishwasher.svg",
+      "points": "4",
+      "kidId": "3",
+      "start": "2017-11-11T23:00:00.000Z",
       "days": [
-        {
-          "name": "PN",
-          "value": 1,
-          "checked": false
-        },
-        {
-          "name": "WT",
-          "value": 2,
-          "checked": true
-        },
-        {
-          "name": "ŚR",
-          "value": 3,
-          "checked": false
-        },
-        {
-          "name": "CZ",
-          "value": 4,
-          "checked": false
-        },
-        {
-          "name": "PT",
-          "value": 5,
-          "checked": true
-        },
-        {
-          "name": "SB",
-          "value": 6,
-          "checked": false
-        },
-        {
-          "name": "ND",
-          "value": 7,
-          "checked": false
-        }
+        0,
+        1,
+        4
       ],
-      "id": 45
+      "id": 6
     }
   ],
   "waitMissions": [
     {
-      "doneDate": "2017-11-10T20:04:30.459Z",
-      "missionId": 24,
+      "doneDate": "2017-11-12T23:00:00.000Z",
+      "missionId": 1,
+      "kidId": "1",
       "id": 1
+    },
+    {
+      "doneDate": "2017-11-17T23:00:00.000Z",
+      "missionId": 3,
+      "kidId": "2",
+      "id": 4
     }
   ],
   "doneMissions": [
     {
-      "doneDate": "2017-11-10T19:52:56.482Z",
-      "missionId": 12,
+      "doneDate": "2017-11-14T23:00:00.000Z",
+      "missionId": 1,
+      "kidId": "1",
       "id": 1
     },
     {
-      "doneDate": "2017-11-10T19:55:45.958Z",
-      "missionId": 8,
+      "doneDate": "2017-11-13T23:00:00.000Z",
+      "missionId": 3,
+      "kidId": "2",
       "id": 2
     },
     {
-      "doneDate": "2017-11-10T20:05:20.515Z",
-      "missionId": 28,
+      "doneDate": "2017-11-12T23:00:00.000Z",
+      "missionId": 4,
+      "kidId": "3",
       "id": 3
     },
     {
-      "doneDate": "2017-11-10T20:05:24.045Z",
-      "missionId": 29,
+      "doneDate": "2017-11-13T23:00:00.000Z",
+      "missionId": 4,
+      "kidId": "3",
       "id": 4
+    },
+    {
+      "doneDate": "2017-11-16T23:00:00.000Z",
+      "missionId": 6,
+      "kidId": "3",
+      "id": 5
+    },
+    {
+      "doneDate": "2017-11-12T23:00:00.000Z",
+      "missionId": 5,
+      "kidId": "3",
+      "id": 6
+    },
+    {
+      "doneDate": "2017-11-12T23:00:00.000Z",
+      "missionId": 6,
+      "kidId": "3",
+      "id": 7
+    },
+    {
+      "doneDate": "2017-11-13T23:00:00.000Z",
+      "missionId": 6,
+      "kidId": "3",
+      "id": 8
+    },
+    {
+      "doneDate": "2017-11-13T23:00:00.000Z",
+      "missionId": 5,
+      "kidId": "3",
+      "id": 9
+    },
+    {
+      "doneDate": "2017-11-14T23:00:00.000Z",
+      "missionId": 4,
+      "kidId": "3",
+      "id": 10
+    },
+    {
+      "doneDate": "2017-11-16T23:00:00.000Z",
+      "missionId": 4,
+      "kidId": "3",
+      "id": 11
+    },
+    {
+      "doneDate": "2017-11-23T23:00:00.000Z",
+      "missionId": 4,
+      "kidId": "3",
+      "id": 12
+    },
+    {
+      "doneDate": "2017-11-23T23:00:00.000Z",
+      "missionId": 6,
+      "kidId": "3",
+      "id": 13
+    },
+    {
+      "doneDate": "2017-11-19T23:00:00.000Z",
+      "missionId": 4,
+      "kidId": "3",
+      "id": 14
+    },
+    {
+      "doneDate": "2017-11-19T23:00:00.000Z",
+      "missionId": 5,
+      "kidId": "3",
+      "id": 15
+    },
+    {
+      "doneDate": "2017-11-19T23:00:00.000Z",
+      "missionId": 6,
+      "kidId": "3",
+      "id": 16
+    },
+    {
+      "doneDate": "2017-11-21T23:00:00.000Z",
+      "missionId": 4,
+      "kidId": "3",
+      "id": 17
     }
   ],
-  "userGifts": []
+  "userGifts": [
+    {
+      "name": "Wyjście do kin",
+      "points": "5",
+      "icon": "asset",
+      "kidId": "2",
+      "id": 1
+    },
+    {
+      "name": "Klocki lego",
+      "icon": "assets/lego.svg",
+      "points": "4",
+      "kidId": "2",
+      "id": 2
+    },
+    {
+      "name": "Nowa zabawka",
+      "icon": "assets/gift2.svg",
+      "points": "30",
+      "kidId": "3",
+      "id": 3
+    },
+    {
+      "name": "Deser",
+      "icon": "assets/piece-of-cake.svg",
+      "points": "50",
+      "kidId": "3",
+      "id": 4
+    }
+  ]
 }

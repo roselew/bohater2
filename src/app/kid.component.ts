@@ -10,15 +10,26 @@ import { Location} from "@angular/common";
       <input [(ngModel)]="kid.name">
       <button (click)="update()">Zapisz</button>
       <button (click)="remove()">Usuń</button>
-      <button (click)="goBack()">Powrót do listy</button>
+      <button [routerLink]="['../']">Powrót do listy</button>
+
+      <button [routerLink]="['one-week/',0]"> Postępy tydodniowe </button>
+      <button [routerLink]="['one-day/',0]"> Postępy dzienne </button>
 
       <p>Lista misji dziecka</p>
       <ul> 
-        <li *ngFor="let userMission of userMissions" [routerLink]="[userMission.id]"> 
+        <li *ngFor="let userMission of userMissions" [routerLink]="['mission/'+userMission.id]"> 
           {{ userMission.name }} 
         </li> 
       </ul> 
       <button routerLink="new-mission"> Dodaj nową misję </button>
+
+      <p>Lista nagród dziecka</p>
+      <ul> 
+        <li *ngFor="let userGift of userGifts" [routerLink]="['gift/'+userGift.id]"> 
+          {{ userGift.name }} 
+        </li> 
+      </ul> 
+      <button routerLink="new-gift"> Dodaj nową nagrodę </button>
   `,
   styles: [],
 })
@@ -34,6 +45,7 @@ export class KidComponent implements OnInit {
 
   kid = {};
   userMissions
+  userGifts
 
    ngOnInit(){
       this.kid['id']=this.route.snapshot.paramMap.get('kidId');
@@ -41,7 +53,9 @@ export class KidComponent implements OnInit {
         .subscribe( kid => this.kid = kid )
       this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userMissions')
         .subscribe( userMissions => this.userMissions = userMissions )
-   }
+        this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userGifts')
+        .subscribe( userGifts  => this.userGifts = userGifts )
+      }
 
    update(){
       this.http.put('http://localhost:3000/kids/'+ this.kid['id'], this.kid)
