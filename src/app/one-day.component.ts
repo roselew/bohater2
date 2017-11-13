@@ -6,8 +6,8 @@ import { ActivatedRoute, Router } from "@angular/router";
   template: `
 
   <button [routerLink]="['../../']"> Powrót do menu dziecka </button>
-  <button [routerLink]="['../../one-day/',dayId -1]"> Poprzedni </button>
-  <button [routerLink]="['../../one-day/',dayId +1]"> Następny </button>
+  <button [routerLink]="['../',dayId -1]"> Poprzedni </button>
+  <button [routerLink]="['../',dayId +1]"> Następny </button>
   
   <p>Łącznie tego dnia</p>
   <p> {{nDone}} - zrobione <p>
@@ -15,9 +15,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   <p> {{nUndone}} - niezrobione </p>
   
   <one-day-view (onChange)="show($event)" [dayId]="dayId"></one-day-view>
-  
-
-  `,
+   `,
   styles: [],
 
 })
@@ -42,14 +40,10 @@ export class OneDayComponent implements OnInit {
   @Input()
   dayId
 
-
   ngOnInit(){
-
-    //get day difference from today from routing
-    if (this.dayId || this.dayId==0){
-    } else {
-    this.dayId = parseInt(this.route.snapshot.paramMap.get('dayId'));
-    }
+    this.route.paramMap.subscribe(paramMap => {
+      this.dayId = parseInt(paramMap.get('dayId'));
+    })
 
   }
   

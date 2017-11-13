@@ -235,7 +235,7 @@
       "name": "Zęby rano",
       "icon": "assets/toothbrush.svg",
       "points": "5",
-      "kidId": "1",
+      "kidId": 1,
       "start": "2017-11-11T23:00:00.000Z",
       "days": [
         0,
@@ -248,7 +248,7 @@
       "name": "Poskładać zabawki",
       "icon": "assets/block.svg",
       "points": "3",
-      "kidId": "1",
+      "kidId": 1,
       "start": "2017-11-11T23:00:00.000Z",
       "days": [
         3,
@@ -261,7 +261,7 @@
       "name": "Umyć podłogę",
       "icon": "assets/cleaning.svg",
       "points": "5",
-      "kidId": "2",
+      "kidId": 2,
       "start": "2017-11-11T23:00:00.000Z",
       "days": [
         1,
@@ -310,33 +310,76 @@
         4
       ],
       "id": 6
+    },
+    {
+      "confirmation": true,
+      "name": "Posprzątać pokój",
+      "icon": "assets/room.svg",
+      "points": "2",
+      "kidId": 1,
+      "start": "2017-11-12T23:00:00.000Z",
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": 7
+    },
+    {
+      "confirmation": true,
+      "name": "Nakryć stół",
+      "icon": "assets/cutlery.svg",
+      "points": "5",
+      "kidId": 1,
+      "start": "2017-11-12T23:00:00.000Z",
+      "days": [
+        3,
+        5
+      ],
+      "id": 8
     }
   ],
   "waitMissions": [
     {
       "doneDate": "2017-11-12T23:00:00.000Z",
       "missionId": 1,
-      "kidId": "1",
+      "kidId": 1,
       "id": 1
     },
     {
       "doneDate": "2017-11-17T23:00:00.000Z",
       "missionId": 3,
-      "kidId": "2",
+      "kidId": 2,
       "id": 4
+    },
+    {
+      "doneDate": "2017-12-03T23:00:00.000Z",
+      "missionId": 1,
+      "kidId": "1",
+      "id": 5
+    },
+    {
+      "doneDate": "2017-12-03T23:00:00.000Z",
+      "missionId": 7,
+      "kidId": "1",
+      "id": 6
     }
   ],
   "doneMissions": [
     {
       "doneDate": "2017-11-14T23:00:00.000Z",
       "missionId": 1,
-      "kidId": "1",
+      "kidId": 1,
       "id": 1
     },
     {
       "doneDate": "2017-11-13T23:00:00.000Z",
       "missionId": 3,
-      "kidId": "2",
+      "kidId": 2,
       "id": 2
     },
     {
@@ -428,6 +471,12 @@
       "missionId": 4,
       "kidId": "3",
       "id": 17
+    },
+    {
+      "doneDate": "2017-11-15T23:00:00.000Z",
+      "missionId": 7,
+      "kidId": 1,
+      "id": 18
     }
   ],
   "userGifts": [
@@ -435,14 +484,14 @@
       "name": "Wyjście do kin",
       "points": "5",
       "icon": "asset",
-      "kidId": "2",
+      "kidId": 2,
       "id": 1
     },
     {
       "name": "Klocki lego",
       "icon": "assets/lego.svg",
       "points": "4",
-      "kidId": "2",
+      "kidId": 2,
       "id": 2
     },
     {
@@ -458,6 +507,20 @@
       "points": "50",
       "kidId": "3",
       "id": 4
+    },
+    {
+      "name": "Wieczór gier",
+      "icon": "assets/dice.svg",
+      "points": "15",
+      "kidId": 1,
+      "id": 5
+    },
+    {
+      "name": "45 min na gry",
+      "icon": "assets/45-minutes.svg",
+      "points": "45",
+      "kidId": 1,
+      "id": 6
     }
   ]
 }

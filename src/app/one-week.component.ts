@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Location} from "@angular/common";
@@ -9,20 +9,17 @@ import { Location} from "@angular/common";
   template: `
 
   <button [routerLink]="['../../']"> Powrót do menu dziecka </button>
-  <button [routerLink]="['../../one-week/',weekId -1]"> Poprzedni </button>
-  <button [routerLink]="['../../one-week/',weekId +1]"> Następny </button>
+  <button [routerLink]="['../',weekId -1]"> Poprzedni </button>
+  <button [routerLink]="['../',weekId +1]"> Następny </button>
 
   <p>Łącznie w tym tygodniu</p>
   <p> {{tDone}} - zrobione <p>
   <p> {{tWait}} - oczekujące </p>
   <p> {{tUndone}} - niezrobione </p>
 
-  
   <div *ngFor="let day of days">
     <one-day-view (onChange)="show($event,day)" [dayId]="day"></one-day-view>
   </div>
-
-
 
   `,
   styles: [],
@@ -49,19 +46,25 @@ export class OneWeekComponent implements OnInit {
 
   ngOnInit() {
 
-    this.weekId = parseInt(this.route.snapshot.paramMap.get('weekId'));
-    
     let today = new Date();
     today.setHours(0,0,0,0);
 
-    this.firstDay = 0 - today.getUTCDay() + 7* this.weekId;
-    this.endDay = this.firstDay + 6;
-
+    //get week Id 
+    this.route.paramMap.subscribe(paramMap => {
+      this.weekId = parseInt(paramMap.get('weekId'));
+      this.firstDay = 0 - today.getUTCDay() + 7* this.weekId;
+      this.endDay = this.firstDay + 6;
+      this.days=[this.firstDay, this.firstDay+1, this.firstDay+2, this.firstDay+3, this.firstDay+4, this.firstDay+5, this.endDay]
+    })
+    
     //get kid Id 
-    this.kid['id']=this.route.snapshot.paramMap.get('kidId');
+    this.route.paramMap.subscribe(paramMap => {
+      this.kid['id'] = paramMap.get('kidId');
+    })
 
-    this.days=[this.firstDay, this.firstDay+1, this.firstDay+2, this.firstDay+3, this.firstDay+4, this.firstDay+5, this.endDay]
+    
   }
+
 
   tDone 
   tWait 

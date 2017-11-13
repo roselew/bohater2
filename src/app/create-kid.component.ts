@@ -7,9 +7,16 @@ import { Location} from "@angular/common";
   selector: 'create-kid',
   template: `
 
-   <label>Name</label>
+   <label>Imię</label>
    <input [(ngModel)]="kid.name">
-   <button (click)="save()">Save</button>
+   <label>Rok urodzenia</label>
+   <input [(ngModel)]="kid.birth">
+   <label>Login</label>
+   <input [(ngModel)]="kid.login"> 
+   <label>Hasło</label>
+   <input [(ngModel)]="kid.password">
+
+   <button (click)="save()">Zapisz</button>
    <button (click)="goBack()">Powrót</button>
 
   `,
