@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'mission-view',
@@ -7,8 +7,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
       mission-view works!
     </p>
   `,
-  styles: [],
-  encapsulation: ViewEncapsulation.None
+  styles: []
 })
 export class MissionViewComponent implements OnInit {
 

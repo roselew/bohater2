@@ -9,10 +9,12 @@ import { HttpClient } from "@angular/common/http";
       {{parent.email}}
     </p>
     <ul> 
-      <li *ngFor="let kid of kids" [routerLink]="['/kids/'+kid.id]"> {{ kid.name }} 
+      <li *ngFor="let kid of kids" > 
+        <p [routerLink]="['/kids/'+kid.id]">{{ kid.name }}</p>
+        <shortcut-kid [kidId]="kid.id"></shortcut-kid>
       </li> 
     </ul>
-    <button routerLink="create-kid"> Dodaj nowy </button>
+    <button routerLink="create-kid"> Dodaj kolejne dziecko </button>
     <button routerLink="/parents">Powrót do listy rodziców </button>
   `,
   styles: [],

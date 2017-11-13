@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'progress',
@@ -8,7 +8,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
     </p>
   `,
   styles: [],
-  encapsulation: ViewEncapsulation.None
 })
 export class ProgressComponent implements OnInit {
 

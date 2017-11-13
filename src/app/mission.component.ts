@@ -79,7 +79,6 @@ export class MissionComponent implements OnInit {
  }
 
    update(){
-     console.log(this.selectedDays)
     this.mission['days']=this.selectedDays;
       this.http.put('http://localhost:3000/userMissions/'+ this.mission['id'], this.mission)
       .subscribe( mission=> {this.mission= mission; this.goBack();});
