@@ -18,7 +18,7 @@ import { GiftComponent } from './gift.component';
 
 
 const routes:Routes = [
-    { path: '',                                         component: ParentsComponent},
+    { path: '',                                         component: KidsComponent},
     { path: 'kids',                                     component: KidsComponent}, 
     { path: 'kids/:kidId',                              component: KidComponent},
     { path: 'kids/:kidId/new-mission',                  component: NewMissionComponent},

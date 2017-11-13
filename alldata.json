@@ -287,6 +287,21 @@
         1510786800000
       ],
       "id": 3
+    },
+    {
+      "confirmation": true,
+      "name": "Pościelić łóżko",
+      "icon": "assets/bed.svg",
+      "points": "2",
+      "kidId": "2",
+      "start": 1510614000000,
+      "days": [
+        1,
+        2
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 4
     }
   ],
   "userGifts": [
@@ -296,6 +311,13 @@
       "points": "100",
       "kidId": "1",
       "id": 1
+    },
+    {
+      "name": "Wieczór gier",
+      "icon": "assets/dice.svg",
+      "points": "34",
+      "kidId": "2",
+      "id": 2
     }
   ]
 }
