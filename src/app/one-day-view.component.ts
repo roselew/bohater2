@@ -178,14 +178,7 @@ export class OneDayViewComponent implements OnInit {
     if (mission['waitDates'].indexOf(data)>-1){
       let index = mission['waitDates'].indexOf(data)
       mission['waitDates'].splice(index,1)
-    }
-
-
-    // if (this.waitMissions.filter(obj => obj.id == mission['id'])) {
-    //   this.http.delete('http://localhost:3000/waitMissions/' + mission['doneId'])
-    //     .subscribe(() => this.fetchMissions());
-    // }
-    //najpierw trzeba sprawdzić czy nie jest już oczekująca wtedy ją wyrzucamy z listy oczekujących
+    }  
     this.http.put('http://localhost:3000/userMissions/'+ mission.id, mission)
       .subscribe(() => this.fetchMissions());
   }

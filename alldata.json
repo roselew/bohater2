@@ -214,120 +214,47 @@
   ],
   "kids": [
     {
-      "name": "Kasia",
+      "name": "Grzegorz",
+      "birth": "2013",
+      "login": "gregory",
+      "password": "gg",
       "parentId": "1",
       "id": 1
-    },
-    {
-      "name": "Basia",
-      "parentId": "1",
-      "id": 2
-    },
-    {
-      "name": "Romek",
-      "parentId": "2",
-      "id": 3
     }
   ],
   "userMissions": [
     {
       "confirmation": true,
-      "name": "Wstawić pranie",
-      "icon": "assets/laundry.svg",
+      "name": "Opróżnić zmywarkę",
+      "icon": "assets/dishwasher.svg",
       "points": "2",
       "kidId": "1",
       "start": 1510527600000,
       "days": [
         0,
-        2
+        2,
+        4
       ],
-      "doneDates": [
-        1510527600000,
-        1510700400000
-      ],
+      "doneDates": [],
       "waitDates": [],
       "id": 1
     },
     {
       "confirmation": true,
-      "name": "Posprzątać pokój",
-      "icon": "assets/room.svg",
+      "name": "Pościelić łóżko",
+      "icon": "assets/bed.svg",
       "points": "3",
       "kidId": "1",
       "start": 1510527600000,
       "days": [
+        0,
         1,
-        3,
-        5
-      ],
-      "doneDates": [
-        1510614000000
-      ],
-      "waitDates": [
-        1510959600000
-      ],
-      "id": 2
-    },
-    {
-      "confirmation": true,
-      "name": "Umyć podłogę",
-      "icon": "assets/cleaning.svg",
-      "points": "5",
-      "kidId": "1",
-      "start": 1510527600000,
-      "days": [
-        5,
-        6
+        2
       ],
       "doneDates": [],
-      "waitDates": [
-        1510959600000
-      ],
-      "id": 3
+      "waitDates": [],
+      "id": 2
     }
   ],
-  "userGifts": [
-    {
-      "name": "Wyjście do kin",
-      "points": "5",
-      "icon": "asset",
-      "kidId": 2,
-      "id": 1
-    },
-    {
-      "name": "Klocki lego",
-      "icon": "assets/lego.svg",
-      "points": "4",
-      "kidId": 2,
-      "id": 2
-    },
-    {
-      "name": "Nowa zabawka",
-      "icon": "assets/gift2.svg",
-      "points": "30",
-      "kidId": "3",
-      "id": 3
-    },
-    {
-      "name": "Deser",
-      "icon": "assets/piece-of-cake.svg",
-      "points": "50",
-      "kidId": "3",
-      "id": 4
-    },
-    {
-      "name": "Wieczór gier",
-      "icon": "assets/dice.svg",
-      "points": "15",
-      "kidId": 1,
-      "id": 5
-    },
-    {
-      "name": "45 min na gry",
-      "icon": "assets/45-minutes.svg",
-      "points": "45",
-      "kidId": 1,
-      "id": 6
-    }
-  ]
+  "userGifts": []
 }
