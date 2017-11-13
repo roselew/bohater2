@@ -61,10 +61,8 @@ export class OneWeekComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       this.kid['id'] = paramMap.get('kidId');
     })
-
     
   }
-
 
   tDone 
   tWait 
@@ -73,6 +71,7 @@ export class OneWeekComponent implements OnInit {
   nWait=[];
   nUndone=[];
 
+
   show([nDone,nWait,nUndone],day){
     this.nDone[day-this.firstDay]=nDone;
     this.nWait[day-this.firstDay]=nWait;
@@ -80,7 +79,6 @@ export class OneWeekComponent implements OnInit {
     this.tDone=this.nDone.reduce((a, b) => a + b, 0);
     this.tWait=this.nWait.reduce((a, b) => a + b, 0);
     this.tUndone=this.nUndone.reduce((a, b) => a + b, 0);
-
   }
 
 }

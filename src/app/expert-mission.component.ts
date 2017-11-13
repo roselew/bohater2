@@ -78,9 +78,11 @@ export class ExpertMissionComponent implements OnInit {
 
     save(){
       this.mission['kidId']=this.kid['id'];
-      this.mission['start']=new Date;
-      this.mission['start'].setHours(0,0,0,0);
+      let today = new Date().setHours(0,0,0,0);
+      this.mission['start']=today;
       this.mission['days']=this.selectedDays;
+      this.mission['doneDates']=[];
+      this.mission['waitDates']=[];
       this.http.post('http://localhost:3000/userMissions/', this.mission)
         .subscribe( mission=> {this.mission= mission; this.goBack(); this.goBack();});
     }

@@ -111,19 +111,13 @@ export class OneDayViewComponent implements OnInit {
     this.http.get('http://localhost:3000/kids/' + this.kid['id'] + '/userMissions')
       .subscribe(userMissions => {
         this.userMissions = this.getAllMissions(userMissions, this.thisDay);
-        this.http.get('http://localhost:3000/kids/' + this.kid['id'] + '/doneMissions')
-          .subscribe(doneMissions => {
-            this.doneMissions = this.getDoneMissions(doneMissions, this.thisDay);
-            this.http.get('http://localhost:3000/kids/' + this.kid['id'] + '/waitMissions')
-              .subscribe(waitMissions => {
-                this.waitMissions = this.getDoneMissions(waitMissions, this.thisDay);
-                this.undoneMissions = this.getUndoneMissions();
-                this.countAll();
-              })
-          })
-
+        this.doneMissions = this.getDoneMissions(this.userMissions, this.thisDay);
+        this.waitMissions = this.getWaitMissions(this.userMissions, this.thisDay);
+        this.undoneMissions = this.getUndoneMissions();
+        this.countAll();
       })
   }
+
 
   //get from database ALL missions 
   getAllMissions = function (missions, day) {
@@ -146,17 +140,23 @@ export class OneDayViewComponent implements OnInit {
   //get from database all missions DONE this DAY
   getDoneMissions = function (missions, day) {
     let doneMissions = [];
-    for (let mission of missions) {
-      // compare doneDate with day
-      let doneDate = new Date(mission.doneDate);
-      if (day.getTime() == doneDate.getTime()) {
-        let doneMission = this.userMissions.filter(x => x.id === mission['missionId'])[0];
-        doneMission['doneId'] = mission['id'];
-        doneMissions.push(doneMission)
-      }
-
+    for (let mission of missions) {   
+        if (mission['doneDates'].indexOf(day.getTime())>-1){
+          doneMissions.push(mission)
+        }
     }
     return doneMissions;
+  }
+
+  //get from database all missions WAIT this DAY
+  getWaitMissions = function (missions, day) {
+    let waitMissions = [];
+    for (let mission of missions) {   
+        if (mission['waitDates'].indexOf(day.getTime())>-1){
+          waitMissions.push(mission)
+        }
+    }
+    return waitMissions;
   }
 
   //get from database all missions UNDONE this DAY
@@ -172,28 +172,29 @@ export class OneDayViewComponent implements OnInit {
 
 
   addDone(mission) {
-    let doneMission = {};
-    doneMission['doneDate'] = this.thisDay;
-    doneMission['missionId'] = mission['id'];
-    doneMission['kidId'] = this.kid['id'];
 
-    if (this.waitMissions.filter(obj => obj.id == mission['id'])) {
-      this.http.delete('http://localhost:3000/waitMissions/' + mission['doneId'])
-        .subscribe(() => this.fetchMissions());
+    let data=this.thisDay.getTime()
+    mission['doneDates'].push(data)
+    if (mission['waitDates'].indexOf(data)>-1){
+      let index = mission['waitDates'].indexOf(data)
+      mission['waitDates'].splice(index,1)
     }
+
+
+    // if (this.waitMissions.filter(obj => obj.id == mission['id'])) {
+    //   this.http.delete('http://localhost:3000/waitMissions/' + mission['doneId'])
+    //     .subscribe(() => this.fetchMissions());
+    // }
     //najpierw trzeba sprawdzić czy nie jest już oczekująca wtedy ją wyrzucamy z listy oczekujących
-    this.http.post('http://localhost:3000/doneMissions/', doneMission)
+    this.http.put('http://localhost:3000/userMissions/'+ mission.id, mission)
       .subscribe(() => this.fetchMissions());
   }
 
 
 
   addWait(mission) {
-    let doneMission = {};
-    doneMission['doneDate'] = this.thisDay;
-    doneMission['missionId'] = mission['id'];
-    doneMission['kidId'] = this.kid['id'];
-    this.http.post('http://localhost:3000/waitMissions/', doneMission)
+    mission['waitDates'].push(this.thisDay.getTime());
+    this.http.put('http://localhost:3000/userMissions/'+ mission.id, mission)
       .subscribe(() => this.fetchMissions());
   }
 
