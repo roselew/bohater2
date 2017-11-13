@@ -227,6 +227,7 @@
       "confirmation": true,
       "name": "Zęby rano",
       "icon": "assets/toothbrush.svg",
+      "points": "1",
       "kidId": "1",
       "start": 1510527600000,
       "days": [
@@ -235,20 +236,40 @@
         4
       ],
       "doneDates": [
-        1510873200000,
         1510527600000,
         1510700400000,
-        1511478000000,
-        1511305200000,
-        1511132400000
+        1510873200000
       ],
       "waitDates": [
-        1511737200000,
-        1511910000000,
-        1512082800000
+        1511132400000
       ],
       "id": 1
+    },
+    {
+      "confirmation": true,
+      "name": "Posprzątać pokój",
+      "icon": "assets/room.svg",
+      "points": "5",
+      "kidId": "1",
+      "start": 1510527600000,
+      "days": [
+        1
+      ],
+      "doneDates": [
+        1510614000000,
+        1511218800000
+      ],
+      "waitDates": [],
+      "id": 2
     }
   ],
-  "userGifts": []
+  "userGifts": [
+    {
+      "name": "Wyjście na lody",
+      "icon": "assets/icecream.svg",
+      "points": "100",
+      "kidId": "1",
+      "id": 1
+    }
+  ]
 }

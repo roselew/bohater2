@@ -15,6 +15,8 @@ import { Location} from "@angular/common";
       <button [routerLink]="['one-week/',0]"> Postępy tydodniowe </button>
       <button [routerLink]="['one-day/',0]"> Postępy dzienne </button>
 
+      <p>W sumie zdobył {{totalPoints}} punktów</p>
+
       <p>Lista misji dziecka</p>
       <ul> 
         <li *ngFor="let userMission of userMissions" [routerLink]="['mission/'+userMission.id]"> 
@@ -46,16 +48,26 @@ export class KidComponent implements OnInit {
   kid = {};
   userMissions
   userGifts
+  totalPoints = 0
 
    ngOnInit(){
       this.kid['id']=this.route.snapshot.paramMap.get('kidId');
       this.http.get('http://localhost:3000/kids/'+this.kid['id'])
         .subscribe( kid => this.kid = kid )
       this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userMissions')
-        .subscribe( userMissions => this.userMissions = userMissions )
-        this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userGifts')
+        .subscribe( userMissions => {
+          this.userMissions = userMissions;
+          this.calculatePoints();
+         })
+      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userGifts')
         .subscribe( userGifts  => this.userGifts = userGifts )
       }
+
+  calculatePoints(){
+    for (let mission of this.userMissions){
+      this.totalPoints += mission['doneDates'].length * mission['points']
+    }
+  }
 
    update(){
       this.http.put('http://localhost:3000/kids/'+ this.kid['id'], this.kid)
