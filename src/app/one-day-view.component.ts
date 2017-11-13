@@ -172,24 +172,32 @@ export class OneDayViewComponent implements OnInit {
 
 
   addDone(mission) {
-
     let data=this.thisDay.getTime()
-    mission['doneDates'].push(data)
-    if (mission['waitDates'].indexOf(data)>-1){
-      let index = mission['waitDates'].indexOf(data)
-      mission['waitDates'].splice(index,1)
-    }  
-    this.http.put('http://localhost:3000/userMissions/'+ mission.id, mission)
-      .subscribe(() => this.fetchMissions());
+    let updatedMission={};
+    this.http.get('http://localhost:3000/userMissions/' + mission.id)
+      .subscribe(userMission => {
+        updatedMission = userMission;
+        updatedMission['doneDates'].push(data);
+        if (updatedMission['waitDates'].indexOf(data)>-1){
+          let index = updatedMission['waitDates'].indexOf(data)
+          updatedMission['waitDates'].splice(index,1)
+        }  
+        this.http.put('http://localhost:3000/userMissions/'+ mission.id, updatedMission)
+          .subscribe(() => this.fetchMissions());
+      })
   }
 
-
-
+ 
   addWait(mission) {
-    mission['waitDates'].push(this.thisDay.getTime());
-    this.http.put('http://localhost:3000/userMissions/'+ mission.id, mission)
-      .subscribe(() => this.fetchMissions());
+    let data=this.thisDay.getTime()
+    let updatedMission={};
+    this.http.get('http://localhost:3000/userMissions/' + mission.id)
+      .subscribe(userMission => {
+        updatedMission = userMission;
+        updatedMission['waitDates'].push(data);
+        this.http.put('http://localhost:3000/userMissions/'+ mission.id, updatedMission)
+          .subscribe(() => this.fetchMissions());
+      })
   }
-
 
 }

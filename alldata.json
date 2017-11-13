@@ -225,9 +225,8 @@
   "userMissions": [
     {
       "confirmation": true,
-      "name": "Opróżnić zmywarkę",
-      "icon": "assets/dishwasher.svg",
-      "points": "2",
+      "name": "Zęby rano",
+      "icon": "assets/toothbrush.svg",
       "kidId": "1",
       "start": 1510527600000,
       "days": [
@@ -235,25 +234,20 @@
         2,
         4
       ],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 1
-    },
-    {
-      "confirmation": true,
-      "name": "Pościelić łóżko",
-      "icon": "assets/bed.svg",
-      "points": "3",
-      "kidId": "1",
-      "start": 1510527600000,
-      "days": [
-        0,
-        1,
-        2
+      "doneDates": [
+        1510873200000,
+        1510527600000,
+        1510700400000,
+        1511478000000,
+        1511305200000,
+        1511132400000
       ],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 2
+      "waitDates": [
+        1511737200000,
+        1511910000000,
+        1512082800000
+      ],
+      "id": 1
     }
   ],
   "userGifts": []
