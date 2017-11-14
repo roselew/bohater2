@@ -6,6 +6,19 @@ import { Location} from "@angular/common";
 @Component({
   selector: 'gifts',
   template: `
+
+   <p>Dziecko ma {{totalPoints}} punktów </p>
+
+
+    <p>Lista nagród dziecka niewykorzystanych ale dostępnych</p>
+    <ul> 
+      <li *ngFor="let userGift of availableGifts"
+        [routerLink]="[userGift.id]"> 
+        {{ userGift.name }} 
+      </li> 
+    </ul> 
+
+
     <p>Lista nagród dziecka niewykorzystanych</p>
     <ul> 
       <li *ngFor="let userGift of unusedGifts"
@@ -24,8 +37,7 @@ import { Location} from "@angular/common";
 
     <p>Lista nagród już odebranych</p>
     <ul> 
-      <li *ngFor="let userGift of receivedGifts"
-        [routerLink]="[userGift.id]"> 
+      <li *ngFor="let userGift of receivedGifts"> 
         {{ userGift.name }} 
       </li> 
     </ul> 
@@ -51,6 +63,7 @@ export class GiftsComponent implements OnInit {
   userGifts
   totalPoints = 0
   unusedGifts
+  availableGifts
   chosenGifts
   receivedGifts
 
@@ -66,7 +79,9 @@ export class GiftsComponent implements OnInit {
       this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userGifts')
         .subscribe( userGifts  => {
           this.userGifts = userGifts;
-          this.unusedGifts = this.userGifts.filter( x => x.status==='unused'); 
+          
+          this.unusedGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points > this.totalPoints); ; 
+          this.availableGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points <= this.totalPoints); 
           this.chosenGifts = this.userGifts.filter (x => x.status==='chosen');
           this.receivedGifts = this.userGifts.filter (x => x.status==='received');
         })

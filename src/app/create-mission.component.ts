@@ -10,7 +10,7 @@ import { Location} from "@angular/common";
    <view-mission [mission]="mission" [days]="days"></view-mission>
    <br>
    <button (click)="save()">Save</button>
-   <button [routerLink]="['/kids/'+this.kid['id']+'/missions']">Powrót</button>
+   <button routerLink='../'>Powrót</button>
 
   `,
   styles: [],
@@ -58,7 +58,7 @@ export class CreateMissionComponent implements OnInit {
     this.http.post('http://localhost:3000/userMissions/', this.mission)
       .subscribe( mission=> {
         this.mission= mission;
-        this.router.navigate(['/kids/',this.kid['id'],'/missions'])
+        this.router.navigate(['../'],{relativeTo:this.route});
       });
   }
 

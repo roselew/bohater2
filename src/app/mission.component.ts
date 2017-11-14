@@ -58,13 +58,13 @@ export class MissionComponent implements OnInit {
       this.http.put('http://localhost:3000/userMissions/'+ this.mission['id'], this.mission)
       .subscribe( mission=> {
         this.mission= mission; 
-        this.router.navigate(['../']);
+        this.router.navigate(['../'],{relativeTo:this.route});
       })
    }
 
    remove(){
        this.http.delete('http://localhost:3000/userMissions/'+ this.mission['id'])
-       .subscribe( ()=> this.router.navigate(['../']))
+       .subscribe( ()=> this.router.navigate(['../'],{relativeTo:this.route}))
    }
    
 }

@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
     </p>
     <expert-missions></expert-missions>
     <button routerLink="../create-mission">... utwórz własną</button>
+    <button routerLink='../'>Powrót</button>
   `,
   styles: [],
 

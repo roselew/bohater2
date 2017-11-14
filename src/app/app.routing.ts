@@ -21,7 +21,7 @@ import { EditKidComponent } from "./edit-kid.component";
 
 
 const routes:Routes = [
-    { path: '',                                         component: KidsComponent},
+    { path: '',  redirectTo: '/parents', pathMatch:'full'             },
     { path: 'kids',                                     component: KidsComponent}, 
     { path: 'kids/:kidId',                              component: KidComponent},
     { path: 'kids/:kidId/edit-kid',                     component: EditKidComponent},
@@ -33,10 +33,11 @@ const routes:Routes = [
     { path: 'kids/:kidId/missions/:missionId',          component: MissionComponent},
 
     { path: 'kids/:kidId/gifts',                        component: GiftsComponent},
-    { path: 'kids/:kidId/new-gift',                     component: NewGiftComponent},
-    { path: 'kids/:kidId/create-gift',                  component: CreateGiftComponent},
-    { path: 'kids/:kidId/expert-gift/:giftId',          component: ExpertGiftComponent},
-    { path: 'kids/:kidId/gifts/:giftId',                component: GiftComponent},    
+    { path: 'kids/:kidId/gifts/new-gift',                     component: NewGiftComponent},
+    { path: 'kids/:kidId/gifts/create-gift',                  component: CreateGiftComponent},
+    { path: 'kids/:kidId/gifts/expert-gift/:giftId',          component: ExpertGiftComponent},
+    { path: 'kids/:kidId/gifts/:giftId',                component: GiftComponent},  
+    { path: 'kids/:kidId/gifts/available/:giftId',      component: GiftComponent},    
 
     { path: 'parents',                                  component: ParentsComponent},
     { path: 'parents/:parentId',                        component: ParentComponent},

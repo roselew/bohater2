@@ -7,19 +7,14 @@ import { Location} from "@angular/common";
   selector: 'gift',
   template: `
 
-  <label>Name</label>
-  <input [(ngModel)]="gift.name">
-  <label>Points</label>
-  <input [(ngModel)]="gift.points">
-  <label>Icon</label>
-  <input [(ngModel)]="gift.icon">
+  <view-gift [gift]="gift"></view-gift>
+  <br>
+  <p>Obecny status - {{gift.status}}</p>
+  <button (click)="chose()">Odbierz nagrodę</button>
 
-<p>Obecny status - {{gift.status}}</p>
-<button (click)="chose()">Odbierz nagrodę</button>
-
-<button (click)="update()">Zapisz zmiany</button>
-<button (click)="remove()">Usuń</button>
-<button (click)="goBack()">Powrót</button>
+  <button (click)="update()">Zapisz zmiany</button>
+  <button (click)="remove()">Usuń</button>
+  <button routerLink='../'>Powrót</button>
   `,
   styles: [],
 
@@ -42,16 +37,16 @@ export class GiftComponent implements OnInit {
 
   update(){
      this.http.put('http://localhost:3000/userGifts/'+ this.gift['id'], this.gift)
-     .subscribe( gift=> {this.gift= gift; this.goBack();});
+     .subscribe( gift=> {
+       this.gift= gift;
+       this.router.navigate(['../'],{relativeTo:this.route});
+      });
   }
 
   remove(){
       this.http.delete('http://localhost:3000/userGifts/'+ this.gift['id'])
-      .subscribe( ()=> this.goBack())
+      .subscribe( ()=> this.router.navigate(['../'],{relativeTo:this.route}))
   }
 
-  goBack(){
-    this.location.back();
-  }
 
 }

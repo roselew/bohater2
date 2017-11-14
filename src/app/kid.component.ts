@@ -18,7 +18,6 @@ import { Location} from "@angular/common";
       <button routerLink="one-day/0">Postępy dzienne</button>
       <br>
       <p>Przejź na stronę dziecka </p>
-      <br>
       <button routerLink="edit-kid">Ustawienia profilu dziecka</button>
       <br>
       <button [routerLink]="['/parents/'+parentId]">Przełącz dziecko</button>

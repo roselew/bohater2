@@ -6,15 +6,11 @@ import { Location} from "@angular/common";
 @Component({
   selector: 'create-gift',
   template: `
-  <label>Name</label>
-  <input [(ngModel)]="gift.name">
-  <label>Points</label>
-  <input [(ngModel)]="gift.points">
-  <label>Icon</label>
-  <input [(ngModel)]="gift.icon">
 
+  <view-gift [gift]="gift"></view-gift>
+  <br>
   <button (click)="save()">Save</button>
-  <button (click)="goBack()">Powrót</button>
+   <button routerLink='../'>Powrót</button>
 
   `,
   styles: [],
@@ -26,7 +22,6 @@ export class CreateGiftComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
-    private location:Location,
     ) { }
 
     kid = {}
@@ -37,12 +32,14 @@ export class CreateGiftComponent implements OnInit {
       this.gift['status']='unused';
       this.gift['chosenDate']='';
       this.http.post('http://localhost:3000/userGifts/', this.gift)
-        .subscribe( gift=> {this.gift= gift; this.goBack(); this.goBack();});
+        .subscribe( gift=> {
+          this.gift= gift;
+          this.router.navigate(['../'],{relativeTo:this.route});
+        });
       }
+      
   ngOnInit() {
     this.kid['id']=this.route.snapshot.paramMap.get('kidId');
   }
-  goBack(){
-    this.location.back();
-  }
+
 }
