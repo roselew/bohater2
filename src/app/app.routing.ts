@@ -1,10 +1,10 @@
 import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from "./app.component";
 import { KidsComponent } from "./kids/kids.component";
-import { ParentsComponent } from "./parents.component";
+import { ParentsComponent } from "./parents/parents.component";
 import { KidComponent } from "./kids/kid.component";
 import { CreateKidComponent } from "./kids/create-kid.component";
-import { ParentComponent } from "./parent.component";
+import { ParentComponent } from "./parents/parent.component";
 import { CreateMissionComponent } from "./missions/create-mission.component";
 import { MissionComponent } from "./missions/mission.component";
 import { NewMissionComponent } from "./missions/new-mission.component";
