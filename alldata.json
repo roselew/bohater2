@@ -310,6 +310,124 @@
       "doneDates": [],
       "waitDates": [],
       "id": 4
+    },
+    {
+      "confirmation": true,
+      "name": "Próba",
+      "points": "50",
+      "icon": "jakas.svg",
+      "kidId": "1",
+      "start": 1510614000000,
+      "days": [],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 5
+    },
+    {
+      "confirmation": true,
+      "name": "Wstawić pranie",
+      "icon": "assets/laundry.svg",
+      "points": "30",
+      "kidId": "1",
+      "start": 1510614000000,
+      "days": [
+        2
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 6
+    },
+    {
+      "confirmation": true,
+      "name": "Pościelić łóżko",
+      "icon": "assets/bed.svg",
+      "points": "50",
+      "kidId": "1",
+      "start": 1510614000000,
+      "days": [],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 7
+    },
+    {
+      "confirmation": true,
+      "name": "Umyć podłogę",
+      "icon": "assets/cleaning.svg",
+      "points": "20",
+      "kidId": "1",
+      "start": 1510614000000,
+      "days": [],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 8
+    },
+    {
+      "confirmation": true,
+      "name": "Jakaś",
+      "points": "5",
+      "icon": "jaka.svg",
+      "kidId": "1",
+      "start": 1510614000000,
+      "days": [],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 9
+    },
+    {
+      "confirmation": true,
+      "name": "Nakryć stół",
+      "icon": "assets/cutlery.svg",
+      "points": "50",
+      "kidId": "1",
+      "start": 1510614000000,
+      "days": [],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 10
+    },
+    {
+      "confirmation": true,
+      "name": "Posprzątać ze stołu",
+      "icon": "assets/table.svg",
+      "points": "50",
+      "kidId": "1",
+      "start": 1510614000000,
+      "days": [
+        1,
+        2
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 11
+    },
+    {
+      "confirmation": true,
+      "name": "Posprzątać ze stołu",
+      "icon": "assets/table.svg",
+      "points": "35",
+      "kidId": "1",
+      "start": 1510614000000,
+      "days": [
+        1,
+        2
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 12
+    },
+    {
+      "confirmation": true,
+      "name": "Umyć auto",
+      "icon": "assets/car.svg",
+      "points": "40",
+      "kidId": "1",
+      "start": 1510614000000,
+      "days": [
+        3
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 13
     }
   ],
   "userGifts": [

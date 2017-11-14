@@ -27,9 +27,9 @@ const routes:Routes = [
     { path: 'kids/:kidId/edit-kid',                     component: EditKidComponent},
 
     { path: 'kids/:kidId/missions',                     component: MissionsComponent},    
-    { path: 'kids/:kidId/new-mission',                  component: NewMissionComponent},
-    { path: 'kids/:kidId/create-mission',               component: CreateMissionComponent},
-    { path: 'kids/:kidId/expert-mission/:missionId',    component: ExpertMissionComponent},
+    { path: 'kids/:kidId/missions/new-mission',                  component: NewMissionComponent},
+    { path: 'kids/:kidId/missions/create-mission',               component: CreateMissionComponent},
+    { path: 'kids/:kidId/missions/expert-mission/:missionId',    component: ExpertMissionComponent},
     { path: 'kids/:kidId/missions/:missionId',          component: MissionComponent},
 
     { path: 'kids/:kidId/gifts',                        component: GiftsComponent},
