@@ -32,7 +32,7 @@ import { GiftsComponent } from './gifts/gifts.component';
 import { MissionsComponent } from './missions/missions.component';
 import { EditKidComponent } from './kids/edit-kid.component';
 
-import { MyHeaderComponent } from './my-header.component';
+import { MyHeaderComponent } from './kids/my-header.component';
 
 import { ViewKidComponent } from './kids/view-kid.component';
 import { ViewMissionComponent } from './missions/view-mission.component';
