@@ -33,7 +33,9 @@ export class CreateGiftComponent implements OnInit {
     gift={};
 
     save(){
-      this.gift['kidId']=this.kid['id'];
+      this.gift['kidId']=parseInt(this.kid['id']);
+      this.gift['status']='unused';
+      this.gift['chosenDate']='';
       this.http.post('http://localhost:3000/userGifts/', this.gift)
         .subscribe( gift=> {this.gift= gift; this.goBack(); this.goBack();});
       }

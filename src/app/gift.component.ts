@@ -14,6 +14,9 @@ import { Location} from "@angular/common";
   <label>Icon</label>
   <input [(ngModel)]="gift.icon">
 
+<p>Obecny status - {{gift.status}}</p>
+<button (click)="chose()">Odbierz nagrodę</button>
+
 <button (click)="update()">Zapisz zmiany</button>
 <button (click)="remove()">Usuń</button>
 <button (click)="goBack()">Powrót</button>

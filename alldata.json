@@ -310,14 +310,9 @@
       "icon": "assets/icecream.svg",
       "points": "100",
       "kidId": "1",
+      "status": "unused",
+      "chosenDate": "",
       "id": 1
-    },
-    {
-      "name": "Wieczór gier",
-      "icon": "assets/dice.svg",
-      "points": "34",
-      "kidId": "2",
-      "id": 2
     }
   ]
 }

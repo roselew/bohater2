@@ -15,23 +15,33 @@ import { NewGiftComponent } from './new-gift.component';
 import { CreateGiftComponent } from './create-gift.component';
 import { ExpertGiftComponent } from './expert-gift.component';
 import { GiftComponent } from './gift.component';
+import { GiftsComponent } from "./gifts.component";
+import { MissionsComponent } from "./missions.component";
+import { EditKidComponent } from "./edit-kid.component";
 
 
 const routes:Routes = [
     { path: '',                                         component: KidsComponent},
     { path: 'kids',                                     component: KidsComponent}, 
     { path: 'kids/:kidId',                              component: KidComponent},
+    { path: 'kids/:kidId/edit-kid',                     component: EditKidComponent},
+
+    { path: 'kids/:kidId/missions',                     component: MissionsComponent},    
     { path: 'kids/:kidId/new-mission',                  component: NewMissionComponent},
     { path: 'kids/:kidId/create-mission',               component: CreateMissionComponent},
     { path: 'kids/:kidId/expert-mission/:missionId',    component: ExpertMissionComponent},
-    { path: 'kids/:kidId/mission/:missionId',           component: MissionComponent},
+    { path: 'kids/:kidId/missions/:missionId',          component: MissionComponent},
+
+    { path: 'kids/:kidId/gifts',                        component: GiftsComponent},
     { path: 'kids/:kidId/new-gift',                     component: NewGiftComponent},
     { path: 'kids/:kidId/create-gift',                  component: CreateGiftComponent},
     { path: 'kids/:kidId/expert-gift/:giftId',          component: ExpertGiftComponent},
-    { path: 'kids/:kidId/gift/:giftId',                 component: GiftComponent},    
+    { path: 'kids/:kidId/gifts/:giftId',                component: GiftComponent},    
+
     { path: 'parents',                                  component: ParentsComponent},
     { path: 'parents/:parentId',                        component: ParentComponent},
-    { path: 'parents/:parentId/create-kid',             component: CreateKidComponent},    
+    { path: 'parents/:parentId/create-kid',             component: CreateKidComponent},   
+
     { path: 'kids/:kidId/one-day/:dayId',               component: OneDayComponent},
     { path: 'kids/:kidId/one-week/:weekId',             component: OneWeekComponent}
 ]

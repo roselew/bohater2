@@ -42,7 +42,9 @@ export class ExpertGiftComponent implements OnInit {
    }
 
    save(){
-    this.gift['kidId']=this.kid['id'];
+    this.gift['kidId']=parseInt(this.kid['id']);
+    this.gift['status']='unused';
+    this.gift['chosenDate']='';
     this.http.post('http://localhost:3000/usergifts/', this.gift)
       .subscribe( gift=> {this.gift= gift; this.goBack(); this.goBack();});
   }

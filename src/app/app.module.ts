@@ -28,6 +28,13 @@ import { ExpertGiftsComponent } from './expert-gifts.component';
 import { MissionsToAcceptComponent } from './missions-to-accept.component';
 import { ProgressWeekComponent } from './progress-week.component';
 import { ShortcutKidComponent } from './shortcut-kid.component';
+import { GiftsComponent } from './gifts.component';
+import { MissionsComponent } from './missions.component';
+import { EditKidComponent } from './edit-kid.component';
+import { MyHeaderComponent } from './my-header.component';
+import { ViewKidComponent } from './view-kid.component';
+import { ViewMissionComponent } from './view-mission.component';
+import { ViewGiftComponent } from './view-gift.component';
 
 
 @NgModule({
@@ -55,7 +62,14 @@ import { ShortcutKidComponent } from './shortcut-kid.component';
     ExpertGiftsComponent,
     MissionsToAcceptComponent,
     ProgressWeekComponent,
-    ShortcutKidComponent
+    ShortcutKidComponent,
+    GiftsComponent,
+    MissionsComponent,
+    EditKidComponent,
+    MyHeaderComponent,
+    ViewKidComponent,
+    ViewMissionComponent,
+    ViewGiftComponent
   ],
   imports: [
     BrowserModule,
