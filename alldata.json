@@ -478,6 +478,15 @@
       "status": "received",
       "chosenDate": 1510614000000,
       "id": 3
+    },
+    {
+      "name": "Nowa gra",
+      "icon": "assets/remote-control.svg",
+      "points": "10",
+      "kidId": 2,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 4
     }
   ]
 }

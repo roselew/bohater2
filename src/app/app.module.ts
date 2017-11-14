@@ -20,15 +20,15 @@ import { OneDayComponent } from './one-day.component';
 import { OneWeekComponent } from './one-week.component';
 import { OneDayViewComponent } from './one-day-view.component';
 
-import { NewGiftComponent } from './new-gift.component';
-import { CreateGiftComponent } from './create-gift.component';
-import { ExpertGiftComponent } from './expert-gift.component';
-import { GiftComponent } from './gift.component';
-import { ExpertGiftsComponent } from './expert-gifts.component';
+import { NewGiftComponent } from './gifts/new-gift.component';
+import { CreateGiftComponent } from './gifts/create-gift.component';
+import { ExpertGiftComponent } from './gifts/expert-gift.component';
+import { GiftComponent } from './gifts/gift.component';
+import { ExpertGiftsComponent } from './gifts/expert-gifts.component';
 import { MissionsToAcceptComponent } from './missions/missions-to-accept.component';
 import { ProgressWeekComponent } from './progress-week.component';
 import { ShortcutKidComponent } from './shortcut-kid.component';
-import { GiftsComponent } from './gifts.component';
+import { GiftsComponent } from './gifts/gifts.component';
 import { MissionsComponent } from './missions/missions.component';
 import { EditKidComponent } from './edit-kid.component';
 
@@ -36,9 +36,9 @@ import { MyHeaderComponent } from './my-header.component';
 
 import { ViewKidComponent } from './view-kid.component';
 import { ViewMissionComponent } from './missions/view-mission.component';
-import { ViewGiftComponent } from './view-gift.component';
-import { AvailableGiftComponent } from './available-gift.component';
-import { ChosenGiftComponent } from './chosen-gift.component';
+import { ViewGiftComponent } from './gifts/view-gift.component';
+import { AvailableGiftComponent } from './gifts/available-gift.component';
+import { ChosenGiftComponent } from './gifts/chosen-gift.component';
 
 
 @NgModule({

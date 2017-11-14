@@ -11,15 +11,15 @@ import { NewMissionComponent } from "./missions/new-mission.component";
 import { ExpertMissionComponent } from "./missions/expert-mission.component";
 import { OneDayComponent } from './one-day.component';
 import { OneWeekComponent } from './one-week.component';
-import { NewGiftComponent } from './new-gift.component';
-import { CreateGiftComponent } from './create-gift.component';
-import { ExpertGiftComponent } from './expert-gift.component';
-import { GiftComponent } from './gift.component';
-import { GiftsComponent } from "./gifts.component";
+import { NewGiftComponent } from './gifts/new-gift.component';
+import { CreateGiftComponent } from './gifts/create-gift.component';
+import { ExpertGiftComponent } from './gifts/expert-gift.component';
+import { GiftComponent } from './gifts/gift.component';
+import { GiftsComponent } from "./gifts/gifts.component";
 import { MissionsComponent } from "./missions/missions.component";
 import { EditKidComponent } from "./edit-kid.component";
-import { AvailableGiftComponent } from "./available-gift.component";
-import { ChosenGiftComponent } from "./chosen-gift.component";
+import { AvailableGiftComponent } from "./gifts/available-gift.component";
+import { ChosenGiftComponent } from "./gifts/chosen-gift.component";
 
 
 const routes:Routes = [
