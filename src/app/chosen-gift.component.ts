@@ -4,20 +4,22 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Location} from "@angular/common";
 
 @Component({
-  selector: 'gift',
+  selector: 'chosen-gift',
   template: `
 
   <view-gift [gift]="gift"></view-gift>
   <br>
   <p>Obecny status - {{gift.status}}</p>
+  <button (click)="receive()">Potwierdź odbiór nagrody</button>
+
   <button (click)="update()">Zapisz zmiany</button>
   <button (click)="remove()">Usuń</button>
-  <button routerLink='../'>Powrót</button>
+  <button routerLink='../../'>Powrót</button>
   `,
   styles: [],
 
 })
-export class GiftComponent implements OnInit {
+export class ChosenGiftComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -46,5 +48,13 @@ export class GiftComponent implements OnInit {
       .subscribe( ()=> this.router.navigate(['../'],{relativeTo:this.route}))
   }
 
+  receive(){
+      this.gift['status']='received';
+      this.http.put('http://localhost:3000/userGifts/'+ this.gift['id'], this.gift)
+     .subscribe( gift=> {
+       this.gift= gift;
+       this.router.navigate(['../../'],{relativeTo:this.route});
+      });
+  }
 
 }

@@ -10,7 +10,7 @@ import { Location} from "@angular/common";
   <view-gift [gift]="gift"></view-gift>
   <br>
   <button (click)="save()">Save</button>
-   <button routerLink='../'>Powrót</button>
+   <button routerLink='../../'>Powrót</button>
   `,
   styles: [],
 
@@ -44,7 +44,7 @@ export class ExpertGiftComponent implements OnInit {
     this.http.post('http://localhost:3000/usergifts/', this.gift)
       .subscribe( gift=> {
         this.gift= gift;
-        this.router.navigate(['../'],{relativeTo:this.route});
+        this.router.navigate(['../../'],{relativeTo:this.route});
       });
   }
 

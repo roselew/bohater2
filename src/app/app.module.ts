@@ -37,6 +37,8 @@ import { MyHeaderComponent } from './my-header.component';
 import { ViewKidComponent } from './view-kid.component';
 import { ViewMissionComponent } from './view-mission.component';
 import { ViewGiftComponent } from './view-gift.component';
+import { AvailableGiftComponent } from './available-gift.component';
+import { ChosenGiftComponent } from './chosen-gift.component';
 
 
 @NgModule({
@@ -70,7 +72,9 @@ import { ViewGiftComponent } from './view-gift.component';
     MyHeaderComponent,
     ViewKidComponent,
     ViewMissionComponent,
-    ViewGiftComponent
+    ViewGiftComponent,
+    AvailableGiftComponent,
+    ChosenGiftComponent
   ],
   imports: [
     BrowserModule,
