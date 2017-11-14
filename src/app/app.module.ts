@@ -19,7 +19,7 @@ import { ProgressComponent } from './progress.component';
 import { OneDayComponent } from './one-day.component';
 import { OneWeekComponent } from './one-week.component';
 import { OneDayViewComponent } from './one-day-view.component';
-import { MissionViewComponent } from './mission-view.component';
+
 import { NewGiftComponent } from './new-gift.component';
 import { CreateGiftComponent } from './create-gift.component';
 import { ExpertGiftComponent } from './expert-gift.component';
@@ -31,7 +31,9 @@ import { ShortcutKidComponent } from './shortcut-kid.component';
 import { GiftsComponent } from './gifts.component';
 import { MissionsComponent } from './missions.component';
 import { EditKidComponent } from './edit-kid.component';
+
 import { MyHeaderComponent } from './my-header.component';
+
 import { ViewKidComponent } from './view-kid.component';
 import { ViewMissionComponent } from './view-mission.component';
 import { ViewGiftComponent } from './view-gift.component';
@@ -54,7 +56,6 @@ import { ViewGiftComponent } from './view-gift.component';
     OneDayComponent,
     OneWeekComponent,
     OneDayViewComponent,
-    MissionViewComponent,
     NewGiftComponent,
     CreateGiftComponent,
     ExpertGiftComponent,

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
     </p>
   `,
   styles: [],
-  encapsulation: ViewEncapsulation.None
+
 })
 export class ViewGiftComponent implements OnInit {
 

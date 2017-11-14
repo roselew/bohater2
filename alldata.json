@@ -214,7 +214,7 @@
   ],
   "kids": [
     {
-      "name": "Grzegorz",
+      "name": "Grześ",
       "birth": "2013",
       "login": "gregory",
       "password": "gg",
@@ -228,6 +228,14 @@
       "password": "bas",
       "parentId": "1",
       "id": 2
+    },
+    {
+      "name": "Kasia",
+      "birth": "2013",
+      "login": "katarzyna",
+      "password": "kkk",
+      "parentId": "2",
+      "id": 3
     }
   ],
   "userMissions": [

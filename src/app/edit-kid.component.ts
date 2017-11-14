@@ -6,13 +6,11 @@ import { Location} from "@angular/common";
 @Component({
   selector: 'edit-kid',
   template: `
-      <label>Name</label>
-      <input [(ngModel)]="kid.name">
+      <view-kid [kid]="kid"></view-kid>
+      <br>
       <button (click)="update()">Zapisz</button>
       <button (click)="remove()">Usuń</button>  
       <button routerLink="../">Powrót do dziecka </button>
-
-
   `,
   styles: [],
 
@@ -23,8 +21,6 @@ export class EditKidComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
-    private location:Location,
-    
   ) { }
 
   kid = {};
@@ -38,16 +34,13 @@ export class EditKidComponent implements OnInit {
 
    update(){
       this.http.put('http://localhost:3000/kids/'+ this.kid['id'], this.kid)
-      .subscribe( kid=> {this.kid= kid; this.goBack();});
+      .subscribe( kid=> {this.kid= kid; this.router.navigate(['/kids/',this.kid['id']])
+      });
    }
 
    remove(){
        this.http.delete('http://localhost:3000/kids/'+ this.kid['id'])
-       .subscribe( ()=> this.goBack())
-   }
-
-   goBack(){
-     this.location.back();
+       .subscribe( ()=> this.router.navigate(['/kids/',this.kid['id']]))
    }
 
 }
