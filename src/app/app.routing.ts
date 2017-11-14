@@ -1,23 +1,23 @@
 import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from "./app.component";
-import { KidsComponent } from "./kids.component";
+import { KidsComponent } from "./kids/kids.component";
 import { ParentsComponent } from "./parents.component";
-import { KidComponent } from "./kid.component";
-import { CreateKidComponent } from "./create-kid.component";
+import { KidComponent } from "./kids/kid.component";
+import { CreateKidComponent } from "./kids/create-kid.component";
 import { ParentComponent } from "./parent.component";
 import { CreateMissionComponent } from "./missions/create-mission.component";
 import { MissionComponent } from "./missions/mission.component";
 import { NewMissionComponent } from "./missions/new-mission.component";
 import { ExpertMissionComponent } from "./missions/expert-mission.component";
-import { OneDayComponent } from './one-day.component';
-import { OneWeekComponent } from './one-week.component';
+import { OneDayComponent } from './progress/one-day.component';
+import { OneWeekComponent } from './progress/one-week.component';
 import { NewGiftComponent } from './gifts/new-gift.component';
 import { CreateGiftComponent } from './gifts/create-gift.component';
 import { ExpertGiftComponent } from './gifts/expert-gift.component';
 import { GiftComponent } from './gifts/gift.component';
 import { GiftsComponent } from "./gifts/gifts.component";
 import { MissionsComponent } from "./missions/missions.component";
-import { EditKidComponent } from "./edit-kid.component";
+import { EditKidComponent } from "./kids/edit-kid.component";
 import { AvailableGiftComponent } from "./gifts/available-gift.component";
 import { ChosenGiftComponent } from "./gifts/chosen-gift.component";
 
