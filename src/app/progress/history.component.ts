@@ -48,33 +48,19 @@ export class HistoryComponent implements OnInit {
 
 
   ngOnInit(){
-      this.kid['id']=this.route.snapshot.paramMap.get('kidId');
-      this.http.get('http://localhost:3000/kids/'+this.kid['id'])
-        .subscribe( kid => this.kid = kid )
-      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userMissions')
-        .subscribe( userMissions => {
-          this.userMissions = userMissions;
-          this.fetchGifts();   
-         })
-      }
-
-  fetchGifts(){
-      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userGifts')
-        .subscribe( userGifts  => {
-          this.userGifts = userGifts;
-          this.chosenGifts = this.userGifts.filter (x => x.status==='chosen');
-          this.receivedGifts = this.userGifts.filter (x => x.status==='received');  
-          this.fetchExtraPoints();   
-        })
-   }
-
-   fetchExtraPoints(){
-      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/extraPoints')
-        .subscribe( extraPoints => {
-          this.extraPoints = extraPoints; 
-          this.showHistory();
-        })   
-   }
+    this.kid['id']=this.route.snapshot.paramMap.get('kidId');
+    this.http.get('http://localhost:3000/kids/'+this.kid['id']+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
+      .subscribe( kid => {
+        this.kid = kid;
+        this.userMissions = this.kid['userMissions'];
+        this.userGifts = this.kid['userGifts'];
+        this.chosenGifts = this.userGifts.filter (x => x.status==='chosen');
+        this.receivedGifts = this.userGifts.filter (x => x.status==='received'); 
+        this.extraPoints = this.kid['extraPoints'];
+        this.showHistory() ;
+      })
+  }
+  
 
   history=[]
 
@@ -112,7 +98,6 @@ export class HistoryComponent implements OnInit {
       newItem['date'] = points['date']
       newItem['name'] = points['description']
       this.history.push(newItem)  
-      // this.totalPoints += parseInt(points['points'])
     }
 
     this.history.sort(function(a,b){
