@@ -29,13 +29,12 @@ export class MissionsComponent implements OnInit {
   kid = {};
   userMissions
 
-   ngOnInit(){
+  ngOnInit(){
       this.kid['id']=this.route.snapshot.paramMap.get('kidId');
-      this.http.get('http://localhost:3000/kids/'+this.kid['id'])
-        .subscribe( kid => this.kid = kid )
-      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userMissions')
-        .subscribe( userMissions => {
-          this.userMissions = userMissions;
-         })
+      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'?_embed=userMissions')
+      .subscribe( kid => {
+        this.kid = kid;
+        this.userMissions = this.kid['userMissions'];
+       })
    }
 }

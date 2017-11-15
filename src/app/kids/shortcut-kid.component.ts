@@ -46,11 +46,9 @@ export class ShortcutKidComponent implements OnInit {
   userGifts
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/kids/' + this.kidId + '/userMissions')
-    .subscribe(userMissions => this.userMissions = userMissions)
-
-    this.http.get('http://localhost:3000/kids/' + this.kidId + '/userGifts')
-    .subscribe(userGifts => this.userGifts = userGifts)
-  }
-
+    this.http.get('http://localhost:3000/kids/'+this.kidId+'?_embed=userMissions&_embed=userGifts')
+      .subscribe( kid => {
+        this.userMissions = kid['userMissions'];
+        this.userGifts = kid['userGifts'];
+       })
 }

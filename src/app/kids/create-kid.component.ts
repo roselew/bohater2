@@ -28,7 +28,7 @@ export class CreateKidComponent implements OnInit {
   
 
   save(){
-  this.kid['parentId']=this.parent['id'];
+  this.kid['parentId']=parseInt(this.parent['id']);
   this.http.post('http://localhost:3000/kids/', this.kid)
     .subscribe( kid=> {this.kid= kid; this.router.navigate(['/kids/',this.kid['id']]);});
   }
