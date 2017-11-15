@@ -40,6 +40,8 @@ import { ViewGiftComponent } from './gifts/view-gift.component';
 import { AvailableGiftComponent } from './gifts/available-gift.component';
 import { ChosenGiftComponent } from './gifts/chosen-gift.component';
 import { GiftsToReceiveComponent } from './gifts/gifts-to-receive.component';
+import { ExtraPointsComponent } from './progress/extra-points.component';
+import { HistoryComponent } from './progress/history.component';
 
 
 @NgModule({
@@ -76,7 +78,9 @@ import { GiftsToReceiveComponent } from './gifts/gifts-to-receive.component';
     ViewGiftComponent,
     AvailableGiftComponent,
     ChosenGiftComponent,
-    GiftsToReceiveComponent
+    GiftsToReceiveComponent,
+    ExtraPointsComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

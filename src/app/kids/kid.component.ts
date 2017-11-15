@@ -22,6 +22,8 @@ import { Location} from "@angular/common";
       <br>
       <button [routerLink]="['/parents/'+parentId]">Przełącz dziecko</button>
       <br>
+      <button routerLink="history">Historia</button>
+      <br>
 
   `,
   styles: ['button{margin:10px;padding:5px;}'],

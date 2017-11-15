@@ -321,7 +321,9 @@
       "days": [
         2
       ],
-      "doneDates": [],
+      "doneDates": [
+        1510700400000
+      ],
       "waitDates": [],
       "id": 6
     },
@@ -404,7 +406,9 @@
         1,
         2
       ],
-      "doneDates": [],
+      "doneDates": [
+        1510614000000
+      ],
       "waitDates": [],
       "id": 12
     },
@@ -514,6 +518,29 @@
       "status": "chosen",
       "chosenDate": 1510700400000,
       "id": 7
+    }
+  ],
+  "extraPoints": [
+    {
+      "description": "za nic",
+      "points": "5",
+      "kidId": "1",
+      "date": 1510700400000,
+      "id": 1
+    },
+    {
+      "description": "Za niccc",
+      "points": "10",
+      "kidId": "1",
+      "date": 1510700400000,
+      "id": 2
+    },
+    {
+      "description": "kk",
+      "points": "4",
+      "kidId": "1",
+      "date": 1510700400000,
+      "id": 3
     }
   ]
 }

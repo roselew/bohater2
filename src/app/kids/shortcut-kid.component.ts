@@ -24,8 +24,9 @@ import { HttpClient } from '@angular/common/http';
         Dodaj nową misję 
       </li>
       <br>
-      <li> 
-        Dodaj ekstra punkty - jeszcze nie działa 
+      <li 
+        [routerLink]="['/kids/'+kidId+'/extra-points']"> 
+        Dodaj punkty ekstra
       </li>
     </ul>
   `,

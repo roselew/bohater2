@@ -46,7 +46,6 @@ import { Location} from "@angular/common";
 
     <button routerLink="../">Powrót do dziecka </button>
 
-
   `,
   styles: [],
 })
@@ -66,6 +65,7 @@ export class GiftsComponent implements OnInit {
   availableGifts
   chosenGifts
   receivedGifts
+  extraPoints
 
 
   ngOnInit(){
@@ -75,9 +75,8 @@ export class GiftsComponent implements OnInit {
       this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userMissions')
         .subscribe( userMissions => {
           this.userMissions = userMissions;
-          this.fetchGifts();   
-         })
-           
+          this.fetchGifts();       
+         })  
       }
 
   fetchGifts(){
@@ -85,22 +84,34 @@ export class GiftsComponent implements OnInit {
         .subscribe( userGifts  => {
           this.userGifts = userGifts;
           this.chosenGifts = this.userGifts.filter (x => x.status==='chosen');
-          this.receivedGifts = this.userGifts.filter (x => x.status==='received');
-          this.calculatePoints();
-          this.unusedGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points > this.totalPoints); ; 
-          this.availableGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points <= this.totalPoints); 
+          this.receivedGifts = this.userGifts.filter (x => x.status==='received');  
+          this.fetchExtraPoints();   
         })
+   }
+
+   fetchExtraPoints(){
+      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/extraPoints')
+        .subscribe( extraPoints => {
+          this.extraPoints = extraPoints; 
+          this.calculatePoints();
+          //dopiero po policzeniu punktów mogę pokazać które nagrody można wybrać
+          this.unusedGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points > this.totalPoints);  
+          this.availableGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points <= this.totalPoints);
+        })   
    }
 
   calculatePoints(){
     for (let mission of this.userMissions){
-      this.totalPoints += mission['doneDates'].length * mission['points']
+      this.totalPoints += mission['doneDates'].length * parseInt(mission['points'])
     }
     for (let gifts of this.chosenGifts){
-      this.totalPoints -= gifts['points']
+      this.totalPoints -= parseInt(gifts['points'])
     }
     for (let gifts of this.receivedGifts){
-      this.totalPoints -= gifts['points']
+      this.totalPoints -= parseInt(gifts['points'])
+    }
+    for (let points of this.extraPoints){
+      this.totalPoints += parseInt(points['points'])
     }
   }
 

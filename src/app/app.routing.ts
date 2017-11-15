@@ -20,6 +20,8 @@ import { MissionsComponent } from "./missions/missions.component";
 import { EditKidComponent } from "./kids/edit-kid.component";
 import { AvailableGiftComponent } from "./gifts/available-gift.component";
 import { ChosenGiftComponent } from "./gifts/chosen-gift.component";
+import { ExtraPointsComponent } from "./progress/extra-points.component";
+import { HistoryComponent } from "./progress/history.component";
 
 
 const routes:Routes = [
@@ -47,7 +49,9 @@ const routes:Routes = [
     { path: 'parents/:parentId/create-kid',                     component: CreateKidComponent},   
 
     { path: 'kids/:kidId/one-day/:dayId',                       component: OneDayComponent},
-    { path: 'kids/:kidId/one-week/:weekId',                     component: OneWeekComponent}
+    { path: 'kids/:kidId/one-week/:weekId',                     component: OneWeekComponent},
+    { path: 'kids/:kidId/extra-points',                         component: ExtraPointsComponent},
+    { path: 'kids/:kidId/history',                              component: HistoryComponent}
 ]
 
 export const Routing = RouterModule.forRoot(routes,{
