@@ -35,7 +35,7 @@ export class HistoryComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
-) { }
+  ) { }
 
   kid = {};
   userMissions
@@ -45,7 +45,6 @@ export class HistoryComponent implements OnInit {
   chosenGifts
   receivedGifts
   extraPoints
-
 
   ngOnInit(){
     this.kid['id']=this.route.snapshot.paramMap.get('kidId');
@@ -61,7 +60,6 @@ export class HistoryComponent implements OnInit {
       })
   }
   
-
   history=[]
 
   showHistory(){
@@ -105,6 +103,4 @@ export class HistoryComponent implements OnInit {
     })
   }
   
- 
-
 }

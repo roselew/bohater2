@@ -69,36 +69,22 @@ export class GiftsComponent implements OnInit {
 
 
   ngOnInit(){
-      this.kid['id']=this.route.snapshot.paramMap.get('kidId');
-      this.http.get('http://localhost:3000/kids/'+this.kid['id'])
-        .subscribe( kid => this.kid = kid )
-      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userMissions')
-        .subscribe( userMissions => {
-          this.userMissions = userMissions;
-          this.fetchGifts();       
-         })  
-      }
+    this.kid['id']=this.route.snapshot.paramMap.get('kidId');
+    this.http.get('http://localhost:3000/kids/'+this.kid['id']+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
+      .subscribe( kid => {
+        this.kid = kid;
+        this.userMissions = this.kid['userMissions'];
+        this.userGifts = this.kid['userGifts'];
+        this.chosenGifts = this.userGifts.filter (x => x.status==='chosen');
+        this.receivedGifts = this.userGifts.filter (x => x.status==='received'); 
+        this.extraPoints = this.kid['extraPoints'];
+        this.calculatePoints();
+        //dopiero po policzeniu punktów mogę pokazać które nagrody można wybrać
+        this.unusedGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points > this.totalPoints);  
+        this.availableGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points <= this.totalPoints);
+      })
+  }
 
-  fetchGifts(){
-      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/userGifts')
-        .subscribe( userGifts  => {
-          this.userGifts = userGifts;
-          this.chosenGifts = this.userGifts.filter (x => x.status==='chosen');
-          this.receivedGifts = this.userGifts.filter (x => x.status==='received');  
-          this.fetchExtraPoints();   
-        })
-   }
-
-   fetchExtraPoints(){
-      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'/extraPoints')
-        .subscribe( extraPoints => {
-          this.extraPoints = extraPoints; 
-          this.calculatePoints();
-          //dopiero po policzeniu punktów mogę pokazać które nagrody można wybrać
-          this.unusedGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points > this.totalPoints);  
-          this.availableGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points <= this.totalPoints);
-        })   
-   }
 
   calculatePoints(){
     for (let mission of this.userMissions){
