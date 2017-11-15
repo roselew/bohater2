@@ -5,21 +5,22 @@ import { HttpClient } from '@angular/common/http';
   selector: 'shortcut-kid',
   template: `
     <p> Na skróty: </p>
-    <ul *ngIf="userMissions">
+    <ul *ngIf="userMissions && userGifts">
       <li 
         [routerLink]="['/kids/'+kidId+'/one-week/0']"> 
         <missions-to-accept [userMissions]="userMissions"></missions-to-accept> 
       </li>
-      <li> 
-        Ile nagród do odbioru - jeszcze nie działa 
-      </li> 
+      <li 
+        [routerLink]="['/kids/'+kidId+'/gifts']"> 
+        <gifts-to-receive [userGifts]="userGifts"></gifts-to-receive> 
+      </li>
       <li 
         [routerLink]="['/kids/'+kidId+'/one-week/0']"> 
         <progress-week [userMissions]="userMissions"></progress-week> 
       </li>
       <br>
       <li 
-        [routerLink]="['/kids/'+kidId+'/new-mission']"> 
+        [routerLink]="['/kids/'+kidId+'/missions/new-mission']"> 
         Dodaj nową misję 
       </li>
       <br>
@@ -41,9 +42,14 @@ export class ShortcutKidComponent implements OnInit {
   kidId 
   
   userMissions
+  userGifts
+
   ngOnInit() {
     this.http.get('http://localhost:3000/kids/' + this.kidId + '/userMissions')
     .subscribe(userMissions => this.userMissions = userMissions)
+
+    this.http.get('http://localhost:3000/kids/' + this.kidId + '/userGifts')
+    .subscribe(userGifts => this.userGifts = userGifts)
   }
 
 }

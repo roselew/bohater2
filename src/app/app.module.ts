@@ -39,6 +39,7 @@ import { ViewMissionComponent } from './missions/view-mission.component';
 import { ViewGiftComponent } from './gifts/view-gift.component';
 import { AvailableGiftComponent } from './gifts/available-gift.component';
 import { ChosenGiftComponent } from './gifts/chosen-gift.component';
+import { GiftsToReceiveComponent } from './gifts/gifts-to-receive.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { ChosenGiftComponent } from './gifts/chosen-gift.component';
     ViewMissionComponent,
     ViewGiftComponent,
     AvailableGiftComponent,
-    ChosenGiftComponent
+    ChosenGiftComponent,
+    GiftsToReceiveComponent
   ],
   imports: [
     BrowserModule,

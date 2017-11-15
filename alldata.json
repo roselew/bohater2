@@ -487,6 +487,33 @@
       "status": "unused",
       "chosenDate": "",
       "id": 4
+    },
+    {
+      "name": "Nowa zabawka",
+      "icon": "assets/gift2.svg",
+      "points": "50",
+      "kidId": 2,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 5
+    },
+    {
+      "name": "15 min na gry",
+      "icon": "assets/15-minutes.svg",
+      "points": "15",
+      "kidId": 3,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 6
+    },
+    {
+      "name": "15 min na gry",
+      "icon": "assets/15-minutes.svg",
+      "points": "15",
+      "kidId": 1,
+      "status": "chosen",
+      "chosenDate": 1510700400000,
+      "id": 7
     }
   ]
 }
