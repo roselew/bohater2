@@ -55,10 +55,7 @@ export class HistoryComponent implements OnInit {
         .subscribe( userMissions => {
           this.userMissions = userMissions;
           this.fetchGifts();   
-          
          })
-
-           
       }
 
   fetchGifts(){

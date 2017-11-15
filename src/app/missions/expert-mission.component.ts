@@ -55,7 +55,7 @@ export class ExpertMissionComponent implements OnInit {
    }
 
     save(){
-      this.mission['kidId']=this.kid['id'];
+      this.mission['kidId']=parseInt(this.kid['id']);
       let today = new Date().setHours(0,0,0,0);
       this.mission['start']=today;
       this.mission['days']=this.selectedDays;

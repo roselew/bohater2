@@ -32,7 +32,7 @@ export class ExtraPointsComponent implements OnInit {
   }
 
    save(){
-    this.extraPoints['kidId']=this.kid['id'];
+    this.extraPoints['kidId']=parseInt(this.kid['id']);
     let today = new Date().setHours(0,0,0,0);
     this.extraPoints['date']=today;
     this.http.post('http://localhost:3000/extraPoints/', this.extraPoints)

@@ -214,333 +214,63 @@
   ],
   "kids": [
     {
-      "name": "Grześ",
+      "name": "Karol",
       "birth": "2013",
-      "login": "gregory",
-      "password": "gg",
+      "login": "karolek",
+      "password": "kkk",
       "parentId": "1",
       "id": 1
-    },
-    {
-      "name": "Kasia",
-      "birth": "2005",
-      "login": "kasia",
-      "password": "bas",
-      "parentId": "1",
-      "id": 2
-    },
-    {
-      "name": "Kasia",
-      "birth": "2013",
-      "login": "katarzyna",
-      "password": "kkk",
-      "parentId": "2",
-      "id": 3
     }
   ],
   "userMissions": [
     {
       "confirmation": true,
-      "name": "Zęby rano",
+      "name": "Zęby wieczór",
       "icon": "assets/toothbrush.svg",
-      "points": "1",
-      "kidId": "1",
-      "start": 1510527600000,
+      "points": "5",
+      "kidId": 1,
+      "start": 1510700400000,
       "days": [
-        1,
-        2,
-        4
+        0,
+        1
       ],
-      "doneDates": [
-        1510527600000,
-        1510700400000,
-        1510873200000,
-        1511132400000,
-        1511305200000,
-        1510614000000
-      ],
+      "doneDates": [],
       "waitDates": [],
       "id": 1
-    },
-    {
-      "confirmation": true,
-      "name": "Posprzątać pokój",
-      "icon": "assets/room.svg",
-      "points": "5",
-      "kidId": "1",
-      "start": 1510527600000,
-      "days": [
-        3
-      ],
-      "doneDates": [
-        1510614000000,
-        1511218800000,
-        1510786800000
-      ],
-      "waitDates": [],
-      "id": 2
-    },
-    {
-      "confirmation": true,
-      "name": "Zetrzeć kurze",
-      "icon": "assets/clean.svg",
-      "points": "5",
-      "kidId": "1",
-      "start": 1510527600000,
-      "days": [
-        3
-      ],
-      "doneDates": [],
-      "waitDates": [
-        1510786800000
-      ],
-      "id": 3
-    },
-    {
-      "confirmation": true,
-      "name": "Pościelić łóżko",
-      "icon": "assets/bed.svg",
-      "points": "2",
-      "kidId": "2",
-      "start": 1510614000000,
-      "days": [
-        1,
-        2
-      ],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 4
-    },
-    {
-      "confirmation": true,
-      "name": "Wstawić pranie",
-      "icon": "assets/laundry.svg",
-      "points": "30",
-      "kidId": "1",
-      "start": 1510614000000,
-      "days": [
-        2
-      ],
-      "doneDates": [
-        1510700400000
-      ],
-      "waitDates": [],
-      "id": 6
-    },
-    {
-      "confirmation": true,
-      "name": "Pościelić łóżko",
-      "icon": "assets/bed.svg",
-      "points": "50",
-      "kidId": "1",
-      "start": 1510614000000,
-      "days": [],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 7
     },
     {
       "confirmation": true,
       "name": "Umyć podłogę",
       "icon": "assets/cleaning.svg",
-      "points": "20",
-      "kidId": "1",
-      "start": 1510614000000,
-      "days": [],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 8
-    },
-    {
-      "confirmation": true,
-      "name": "Jakaś",
-      "points": "5",
-      "icon": "jaka.svg",
-      "kidId": "1",
-      "start": 1510614000000,
-      "days": [],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 9
-    },
-    {
-      "confirmation": true,
-      "name": "Nakryć stół",
-      "icon": "assets/cutlery.svg",
-      "points": "50",
-      "kidId": "1",
-      "start": 1510614000000,
-      "days": [
-        1
-      ],
-      "doneDates": [
-        1510614000000
-      ],
-      "waitDates": [],
-      "id": 10
-    },
-    {
-      "confirmation": true,
-      "name": "Posprzątać ze stołu",
-      "icon": "assets/table.svg",
-      "points": "50",
-      "kidId": "1",
-      "start": 1510614000000,
-      "days": [
-        1
-      ],
-      "doneDates": [
-        1510614000000
-      ],
-      "waitDates": [],
-      "id": 11
-    },
-    {
-      "confirmation": true,
-      "name": "Posprzątać ze stołu",
-      "icon": "assets/table.svg",
-      "points": "35",
-      "kidId": "1",
-      "start": 1510614000000,
-      "days": [
-        1,
-        2
-      ],
-      "doneDates": [
-        1510614000000
-      ],
-      "waitDates": [],
-      "id": 12
-    },
-    {
-      "confirmation": true,
-      "name": "Umyć auto",
-      "icon": "assets/car.svg",
-      "points": "40",
-      "kidId": "1",
-      "start": 1510614000000,
+      "points": "10",
+      "kidId": 1,
+      "start": 1510700400000,
       "days": [
         3
       ],
       "doneDates": [],
       "waitDates": [],
-      "id": 13
-    },
-    {
-      "confirmation": true,
-      "name": "Inan",
-      "points": "5",
-      "icon": "jakas",
-      "kidId": "1",
-      "start": 1510614000000,
-      "days": [
-        2
-      ],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 14
-    },
-    {
-      "confirmation": true,
-      "name": "jaks",
-      "points": "3",
-      "icon": "j",
-      "kidId": "1",
-      "start": 1510614000000,
-      "days": [
-        2
-      ],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 15
+      "id": 2
     }
   ],
   "userGifts": [
     {
-      "name": "Wyjście na lody",
-      "icon": "assets/icecream.svg",
-      "points": "15",
-      "kidId": 1,
-      "status": "received",
-      "chosenDate": 1510614000000,
-      "id": 1
-    },
-    {
       "name": "Aquapark ",
       "icon": "assets/swimming-pool.svg",
-      "points": "10",
-      "kidId": 1,
-      "status": "received",
-      "chosenDate": 1510614000000,
-      "id": 2
-    },
-    {
-      "name": "30 min na gry",
-      "icon": "assets/30-minutes.svg",
-      "points": "30",
-      "kidId": 1,
-      "status": "received",
-      "chosenDate": 1510614000000,
-      "id": 3
-    },
-    {
-      "name": "Nowa gra",
-      "icon": "assets/remote-control.svg",
-      "points": "10",
-      "kidId": 2,
-      "status": "unused",
-      "chosenDate": "",
-      "id": 4
-    },
-    {
-      "name": "Nowa zabawka",
-      "icon": "assets/gift2.svg",
       "points": "50",
-      "kidId": 2,
-      "status": "unused",
-      "chosenDate": "",
-      "id": 5
-    },
-    {
-      "name": "15 min na gry",
-      "icon": "assets/15-minutes.svg",
-      "points": "15",
-      "kidId": 3,
-      "status": "unused",
-      "chosenDate": "",
-      "id": 6
-    },
-    {
-      "name": "15 min na gry",
-      "icon": "assets/15-minutes.svg",
-      "points": "15",
       "kidId": 1,
-      "status": "chosen",
-      "chosenDate": 1510700400000,
-      "id": 7
+      "status": "unused",
+      "chosenDate": "",
+      "id": 1
     }
   ],
   "extraPoints": [
     {
-      "description": "za nic",
-      "points": "5",
-      "kidId": "1",
+      "description": "Za nic",
+      "points": "100",
+      "kidId": 1,
       "date": 1510700400000,
       "id": 1
-    },
-    {
-      "description": "Za niccc",
-      "points": "10",
-      "kidId": "1",
-      "date": 1510700400000,
-      "id": 2
-    },
-    {
-      "description": "kk",
-      "points": "4",
-      "kidId": "1",
-      "date": 1510700400000,
-      "id": 3
     }
   ]
 }
