@@ -220,6 +220,14 @@
       "password": "kkk",
       "parentId": "1",
       "id": 1
+    },
+    {
+      "name": "Ania",
+      "birth": "2016",
+      "login": "anka",
+      "password": "ann",
+      "parentId": 1,
+      "id": 2
     }
   ],
   "userMissions": [
@@ -248,9 +256,25 @@
       "days": [
         3
       ],
-      "doneDates": [],
+      "doneDates": [
+        1510786800000
+      ],
       "waitDates": [],
       "id": 2
+    },
+    {
+      "confirmation": true,
+      "name": "Posprzątać ze stołu",
+      "icon": "assets/table.svg",
+      "points": "10",
+      "kidId": 1,
+      "start": 1510700400000,
+      "days": [
+        2
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 3
     }
   ],
   "userGifts": [
@@ -259,8 +283,8 @@
       "icon": "assets/swimming-pool.svg",
       "points": "50",
       "kidId": 1,
-      "status": "unused",
-      "chosenDate": "",
+      "status": "chosen",
+      "chosenDate": 1510700400000,
       "id": 1
     }
   ],
