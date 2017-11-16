@@ -23,7 +23,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   </tbody>
   </table>
 
-  <button routerLink="../">Powrót do dziecka </button>
+
 
   `,
   styles: [],

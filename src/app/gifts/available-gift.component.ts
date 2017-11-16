@@ -39,13 +39,13 @@ export class AvailableGiftComponent implements OnInit {
      this.http.put('http://localhost:3000/userGifts/'+ this.gift['id'], this.gift)
      .subscribe( gift=> {
        this.gift= gift;
-       this.router.navigate(['../'],{relativeTo:this.route});
+       this.router.navigate(['../../'],{relativeTo:this.route});
       });
   }
 
   remove(){
       this.http.delete('http://localhost:3000/userGifts/'+ this.gift['id'])
-      .subscribe( ()=> this.router.navigate(['../'],{relativeTo:this.route}))
+      .subscribe( ()=> this.router.navigate(['../../'],{relativeTo:this.route}))
   }
 
   chose(){

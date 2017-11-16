@@ -6,7 +6,7 @@ import { HttpClient } from "@angular/common/http";
   template: `
    <ul> 
     <li *ngFor="let mission of missions"
-    [routerLink]="['../expert-mission/' + mission.id]"
+    [routerLink]="['../dodaj-polecana/' + mission.id]"
     > 
       {{ mission.name }} 
     </li> 

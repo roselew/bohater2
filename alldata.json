@@ -240,7 +240,8 @@
       "start": 1510700400000,
       "days": [
         0,
-        1
+        1,
+        2
       ],
       "doneDates": [],
       "waitDates": [],
@@ -286,6 +287,15 @@
       "status": "chosen",
       "chosenDate": 1510700400000,
       "id": 1
+    },
+    {
+      "name": "Wycieczka na weekend",
+      "icon": "assets/walk.svg",
+      "points": "10",
+      "kidId": 1,
+      "status": "chosen",
+      "chosenDate": 1510786800000,
+      "id": 2
     }
   ],
   "extraPoints": [

@@ -16,14 +16,14 @@ import { Location} from "@angular/common";
 
     <button routerLink="punkty">Punkty</button>
 
-    <p>Przejź na stronę dziecka </p>
+    <button (click)="goToKid()">Przejź na stronę dziecka </button>
 
     <button routerLink="edytuj-dziecko">Ustawienia profilu dziecka</button>
 
     <button routerLink='/rodzic'>Powrót do listy dzieci</button>
     
     <br>
-    
+
     <router-outlet></router-outlet>
   `,
 
@@ -32,8 +32,8 @@ export class OneKidComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private http: HttpClient,
-    private route:ActivatedRoute,   
+    private http:   HttpClient,
+    private route:  ActivatedRoute,   
   ) { }
 
   parentId
@@ -47,6 +47,12 @@ export class OneKidComponent implements OnInit {
           this.kid = kid;
           this.parentId = this.kid['parentId']; 
         })
+   }
+
+   goToKid(){
+    localStorage.clear()
+    localStorage.setItem('loggedKid',this.kid['id'])
+    this.router.navigate(['/dziecko'])
    }
 
 }
