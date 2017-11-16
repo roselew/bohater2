@@ -13,7 +13,6 @@ import { HttpClient } from '@angular/common/http';
       </li>
     </ul>
 
-    <button routerLink='/rodzic'>WEJDŹ</button>
     <button routerLink='/rodzic-rejestracja'>REJESTRACJA</button>
   `,
   styles: [],
@@ -24,7 +23,8 @@ export class ParentLoginComponent implements OnInit {
 
   logOn(parentId){
     localStorage.clear()
-    localStorage.setItem('loggedParent',parentId)    
+    localStorage.setItem('loggedParent',parentId)  
+    this.router.navigate(['/rodzic'])  
   }
 
   constructor(

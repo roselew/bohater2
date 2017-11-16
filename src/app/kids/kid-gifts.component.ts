@@ -4,7 +4,7 @@ import { Component, OnInit,} from '@angular/core';
   selector: 'kid-gifts',
   template: `
  <p> Nagrody </p>
-  <button routerLink='/dziecko'>Powrót do menu </button>>
+  <button routerLink='/dziecko'>Powrót do menu </button>
   
   `,
   styles: [],

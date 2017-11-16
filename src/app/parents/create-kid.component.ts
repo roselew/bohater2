@@ -23,18 +23,18 @@ export class CreateKidComponent implements OnInit {
     private route:ActivatedRoute,
     ) { }
 
-  parent = {}
+  parentId
   kid={};
   
 
   save(){
-  this.kid['parentId']=parseInt(this.parent['id']);
+  this.kid['parentId']=parseInt(this.parentId);
   this.http.post('http://localhost:3000/kids/', this.kid)
-    .subscribe( kid=> {this.kid= kid; this.router.navigate(['/kids/',this.kid['id']]);});
+    .subscribe( kid=> {this.kid= kid; this.router.navigate(['/rodzic/dziecko/',this.kid['id']]);});
   }
 
   ngOnInit() {
-    this.parent['id']=this.route.parent.snapshot.paramMap.get('parentId');
+    this.parentId = parseInt(localStorage.getItem('loggedParent'));
   }
 
 }

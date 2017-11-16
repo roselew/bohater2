@@ -228,6 +228,30 @@
       "password": "ann",
       "parentId": 1,
       "id": 2
+    },
+    {
+      "name": "Antoni",
+      "birth": "2010",
+      "login": "antek",
+      "password": "kajtek",
+      "parentId": null,
+      "id": 3
+    },
+    {
+      "name": "Antek",
+      "birth": "2010",
+      "login": "22",
+      "password": "22",
+      "parentId": 2,
+      "id": 4
+    },
+    {
+      "name": "Ania",
+      "birth": "2015",
+      "login": "anezcka",
+      "password": "nn",
+      "parentId": 2,
+      "id": 5
     }
   ],
   "userMissions": [

@@ -26,21 +26,26 @@ export class EditKidComponent implements OnInit {
   kid = {};
 
    ngOnInit(){
-      this.kid['id']=this.route.snapshot.paramMap.get('kidId');
-      
-      this.http.get('http://localhost:3000/kids/'+this.kid['id'])
-        .subscribe( kid => this.kid = kid )
+      this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
+      this.fetch()
    }
 
    update(){
       this.http.put('http://localhost:3000/kids/'+ this.kid['id'], this.kid)
-      .subscribe( kid=> {this.kid= kid; this.router.navigate(['/kids/',this.kid['id']])
+      .subscribe( kid=> {
+        this.kid= kid;
+        this.router.navigate(['/rodzic/dziecko/',this.kid['id']])
       });
    }
 
    remove(){
-       this.http.delete('http://localhost:3000/kids/'+ this.kid['id'])
-       .subscribe( ()=> this.router.navigate(['/kids/',this.kid['id']]))
+      this.http.delete('http://localhost:3000/kids/'+ this.kid['id'])
+      .subscribe( ()=> this.router.navigate(['/rodzic']))
+   }
+
+   fetch(){
+      this.http.get('http://localhost:3000/kids/'+this.kid['id'])
+      .subscribe( kid => this.kid = kid )
    }
 
 }
