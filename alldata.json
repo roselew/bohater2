@@ -218,7 +218,7 @@
       "birth": "2013",
       "login": "karolek",
       "password": "kkk",
-      "parentId": "1",
+      "parentId": 1,
       "id": 1
     },
     {

@@ -5,10 +5,10 @@ import { FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { KidsComponent } from './kids/kids.component';
+import { KidsComponent } from './parents/kids.component';
 import { ParentsComponent } from './parents/parents.component';
 import { KidComponent } from './kids/kid.component';
-import { CreateKidComponent } from './kids/create-kid.component';
+import { CreateKidComponent } from './parents/create-kid.component';
 import { ParentComponent } from './parents/parent.component';
 import { CreateMissionComponent } from './missions/create-mission.component';
 import { MissionComponent } from './missions/mission.component';
@@ -27,21 +27,35 @@ import { GiftComponent } from './gifts/gift.component';
 import { ExpertGiftsComponent } from './gifts/expert-gifts.component';
 import { MissionsToAcceptComponent } from './missions/missions-to-accept.component';
 import { ProgressWeekComponent } from './progress/progress-week.component';
-import { ShortcutKidComponent } from './kids/shortcut-kid.component';
+import { ShortcutKidComponent } from './parents/shortcut-kid.component';
 import { GiftsComponent } from './gifts/gifts.component';
 import { MissionsComponent } from './missions/missions.component';
-import { EditKidComponent } from './kids/edit-kid.component';
+import { EditKidComponent } from './parents/edit-kid.component';
 
 import { MyHeaderComponent } from './kids/my-header.component';
 
-import { ViewKidComponent } from './kids/view-kid.component';
+import { ViewKidComponent } from './parents/view-kid.component';
 import { ViewMissionComponent } from './missions/view-mission.component';
 import { ViewGiftComponent } from './gifts/view-gift.component';
 import { AvailableGiftComponent } from './gifts/available-gift.component';
 import { ChosenGiftComponent } from './gifts/chosen-gift.component';
 import { GiftsToReceiveComponent } from './gifts/gifts-to-receive.component';
-import { ExtraPointsComponent } from './progress/extra-points.component';
+import { ExtraPointsComponent } from './points/extra-points.component';
 import { HistoryComponent } from './progress/history.component';
+import { WelcomeComponent } from './welcome.component';
+import { ParentLoginComponent } from './parents/parent-login.component';
+import { ParentRegisterComponent } from './parents/parent-register.component';
+import { KidLoginComponent } from './kids/kid-login.component';
+import { KidMenuComponent } from './kids/kid-menu.component';
+import { KidMissionsComponent } from './kids/kid-missions.component';
+import { KidGiftsComponent } from './kids/kid-gifts.component';
+import { KidChoseGiftComponent } from './kids/kid-chose-gift.component';
+import { KidHeroComponent } from './kids/kid-hero.component';
+import { KidBadgeComponent } from './kids/kid-badge.component';
+import { KidProgressComponent } from './kids/kid-progress.component';
+import { OneKidComponent } from './parents/one-kid.component';
+import { ProgressHistoryComponent } from './progress/progress-history.component';
+import { PointsComponent } from './points/points.component';
 
 
 @NgModule({
@@ -80,7 +94,21 @@ import { HistoryComponent } from './progress/history.component';
     ChosenGiftComponent,
     GiftsToReceiveComponent,
     ExtraPointsComponent,
-    HistoryComponent
+    HistoryComponent,
+    WelcomeComponent,
+    ParentLoginComponent,
+    ParentRegisterComponent,
+    KidLoginComponent,
+    KidMenuComponent,
+    KidMissionsComponent,
+    KidGiftsComponent,
+    KidChoseGiftComponent,
+    KidHeroComponent,
+    KidBadgeComponent,
+    KidProgressComponent,
+    OneKidComponent,
+    ProgressHistoryComponent,
+    PointsComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ import { Location} from "@angular/common";
     <p>Lista nagród dziecka niewykorzystanych ale dostępnych</p>
     <ul> 
       <li *ngFor="let userGift of availableGifts"
-        [routerLink]="['available/'+userGift.id]"> 
+        [routerLink]="['dostepne/'+userGift.id]"> 
         {{ userGift.name }} 
       </li> 
     </ul> 
@@ -30,7 +30,7 @@ import { Location} from "@angular/common";
     <p>Lista nagród wybranych przez dziecko do odbioru</p>
     <ul> 
       <li *ngFor="let userGift of chosenGifts"
-        [routerLink]="['chosen/'+userGift.id]"> 
+        [routerLink]="['wybrane/'+userGift.id]"> 
         {{ userGift.name }} 
       </li> 
     </ul> 
@@ -42,10 +42,8 @@ import { Location} from "@angular/common";
       </li> 
     </ul> 
 
-    <button routerLink="new-gift"> Dodaj nową nagrodę </button>
-
-    <button routerLink="../">Powrót do dziecka </button>
-
+    <button routerLink="dodaj"> Dodaj nową nagrodę </button>
+  
   `,
   styles: [],
 })
@@ -69,7 +67,7 @@ export class GiftsComponent implements OnInit {
 
 
   ngOnInit(){
-    this.kid['id']=this.route.snapshot.paramMap.get('kidId');
+    this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
     this.http.get('http://localhost:3000/kids/'+this.kid['id']+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
       .subscribe( kid => {
         this.kid = kid;

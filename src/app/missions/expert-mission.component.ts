@@ -45,7 +45,7 @@ export class ExpertMissionComponent implements OnInit {
 
    ngOnInit(){
       let id=this.route.snapshot.paramMap.get('missionId');
-      this.kid['id']=this.route.snapshot.paramMap.get('kidId');
+      this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
       this.http.get('http://localhost:3000/expertMissions/'+id)
         .subscribe( mission => {
           this.mission['name'] = mission['name'] 

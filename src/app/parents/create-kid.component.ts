@@ -34,7 +34,7 @@ export class CreateKidComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.parent['id']=this.route.snapshot.paramMap.get('parentId');
+    this.parent['id']=this.route.parent.snapshot.paramMap.get('parentId');
   }
 
 }

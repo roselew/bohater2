@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
       Wybierz misję z polecanych przez ekspertów albo...
     </p>
     <expert-missions></expert-missions>
-    <button routerLink="../create-mission">... utwórz własną</button>
+    <button routerLink="../dodaj-wlasna">... utwórz własną</button>
     <button routerLink='../'>Powrót</button>
   `,
   styles: [],

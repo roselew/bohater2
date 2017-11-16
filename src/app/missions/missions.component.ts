@@ -12,10 +12,9 @@ import { Location} from "@angular/common";
             {{ userMission.name }} 
           </li> 
         </ul> 
-        <button routerLink="new-mission"> Dodaj nową misję </button>
+        <button routerLink="dodaj"> Dodaj nową misję </button>
 
-        <button routerLink="../">Powrót do dziecka </button>
-  `,
+        `,
   styles: [],
 })
 export class MissionsComponent implements OnInit {
@@ -30,7 +29,7 @@ export class MissionsComponent implements OnInit {
   userMissions
 
   ngOnInit(){
-      this.kid['id']=this.route.snapshot.paramMap.get('kidId');
+      this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
       this.http.get('http://localhost:3000/kids/'+this.kid['id']+'?_embed=userMissions')
       .subscribe( kid => {
         this.kid = kid;

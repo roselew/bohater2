@@ -39,7 +39,7 @@ export class CreateGiftComponent implements OnInit {
       }
       
   ngOnInit() {
-    this.kid['id']=this.route.snapshot.paramMap.get('kidId');
+    this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
   }
 
 }

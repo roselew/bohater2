@@ -7,25 +7,25 @@ import { HttpClient } from '@angular/common/http';
     <p> Na skróty: </p>
     <ul *ngIf="userMissions && userGifts">
       <li 
-        [routerLink]="['/kids/'+kidId+'/one-week/0']"> 
+        [routerLink]="['/dziecko/'+kidId+'/postepy/0']"> 
         <missions-to-accept [userMissions]="userMissions"></missions-to-accept> 
       </li>
       <li 
-        [routerLink]="['/kids/'+kidId+'/gifts']"> 
+        [routerLink]="['/dziecko/'+kidId+'/nagrody']"> 
         <gifts-to-receive [userGifts]="userGifts"></gifts-to-receive> 
       </li>
       <li 
-        [routerLink]="['/kids/'+kidId+'/one-week/0']"> 
+        [routerLink]="['/dziecko/'+kidId+'/postepy/0']"> 
         <progress-week [userMissions]="userMissions"></progress-week> 
       </li>
       <br>
       <li 
-        [routerLink]="['/kids/'+kidId+'/missions/new-mission']"> 
+        [routerLink]="['/dziecko/'+kidId+'/misje/dodaj']"> 
         Dodaj nową misję 
       </li>
       <br>
       <li 
-        [routerLink]="['/kids/'+kidId+'/extra-points']"> 
+        [routerLink]="['/dziecko/'+kidId+'/punkty/punkty-ekstra']"> 
         Dodaj punkty ekstra
       </li>
     </ul>
@@ -51,4 +51,5 @@ export class ShortcutKidComponent implements OnInit {
         this.userMissions = kid['userMissions'];
         this.userGifts = kid['userGifts'];
        })
+  }
 }

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   Wybierz nagrodę z polecanych przez ekspertów albo...
   </p>
   <expert-gifts></expert-gifts>
-  <button routerLink="../create-gift">... utwórz własną</button>
+  <button routerLink="../dodaj-wlasna">... utwórz własną</button>
   <button routerLink='../'>Powrót</button>
   `,
   styles: [],

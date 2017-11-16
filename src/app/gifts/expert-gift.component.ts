@@ -29,7 +29,7 @@ export class ExpertGiftComponent implements OnInit {
 
    ngOnInit(){
       let id=this.route.snapshot.paramMap.get('giftId');
-      this.kid['id']=this.route.snapshot.paramMap.get('kidId');
+      this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
       this.http.get('http://localhost:3000/expertGifts/'+id)
         .subscribe( gift => {
           this.gift['name'] = gift['name'] 
