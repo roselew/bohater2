@@ -265,7 +265,8 @@
         1
       ],
       "doneDates": [
-        1511218800000
+        1511218800000,
+        1511823600000
       ],
       "waitDates": [],
       "id": 1,
@@ -286,6 +287,21 @@
       ],
       "waitDates": [],
       "id": 2
+    },
+    {
+      "confirmation": true,
+      "name": "Zęby wieczór",
+      "icon": "assets/toothbrush.svg",
+      "points": "5",
+      "kidId": 5,
+      "start": 1510873200000,
+      "days": [
+        1,
+        2
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 3
     }
   ],
   "userGifts": [
@@ -306,6 +322,24 @@
       "status": "received",
       "chosenDate": 1510786800000,
       "id": 2
+    },
+    {
+      "name": "Wyjście na lody",
+      "icon": "assets/icecream.svg",
+      "points": "15",
+      "kidId": 5,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 3
+    },
+    {
+      "name": "Wyjście na małe lody",
+      "icon": "assets/icecream.svg",
+      "points": "5",
+      "kidId": 5,
+      "status": "received",
+      "chosenDate": 1510873200000,
+      "id": 4
     }
   ],
   "extraPoints": [

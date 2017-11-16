@@ -15,9 +15,9 @@ import { MissionComponent } from './missions/mission.component';
 import { NewMissionComponent } from './missions/new-mission.component';
 import { ExpertMissionsComponent } from './missions/expert-missions.component';
 import { ExpertMissionComponent } from './missions/expert-mission.component';
-import { ProgressComponent } from './progress/progress.component';
-import { OneDayComponent } from './progress/one-day.component';
 import { OneWeekComponent } from './progress/one-week.component';
+import { OneDayComponent } from './progress/one-day.component';
+
 import { OneDayViewComponent } from './progress/one-day-view.component';
 
 import { NewGiftComponent } from './gifts/new-gift.component';
@@ -41,7 +41,6 @@ import { AvailableGiftComponent } from './gifts/available-gift.component';
 import { ChosenGiftComponent } from './gifts/chosen-gift.component';
 import { GiftsToReceiveComponent } from './gifts/gifts-to-receive.component';
 import { ExtraPointsComponent } from './points/extra-points.component';
-import { HistoryComponent } from './progress/history.component';
 import { WelcomeComponent } from './welcome.component';
 import { ParentLoginComponent } from './parents/parent-login.component';
 import { ParentRegisterComponent } from './parents/parent-register.component';
@@ -71,9 +70,8 @@ import { PointsComponent } from './points/points.component';
     NewMissionComponent,
     ExpertMissionsComponent,
     ExpertMissionComponent,
-    ProgressComponent,
-    OneDayComponent,
     OneWeekComponent,
+    OneDayComponent,
     OneDayViewComponent,
     NewGiftComponent,
     CreateGiftComponent,
@@ -94,7 +92,6 @@ import { PointsComponent } from './points/points.component';
     ChosenGiftComponent,
     GiftsToReceiveComponent,
     ExtraPointsComponent,
-    HistoryComponent,
     WelcomeComponent,
     ParentLoginComponent,
     ParentRegisterComponent,

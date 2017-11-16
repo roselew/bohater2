@@ -37,12 +37,12 @@ import { GiftComponent } from './gifts/gift.component';
 import { AvailableGiftComponent } from './gifts/available-gift.component';
 import { ChosenGiftComponent } from './gifts/chosen-gift.component';
 
-import { ProgressComponent } from './progress/progress.component';
+import { OneWeekComponent } from './progress/one-week.component';
 import { ProgressHistoryComponent } from './progress/progress-history.component';
 
 import { PointsComponent } from './points/points.component';
 import { ExtraPointsComponent } from './points/extra-points.component';
-import { OneWeekComponent } from './progress/one-week.component';
+
 
 
 const routes:Routes = [
