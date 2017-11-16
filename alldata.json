@@ -257,49 +257,35 @@
   "userMissions": [
     {
       "confirmation": true,
-      "name": "Zęby wieczór",
+      "name": "Zęby rano",
       "icon": "assets/toothbrush.svg",
-      "points": "5",
       "kidId": 1,
-      "start": 1510700400000,
+      "start": 1510786800000,
       "days": [
-        0,
-        1,
-        2
+        1
       ],
-      "doneDates": [],
+      "doneDates": [
+        1511218800000
+      ],
       "waitDates": [],
-      "id": 1
+      "id": 1,
+      "points": "5"
     },
     {
       "confirmation": true,
-      "name": "Umyć podłogę",
-      "icon": "assets/cleaning.svg",
+      "name": "Opróżnić zmywarkę",
+      "icon": "assets/dishwasher.svg",
       "points": "10",
       "kidId": 1,
-      "start": 1510700400000,
+      "start": 1510786800000,
       "days": [
-        3
+        2
       ],
       "doneDates": [
-        1510786800000
+        1511305200000
       ],
       "waitDates": [],
       "id": 2
-    },
-    {
-      "confirmation": true,
-      "name": "Posprzątać ze stołu",
-      "icon": "assets/table.svg",
-      "points": "10",
-      "kidId": 1,
-      "start": 1510700400000,
-      "days": [
-        2
-      ],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 3
     }
   ],
   "userGifts": [
@@ -308,7 +294,7 @@
       "icon": "assets/swimming-pool.svg",
       "points": "50",
       "kidId": 1,
-      "status": "chosen",
+      "status": "received",
       "chosenDate": 1510700400000,
       "id": 1
     },
@@ -317,7 +303,7 @@
       "icon": "assets/walk.svg",
       "points": "10",
       "kidId": 1,
-      "status": "chosen",
+      "status": "received",
       "chosenDate": 1510786800000,
       "id": 2
     }
@@ -329,6 +315,13 @@
       "kidId": 1,
       "date": 1510700400000,
       "id": 1
+    },
+    {
+      "description": "Za nic",
+      "points": "10",
+      "kidId": 1,
+      "date": 1510873200000,
+      "id": 2
     }
   ]
 }

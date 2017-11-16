@@ -97,7 +97,7 @@ export class OneDayViewComponent implements OnInit {
     this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
     this.thisDay.setHours(0, 0, 0, 0);
     //get kid Id 
-    this.route.paramMap.subscribe(paramMap => {
+    this.route.parent.paramMap.subscribe(paramMap => {
       this.kid['id'] = paramMap.get('kidId');
     })
     //fetch all Missions
@@ -105,6 +105,7 @@ export class OneDayViewComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   fetchMissions() {

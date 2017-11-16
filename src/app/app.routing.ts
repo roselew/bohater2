@@ -42,37 +42,8 @@ import { ProgressHistoryComponent } from './progress/progress-history.component'
 
 import { PointsComponent } from './points/points.component';
 import { ExtraPointsComponent } from './points/extra-points.component';
+import { OneWeekComponent } from './progress/one-week.component';
 
-
-// const routes:Routes = [
-//     { path: '',  redirectTo: '/parents', pathMatch:'full'             },
-//     { path: 'kids',                                             component: KidsComponent}, 
-//     { path: 'kids/:kidId',                                      component: KidComponent},
-//     { path: 'kids/:kidId/edit-kid',                             component: EditKidComponent},
-
-//     { path: 'kids/:kidId/missions',                             component: MissionsComponent},    
-//     { path: 'kids/:kidId/missions/new-mission',                 component: NewMissionComponent},
-//     { path: 'kids/:kidId/missions/create-mission',              component: CreateMissionComponent},
-//     { path: 'kids/:kidId/missions/expert-mission/:missionId',   component: ExpertMissionComponent},
-//     { path: 'kids/:kidId/missions/:missionId',                  component: MissionComponent},
-
-//     { path: 'kids/:kidId/gifts',                                component: GiftsComponent},
-//     { path: 'kids/:kidId/gifts/new-gift',                       component: NewGiftComponent},
-//     { path: 'kids/:kidId/gifts/create-gift',                    component: CreateGiftComponent},
-//     { path: 'kids/:kidId/gifts/expert-gift/:giftId',            component: ExpertGiftComponent},
-//     { path: 'kids/:kidId/gifts/:giftId',                        component: GiftComponent},  
-//     { path: 'kids/:kidId/gifts/available/:giftId',              component: AvailableGiftComponent},
-//     { path: 'kids/:kidId/gifts/chosen/:giftId',                 component: ChosenGiftComponent},     
-
-//     { path: 'parents',                                          component: ParentsComponent},
-//     { path: 'parents/:parentId',                                component: ParentComponent},
-//     { path: 'parents/:parentId/create-kid',                     component: CreateKidComponent},   
-
-//     { path: 'kids/:kidId/one-day/:dayId',                       component: OneDayComponent},
-//     { path: 'kids/:kidId/one-week/:weekId',                     component: OneWeekComponent},
-//     { path: 'kids/:kidId/extra-points',                         component: ExtraPointsComponent},
-//     { path: 'kids/:kidId/history',                              component: HistoryComponent}
-// ]
 
 const routes:Routes = [
     { path: '',                                          redirectTo: '/witaj', pathMatch:'full'},
@@ -119,7 +90,7 @@ const routes:Routes = [
             { path: 'nagrody/dostepne/:giftId',          component: AvailableGiftComponent},
             { path: 'nagrody/wybrane/:giftId',           component: ChosenGiftComponent},     
 
-            { path: 'postepy/:weekId',                   component: ProgressComponent},
+            { path: 'postepy/:weekId',                   component: OneWeekComponent},
             { path: 'postepy/historia',                  component: ProgressHistoryComponent},
 
             { path: 'punkty',                            component: PointsComponent},

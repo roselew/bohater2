@@ -7,25 +7,25 @@ import { HttpClient } from '@angular/common/http';
     <p> Na skróty: </p>
     <ul *ngIf="userMissions && userGifts">
       <li 
-        [routerLink]="['/dziecko/'+kidId+'/postepy/0']"> 
+        [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']"> 
         <missions-to-accept [userMissions]="userMissions"></missions-to-accept> 
       </li>
       <li 
-        [routerLink]="['/dziecko/'+kidId+'/nagrody']"> 
+        [routerLink]="['/rodzic/dziecko/'+kidId+'/nagrody']"> 
         <gifts-to-receive [userGifts]="userGifts"></gifts-to-receive> 
       </li>
       <li 
-        [routerLink]="['/dziecko/'+kidId+'/postepy/0']"> 
+        [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']"> 
         <progress-week [userMissions]="userMissions"></progress-week> 
       </li>
       <br>
       <li 
-        [routerLink]="['/dziecko/'+kidId+'/misje/dodaj']"> 
+        [routerLink]="['/rodzic/dziecko/'+kidId+'/misje/dodaj']"> 
         Dodaj nową misję 
       </li>
       <br>
       <li 
-        [routerLink]="['/dziecko/'+kidId+'/punkty/punkty-ekstra']"> 
+        [routerLink]="['/rodzic/dziecko/'+kidId+'/punkty/punkty-ekstra']"> 
         Dodaj punkty ekstra
       </li>
     </ul>
