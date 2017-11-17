@@ -5,6 +5,14 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'parent-login',
   template: `
+
+  <label>Email</label>
+  <input placeholder='E-mail' [(ngModel)]="parent.email">
+  <br>
+  <label>Hasło</label>
+  <input type='password' placeholder='Hasło' [(ngModel)]="parent.password">
+
+  
     <p> Logowanie tymczasowe, kliknij na rodzica żeby się zalogować </p>
     <ul>
       <li *ngFor="let parent of parents"
@@ -20,7 +28,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ParentLoginComponent implements OnInit {
 
-
+ parent ={}
+ 
   logOn(parentId){
     localStorage.clear()
     localStorage.setItem('loggedParent',parentId)  

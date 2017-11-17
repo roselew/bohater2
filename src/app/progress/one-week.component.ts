@@ -16,8 +16,9 @@ import { Location} from "@angular/common";
   <p> {{tUndone}} - niezrobione </p>
 
   <div *ngFor="let day of days">
-  <one-day-view (onChange)="show($event,day)" [dayId]="day"></one-day-view>
-    
+  <one-day-view *ngIf="mode=='parent'" (onChange)="show($event,day)" [dayId]="day"></one-day-view>
+  <kid-one-day-view *ngIf="mode=='kid'" (onChange)="show($event,day)" [dayId]="day"></kid-one-day-view>
+
   </div>
   `,
   styles: [],
@@ -36,11 +37,18 @@ export class OneWeekComponent implements OnInit {
   days
   thisDay;
   monthNames = ["styczeń","luty","marzec","kwiecień","maj","czerwiec","lipiec","sierpień","wrzesień","pażdziernik","listopad","grudzień"];
-
+ mode
 
   ngOnInit() { 
         let today = new Date();
     today.setHours(0,0,0,0);
+    if (localStorage.getItem('loggedParent')){
+      this.mode='parent'
+    } else {
+      this.mode='kid'
+    }
+    console.log(this.mode)
+    
 
     //get week Id 
     this.route.paramMap.subscribe(paramMap => {

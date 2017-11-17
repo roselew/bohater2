@@ -7,10 +7,10 @@ import { HttpClient } from '@angular/common/http';
   template: `
     <p *ngIf="kid;else unloggedInfo">Witaj {{kid.id}}</p>
     <ng-template #unloggedInfo><p>Nie jesteś zalogowany</p></ng-template>
-    <button routerLink='../misje'>MISJE</button>
+    <button routerLink='../misje/0'>MISJE</button>
     <button routerLink="../nagrody">NAGRODY</button>
     <button routerLink="../bohater">BOHATER</button>
-    <button routerLink="../odznaki">ODZNAKI</button>
+    <button routerLink="../odznaki/0">ODZNAKI</button>
     <button routerLink="/"> Powrót </button>
   `,
   styles: [],

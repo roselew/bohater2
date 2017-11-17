@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: 'one-day-view',
+  selector: 'kid-one-day-view',
   template: `
   <p>{{thisDay.getDate()}} {{monthNames[thisDay.getMonth()]}}</p>
   <table>
@@ -30,8 +30,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   </td>
   <td>
     <ul> 
-    <li *ngFor="let mission of waitMissions"
-    (click)="addDone(mission)"> 
+    <li *ngFor="let mission of waitMissions"> 
       {{mission.name}}     
     </li> 
     </ul>
@@ -39,7 +38,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   <td>
     <ul> 
     <li *ngFor="let mission of undoneMissions"
-    (click)="addDone(mission)"> 
+    (click)="addWait(mission)"> 
       {{mission.name}}     
     </li> 
     </ul>
@@ -60,7 +59,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   `],
 
 })
-export class OneDayViewComponent implements OnInit {
+export class KidOneDayViewComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -82,7 +81,7 @@ export class OneDayViewComponent implements OnInit {
     this.countMissions.emit([nDone, nWait, nUndone])
   }
 
-  kid = {};
+  kidId;
   thisDay;
   userMissions = [];
   doneMissions = [];
@@ -96,20 +95,17 @@ export class OneDayViewComponent implements OnInit {
     this.thisDay = new Date();
     this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
     this.thisDay.setHours(0, 0, 0, 0);
-    //get kid Id 
-    this.route.parent.paramMap.subscribe(paramMap => {
-      this.kid['id'] = paramMap.get('kidId');
-    })
+    this.kidId = +localStorage.getItem('loggedKid');
     //fetch all Missions
     this.fetchMissions();
   }
 
   ngOnInit() {
-
+   
   }
 
   fetchMissions() {
-    this.http.get('http://localhost:3000/kids/' + this.kid['id'] + '/userMissions')
+    this.http.get('http://localhost:3000/kids/' + this.kidId + '/userMissions')
       .subscribe(userMissions => {
         this.userMissions = this.getAllMissions(userMissions, this.thisDay);
         this.doneMissions = this.getDoneMissions(this.userMissions, this.thisDay);
@@ -190,6 +186,9 @@ export class OneDayViewComponent implements OnInit {
 
  
   addWait(mission) {
+    if (!mission.confirmation){
+      this.addDone(mission)
+    } else {
     let data=this.thisDay.getTime()
     let updatedMission={};
     this.http.get('http://localhost:3000/userMissions/' + mission.id)
@@ -199,6 +198,7 @@ export class OneDayViewComponent implements OnInit {
         this.http.put('http://localhost:3000/userMissions/'+ mission.id, updatedMission)
           .subscribe(() => this.fetchMissions());
       })
+    }
   }
 
 }

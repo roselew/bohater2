@@ -14,6 +14,8 @@ import { Component, OnInit, Input } from '@angular/core';
    <br>
    <label>Hasło</label>
    <input [(ngModel)]="kid.password">
+   <br>
+   
   `,
   styles: [],
 

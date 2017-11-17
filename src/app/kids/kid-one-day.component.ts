@@ -2,10 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: 'one-day',
+  selector: 'kid-one-day',
   template: `
 
-  <button [routerLink]="['../../']"> Powrót do menu dziecka </button>
   <button [routerLink]="['../',dayId -1]"> Poprzedni </button>
   <button [routerLink]="['../',dayId +1]"> Następny </button>
   
@@ -14,12 +13,12 @@ import { ActivatedRoute, Router } from "@angular/router";
   <p> {{nWait}} - oczekujące </p>
   <p> {{nUndone}} - niezrobione </p>
   
-  <one-day-view (onChange)="show($event)" [dayId]="dayId"></one-day-view>
+  <kid-one-day-view (onChange)="show($event)" [dayId]="dayId"></kid-one-day-view>
    `,
   styles: [],
 
 })
-export class OneDayComponent implements OnInit {
+export class KidOneDayComponent implements OnInit {
 
   constructor(
     private router: Router,

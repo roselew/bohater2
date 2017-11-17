@@ -57,12 +57,11 @@ const routes:Routes = [
     {path: 'dziecko',                                    component: KidComponent, children: [
         { path: '',                                      redirectTo: 'menu', pathMatch:'full'},
         { path: 'menu',                                  component: KidMenuComponent},
-        { path: 'misje',                                 component: KidMissionsComponent},
+        { path: 'misje/:dayId',                          component: KidMissionsComponent},
         { path: 'nagrody',                               component: KidGiftsComponent},
         { path: 'nagrody/wybierz/:giftId',               component: KidChoseGiftComponent},
         { path: 'bohater',                               component: KidHeroComponent},
-        { path: 'bohater/wybierz/:badgeId',              component: KidBadgeComponent},
-        { path: 'odznaki',                               component: KidProgressComponent},
+        { path: 'odznaki/:weekId',                       component: KidProgressComponent},
     ]},
 
 // FOR PARENTS ONLY 

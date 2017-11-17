@@ -16,7 +16,7 @@ import { NewMissionComponent } from './missions/new-mission.component';
 import { ExpertMissionsComponent } from './missions/expert-missions.component';
 import { ExpertMissionComponent } from './missions/expert-mission.component';
 import { OneWeekComponent } from './progress/one-week.component';
-import { OneDayComponent } from './progress/one-day.component';
+import { KidOneDayComponent } from './kids/kid-one-day.component';
 
 import { OneDayViewComponent } from './progress/one-day-view.component';
 
@@ -55,6 +55,7 @@ import { KidProgressComponent } from './kids/kid-progress.component';
 import { OneKidComponent } from './parents/one-kid.component';
 import { ProgressHistoryComponent } from './progress/progress-history.component';
 import { PointsComponent } from './points/points.component';
+import { KidOneDayViewComponent } from './kids/kid-one-day-view.component';
 
 
 @NgModule({
@@ -71,7 +72,7 @@ import { PointsComponent } from './points/points.component';
     ExpertMissionsComponent,
     ExpertMissionComponent,
     OneWeekComponent,
-    OneDayComponent,
+    KidOneDayComponent,
     OneDayViewComponent,
     NewGiftComponent,
     CreateGiftComponent,
@@ -105,7 +106,8 @@ import { PointsComponent } from './points/points.component';
     KidProgressComponent,
     OneKidComponent,
     ProgressHistoryComponent,
-    PointsComponent
+    PointsComponent,
+    KidOneDayViewComponent
   ],
   imports: [
     BrowserModule,
