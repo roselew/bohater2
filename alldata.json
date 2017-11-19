@@ -21,94 +21,34 @@
       "confirmation": true,
       "name": "Zęby rano",
       "icon": "assets/toothbrush.svg",
-      "points": "10",
       "kidId": 1,
-      "start": 1509750000000,
-      "days": [
-        0,
-        2,
-        4,
-        5
-      ],
-      "doneDates": [
-        1511132400000,
-        1511737200000,
-        1512342000000,
-        1510873200000,
-        1510700400000,
-        1510527600000,
-        1509922800000,
-        1510095600000,
-        1510268400000,
-        1510959600000,
-        1510354800000,
-        1509750000000
-      ],
-      "waitDates": [
-        1511305200000,
-        1511478000000
-      ],
-      "id": 1
-    },
-    {
-      "confirmation": true,
-      "name": "Opróżnić zmywarkę",
-      "icon": "assets/dishwasher.svg",
-      "points": "2",
-      "kidId": 1,
-      "start": 1510873200000,
-      "days": [
-        1,
-        3,
-        5
-      ],
-      "doneDates": [
-        1510959600000,
-        1511218800000
-      ],
-      "waitDates": [
-        1511564400000,
-        1511391600000
-      ],
-      "id": 2
-    },
-    {
-      "confirmation": false,
-      "name": "Posprzątać pokój",
-      "icon": "assets/room.svg",
-      "points": "1",
-      "kidId": 1,
-      "start": 1510873200000,
+      "start": 1511046000000,
       "days": [
         0,
         2,
         4
       ],
-      "doneDates": [
-        1510873200000,
-        1511737200000,
-        1511910000000,
-        1511132400000,
-        1511305200000,
-        1512342000000,
-        1511478000000
-      ],
+      "doneDates": [],
       "waitDates": [],
-      "id": 3
+      "id": 1,
+      "points": "1"
     },
     {
       "confirmation": true,
-      "name": "Opróżnić zmywarkę",
-      "icon": "assets/dishwasher.svg",
-      "points": "30",
+      "name": "Umyć podłogę",
+      "icon": "assets/cleaning.svg",
+      "points": "2",
       "kidId": 1,
       "start": 1511046000000,
       "days": [
-        6
+        1,
+        3,
+        5
       ],
       "doneDates": [],
       "waitDates": [],
-      "id": 4
+      "id": 2,
+      "finish": 1511046000000
     }
   ],
   "userGifts": [
@@ -117,8 +57,8 @@
       "icon": "assets/swimming-pool.svg",
       "points": "30",
       "kidId": 1,
-      "status": "unused",
-      "chosenDate": "",
+      "status": "received",
+      "chosenDate": 1511046000000,
       "id": 1
     },
     {
@@ -126,9 +66,18 @@
       "icon": "assets/30-minutes.svg",
       "points": "10",
       "kidId": 1,
-      "status": "chosen",
+      "status": "received",
       "chosenDate": 1510873200000,
       "id": 2
+    },
+    {
+      "name": "30 min na gry",
+      "icon": "assets/30-minutes.svg",
+      "points": "30",
+      "kidId": 1,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 3
     }
   ],
   "extraPoints": [],

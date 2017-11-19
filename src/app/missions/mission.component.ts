@@ -11,6 +11,7 @@ import { Location} from "@angular/common";
   <br>
 
   <button (click)="update()">Zapisz zmiany</button>
+  <button (click)="finish()">Zakończ</button>
   <button (click)="remove()">Usuń</button>
   <button routerLink='../'>Powrót</button>
   `,
@@ -65,6 +66,18 @@ export class MissionComponent implements OnInit {
    remove(){
        this.http.delete('http://localhost:3000/userMissions/'+ this.mission['id'])
        .subscribe( ()=> this.router.navigate(['../'],{relativeTo:this.route}))
+   }
+
+   finish(){
+     let today = new Date().setHours(0,0,0,0);
+     this.mission['finish']=today;
+
+     this.http.put('http://localhost:3000/userMissions/'+ this.mission['id'], this.mission)
+     .subscribe( mission=> {
+       this.mission= mission; 
+       this.router.navigate(['../'],{relativeTo:this.route});
+     })
+
    }
    
 }
