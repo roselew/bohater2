@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -12,7 +12,10 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ParentsComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor( private http: HttpClient) { 
+
+    }
+
 
   parents
 

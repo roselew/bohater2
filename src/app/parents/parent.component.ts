@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'parent',
@@ -9,6 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private renderer: Renderer2) { 
+      this.renderer.addClass(document.body,'parent')
+    }
+
+  ngOnDestroy() {
+    this.renderer.removeClass(document.body, 'parent');
+  }
   ngOnInit(){}
 }

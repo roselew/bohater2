@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import '_zmienne';
+
+body.parent{
+	background: $color_back_parent url(assets/background_parent.svg) top 275px center no-repeat;
+	background-attachment: fixed;
+	background-size: 100%;
+}
+body.parent-title{
+	background: darken($color_back_parent,30%) url(assets/background_parent_title.svg) top 275px center no-repeat;
+	background-attachment: fixed;
+	background-size: 100%;
+}
+body.kid{
+	background: $color_back_kid url(assets/background_kid.svg) top 275px center no-repeat;
+	background-attachment: fixed;
+	background-size: 100%;
+}
+body.background-kid-title{
+	background: $color_back_kid url(assets/background_kid_title.svg) top 275px center no-repeat; 
+	background-attachment: fixed;
+	background-size: 100%;
+}
