@@ -87,10 +87,10 @@ const routes:Routes = [
             { path: 'nagrody/dodaj-polecana/:giftId',    component: ExpertGiftComponent},
             { path: 'nagrody/:giftId',                   component: GiftComponent},  
             { path: 'nagrody/dostepne/:giftId',          component: AvailableGiftComponent},
-            { path: 'nagrody/wybrane/:giftId',           component: ChosenGiftComponent},     
+            { path: 'nagrody/wybrane/:giftId',           component: ChosenGiftComponent},   
 
-            { path: 'postepy/:weekId',                   component: OneWeekComponent},
             { path: 'postepy/historia',                  component: ProgressHistoryComponent},
+            { path: 'postepy/:weekId',                   component: OneWeekComponent},
 
             { path: 'punkty',                            component: PointsComponent},
             { path: 'punkty/punkty-ekstra',              component: ExtraPointsComponent}

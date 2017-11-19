@@ -7,6 +7,7 @@ import { Location} from "@angular/common";
 @Component({
   selector: 'one-week',
   template: `
+  <button routerLink='../historia'> Historia </button>
   <button [routerLink]="['../',weekId -1]"> Poprzedni </button>
   <button [routerLink]="['../',weekId +1]"> Następny </button>
 

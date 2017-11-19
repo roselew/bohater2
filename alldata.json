@@ -95,6 +95,20 @@
       ],
       "waitDates": [],
       "id": 3
+    },
+    {
+      "confirmation": true,
+      "name": "Opróżnić zmywarkę",
+      "icon": "assets/dishwasher.svg",
+      "points": "30",
+      "kidId": 1,
+      "start": 1511046000000,
+      "days": [
+        6
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 4
     }
   ],
   "userGifts": [
