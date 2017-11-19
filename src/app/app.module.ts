@@ -56,6 +56,7 @@ import { OneKidComponent } from './parents/one-kid.component';
 import { ProgressHistoryComponent } from './progress/progress-history.component';
 import { PointsComponent } from './points/points.component';
 import { KidOneDayViewComponent } from './kids/kid-one-day-view.component';
+import { MissionsService } from './missions/missions.service';
 
 
 @NgModule({
@@ -115,7 +116,9 @@ import { KidOneDayViewComponent } from './kids/kid-one-day-view.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    MissionsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

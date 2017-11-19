@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { ActivatedRoute, Router } from "@angular/router";
+import { MissionsService } from '../missions/missions.service';
 
 @Component({
   selector: 'kid-one-day-view',
@@ -62,9 +61,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class KidOneDayViewComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    private http: HttpClient,
-    private route: ActivatedRoute,
+    private service: MissionsService,
   ) { }
 
   @Input()
@@ -100,78 +97,24 @@ export class KidOneDayViewComponent implements OnInit {
     this.fetchMissions();
   }
 
-  ngOnInit() {
-   
-  }
+  ngOnInit() { }
 
   fetchMissions() {
-    this.http.get('http://localhost:3000/kids/' + this.kidId + '/userMissions')
+    this.service.fetchMissions(this.kidId)
       .subscribe(userMissions => {
-        this.userMissions = this.getAllMissions(userMissions, this.thisDay);
-        this.doneMissions = this.getDoneMissions(this.userMissions, this.thisDay);
-        this.waitMissions = this.getWaitMissions(this.userMissions, this.thisDay);
-        this.undoneMissions = this.getUndoneMissions();
+        this.userMissions = this.service.getAllMissions(userMissions,this.thisDay);
+        this.waitMissions = this.service.getWaitMissions(this.userMissions,this.thisDay);
+        this.doneMissions = this.service.getDoneMissions(this.userMissions,this.thisDay);
+        this.undoneMissions = this.service.getUndoneMissions(this.userMissions, this.waitMissions, this.doneMissions);
         this.countAll();
       })
   }
 
-
-  //get from database ALL missions 
-  getAllMissions = function (missions, day) {
-    let dayAllMissions = [];
-    for (let mission of missions) {
-      //if Mission is started
-      let startDate = new Date(mission.start)
-      if (day >= startDate) {
-        // if Mission is not finished
-        if (mission.finish == null || day < mission.finish) {
-          if (mission.days.indexOf(day.getUTCDay()) !== -1) {
-            dayAllMissions.push(mission)
-          }
-        }
-      }
-    }
-    return dayAllMissions;
-  }
-
-  //get from database all missions DONE this DAY
-  getDoneMissions = function (missions, day) {
-    let doneMissions = [];
-    for (let mission of missions) {   
-        if (mission['doneDates'].indexOf(day.getTime())>-1){
-          doneMissions.push(mission)
-        }
-    }
-    return doneMissions;
-  }
-
-  //get from database all missions WAIT this DAY
-  getWaitMissions = function (missions, day) {
-    let waitMissions = [];
-    for (let mission of missions) {   
-        if (mission['waitDates'].indexOf(day.getTime())>-1){
-          waitMissions.push(mission)
-        }
-    }
-    return waitMissions;
-  }
-
-  //get from database all missions UNDONE this DAY
-  getUndoneMissions = function () {
-    //remove from All missions WAIT and DONE
-    let arrayWait = this.waitMissions.map(elem => elem.id);
-    let arrayDone = this.doneMissions.map(elem => elem.id);
-    let toRemove = new Set(arrayWait.concat(arrayDone))
-    let dayUndoneMissions = this.userMissions.filter(obj => !toRemove.has(obj.id));
-    return dayUndoneMissions;
-  }
-
-
-
+ 
   addDone(mission) {
     let data=this.thisDay.getTime()
     let updatedMission={};
-    this.http.get('http://localhost:3000/userMissions/' + mission.id)
+    this.service.getOneMission(mission.id)
       .subscribe(userMission => {
         updatedMission = userMission;
         updatedMission['doneDates'].push(data);
@@ -179,7 +122,7 @@ export class KidOneDayViewComponent implements OnInit {
           let index = updatedMission['waitDates'].indexOf(data)
           updatedMission['waitDates'].splice(index,1)
         }  
-        this.http.put('http://localhost:3000/userMissions/'+ mission.id, updatedMission)
+        this.service.updateOneMission(mission.id,updatedMission)
           .subscribe(() => this.fetchMissions());
       })
   }
@@ -191,11 +134,11 @@ export class KidOneDayViewComponent implements OnInit {
     } else {
     let data=this.thisDay.getTime()
     let updatedMission={};
-    this.http.get('http://localhost:3000/userMissions/' + mission.id)
+    this.service.getOneMission(mission.id)
       .subscribe(userMission => {
         updatedMission = userMission;
         updatedMission['waitDates'].push(data);
-        this.http.put('http://localhost:3000/userMissions/'+ mission.id, updatedMission)
+        this.service.updateOneMission(mission.id,updatedMission)
           .subscribe(() => this.fetchMissions());
       })
     }

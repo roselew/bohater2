@@ -46,9 +46,7 @@ export class OneWeekComponent implements OnInit {
       this.mode='parent'
     } else {
       this.mode='kid'
-    }
-    console.log(this.mode)
-    
+    }    
 
     //get week Id 
     this.route.paramMap.subscribe(paramMap => {
