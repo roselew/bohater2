@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { MissionsService } from '../missions/missions.service';
 
 @Component({
   selector: 'kid-hero',
@@ -9,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 
   <div *ngIf="userHero"> 
     {{ userHero.name }}
+    Masz jeszcze {{nBadges}} odznak do wykorzystania
 
     <ul>
       <li *ngFor="let badge of userHero.badges1"
@@ -43,44 +45,15 @@ export class KidHeroComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private route: ActivatedRoute,
+    private service: MissionsService,
   ) { }
-
-  choseBadge(badge){
-    badge.gained = 'true'
-    this.http.put('http://localhost:3000/userHeroes/'+ this.userHero['id'], this.userHero)
-    .subscribe( userHero=> {
-      this.userHero= userHero;
-    }) 
-  }
-
-  checkNumberOfBadges(){
-    let today = new Date();
-    today.setHours(0,0,0,0);
-  
-
-    let firstMissionStart =new Date(this.userMissions.sort(function(a,b){
-      return a['start']-b['start'];
-    })[0].start)
-    //calculate how many week before today's week we need to go back
-    let firstWeekId = ((firstMissionStart.getDate() - firstMissionStart.getUTCDay()) -(today.getDate() - today.getUTCDay()))/ 7;
-
- 
-    for (let weekId=firstWeekId; weekId<1; weekId++){
-        console.log(weekId)
-      for (let dayId=weekId*7-today.getUTCDay(); dayId<weekId*7+7-today.getUTCDay(); dayId++){
-        console.log(dayId)
-      }
-
-    }
-
-
-
-  }
 
   kid = {}
   userMissions
   userHero
-  nBadges
+  nUsedBadges
+  nBadges 
+  nGainedBadges
 
   ngOnInit() {
     this.kid['id'] = +localStorage.getItem('loggedKid');
@@ -88,9 +61,29 @@ export class KidHeroComponent implements OnInit {
       .subscribe(kid => {
         this.kid = kid;
         this.userHero = this.kid['userHeroes'][0];
+        this.nUsedBadges = 
+          this.userHero['badges1'].filter( x=> x.gained == 'true' ).length
+          +this.userHero['badges2'].filter( x=> x.gained == 'true' ).length
+          +this.userHero['badges3'].filter( x=> x.gained == 'true' ).length
+
         this.userMissions = this.kid['userMissions'];
-        this.checkNumberOfBadges();
-      })
+        this.nGainedBadges = this.service.getAllWeeksProgress(this.userMissions)
+          .filter( x => (x.nAll===x.nDone && x.nAll!==0) ).length;
+        this.nBadges = this.nGainedBadges - this.nUsedBadges
+        })
   }
+
+
+  choseBadge(badge){
+    if (this.nBadges>0) {
+    badge.gained = 'true'
+    this.http.put('http://localhost:3000/userHeroes/'+ this.userHero['id'], this.userHero)
+    .subscribe( userHero=> {
+      this.userHero= userHero;
+      this.nBadges -=1;
+    }) 
+  }
+  }
+
 
 }
