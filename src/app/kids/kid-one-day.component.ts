@@ -35,17 +35,18 @@ export class KidOneDayComponent implements OnInit {
     this.nUndone=nUndone;
   }
 
-  @Input()
+
   dayId
   thisDay
 
   ngOnInit(){
     this.route.paramMap.subscribe(paramMap => {
       this.dayId = parseInt(paramMap.get('dayId'));
+      this.thisDay = new Date();
+      this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
+      this.thisDay.setHours(0, 0, 0, 0);
     })
-    this.thisDay = new Date();
-    this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
-    this.thisDay.setHours(0, 0, 0, 0);
+    
 
   }
   
