@@ -51,6 +51,9 @@ html {
 	height: 100%;
 	font-size: 62.5%;
 	font-family: $font_reg_family;
+	h1{
+		font-family: $font_title_family;
+	}
 }
 
 a {
