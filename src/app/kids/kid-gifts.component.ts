@@ -7,6 +7,43 @@ import { Location} from "@angular/common";
   selector: 'kid-gifts',
   template: `
 
+
+  <ul class="mission-done dziecko-nagrody">
+  <li *ngFor="let userGift of availableGifts"
+  class="circle-big"
+  [routerLink]="['wybierz/'+userGift.id]">  
+  <p>{{ userGift.name }} </p>
+  <img src="{{userGift.icon}}">
+  <star-svg></star-svg>
+  <span> {{userGift.points}}</span>
+  <div class="progress">
+    <div class="progress-undone"></div>
+    <div class="progress-wait" style="width:80%"></div>
+    <div class="progress-done" style="width:{{totalPoints/userGift.points}}">
+      <p> {{totalPoints}} / {{userGift.points}} </p>
+    </div>
+  </div>
+  </li> 
+</ul>
+
+  <ul class="mission-neutral dziecko-nagrody">
+    <li *ngFor="let userGift of unusedGifts"
+    class="circle-big"> 
+    <p>{{ userGift.name }} </p>
+    <img src="{{userGift.icon}}">
+    <star-svg></star-svg>
+    <span> {{userGift.points}}</span>
+    <div class="progress">
+      <div class="progress-undone"></div>
+      <div class="progress-wait" style="width:80%"></div>
+      <div class="progress-done" style="width:{{totalPoints/userGift.points}}">
+        <p> {{totalPoints}} / {{userGift.points}} </p>
+      </div>
+    </div>
+    </li> 
+  </ul>
+
+  
    <p>Dziecko ma {{totalPoints}} punktów </p>
 
 
@@ -42,7 +79,7 @@ import { Location} from "@angular/common";
       </li> 
     </ul> 
 
-    <button routerLink='/dziecko'>Powrót do menu </button>
+
   `,
   styles: [],
 })

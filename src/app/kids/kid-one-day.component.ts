@@ -5,14 +5,12 @@ import { ActivatedRoute, Router } from "@angular/router";
   selector: 'kid-one-day',
   template: `
 
-  <button [routerLink]="['../',dayId -1]"> Poprzedni </button>
-  <button [routerLink]="['../',dayId +1]"> Następny </button>
-  
-  <p>Łącznie tego dnia</p>
-  <p> {{nDone}} - zrobione <p>
-  <p> {{nWait}} - oczekujące </p>
-  <p> {{nUndone}} - niezrobione </p>
-  
+  <div class="dayName">
+    <span [routerLink]="['../',dayId -1]" class="prev">&lt;</span>
+    <p>{{thisDay.getDate()}} {{monthNames[thisDay.getMonth()]}}</p>
+    <span [routerLink]="['../',dayId +1]" class="next">&gt;</span> 
+  </div>
+
   <kid-one-day-view (onChange)="show($event)" [dayId]="dayId"></kid-one-day-view>
    `,
   styles: [],
@@ -29,7 +27,8 @@ export class KidOneDayComponent implements OnInit {
   nDone
   nWait
   nUndone
-
+  monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
+  
   show([nDone,nWait,nUndone]){
     this.nDone=nDone;
     this.nWait=nWait;
@@ -38,11 +37,15 @@ export class KidOneDayComponent implements OnInit {
 
   @Input()
   dayId
+  thisDay
 
   ngOnInit(){
     this.route.paramMap.subscribe(paramMap => {
       this.dayId = parseInt(paramMap.get('dayId'));
     })
+    this.thisDay = new Date();
+    this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
+    this.thisDay.setHours(0, 0, 0, 0);
 
   }
   

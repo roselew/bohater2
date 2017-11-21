@@ -1,0 +1,68 @@
+
+li.bohater {
+	position: relative;
+	margin: 6.0rem 5.0rem;
+	display: inline-block;	
+	height: 20rem;
+	width: 20rem;
+	transition: all 1s;
+	transform-origin: 50% 50%;
+	&:hover{transform: scale(1.2);}
+	cursor: pointer;
+
+
+	img{
+		position: absolute;
+		margin: auto;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		width: 100%;
+		height: 100%;
+		
+		
+	}
+
+	p{
+		position: absolute;
+		bottom:-$font_mid_size*3-2.0rem;
+		left: -20%;
+		display: block;
+		width: 140%;
+		height: $font_mid_size*3;
+		font: $font_mid_size $font_reg_family;
+		text-align: center;
+		color: white;
+	}
+
+}
+
+
+
+img.green {
+	width: 152px;
+	height: 151px;
+}
+img.green:hover{
+	border-color: #e9d566;
+	box-shadow: 0 0 100px rgba(255, 251, 0, 0.6);
+	border-radius: 50%;
+  }
+
+div.odznaki {
+	margin-top: 10.0rem;
+
+
+
+	p {
+			position: absolute;
+			bottom:-11.6rem;
+			display: block;
+			width: 100%;
+			height: 9.6rem;
+			font: $font_mid_size $font_reg_family;
+			text-align: center;
+			color: white;
+	}
+}

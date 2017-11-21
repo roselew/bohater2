@@ -1,0 +1,43 @@
+// ---- MENU kid CLASS ------
+
+//@import '_zmienne';
+
+.menu {
+	position: relative;
+	width: 100%;
+	height: 80vh;
+}
+
+ul.menu {
+
+	li {
+	// position: absolute;
+	text-align: center;
+	font: 5rem $font_title_family;
+	color: white;
+	border-radius: 100%;
+	border: 3px white solid;
+	
+
+		p{
+			display: inline-block;
+			width: 100%;
+			position: absolute;
+			bottom: 20%;
+			left: 0px;
+			z-index:500;
+		}
+	}
+
+	.menu-misje {background: url(../assets/mission.svg) top 20% center no-repeat; background-size: 50%;
+		&:hover{background-color: darken($color_undone,10%);}}}
+	.menu-odznaki {background: url(../assets/odznaki.png) top 20% center no-repeat; background-size: 90%;
+		&:hover{background-color: darken($color_done,10%);}}
+	.menu-bohater{ background:  url(../assets/bohater.png) top 30% center no-repeat; background-size: 40%;
+		&:hover{background-color: darken($color_wait,10%);}
+		p{bottom: 10% !important}
+	}
+	.menu-nagrody{background: url(../assets/gift.svg) top 30% center no-repeat; background-size: 40%;
+		&:hover{background-color: darken($color_base,10%);}}
+
+	

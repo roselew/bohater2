@@ -1,0 +1,48 @@
+#avatars{
+    height: 650px;
+    position: relative;
+    display: block;
+    width: 80%;
+    margin: 3.0rem auto;
+    
+  
+  
+  }
+  .avatars > input{
+    display: none;
+    padding: none;
+  }
+  
+  .avatars > img {
+  
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 200px;
+    height: 280px;
+    padding: 20px;
+  
+  }
+  
+  .avatars > input + img{
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .avatars > input:checked + img{
+    border: 2px solid $color_base;
+    border-radius: 2.0rem; 
+    background-color: white;
+  }
+  
+  .kr-bohater-text {
+        font: 5rem "IntroRustH1-Base",cursive;
+        margin-top: 10px;
+  }
+  
+  
+  .kr-gender-label {
+    width: 11% !important;
+    margin-right: 15px !important;
+  }
+  
+  

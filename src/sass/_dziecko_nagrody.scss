@@ -1,0 +1,52 @@
+.dziecko-nagrody {
+
+li.circle-big{
+    display:block;
+    position: relative;
+    // margin: 10rem;
+    p{
+        position: absolute;
+        left: 1.5*$mission_big_size;
+        top: 0;
+        display: block;
+        width: 60.0rem;
+        text-align: left;
+        font: $font-big-size $font-reg-family;
+    }
+    .progress{
+        width: 60.0rem;
+        position: absolute;
+        left: 1.5*$mission_big_size;
+        top: 8.0rem;
+        margin: 0;
+        img.img-right{
+            position: absolute;
+            top: -15rem;
+            right: -40rem;
+            width: 10rem;
+            height: 10rem;
+            display: block;
+
+        }
+    }
+    .progress-wait {
+        width:50%;
+    }
+    .progress-done {
+        width: 30%;
+        p {
+            position: absolute;
+            left: 0;
+            top: 8rem;
+            display: block;
+            width: 60.0rem;
+            text-align: left;
+            font: $font-big-size $font-reg-family;
+            color:white;
+        }
+    }
+}
+
+
+color:white;
+}

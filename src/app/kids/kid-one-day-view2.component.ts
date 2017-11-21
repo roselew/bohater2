@@ -2,29 +2,43 @@ import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angu
 import { MissionsService } from '../missions/missions.service';
 
 @Component({
-  selector: 'kid-one-day-view',
+  selector: 'kid-one-day-view2',
   template: `
 
 
+  <div class="day"> <p> {{days[thisDay.getUTCDay()]}} <span></span> </p>
+  
+  <div class="day-line">
+    <ul class="small-mission-undone">
+      <li *ngFor="let mission of undoneMissions"
+      class='circle-small'>
+      </li> 
+     </ul>	
+    <ul class="small-mission-wait">
+      <li *ngFor="let mission of waitMissions"
+      class='circle-small'>
+      </li> 
+     </ul>		
+    <ul class="small-mission-done">
+      <li *ngFor="let mission of doneMissions"
+      class='circle-small'>
+      </li> 
+    </ul>		
+  </div>
 
-  <div class="day-view">
-  <div class = 'left-column'>
-    <p class = "title">DO ZROBIENIA</p>
+  <div class="day-details" >
     <ul class="mission-undone"> 
       <li *ngFor="let mission of undoneMissions"
-      class='circle-big'
+      class='circle-mid'
       (click)="addWait(mission)"> 
         <img src="{{mission.icon}}">
         <star-svg></star-svg>
         <span>{{mission.points}}</span>
       </li> 
-    </ul>	
-  </div>
-  <div class="right-column">
-    <p class = "title">ZROBIONE</p>
+    </ul>			
     <ul class="mission-wait"> 
       <li *ngFor="let mission of waitMissions"
-      class='circle-big'> 
+      class='circle-mid'> 
         <img src="{{mission.icon}}">
         <star-svg></star-svg>
         {{starSvg}}
@@ -33,14 +47,16 @@ import { MissionsService } from '../missions/missions.service';
     </ul>	
     <ul class="mission-done"> 
       <li *ngFor="let mission of doneMissions"
-      class='circle-big'> 
+      class='circle-mid'> 
         <img src="{{mission.icon}}">
         <star-svg></star-svg>
         <span>{{mission.points}}</span>
       </li> 
     </ul>	
-  </div>
-</div>	
+  </div>		
+</div>
+
+
  
 
   `,
@@ -56,12 +72,14 @@ import { MissionsService } from '../missions/missions.service';
   `],
 
 })
-export class KidOneDayViewComponent implements OnInit {
+export class KidOneDayView2Component implements OnInit {
 
    
   constructor(
     private service: MissionsService,
   ) { }
+
+  days = ['PN','WT','ŚR','CZ','PT','SB','ND']
 
   @Input()
   dayId

@@ -57,6 +57,9 @@ import { ProgressHistoryComponent } from './progress/progress-history.component'
 import { PointsComponent } from './points/points.component';
 import { KidOneDayViewComponent } from './kids/kid-one-day-view.component';
 import { MissionsService } from './missions/missions.service';
+import { KidHeaderComponent } from './kids/kid-header.component';
+import { StarSvgComponent } from './star-svg.component';
+import { KidOneDayView2Component } from './kids/kid-one-day-view2.component';
 
 
 @NgModule({
@@ -108,7 +111,10 @@ import { MissionsService } from './missions/missions.service';
     OneKidComponent,
     ProgressHistoryComponent,
     PointsComponent,
-    KidOneDayViewComponent
+    KidOneDayViewComponent,
+    KidHeaderComponent,
+    StarSvgComponent,
+    KidOneDayView2Component
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,9 @@
       "email": "annakowalska@gmail.com",
       "password": "anna",
       "id": 1
+    },
+    {
+      "id": 2
     }
   ],
   "kids": [
@@ -14,6 +17,14 @@
       "password": "kasie",
       "parentId": 1,
       "id": 1
+    },
+    {
+      "name": "Basia",
+      "birth": "2013",
+      "login": "basik",
+      "password": "bs",
+      "parentId": 1,
+      "id": 2
     }
   ],
   "userMissions": [
@@ -29,7 +40,9 @@
         4
       ],
       "doneDates": [],
-      "waitDates": [],
+      "waitDates": [
+        1511132400000
+      ],
       "id": 1,
       "points": "1"
     },
@@ -49,6 +62,99 @@
       "waitDates": [],
       "id": 2,
       "finish": 1511046000000
+    },
+    {
+      "confirmation": true,
+      "name": "Zęby rano",
+      "icon": "assets/toothbrush.svg",
+      "points": "5",
+      "kidId": 2,
+      "start": 1511218800000,
+      "days": [
+        0,
+        2,
+        4
+      ],
+      "doneDates": [],
+      "waitDates": [
+        1511305200000,
+        1511737200000,
+        1511478000000,
+        1511910000000
+      ],
+      "id": 3
+    },
+    {
+      "confirmation": true,
+      "name": "Zetrzeć kurze",
+      "icon": "assets/clean.svg",
+      "points": "2",
+      "kidId": 2,
+      "start": 1511218800000,
+      "days": [
+        1,
+        3,
+        5
+      ],
+      "doneDates": [],
+      "waitDates": [
+        1511218800000,
+        1511391600000,
+        1511823600000,
+        1511996400000,
+        1511564400000
+      ],
+      "id": 4
+    },
+    {
+      "confirmation": true,
+      "name": "Posprzątać ze stołu",
+      "icon": "assets/table.svg",
+      "points": "3",
+      "kidId": 2,
+      "start": 1511218800000,
+      "days": [
+        0,
+        1
+      ],
+      "doneDates": [],
+      "waitDates": [
+        1511737200000,
+        1511823600000,
+        1511218800000
+      ],
+      "id": 5
+    },
+    {
+      "confirmation": false,
+      "name": "Pościelić łóżko",
+      "icon": "assets/bed.svg",
+      "points": "1",
+      "kidId": 2,
+      "start": 1511218800000,
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "doneDates": [
+        1511218800000,
+        1511391600000,
+        1511305200000,
+        1511478000000,
+        1511564400000,
+        1511650800000,
+        1511737200000,
+        1511823600000,
+        1511910000000,
+        1511996400000
+      ],
+      "waitDates": [],
+      "id": 6
     }
   ],
   "userGifts": [
@@ -78,6 +184,33 @@
       "status": "unused",
       "chosenDate": "",
       "id": 3
+    },
+    {
+      "name": "Nowa gra",
+      "icon": "assets/remote-control.svg",
+      "points": "10",
+      "kidId": 2,
+      "status": "chosen",
+      "chosenDate": 1511305200000,
+      "id": 4
+    },
+    {
+      "name": "Klocki LEGO",
+      "icon": "assets/lego.svg",
+      "points": "30",
+      "kidId": 2,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 5
+    },
+    {
+      "name": "Deskorolka",
+      "icon": "assets/skateboard.svg",
+      "points": "50",
+      "kidId": 2,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 6
     }
   ],
   "extraPoints": [],

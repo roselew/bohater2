@@ -1,0 +1,84 @@
+.kid-container {
+  position:relative;
+  //  height: 700px;
+    border: 4px solid #008aff;
+    color: $color_text_parent;
+    width: 80%;
+    margin: 5.0rem auto;
+    margin-bottom: 7.0rem;
+    font: 4rem $font_reg_family;
+    text-align: center;
+    border-radius: 2rem;
+    cursor: pointer;
+    background-color: transparentize(white,0.2);
+
+}
+
+@media (min-width: 1200px) and (orientation: landscape){  
+  .kid-container {
+    display: inline-block;
+    width: 40%;
+    margin: 5.0rem 2%;
+
+    .kid-icon {
+      width:35%;
+    }
+  }
+
+}
+
+.total-progress {
+  margin: 20px auto;
+  width: 100%;
+  background-color: $color_back_parent;
+  padding: 20px;
+  .progress{
+    margin: 20px auto;
+    .progress-wait {width: 60%;}
+    .progress-done { width: 40%;}
+  }
+}
+.kid-label {
+  top: -35px;
+  color: white !important;
+  border-radius: 2rem;
+  border: 2px solid $color_base;
+  position: relative;
+  background-color: $color_base;
+  text-align: center;
+  padding: 10px;
+  font: 5.0rem $font_title_family;
+  width: 70%;
+  margin: auto;
+  margin-bottom: -35px;
+  &::after{
+        content: '';
+        height: 100%;
+        width: 10%;
+        position: absolute;
+        top: 0px;
+        right: 5%;
+        background: url(../assets/login.svg) center center no-repeat; background-size: 100%;
+      }
+}
+
+.kid-icon {
+  margin: 3rem 5%;
+  width: 25%;
+  display: inline-block;
+  vertical-align: top;
+  img {
+    width: 80%;
+  }
+}
+
+
+.enlarge:hover {
+  transform: scale(1.2);
+}
+
+.enlarge {
+  transition: all 1s;
+  transform-origin: 50% 50%;
+}
+
