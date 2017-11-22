@@ -60,6 +60,7 @@ import { MissionsService } from './missions/missions.service';
 import { KidHeaderComponent } from './kids/kid-header.component';
 import { StarSvgComponent } from './star-svg.component';
 import { KidOneDayView2Component } from './kids/kid-one-day-view2.component';
+import { ParentHeaderComponent } from './parents/parent-header.component';
 
 
 @NgModule({
@@ -114,7 +115,8 @@ import { KidOneDayView2Component } from './kids/kid-one-day-view2.component';
     KidOneDayViewComponent,
     KidHeaderComponent,
     StarSvgComponent,
-    KidOneDayView2Component
+    KidOneDayView2Component,
+    ParentHeaderComponent
   ],
   imports: [
     BrowserModule,

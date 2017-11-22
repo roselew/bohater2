@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'kid-login',
   template: `
+
+  
   <p> Logowanie tymczasowe, kliknij na rodzica żeby się zalogować </p>
   <ul>
     <li *ngFor="let kid of kids"

@@ -6,25 +6,9 @@ import { Location} from "@angular/common";
 @Component({
   selector: 'one-kid',
   template: `
-    <my-header [kid]="kid"></my-header>
 
-    <button routerLink="misje">Misje</button>
-
-    <button routerLink="nagrody">Nagrody</button>
-
-    <button routerLink="postepy/0">Postępy tydodniowe</button>
-
-    <button routerLink="punkty">Punkty</button>
-
-    <button (click)="goToKid()">Przejź na stronę dziecka </button>
-
-    <button routerLink="edytuj-dziecko">Ustawienia profilu dziecka</button>
-
-    <button routerLink='/rodzic'>Powrót do listy dzieci</button>
-    
-    <br>
-
-    <router-outlet></router-outlet>
+   <parent-header [kid]="kid"></parent-header>
+   <router-outlet></router-outlet>
   `,
 
 })
@@ -49,10 +33,6 @@ export class OneKidComponent implements OnInit {
         })
    }
 
-   goToKid(){
-    localStorage.clear()
-    localStorage.setItem('loggedKid',this.kid['id'])
-    this.router.navigate(['/dziecko'])
-   }
+
 
 }
