@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -29,12 +29,20 @@ export class KidLoginComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
-  ) { }
+    private renderer: Renderer2) { 
+      this.renderer.addClass(document.body,'kid')
+      this.renderer.addClass(document.body,'title-page')
+    }
 
   kids
 
   ngOnInit() {
     this.http.get('http://localhost:3000/kids/')
     .subscribe( kids => this.kids = kids )
+  }
+
+  ngOnDestroy() {
+    this.renderer.removeClass(document.body, 'kid');
+    this.renderer.removeClass(document.body, 'title-page');
   }
 }

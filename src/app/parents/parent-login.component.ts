@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -40,7 +40,10 @@ export class ParentLoginComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
-  ) { }
+    private renderer: Renderer2) { 
+      this.renderer.addClass(document.body,'parent')
+      this.renderer.addClass(document.body,'title-page')
+    }
 
   parents
 
@@ -49,4 +52,9 @@ export class ParentLoginComponent implements OnInit {
     .subscribe( parents => this.parents = parents )
   }
 
+
+  ngOnDestroy() {
+    this.renderer.removeClass(document.body, 'parent');
+    this.renderer.removeClass(document.body, 'title-page');
+  }
 }
