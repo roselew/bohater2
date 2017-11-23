@@ -5,47 +5,56 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'one-day-view',
   template: `
-  <p>{{thisDay.getDate()}} {{monthNames[thisDay.getMonth()]}}</p>
-  <table>
-  <tr>
-    <th>Wszystkie</th>
-    <th>Zrobione</th>
-    <th>Oczekujące</th>
-    <th>Niezrobione</th>  
-  </tr>
-  <tr>
-  <td>
-    <ul> 
-    <li *ngFor="let mission of userMissions"> 
-      {{mission.name}}     
-    </li> 
-    </ul>
-  </td>
-  <td>
-    <ul> 
-    <li *ngFor="let mission of doneMissions"> 
-      {{mission.name}}     
-    </li> 
-    </ul>
-  </td>
-  <td>
-    <ul> 
-    <li *ngFor="let mission of waitMissions"
-    (click)="addDone(mission)"> 
-      {{mission.name}}     
-    </li> 
-    </ul>
-  </td>
-  <td>
-    <ul> 
-    <li *ngFor="let mission of undoneMissions"
-    (click)="addDone(mission)"> 
-      {{mission.name}}     
-    </li> 
-    </ul>
-  </td>
-  </tr>
-  </table>
+  <div class="day"> <p> {{days[thisDay.getUTCDay()]}} <span></span> </p>
+  
+  <div class="day-line">
+    <ul class="small-mission-undone">
+      <li *ngFor="let mission of undoneMissions"
+      class='circle-small'>
+      </li> 
+     </ul>	
+    <ul class="small-mission-wait">
+      <li *ngFor="let mission of waitMissions"
+      class='circle-small'>
+      </li> 
+     </ul>		
+    <ul class="small-mission-done">
+      <li *ngFor="let mission of doneMissions"
+      class='circle-small'>
+      </li> 
+    </ul>		
+  </div>
+
+  <div class="day-details" >
+    <ul class="mission-undone"> 
+      <li *ngFor="let mission of undoneMissions"
+      class='circle-mid'
+      (click)="addDone(mission)"> 
+        <img src="{{mission.icon}}">
+        <star-svg></star-svg>
+        <span>{{mission.points}}</span>
+      </li> 
+    </ul>			
+    <ul class="mission-wait"> 
+      <li *ngFor="let mission of waitMissions"
+      class='circle-mid' 
+      (click)="addDone(mission)">> 
+        <img src="{{mission.icon}}">
+        <star-svg></star-svg>
+        {{starSvg}}
+        <span>{{mission.points}}</span>
+      </li> 
+    </ul>	
+    <ul class="mission-done"> 
+      <li *ngFor="let mission of doneMissions"
+      class='circle-mid'> 
+        <img src="{{mission.icon}}">
+        <star-svg></star-svg>
+        <span>{{mission.points}}</span>
+      </li> 
+    </ul>	
+  </div>		
+</div>
 
   `,
   styles: [`

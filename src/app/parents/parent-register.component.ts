@@ -5,16 +5,27 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'parent-register',
   template: `
-  <label>Email</label>
-  <input placeholder='E-mail' [(ngModel)]="parent.email">
-  <br>
-  <label>Hasło</label>
-  <input type='password' placeholder='Hasło' [(ngModel)]="parent.password">
-  <br>
-  <label>Powtórz hasło</label>
-  <input type='password' placeholder='Powtórz Hasło' [(ngModel)]="checkpassword">
 
-  <button (click)="addParent()">ZAREJESTRUJ</button>
+  <app-header></app-header>
+
+  <div class="title-container">
+  
+  <form action='rodzic_login.html'>
+	
+		<input type='text' placeholder='E-mail' [(ngModel)]="parent.email" name="email">
+
+		<input type='password' placeholder='Hasło' [(ngModel)]="parent.password" name="password">
+
+		<input type='password' placeholder='Powtórz Hasło' [(ngModel)]="checkpassword" name="checkpassword">
+
+		<input type="radio" name="parent-name" id="parent-left"><label for="parent-left" class="double">Jestem Tatą</label>
+		<input type="radio" name="parent-name" id="parent-right"><label for="parent-right" class="double">Jestem Mamą</label>
+
+		<button type='submit' (click)="addParent()">ZAREJESTRUJ</button>
+
+  </form>
+
+  </div>
   `,
   styles: [],
 
@@ -39,7 +50,7 @@ export class ParentRegisterComponent implements OnInit {
   }
 
   checkpassword
-  parent = {}
+  parent ={}
   addParent(){
      if (this.parent['password']===this.checkpassword){
       this.http.post('http://localhost:3000/parents/', this.parent)

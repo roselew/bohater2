@@ -4,31 +4,56 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'shortcut-kid',
   template: `
-    <p> Na skróty: </p>
-    <ul *ngIf="userMissions && userGifts">
-      <li 
-        [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']"> 
-        <missions-to-accept [userMissions]="userMissions"></missions-to-accept> 
-      </li>
-      <li 
-        [routerLink]="['/rodzic/dziecko/'+kidId+'/nagrody']"> 
-        <gifts-to-receive [userGifts]="userGifts"></gifts-to-receive> 
-      </li>
-      <li 
-        [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']"> 
-        <progress-week [userMissions]="userMissions"></progress-week> 
-      </li>
-      <br>
-      <li 
-        [routerLink]="['/rodzic/dziecko/'+kidId+'/misje/dodaj']"> 
-        Dodaj nową misję 
-      </li>
-      <br>
-      <li 
-        [routerLink]="['/rodzic/dziecko/'+kidId+'/punkty/punkty-ekstra']"> 
-        Dodaj punkty ekstra
-      </li>
-    </ul>
+
+  <a href="rodzic_postepy.html" *ngIf="kid">
+    <div class="kid-label" [routerLink]="['/rodzic/dziecko/'+kidId]">{{kid.name}}
+    </div>	
+  </a>
+
+<div *ngIf="userMissions && userGifts">
+
+  <div class="kid-icon">
+    <a [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']">
+    <img src="../../assets/mission.svg" class="enlarge">
+    <missions-to-accept [userMissions]="userMissions"></missions-to-accept> 
+    </a>	
+  </div>		
+
+  <div class="kid-icon">		
+    <a [routerLink]="['/rodzic/dziecko/'+kidId+'/nagrody']">
+    <img src="../../assets/gift.svg" class="enlarge">
+    <gifts-to-receive [userGifts]="userGifts"></gifts-to-receive> 
+    </a>
+  </div>
+
+  <div class="total-progress" [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']">
+    <p>Wykonanie w tym tygodniu: </p>
+    <div class="progress"> 
+      <div class="progress-undone"> </div>
+      <div class="progress-wait"> </div>
+      <div class="progress-done"> </div> 
+      <img src="../../assets/logo.png" class="logo">
+      <progress-week [userMissions]="userMissions"></progress-week> 
+      
+    </div>
+  </div>
+
+  <div class="kid-icon">
+    <a [routerLink]="['/rodzic/dziecko/'+kidId+'/misje/dodaj']">
+      <img src="../../assets/list2.svg" class="enlarge">
+      <p>Dodaj nową misję</p>
+    </a>
+  </div>
+
+  <div class="kid-icon">
+    <a [routerLink]="['/rodzic/dziecko/'+kidId+'/punkty/punkty-ekstra']">
+      <img src="../../assets/addstars.svg" class="enlarge">
+      <p>Dodaj punkty ekstra</p>
+    </a>
+  </div>
+  
+</div>
+
   `,
   styles: [],
 
@@ -42,12 +67,14 @@ export class ShortcutKidComponent implements OnInit {
   @Input()
   kidId 
   
+  kid
   userMissions
   userGifts
 
   ngOnInit() {
     this.http.get('http://localhost:3000/kids/'+this.kidId+'?_embed=userMissions&_embed=userGifts')
       .subscribe( kid => {
+        this.kid=kid;
         this.userMissions = kid['userMissions'];
         this.userGifts = kid['userGifts'];
        })

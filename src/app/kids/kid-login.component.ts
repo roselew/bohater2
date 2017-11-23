@@ -15,6 +15,8 @@ import { HttpClient } from '@angular/common/http';
     </li>
   </ul>
 
+  <app-header></app-header>
+  
   `,
   styles: [],
 

@@ -6,22 +6,34 @@ import { HttpClient } from '@angular/common/http';
   selector: 'parent-login',
   template: `
 
-  <label>Email</label>
-  <input placeholder='E-mail' [(ngModel)]="parent.email">
-  <br>
-  <label>Hasło</label>
-  <input type='password' placeholder='Hasło' [(ngModel)]="parent.password">
+  <app-header></app-header>
 
+  <div class="title-container">
+
+  <p> Logowanie tymczasowe, kliknij na rodzica żeby się zalogować </p>
+  <ul>
+    <li *ngFor="let parent of parents"
+        (click)="logOn(parent.id)">
+        {{parent.email}}
+    </li>
+  </ul>
   
-    <p> Logowanie tymczasowe, kliknij na rodzica żeby się zalogować </p>
-    <ul>
-      <li *ngFor="let parent of parents"
-          (click)="logOn(parent.id)">
-          {{parent.email}}
-      </li>
-    </ul>
+<form action='rodzic_dodaj_dziecko.html'>
 
-    <button routerLink='/rodzic-rejestracja'>REJESTRACJA</button>
+  <input type='text' placeholder='Email' [(ngModel)]="parent.email" name="email">
+
+  <input type='password' placeholder='Hasło' [(ngModel)]="parent.password" name="password">
+
+  <input type='checkbox' name='remember'>
+  <label for='checkbox'>Zapamiętaj mnie</label>
+
+  <button type='submit'>ZALOGUJ</button>
+
+</form>
+<a routerLink='/rodzic-rejestracja'>Nie masz konta? Zarejestruj się</a>
+
+</div>
+
   `,
   styles: [],
 

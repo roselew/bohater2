@@ -7,9 +7,11 @@ import { Location} from "@angular/common";
   selector: 'create-kid',
   template: `
 
+   <app-header></app-header>
+
    <view-kid [kid]="kid"></view-kid>
-   <br>
-   <button (click)="save()">Zapisz</button>
+   
+   <button (click)="save()">DODAJ DZIECKO</button>
    <button routerLink="../">Powrót</button>
 
    <div class="form-group">

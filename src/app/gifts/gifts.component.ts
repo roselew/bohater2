@@ -7,42 +7,74 @@ import { Location} from "@angular/common";
   selector: 'gifts',
   template: `
 
-   <p>Dziecko ma {{totalPoints}} punktów </p>
+  <p>Dziecko ma {{totalPoints}} punktów </p>
 
+  <p>Lista nagród dziecka niewykorzystanych ale dostępnych</p>
 
-    <p>Lista nagród dziecka niewykorzystanych ale dostępnych</p>
-    <ul> 
-      <li *ngFor="let userGift of availableGifts"
-        [routerLink]="['dostepne/'+userGift.id]"> 
-        {{ userGift.name }} 
-      </li> 
-    </ul> 
+  <ul class="mission-neutral">
+  <li 
+    *ngFor="let userGift of availableGifts" 
+    [routerLink]="['dostepne/'+userGift.id]"
+    class="circle-big"> 
+      <p>
+        {{userGift.name}}
+      </p>
+      <img src="{{userGift.icon}}">
+      <star-svg></star-svg>
+      <span>{{userGift.points}}</span>
+  </li> 
+</ul>
 
+<p>Lista nagród dziecka niewykorzystanych</p>
 
-    <p>Lista nagród dziecka niewykorzystanych</p>
-    <ul> 
-      <li *ngFor="let userGift of unusedGifts"
-        [routerLink]="[userGift.id]"> 
-        {{ userGift.name }} 
-      </li> 
-    </ul> 
+<ul class="mission-neutral">
+<li 
+  *ngFor="let userGift of unusedGifts" 
+  [routerLink]="[userGift.id]"
+  class="circle-big"> 
+    <p>
+      {{userGift.name}}
+    </p>
+    <img src="{{userGift.icon}}">
+    <star-svg></star-svg>
+    <span>{{userGift.points}}</span>
+</li> 
+</ul>
 
     <p>Lista nagród wybranych przez dziecko do odbioru</p>
-    <ul> 
-      <li *ngFor="let userGift of chosenGifts"
-        [routerLink]="['wybrane/'+userGift.id]"> 
-        {{ userGift.name }} 
-      </li> 
-    </ul> 
+
+    <ul class="mission-neutral">
+    <li 
+      *ngFor="let userGift of chosenGifts" 
+      [routerLink]="['wybrane/'+userGift.id]"
+      class="circle-big"> 
+        <p>
+          {{userGift.name}}
+        </p>
+        <img src="{{userGift.icon}}">
+        <star-svg></star-svg>
+        <span>{{userGift.points}}</span>
+    </li> 
+    </ul>
+
 
     <p>Lista nagród już odebranych</p>
-    <ul> 
-      <li *ngFor="let userGift of receivedGifts"> 
-        {{ userGift.name }} 
-      </li> 
-    </ul> 
 
-    <button routerLink="dodaj"> Dodaj nową nagrodę </button>
+    <ul class="mission-neutral">
+    <li 
+      *ngFor="let userGift of receivedGifts" 
+      class="circle-big"> 
+        <p>
+          {{userGift.name}}
+        </p>
+        <img src="{{userGift.icon}}">
+        <star-svg></star-svg>
+        <span>{{userGift.points}}</span>
+    </li> 
+    </ul>
+
+
+    <div class="plus" routerLink="dodaj">+</div>
   
   `,
   styles: [],

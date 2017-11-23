@@ -5,17 +5,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'kids',
   template: `
-  <p>
-  {{parent.email}}
-  </p>
-  <ul> 
-    <li *ngFor="let kid of kids" > 
-      <p [routerLink]="['/rodzic/dziecko/'+kid.id]">{{ kid.name }}</p>
-      <shortcut-kid [kidId]="kid.id"></shortcut-kid>
-    </li> 
-  </ul>
-  <button routerLink="dodaj-dziecko"> Dodaj kolejne dziecko </button>
-  <button routerLink="/">Powrót </button>
+
+  <header>	
+	  <div class="header-banner">MENU</div>
+	  <img src="assets/logo.png" class="logo">
+  </header>
+
+  <div class="container">
+
+  <div class="kid-container" *ngFor="let kid of kids">
+    <shortcut-kid [kidId]="kid.id"></shortcut-kid>
+  </div>
+  
+  <a routerLink="dodaj-dziecko">
+    <div class="plus">+</div>
+  </a>
 
   `,
   styles: [],

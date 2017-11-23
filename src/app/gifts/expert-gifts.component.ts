@@ -4,11 +4,13 @@ import { HttpClient } from "@angular/common/http";
 @Component({
   selector: 'expert-gifts',
   template: `
-  <ul> 
-  <li *ngFor="let gift of gifts"
-  [routerLink]="['../dodaj-polecana/' + gift.id]"
-  > 
-    {{ gift.name }} 
+  <ul class="mission-neutral">
+
+    <li *ngFor="let gift of gifts"
+    class="circle-mid"
+    [routerLink]="['../dodaj-polecana/' + gift.id]"> 
+      <p>{{ gift.name }} </p>
+      <img src="{{gift.icon}}">
   </li> 
 </ul> 
   `,

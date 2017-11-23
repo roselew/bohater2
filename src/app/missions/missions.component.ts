@@ -6,21 +6,39 @@ import { Location} from "@angular/common";
 @Component({
   selector: 'missions',
   template: `
-        <p>Lista misji dziecka</p>
-        <ul> 
-          <li *ngFor="let mission of activeMissions" [routerLink]="[mission.id]"> 
-            {{ mission.name }} 
-          </li> 
-        </ul> 
 
-        <p>Lista zakończonych misji </p>
-        <ul> 
-          <li *ngFor="let mission of unactiveMissions"> 
-            {{ mission.name }} 
-          </li> 
-        </ul> 
-        <button routerLink="dodaj"> Dodaj nową misję </button>
+  <ul class="mission-neutral">
+    <li 
+      *ngFor="let mission of activeMissions" 
+      [routerLink]="[mission.id]"
+      class="circle-big"> 
+        <p>
+          <span class="dayList">{{days[mission.days]}}</span>
+          {{mission.name}}
+        </p>
+        <img src="{{mission.icon}}">
+        <star-svg></star-svg>
+        <span>{{mission.points}}</span>
+    </li> 
+  </ul>
 
+  <ul class="mission-neutral">
+  <li 
+    *ngFor="let mission of unactiveMissions"       
+    class="circle-big"> 
+      <p>
+        <span class="dayList">{{days[mission.days]}}</span>
+        {{mission.name}}
+      </p>
+      <img src="{{mission.icon}}">
+      <star-svg></star-svg>
+      <span>{{mission.points}}</span>
+  </ul>
+
+  
+    <div class="plus" routerLink="dodaj">+</div>
+
+       
         `,
   styles: [],
 })
@@ -36,6 +54,8 @@ export class MissionsComponent implements OnInit {
   userMissions
   activeMissions
   unactiveMissions
+
+  days=['PN','WT','ŚR','CZ','PT','SB','ND']
 
 
   ngOnInit(){

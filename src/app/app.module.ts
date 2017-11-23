@@ -61,6 +61,7 @@ import { KidHeaderComponent } from './kids/kid-header.component';
 import { StarSvgComponent } from './star-svg.component';
 import { KidOneDayView2Component } from './kids/kid-one-day-view2.component';
 import { ParentHeaderComponent } from './parents/parent-header.component';
+import { AppHeaderComponent } from './app-header.component';
 
 
 @NgModule({
@@ -116,7 +117,8 @@ import { ParentHeaderComponent } from './parents/parent-header.component';
     KidHeaderComponent,
     StarSvgComponent,
     KidOneDayView2Component,
-    ParentHeaderComponent
+    ParentHeaderComponent,
+    AppHeaderComponent
   ],
   imports: [
     BrowserModule,

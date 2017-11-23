@@ -7,6 +7,17 @@
     },
     {
       "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "email": "gg",
+      "password": "gg",
+      "id": 5
     }
   ],
   "kids": [
@@ -25,6 +36,14 @@
       "password": "bs",
       "parentId": 1,
       "id": 2
+    },
+    {
+      "name": "Wojtek",
+      "birth": "2010",
+      "login": "ww",
+      "password": "ww",
+      "parentId": 5,
+      "id": 3
     }
   ],
   "userMissions": [
@@ -100,9 +119,10 @@
         3,
         5
       ],
-      "doneDates": [],
+      "doneDates": [
+        1511218800000
+      ],
       "waitDates": [
-        1511218800000,
         1511391600000,
         1511823600000,
         1511996400000,
@@ -168,6 +188,77 @@
       ],
       "waitDates": [],
       "id": 6
+    },
+    {
+      "confirmation": true,
+      "name": "Nakryć stół",
+      "icon": "assets/cutlery.svg",
+      "points": "3",
+      "kidId": 2,
+      "start": 1511391600000,
+      "days": [
+        0
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 7
+    },
+    {
+      "confirmation": true,
+      "name": "Wynieść śmieci",
+      "icon": "assets/garbage.svg",
+      "points": "2",
+      "kidId": 2,
+      "start": 1511391600000,
+      "days": [
+        0,
+        1
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 8
+    },
+    {
+      "confirmation": true,
+      "name": "Jakaś",
+      "points": "2",
+      "icon": "",
+      "kidId": 2,
+      "start": 1511391600000,
+      "days": [
+        0
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 9
+    },
+    {
+      "confirmation": true,
+      "name": "Wynieść śmieci",
+      "icon": "assets/garbage.svg",
+      "points": "5",
+      "kidId": 2,
+      "start": 1511391600000,
+      "days": [
+        1
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 10
+    },
+    {
+      "confirmation": true,
+      "name": "Nakarmić zwierzątko",
+      "icon": "assets/dog-food.svg",
+      "points": "10",
+      "kidId": 3,
+      "start": 1511478000000,
+      "days": [
+        0
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 11
     }
   ],
   "userGifts": [
@@ -203,7 +294,7 @@
       "icon": "assets/remote-control.svg",
       "points": "10",
       "kidId": 2,
-      "status": "chosen",
+      "status": "received",
       "chosenDate": 1511305200000,
       "id": 4
     },
@@ -224,6 +315,15 @@
       "status": "unused",
       "chosenDate": "",
       "id": 6
+    },
+    {
+      "name": "Niespodzianka",
+      "icon": "assets/gift.svg",
+      "points": "20",
+      "kidId": 3,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 7
     }
   ],
   "extraPoints": [],
