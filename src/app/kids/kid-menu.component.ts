@@ -5,15 +5,15 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'kid-menu',
   template: `
-  <ul class="menu">
-    <a routerLink="../bohater"><li class="menu-bohater circles circle1"><p>BOHATER</p></li></a>
-    <a routerLink='../misje/0'><li class="menu-misje circles circle9"><p>MISJE</p></li></a>
-    <a routerLink="../odznaki/0"><li class="menu-odznaki circles circle10"><p>ODZNAKI</p></li></a>
-    <a routerLink="../nagrody"><li class="menu-nagrody circles circle8"><p>NAGRODY</p></li></a>		
+  <ul>
+    <a routerLink="../bohater"><li class="menu-bohater circle1"><p>BOHATER</p></li></a>
+    <a routerLink='../misje/0'><li class="menu-misje circle9"><p>MISJE</p></li></a>
+    <a routerLink="../odznaki/0"><li class="menu-odznaki circle10"><p>ODZNAKI</p></li></a>
+    <a routerLink="../nagrody"><li class="menu-nagrody circle8"><p>NAGRODY</p></li></a>		
   </ul>  
 
   `,
-  styles: [],
+  styleUrls: ['../../sass/kid-menu.scss']
 
 })
 export class KidMenuComponent implements OnInit {
