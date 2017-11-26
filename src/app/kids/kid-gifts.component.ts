@@ -7,6 +7,7 @@ import { Location} from "@angular/common";
   selector: 'kid-gifts',
   template: `
 
+  <div class="container">
 
   <ul class="mission-done">
   <li *ngFor="let userGift of availableGifts"
@@ -79,6 +80,7 @@ import { Location} from "@angular/common";
       </li> 
     </ul> 
 
+    </div>
 
   `,
   styleUrls: ['../../sass/kid-gifts.scss'],

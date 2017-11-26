@@ -6,6 +6,9 @@ import { MissionsService } from '../missions/missions.service';
 @Component({
   selector: 'kid-hero',
   template: `
+
+  <div class="container">
+
   <p> Bohater <p>
 
   <div *ngIf="userHero"> 
@@ -35,6 +38,8 @@ import { MissionsService } from '../missions/missions.service';
   </div>
 
   <button routerLink='/dziecko'>Powrót do menu </button>
+
+  </div>
   `,
   styles: [],
 

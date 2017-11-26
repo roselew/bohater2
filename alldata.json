@@ -109,7 +109,8 @@
         1512342000000,
         1513119600000
       ],
-      "id": 3
+      "id": 3,
+      "finish": 1511650800000
     },
     {
       "confirmation": true,
@@ -204,7 +205,9 @@
         0
       ],
       "doneDates": [],
-      "waitDates": [],
+      "waitDates": [
+        1511737200000
+      ],
       "id": 7
     },
     {
@@ -219,8 +222,11 @@
         1
       ],
       "doneDates": [],
-      "waitDates": [],
-      "id": 8
+      "waitDates": [
+        1511737200000
+      ],
+      "id": 8,
+      "finish": 1511650800000
     },
     {
       "confirmation": true,
@@ -233,7 +239,9 @@
         0
       ],
       "doneDates": [],
-      "waitDates": [],
+      "waitDates": [
+        1511737200000
+      ],
       "id": 9
     },
     {

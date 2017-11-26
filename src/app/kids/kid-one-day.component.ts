@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   </div>
 
   <one-day-view 
-        (onChange)="show($event,day)" 
+        (onChange)="show($event)" 
         [mode]= "mode"
         [type]= "type"
         [dayId]= "dayId">

@@ -25,12 +25,14 @@ ul {
 		}
 }
 
-.menu-misje {
+li.menu-misje {
+    @media (orientation: portrait){
         right: 2vw;
         top: 275px;
         margin-top: 60vw; 
         width: 30vw;
         height: 30vw;
+    }
     @media (orientation: landscape){ 
         left: 50%;
         margin-left: 13vh; 
@@ -43,12 +45,14 @@ ul {
     &:hover{background-color: darken($color_undone,10%);}
 }
     
-.menu-odznaki {
+li.menu-odznaki {
+    @media (orientation: portrait){
         right: 10vw;
         top: 275px;
         margin-top: 3vw; 
         width: 35vw;
         height: 35vw;
+    }
     @media (orientation: landscape){ 
         right: 50%;
         margin-right: -55vh;
@@ -61,12 +65,14 @@ ul {
     &:hover{background-color: darken($color_done,10%);}
 }
     
-.menu-bohater{ 
+li.menu-bohater{ 
+    @media (orientation: portrait){
         left: 20vw;
         top: 275px;
         margin-top: 25vw;
         width: 60vw;
         height: 60vw;
+    }
     @media (orientation: landscape){ 
         top: 50%;
         margin-top:-30vh;
@@ -81,12 +87,14 @@ ul {
     p{bottom: 10% !important}
 }
     
-.menu-nagrody{
+li.menu-nagrody{
+    @media (orientation: portrait){
         left: 2vw;
         top: 275px;
         margin-top: 70vw; 
         width: 40vw;
         height: 40vw;
+    }
     @media (orientation: landscape){ 
         right: 50%;
         margin-right: 22vh; 
