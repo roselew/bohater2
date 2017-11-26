@@ -1,9 +1,9 @@
-.dziecko-nagrody {
+@import '_zmienne';
 
 li.circle-big{
     display:block;
     position: relative;
-    // margin: 10rem;
+    color: white;
     p{
         position: absolute;
         left: 1.5*$mission_big_size;
@@ -29,11 +29,8 @@ li.circle-big{
 
         }
     }
-    .progress-wait {
-        width:50%;
-    }
+
     .progress-done {
-        width: 30%;
         p {
             position: absolute;
             left: 0;
@@ -45,8 +42,4 @@ li.circle-big{
             color:white;
         }
     }
-}
-
-
-color:white;
 }

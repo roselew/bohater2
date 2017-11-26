@@ -6,11 +6,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 
     <section id="section01" class='page-container'>
     
-      <div class="header-banner">
-        <img src="assets/logoXL.png" class="logo">
-        <h1>Bohater</h1> <br>
-        <h1 class="font-skew">Tygodnia</h1> 
-      </div>
+      <app-header></app-header>
   
   
       <div class="title-container">
@@ -20,12 +16,12 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
         <img src="assets/bohater3.png" height="200px">
         
         <br>
-        <form class="enter left" routerLink='/rodzic-logowanie'>
-          <button >RODZIC</button>
+        <form class="enter left" >
+          <button routerLink='/rodzic-logowanie'>RODZIC</button>
         </form>
   
-        <form class="enter right" routerLink='/dziecko-logowanie'>
-          <button>DZIECKO</button>
+        <form class="enter right">
+          <button routerLink='/dziecko-logowanie'>DZIECKO</button>
         </form>
   
       </div>
@@ -90,7 +86,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
       <a href="#section01" class="scrolling scrolling-reverse"><span></span>Powrót do góry</a>
     </section>	
   `,
-  styles: [],
+    styleUrls: ['../sass/welcome.scss']
  
 })
 export class WelcomeComponent implements OnInit {

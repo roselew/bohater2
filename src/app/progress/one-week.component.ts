@@ -14,15 +14,11 @@ import { Location} from "@angular/common";
     <span [routerLink]="['../',weekId +1]" class="next">&rsaquo;</span> 
   </div>		
   
-  
-    <div class="progress"> 
-      <div class="progress-undone"> </div>
-      <div class="progress-wait"> </div>
-      <div class="progress-done"> </div> 
-      <img src="../../assets/logo.png" class="logo">
-    </div>
-  
-  
+  <progress-bar-week 
+    [waitWidth]="100*(tWait+tDone)/(tUndone+tWait+tDone)" 
+    [doneWidth]="100*tDone/(tUndone+tWait+tDone)">
+  </progress-bar-week>
+ 
     <div class="filter">
       <button class="show-all"><span>{{tUndone+tWait+tDone}}</span></button>
       <button class="show-undone"><span>{{tUndone}}</span></button>
@@ -31,14 +27,15 @@ import { Location} from "@angular/common";
       <img src="../../assets/bohater.png" class="hero">
     </div>
 
- 
-
-
-  <div *ngFor="let day of days">
-  <one-day-view *ngIf="mode=='parent'" (onChange)="show($event,day)" [dayId]="day"></one-day-view>
-  <kid-one-day-view2 *ngIf="mode=='kid'" (onChange)="show($event,day)" [dayId]="day"></kid-one-day-view2>
-
+   <div *ngFor="let day of days">
+    <one-day-view 
+        (onChange)="show($event,day)" 
+        [mode]="mode" 
+        [type]="type"
+        [dayId]="day">
+    </one-day-view>
   </div>
+  
   `,
   styles: [],
 
@@ -50,44 +47,47 @@ export class OneWeekComponent implements OnInit {
     private route:ActivatedRoute, 
   ) { }
 
-   weekId
-  firstDay 
-  endDay
+
+  weekId
+  firstDate
+  endDate
   days
-  thisDay;
-  monthNames = ["styczeń","luty","marzec","kwiecień","maj","czerwiec","lipiec","sierpień","wrzesień","pażdziernik","listopad","grudzień"];
- mode
- firstDate
- endDate
+  monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
+  firstDay
+  mode
+  type='weekView'
 
   ngOnInit() { 
-        let today = new Date();
+    let today = new Date();
     today.setHours(0,0,0,0);
     if (localStorage.getItem('loggedParent')){
       this.mode='parent'
     } else {
       this.mode='kid'
-    }    
+    } 
 
     //get week Id 
     this.route.paramMap.subscribe(paramMap => {
-      this.weekId = parseInt(paramMap.get('weekId'));
-      this.firstDay = 0 - today.getUTCDay() + 7* this.weekId;
-      this.endDay = this.firstDay + 6;
-      this.days=[this.firstDay, this.firstDay+1, this.firstDay+2, this.firstDay+3, this.firstDay+4, this.firstDay+5, this.endDay]
     
-      this.firstDate = new Date();
+      this.weekId = +paramMap.get('weekId');
+      
+      this.firstDay = 0 - today.getUTCDay() + 7* this.weekId;
+      
+      this.firstDate = new Date(today);
       this.firstDate.setDate(this.firstDate.getDate() + this.firstDay);
       this.firstDate.setHours(0, 0, 0, 0);
-
-      this.endDate = new Date();
-      this.endDate.setDate(this.endDate.getDate() + this.endDay);
+      
+      this.endDate = new Date(today);
+      this.endDate.setDate(this.firstDate.getDate() + 6);
       this.endDate.setHours(0, 0, 0, 0);
-
+      
+      this.days=[this.firstDay, this.firstDay+1, this.firstDay+2, this.firstDay+3, this.firstDay+4, this.firstDay+5, this.firstDay+6]
+    
     })
   }
 
-   tDone =0
+
+  tDone =0
   tWait =0
   tUndone=0
   nDone=[];

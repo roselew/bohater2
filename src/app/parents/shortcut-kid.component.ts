@@ -27,15 +27,7 @@ import { HttpClient } from '@angular/common/http';
   </div>
 
   <div class="total-progress" [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']">
-    <p>Wykonanie w tym tygodniu: </p>
-    <div class="progress"> 
-      <div class="progress-undone"> </div>
-      <div class="progress-wait"> </div>
-      <div class="progress-done"> </div> 
-      <img src="../../assets/logo.png" class="logo">
       <progress-week [userMissions]="userMissions"></progress-week> 
-      
-    </div>
   </div>
 
   <div class="kid-icon">

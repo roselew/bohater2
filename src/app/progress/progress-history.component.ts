@@ -6,16 +6,20 @@ import { MissionsService } from '../missions/missions.service';
 @Component({
   selector: 'progress-history',
   template: `
-    <ul>
-      <li *ngFor="let week of weekHistory"
-          [routerLink]="['../',week.weekId]">
-      Tydzień numer: {{week.weekId}}
-      Łącznie: {{week.nAll}} misji
-      Wykonano: {{week.nDone}} misji
-      Oczekuje: {{week.nWait}} misji
-      Do zrobienia: {{week.nAll - week.nDone - week.nWait}} misji
-      </li>
-    </ul>
+  
+  
+  <div *ngFor="let week of weekHistory"
+        [routerLink]="['../',week.weekId]">
+        
+      <p>Tydzień numer: {{week.weekId}}</p>
+      
+      <progress-bar-week 
+        [waitWidth]="100*(week.nDone+week.nWait)/week.nAll" 
+        [doneWidth]="100*week.nDone/week.nAll">
+      </progress-bar-week>
+  
+  </div>
+  
   `,
   styles: [],
 

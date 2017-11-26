@@ -9,30 +9,30 @@ import { HttpClient } from '@angular/common/http';
   <app-header></app-header>
 
   <div class="title-container">
+   
+  <form>
 
-  <p> Logowanie tymczasowe, kliknij na rodzica żeby się zalogować </p>
-  <ul>
-    <li *ngFor="let parent of parents"
-        (click)="logOn(parent.id)">
-        {{parent.email}}
-    </li>
-  </ul>
-  
-<form action='rodzic_dodaj_dziecko.html'>
+    <input type='text' placeholder='Email' [(ngModel)]="parent['email']" name="email">
 
-  <input type='text' placeholder='Email' [(ngModel)]="parent.email" name="email">
+    <input type='password' placeholder='Hasło' [(ngModel)]="parent['password']" name="password">
 
-  <input type='password' placeholder='Hasło' [(ngModel)]="parent.password" name="password">
+    <input type='checkbox' name='remember'>
+    <label for='checkbox'>Zapamiętaj mnie</label>
 
-  <input type='checkbox' name='remember'>
-  <label for='checkbox'>Zapamiętaj mnie</label>
+    <button type='submit'>ZALOGUJ</button>
 
-  <button type='submit'>ZALOGUJ</button>
-
-</form>
-<a routerLink='/rodzic-rejestracja'>Nie masz konta? Zarejestruj się</a>
+  </form>
+  <a routerLink='/rodzic-rejestracja'>Nie masz konta? Zarejestruj się</a>
 
 </div>
+
+<p> Logowanie tymczasowe, kliknij na rodzica żeby się zalogować </p>
+<ul>
+  <li *ngFor="let parent of parents"
+      (click)="logOn(parent.id)">
+      {{parent.email}}
+  </li>
+</ul>
 
   `,
   styles: [],

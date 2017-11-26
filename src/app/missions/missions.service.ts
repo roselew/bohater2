@@ -25,8 +25,6 @@ export class MissionsService {
     return this.http.put('http://localhost:3000/userMissions/'+ missionId, mission)
   }
 
-
-
   //get from database ALL missions 
   getAllMissions = function (missions, day) {
     let dayAllMissions = [];
@@ -96,7 +94,7 @@ export class MissionsService {
       for (let weekId=firstWeekId; weekId<1; weekId++){   
          weekProgress.push(this.getOneWeekProgress(userMissions,weekId))
       }
-      console.log(weekProgress)
+
       return weekProgress
 
   }
@@ -125,5 +123,7 @@ export class MissionsService {
 
     return thisWeek
 
-    }
+  }
+
+
 }

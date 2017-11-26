@@ -7,7 +7,6 @@
  @import '_header';
  @import '_circles';
 
- @import '_dziecko_menu';
  @import '_dziecko_misje';
 
  @import '_postepy_odznaki';
@@ -15,12 +14,8 @@
 
  @import '_rodzic_misje';
 
- @import '_background';
-
  @import '_rodzic_menu';
  @import '_rodzic_logowania';
-
- @import '_dziecko_nagrody';
 
 body.parent{
 	background: $color_back_parent url(../assets/background_parent.svg) top 275px center no-repeat;

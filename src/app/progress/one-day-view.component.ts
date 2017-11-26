@@ -5,81 +5,123 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'one-day-view',
   template: `
-  <div class="day"> <p> {{days[thisDay.getUTCDay()]}} <span></span> </p>
-  
-  <div class="day-line">
-    <ul class="small-mission-undone">
-      <li *ngFor="let mission of undoneMissions"
-      class='circle-small'>
-      </li> 
-     </ul>	
-    <ul class="small-mission-wait">
-      <li *ngFor="let mission of waitMissions"
-      class='circle-small'>
-      </li> 
-     </ul>		
-    <ul class="small-mission-done">
-      <li *ngFor="let mission of doneMissions"
-      class='circle-small'>
-      </li> 
-    </ul>		
-  </div>
 
-  <div class="day-details" >
-    <ul class="mission-undone"> 
-      <li *ngFor="let mission of undoneMissions"
-      class='circle-mid'
-      (click)="addDone(mission)"> 
-        <img src="{{mission.icon}}">
-        <star-svg></star-svg>
-        <span>{{mission.points}}</span>
-      </li> 
-    </ul>			
-    <ul class="mission-wait"> 
-      <li *ngFor="let mission of waitMissions"
-      class='circle-mid' 
-      (click)="addDone(mission)">> 
-        <img src="{{mission.icon}}">
-        <star-svg></star-svg>
-        {{starSvg}}
-        <span>{{mission.points}}</span>
-      </li> 
-    </ul>	
-    <ul class="mission-done"> 
-      <li *ngFor="let mission of doneMissions"
-      class='circle-mid'> 
-        <img src="{{mission.icon}}">
-        <star-svg></star-svg>
-        <span>{{mission.points}}</span>
-      </li> 
-    </ul>	
-  </div>		
-</div>
+
+
+  <div class="day" *ngIf="(type=='weekView')"> 
+  
+      <p> {{days[thisDay.getUTCDay()]}} <span></span> </p>
+
+      <div class="day-line">
+        <ul class="small-mission-undone">
+          <li *ngFor="let mission of undoneMissions" class='circle-small'></li> 
+        </ul>	
+        <ul class="small-mission-wait">
+          <li *ngFor="let mission of waitMissions" class='circle-small'></li> 
+         </ul>		
+        <ul class="small-mission-done">
+          <li *ngFor="let mission of doneMissions" class='circle-small'></li> 
+        </ul>		
+      </div>
+
+      <div class="day-details" >
+        <ul class="mission-undone"> 
+          <li *ngFor="let mission of undoneMissions" 
+            class='circle-mid'
+            (click)="moveUndone(mission)"> 
+            <img src="{{mission.icon}}">
+            <star-svg></star-svg>
+            <span>{{mission.points}}</span>
+          </li> 
+        </ul>			
+        <ul class="mission-wait"> 
+          <li *ngFor="let mission of waitMissions"
+            class='circle-mid'
+            (click)="moveWait(mission)"> 
+            <img src="{{mission.icon}}">
+            <star-svg></star-svg>
+            <span>{{mission.points}}</span>
+          </li> 
+        </ul>	
+        <ul class="mission-done"> 
+          <li *ngFor="let mission of doneMissions"
+            class='circle-mid'
+            (click)="moveDone(mission)"> 
+            <img src="{{mission.icon}}">
+            <star-svg></star-svg>
+            <span>{{mission.points}}</span>
+          </li> 
+        </ul>	
+      </div>		
+      
+   </div>
+
+
+
+  <div class="day-view" *ngIf="(type=='dayView')">
+  
+      <div class = 'left-column'>
+        <p class = "title">DO ZROBIENIA</p>
+        
+        <ul class="mission-undone"> 
+          <li *ngFor="let mission of undoneMissions"
+            class='circle-big'
+            (click)="moveUndone(mission)"> 
+            <img src="{{mission.icon}}">
+            <star-svg></star-svg>
+            <span>{{mission.points}}</span>
+          </li> 
+        </ul>	
+        
+      </div>
+      
+      <div class="right-column">
+        <p class = "title">ZROBIONE</p>
+        
+        <ul class="mission-wait"> 
+          <li *ngFor="let mission of waitMissions"
+            class='circle-big'
+            (click)="moveWait(mission)">
+            <img src="{{mission.icon}}">
+            <star-svg></star-svg>
+            <span>{{mission.points}}</span>
+          </li> 
+        </ul>	
+        <ul class="mission-done"> 
+          <li *ngFor="let mission of doneMissions"
+            class='circle-big'
+            (click)="moveDone(mission)">
+            <img src="{{mission.icon}}">
+            <star-svg></star-svg>
+            <span>{{mission.points}}</span>
+          </li> 
+        </ul>	
+        
+      </div>
+      
+  </div>	
+
 
   `,
-  styles: [`
- 
-    table {
-      width: 100%;
-    }
-
-    td, th {
-      width: 25%;
-    }
-  `],
+  styleUrls: ['../../sass/one-day-view.scss']
 
 })
 export class OneDayViewComponent implements OnInit {
 
+   
   constructor(
     private service: MissionsService,
     private router: Router,
-    private route: ActivatedRoute,
+    private route:ActivatedRoute,
   ) { }
 
+  days = ['PN','WT','ŚR','CZ','PT','SB','ND']
 
-  @Input()
-  dayId
+  @Input() dayId
+  
+  @Input() mode
+  
+  @Input() type
 
   @Output('onChange')
   countMissions = new EventEmitter();
@@ -98,22 +140,23 @@ export class OneDayViewComponent implements OnInit {
   doneMissions = [];
   waitMissions = [];
   undoneMissions = [];
-  monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
-
 
   ngOnChanges(){
     //set thisDay 
     this.thisDay = new Date();
     this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
     this.thisDay.setHours(0, 0, 0, 0);
-    //get kid Id 
-    this.route.parent.paramMap.subscribe(paramMap => {
-      this.kidId = paramMap.get('kidId');
-    })
-      this.fetchMissions()
+    if (this.mode=='kid'){
+      this.kidId = +localStorage.getItem('loggedKid');
+    } else {
+      this.kidId = this.route.parent.snapshot.paramMap.get('kidId');
+    }
+
+    //fetch all Missions
+    this.fetchMissions();
   }
 
-  ngOnInit() {  }
+  ngOnInit() { }
 
   fetchMissions() {
     this.service.fetchMissions(this.kidId)
@@ -124,6 +167,30 @@ export class OneDayViewComponent implements OnInit {
         this.undoneMissions = this.service.getUndoneMissions(this.userMissions, this.waitMissions, this.doneMissions);
         this.countAll();
       })
+  }
+
+ moveUndone(mission) {
+    if (this.mode == 'parent'){
+        this.addDone(mission)
+    } else {
+        this.addWait(mission)
+    }
+  }
+  
+ moveWait(mission) {
+    if (this.mode == 'parent'){
+        this.addDone(mission)
+    } else {
+        
+    }
+  }
+  
+ moveDone(mission) {
+    if (this.mode == 'parent'){
+       
+    } else {
+        
+    }
   }
   
   addDone(mission) {
@@ -144,6 +211,9 @@ export class OneDayViewComponent implements OnInit {
 
  
   addWait(mission) {
+    if (!mission.confirmation){
+      this.addDone(mission)
+    } else {
     let data=this.thisDay.getTime()
     let updatedMission={};
     this.service.getOneMission(mission.id)
@@ -153,6 +223,7 @@ export class OneDayViewComponent implements OnInit {
         this.service.updateOneMission(mission.id,updatedMission)
           .subscribe(() => this.fetchMissions());
       })
+    }
   }
 
 }

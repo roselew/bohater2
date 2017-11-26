@@ -8,7 +8,7 @@ import { Location} from "@angular/common";
   template: `
 
 
-  <ul class="mission-done dziecko-nagrody">
+  <ul class="mission-done">
   <li *ngFor="let userGift of availableGifts"
   class="circle-big"
   [routerLink]="['wybierz/'+userGift.id]">  
@@ -26,7 +26,7 @@ import { Location} from "@angular/common";
   </li> 
 </ul>
 
-  <ul class="mission-neutral dziecko-nagrody">
+  <ul class="mission-neutral">
     <li *ngFor="let userGift of unusedGifts"
     class="circle-big"> 
     <p>{{ userGift.name }} </p>
@@ -81,7 +81,7 @@ import { Location} from "@angular/common";
 
 
   `,
-  styles: [],
+  styleUrls: ['../../sass/kid-gifts.scss'],
 })
 export class KidGiftsComponent implements OnInit {
 

@@ -11,43 +11,49 @@ import { ActivatedRoute, Router } from "@angular/router";
     <span [routerLink]="['../',dayId +1]" class="next">&gt;</span> 
   </div>
 
-  <kid-one-day-view (onChange)="show($event)" [dayId]="dayId"></kid-one-day-view>
+  <one-day-view 
+        (onChange)="show($event,day)" 
+        [mode]= kid
+        [type]= dayView
+        [dayId]="day">
+  </one-day-view>
+    
    `,
   styles: [],
 
 })
+
 export class KidOneDayComponent implements OnInit {
 
   constructor(
     private router: Router,
     private route:ActivatedRoute,  
-
   ) { }
+
+
+  dayId
+  thisDay
+  monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
+  
+  ngOnInit(){
+    this.route.paramMap.subscribe(paramMap => {
+      this.dayId = +paramMap.get('dayId');
+      this.thisDay = new Date();
+      this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
+      this.thisDay.setHours(0, 0, 0, 0);
+    })
+  }
+  
 
   nDone
   nWait
   nUndone
-  monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
   
-  show([nDone,nWait,nUndone]){
+  show([nDone,nWait,nUndone],day){
     this.nDone=nDone;
     this.nWait=nWait;
     this.nUndone=nUndone;
   }
 
-
-  dayId
-  thisDay
-
-  ngOnInit(){
-    this.route.paramMap.subscribe(paramMap => {
-      this.dayId = parseInt(paramMap.get('dayId'));
-      this.thisDay = new Date();
-      this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
-      this.thisDay.setHours(0, 0, 0, 0);
-    })
-    
-
-  }
   
 }
