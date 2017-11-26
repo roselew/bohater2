@@ -296,6 +296,36 @@
       "doneDates": [],
       "waitDates": [],
       "id": 12
+    },
+    {
+      "confirmation": true,
+      "name": "Posprzątać pokój",
+      "icon": "assets/room.svg",
+      "points": 2,
+      "kidId": 3,
+      "start": 1511737200000,
+      "days": [
+        1,
+        3
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 13
+    },
+    {
+      "confirmation": true,
+      "name": "Zęby rano",
+      "icon": "assets/toothbrush.svg",
+      "points": 4,
+      "kidId": 3,
+      "start": 1511737200000,
+      "days": [
+        3,
+        5
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 14
     }
   ],
   "userGifts": [

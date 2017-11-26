@@ -51,7 +51,7 @@ export class MissionComponent implements OnInit {
         for (let day of this.mission['days']) {
           this.days.map(opt => {if (opt.value===day){opt.checked=true}})
         }
-       } )
+        } )
  }
 
    update(){

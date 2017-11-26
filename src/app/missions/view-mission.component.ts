@@ -10,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
     </li>
   </ul>
   
-  <form class=newMissionForm>
+  <form class="newMissionForm">
   
   <input type="text" name="newMissionName" placeholder="Nazwa misji" [(ngModel)]="mission.name">
 
@@ -23,47 +23,29 @@ import { Component, OnInit, Input } from '@angular/core';
     <p>W które dni tygodnia?</p>
     
     <div class="newMissionDays">
-        <input type="checkbox" name="newMissionDays" id="givenDay0" value="0">
-        <label for="givenDay0">PN</label>
+     
+      <ng-container *ngFor="let day of days">
+      
+        <input type="checkbox"
+                value="{{day.value}}"
+                id="{{'givenDay'+day.value}}"
+                [(ngModel)]="day.checked"
+                name="days"/>
         
-        <input type="checkbox" name="newMissionDays" id="givenDay1" value="1">
-        <label for="givenDay1">WT</label>
-        
-        <input type="checkbox" name="newMissionDays" id="givenDay2" value="2">
-        <label for="givenDay2">ŚR</label>
-        
-        <input type="checkbox" name="newMissionDays" id="givenDay3" value="3">
-        <label for="givenDay3">CZ</label>
-        
-        <input type="checkbox" name="newMissionDays" id="givenDay4" value="4">
-        <label for="givenDay4">PT</label>
-        
-        <input type="checkbox" name="newMissionDays" id="givenDay5" value="5">
-        <label for="givenDay5">SB</label>
-        
-        <input type="checkbox" name="newMissionDays" id="givenDay6" value="6">
-        <label for="givenDay6">ND</label></div>
+        <label for="{{'givenDay'+day.value}}">{{day.name}}</label>
 
+      </ng-container>
+      
+    </div>
+     
+        <label>
+        <input type="checkbox" 
+               [(ngModel)]="mission.confirmation">
+        Confirmation</label>
 
     </form>
 
-   <div class="form-group">
-   <label for="days">Days:</label>
-   <div *ngFor="let day of days">
-       <label>
-           <input type="checkbox"
-                   name="days"
-                   value="{{day.value}}"
-                   [(ngModel)]="day.checked"/>
-           {{day.name}}
-       </label>
-   </div>
- </div>
 
-   <label>
-   <input type="checkbox" 
-          [(ngModel)]="mission.confirmation">
-   Confirmation</label>
   `,
   styles: [],
 
@@ -73,9 +55,10 @@ export class ViewMissionComponent implements OnInit {
   @Input() mission
   @Input() days
 
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {console.log(this.days)
   }
 
 }
