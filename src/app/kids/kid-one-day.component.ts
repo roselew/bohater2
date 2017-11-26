@@ -13,9 +13,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 
   <one-day-view 
         (onChange)="show($event,day)" 
-        [mode]= kid
-        [type]= dayView
-        [dayId]="day">
+        [mode]= "mode"
+        [type]= "type"
+        [dayId]= "dayId">
   </one-day-view>
     
    `,
@@ -34,7 +34,9 @@ export class KidOneDayComponent implements OnInit {
   dayId
   thisDay
   monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
-  
+  mode = 'kid'
+  type = 'dayView'
+
   ngOnInit(){
     this.route.paramMap.subscribe(paramMap => {
       this.dayId = +paramMap.get('dayId');
