@@ -28,7 +28,10 @@ body.parent{
 		.header-banner{
 			background: none;
 			color: white;
-		}		
+		}	
+		header{
+			background-color: darken($color_back_parent,30%);
+		}	
 	}
 }
 

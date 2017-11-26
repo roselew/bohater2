@@ -18,6 +18,11 @@
       "email": "gg",
       "password": "gg",
       "id": 5
+    },
+    {
+      "email": "Probny",
+      "password": "kk",
+      "id": 6
     }
   ],
   "kids": [
@@ -44,6 +49,14 @@
       "password": "ww",
       "parentId": 5,
       "id": 3
+    },
+    {
+      "name": "Kacper",
+      "birth": "2013",
+      "login": "kk",
+      "password": "kk",
+      "parentId": 6,
+      "id": 4
     }
   ],
   "userMissions": [
@@ -271,6 +284,18 @@
       "doneDates": [],
       "waitDates": [],
       "id": 11
+    },
+    {
+      "confirmation": true,
+      "name": "Nakryć stół",
+      "icon": "assets/cutlery.svg",
+      "points": 2,
+      "kidId": 3,
+      "start": 1511650800000,
+      "days": [],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 12
     }
   ],
   "userGifts": [

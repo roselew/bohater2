@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   selector: 'shortcut-kid',
   template: `
 
-  <a href="rodzic_postepy.html" *ngIf="kid">
+  <a [routerLink]="['/rodzic/dziecko/'+kidId]" *ngIf="kid">
     <div class="kid-label" [routerLink]="['/rodzic/dziecko/'+kidId]">{{kid.name}}
     </div>	
   </a>

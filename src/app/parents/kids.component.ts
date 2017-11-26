@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -30,7 +30,13 @@ export class KidsComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
-  ) { }
+    private renderer: Renderer2) { 
+      this.renderer.addClass(document.body,'title-page')
+    }
+
+    ngOnDestroy() {
+      this.renderer.removeClass(document.body, 'title-page');
+    }
   
   parent = {};
   kids
