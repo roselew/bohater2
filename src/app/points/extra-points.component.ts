@@ -5,13 +5,20 @@ import { ActivatedRoute, Router } from "@angular/router";
 @Component({
   selector: 'extra-points',
   template: `
-   <label>Za co punkty?</label>
-   <input [(ngModel)]="extraPoints.description">
-   <label>Points</label>
-   <input [(ngModel)]="extraPoints.points">
-   <br>
-   <button (click)="save()">Save</button>
-   <button routerLink='../'>Powrót</button>
+
+
+<img src="assets/logoXL.png" width="300px" height="300px">
+
+<form class="">
+
+	<input type="text" name="newMissionName" placeholder="Za co punkty?" [(ngModel)]="extraPoints.description">
+	<span class="less">-</span>
+  <input type="number" name="newMissionPoints" placeholder="Liczba punktów ekstra" [(ngModel)]="extraPoints.points">
+  <span class="more">+</span>
+	<button (click)="save()">DODAJ PUNKTY</button>
+
+</form>
+
   `,
   styles: [],
 
