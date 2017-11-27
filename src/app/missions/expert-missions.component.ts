@@ -4,11 +4,14 @@ import { HttpClient } from "@angular/common/http";
 @Component({
   selector: 'expert-missions',
   template: `
-   <ul> 
+   <ul class="mission-neutral"> 
+    <span class="showMore bounce">▼</span>
     <li *ngFor="let mission of missions"
+    class="circle-mid"
     [routerLink]="['../dodaj-polecana/' + mission.id]"
     > 
-      {{ mission.name }} 
+      <p>{{ mission.name }} </p>
+      <img src="{{mission.icon}}">
     </li> 
   </ul> 
   `,
