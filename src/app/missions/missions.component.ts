@@ -13,7 +13,7 @@ import { Location} from "@angular/common";
       [routerLink]="[mission.id]"
       class="circle-big"> 
         <p>
-          <span class="dayList">{{days[mission.days]}}</span>
+          <span class="dayList"> {{showDays(mission)}}</span>
           {{mission.name}}
         </p>
         <img src="{{mission.icon}}">
@@ -27,7 +27,7 @@ import { Location} from "@angular/common";
     *ngFor="let mission of unactiveMissions"       
     class="circle-big"> 
       <p>
-        <span class="dayList">{{days[mission.days]}}</span>
+        <span class="dayList"> {{showDays(mission)}}</span>
         {{mission.name}}
       </p>
       <img src="{{mission.icon}}">
@@ -57,6 +57,9 @@ export class MissionsComponent implements OnInit {
 
   days=['PN','WT','ŚR','CZ','PT','SB','ND']
 
+  showDays(mission){
+    return mission.days.map(x=> this.days[x]).join(' ')
+  }
 
   ngOnInit(){
 

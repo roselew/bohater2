@@ -52,8 +52,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ViewMissionComponent implements OnInit {
 
-  @Input() mission
   @Input() days
+  @Input() mission
+ 
 
   lessPoints(){
     if(this.mission.points && this.mission.points>0){
@@ -71,7 +72,10 @@ export class ViewMissionComponent implements OnInit {
   }
   constructor() { }
 
-  ngOnInit() {console.log(this.days)
-  }
+  ngOnInit() {
+    //  for (let i=0; i<7; i++){
+    //   document.querySelectorAll("input[type='checkbox']")[i]['checked']=false
+    //   }
+   }
 
 }

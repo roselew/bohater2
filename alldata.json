@@ -258,7 +258,8 @@
         1511737200000
       ],
       "waitDates": [],
-      "id": 9
+      "id": 9,
+      "finish": 1511823600000
     },
     {
       "confirmation": true,
@@ -268,7 +269,11 @@
       "kidId": 2,
       "start": 1511391600000,
       "days": [
-        1
+        0,
+        1,
+        3,
+        5,
+        6
       ],
       "doneDates": [
         1511823600000
@@ -376,6 +381,21 @@
       "doneDates": [],
       "waitDates": [],
       "id": 17
+    },
+    {
+      "confirmation": true,
+      "name": "Nakarmić zwierzątko",
+      "icon": "assets/dog-food.svg",
+      "points": 2,
+      "kidId": 2,
+      "start": 1511823600000,
+      "days": [
+        0,
+        1
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 18
     }
   ],
   "userGifts": [
