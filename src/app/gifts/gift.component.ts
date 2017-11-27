@@ -6,14 +6,14 @@ import { Location} from "@angular/common";
 @Component({
   selector: 'gift',
   template: `
-
-  <view-gift [gift]="gift"></view-gift>
-  <br>
-  <p>Obecny status - {{gift.status}}</p>
-  <button (click)="update()">Zapisz zmiany</button>
-  <button (click)="remove()">Usuń</button>
-  <button routerLink='../'>Powrót</button>
-  `,
+  <div class="edit">
+    <span class="X" routerLink='../'> X </span>
+    <view-gift [gift]="gift"></view-gift>
+    <p>Obecny status - {{gift['status']}}</p>
+    <button (click)="update()">Zapisz zmiany</button>
+    <button class="altButton" (click)="remove()">Usuń nagrodę</button>
+  </div>
+   `,
   styles: [],
 
 })

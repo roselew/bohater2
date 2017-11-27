@@ -9,9 +9,25 @@ import { Location} from "@angular/common";
 
   <p>Dziecko ma {{totalPoints}} punktów </p>
 
-  <p>Lista nagród dziecka niewykorzystanych ale dostępnych</p>
+  <p *ngIf="chosenGifts.length>0" class="smallTitle">{{kid['name']}} wybrał nagrody i czeka na odbiór</p>
+  
+      <ul class="mission-neutral mission-wait">
+      <li 
+        *ngFor="let userGift of chosenGifts" 
+        [routerLink]="['wybrane/'+userGift.id]"
+        class="circle-big"> 
+          <p>
+            {{userGift.name}}
+          </p>
+          <img src="{{userGift.icon}}">
+          <star-svg></star-svg>
+          <span>{{userGift.points}}</span>
+      </li> 
+      </ul>
 
-  <ul class="mission-neutral">
+  <p class="smallTitle">Lista dostępnych nagród</p>
+
+  <ul class="mission-neutral mission-done">
   <li 
     *ngFor="let userGift of availableGifts" 
     [routerLink]="['dostepne/'+userGift.id]"
@@ -24,9 +40,6 @@ import { Location} from "@angular/common";
       <span>{{userGift.points}}</span>
   </li> 
 </ul>
-
-<p>Lista nagród dziecka niewykorzystanych</p>
-
 <ul class="mission-neutral">
 <li 
   *ngFor="let userGift of unusedGifts" 
@@ -41,43 +54,31 @@ import { Location} from "@angular/common";
 </li> 
 </ul>
 
-    <p>Lista nagród wybranych przez dziecko do odbioru</p>
 
-    <ul class="mission-neutral">
-    <li 
-      *ngFor="let userGift of chosenGifts" 
-      [routerLink]="['wybrane/'+userGift.id]"
-      class="circle-big"> 
-        <p>
-          {{userGift.name}}
-        </p>
-        <img src="{{userGift.icon}}">
-        <star-svg></star-svg>
-        <span>{{userGift.points}}</span>
-    </li> 
-    </ul>
+<p class="smallTitle">Nagrody już zdobyte</p>
 
-
-    <p>Lista nagród już odebranych</p>
-
-    <ul class="mission-neutral">
-    <li 
-      *ngFor="let userGift of receivedGifts" 
-      class="circle-big"> 
-        <p>
-          {{userGift.name}}
-        </p>
-        <img src="{{userGift.icon}}">
-        <star-svg></star-svg>
-        <span>{{userGift.points}}</span>
-    </li> 
-    </ul>
+<ul class="mission-neutral mission-unactive">
+<li 
+  *ngFor="let userGift of receivedGifts" 
+  class="circle-big"> 
+    <p>
+      {{userGift.name}}
+    </p>
+    <img src="{{userGift.icon}}">
+    <star-svg></star-svg>
+    <span>{{userGift.points}}</span>
+</li> 
+</ul>
 
 
-    <div class="plus" routerLink="dodaj">+</div>
+<div class="plus" routerLink="dodaj">+</div>
   
   `,
-  styles: [],
+  styles: [`
+  .mission-neutral li.circle-big{
+    margin: 2rem 4% 7rem 4%;
+  }
+  `],
 })
 export class GiftsComponent implements OnInit {
 

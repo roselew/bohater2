@@ -10,15 +10,14 @@ import { Component, OnInit, Input } from '@angular/core';
     </li>
   </ul>
   
+
   <form class="newMissionForm">
   
-  <input type="text" name="newMissionName" placeholder="Nazwa misji" [(ngModel)]="mission.name">
+    <input type="text" name="newMissionName" placeholder="Nazwa misji" [(ngModel)]="mission.name">
 
     <p>Liczba punktów</p>
 
-    <span class="less">-</span>
-    <input type="number" name="newMissionPoints" placeholder="Liczba punktów" [(ngModel)]="mission.points">
-    <span class="more">+</span>
+    <span class="less" (click)="lessPoints()">-</span><input type="number" name="newMissionPoints" placeholder="Liczba punktów" [(ngModel)]="+mission.points"><span class="more" (click)="morePoints()">+</span>
 
     <p>W które dni tygodnia?</p>
     
@@ -37,13 +36,14 @@ import { Component, OnInit, Input } from '@angular/core';
       </ng-container>
       
     </div>
-     
-        <label>
-        <input type="checkbox" 
-               [(ngModel)]="mission.confirmation">
-        Confirmation</label>
-
-    </form>
+  </form>
+  
+  <label class="confirmation-label">
+    <input type="checkbox" 
+          [(ngModel)]="mission.confirmation">
+    Wykonanie misji musi być potwierdzone przez rodzica
+  </label>
+   
 
 
   `,
@@ -55,7 +55,20 @@ export class ViewMissionComponent implements OnInit {
   @Input() mission
   @Input() days
 
-
+  lessPoints(){
+    if(this.mission.points && this.mission.points>0){
+      this.mission.points-=1;
+    } else {
+      this.mission.points =0;
+    }
+  }
+  morePoints(){
+    if(this.mission.points && this.mission.points>0){
+      this.mission.points+=1
+    } else {
+      this.mission.points = 1;
+    }  
+  }
   constructor() { }
 
   ngOnInit() {console.log(this.days)

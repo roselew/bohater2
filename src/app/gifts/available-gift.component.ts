@@ -6,15 +6,14 @@ import { Location} from "@angular/common";
 @Component({
   selector: 'available-gift',
   template: `
-
-  <view-gift [gift]="gift"></view-gift>
-  <br>
-  <p>Obecny status - {{gift.status}}</p>
-  <button (click)="chose()">Odbierz nagrodę</button>
-
-  <button (click)="update()">Zapisz zmiany</button>
-  <button (click)="remove()">Usuń</button>
-  <button routerLink='../../'>Powrót</button>
+  <div class="edit">
+    <span class="X" routerLink='../../'> X </span>
+    <view-gift [gift]="gift"></view-gift>
+    <p>Obecny status - {{gift['status']}}</p>
+    <button (click)="chose()">Odbierz nagrodę</button>
+    <button (click)="update()">Zapisz zmiany</button>
+    <button class="altButton" (click)="remove()">Usuń</button>
+  </div>
   `,
   styles: [],
 

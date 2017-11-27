@@ -21,8 +21,8 @@ import { Location} from "@angular/common";
         <span>{{mission.points}}</span>
     </li> 
   </ul>
-
-  <ul class="mission-neutral">
+ <p class="smallTitle">Zakończone misje </p>
+  <ul class="mission-neutral mission-unactive">
   <li 
     *ngFor="let mission of unactiveMissions"       
     class="circle-big"> 

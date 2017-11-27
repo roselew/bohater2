@@ -183,6 +183,11 @@ ul.mission-done {
 	.star {fill: $color_done}
 }
 
+ul.mission-unactive{
+	li {border-color: $color_dark_grey};
+	.star {fill: $color_dark_grey}
+}
+
 .kid .day-details {
 	background: $color_alert;
 }

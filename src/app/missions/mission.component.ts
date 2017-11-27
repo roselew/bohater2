@@ -6,14 +6,12 @@ import { Location} from "@angular/common";
 @Component({
   selector: 'mission',
   template: `
-
-  <view-mission [mission]="mission" [days]="days"></view-mission>
-  <br>
-
-  <button (click)="update()">Zapisz zmiany</button>
-  <button (click)="finish()">Zakończ</button>
-  <button (click)="remove()">Usuń</button>
-  <button routerLink='../'>Powrót</button>
+  <div class="edit">
+    <span class="X" routerLink='../'> X </span>
+    <view-mission [mission]="mission" [days]="days"></view-mission>
+    <button (click)="update()">Zapisz zmiany</button>
+    <button class="altButton" (click)="finish()">Wyłącz misję</button>
+  </div>
   `,
   styles: [],
 

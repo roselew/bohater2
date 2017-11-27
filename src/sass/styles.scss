@@ -73,7 +73,9 @@ a {
 	color: $color_text_kid;
 }
 
-
+body {
+	font: $font_big_size $font_reg_family;
+}
 // FORMS
 
 
@@ -155,6 +157,12 @@ span.more {
 	border-top-right-radius: $border_radius;			
 }
 
+p.smallTitle {
+	background-color: white;
+	padding: 2.0rem;
+	margin: 2.0rem 0;
+}
+
 // standard buttons
 button{
 	background-color: $color_base;
@@ -171,6 +179,16 @@ button{
 	}
 	&:hover{
 		background-color: darken($color_base,20%);	
+	}
+}
+
+button.altButton{
+	background-color: white;
+	border: 2px solid $color_base;
+	color: $color_base;
+	&:hover{
+		background-color: $color_base;
+		color:white;
 	}
 }
 
