@@ -9,35 +9,47 @@ import { MissionsService } from '../missions/missions.service';
 
   <div class="container">
 
-  <p> Bohater <p>
-
   <div *ngIf="userHero"> 
-    {{ userHero.name }}
-    Masz jeszcze {{nBadges}} odznak do wykorzystania
 
+    Masz jeszcze {{nBadges}} odznak do wykorzystania
     <ul>
       <li *ngFor="let badge of userHero.badges1"
+        class="bohater" 
         (click)="choseBadge(badge)">
-        {{badge.badgeName}} - {{badge.gained}}
-        
+          <p>{{badge.badgeName}}</p> 
+          <img *ngIf="badge.gained" src="assets/ikony/o_pusta.svg" class="pusta">
+          <img *nfIf="!badge.gained" src="{{badge.icon}}"
         </li>
-      </ul>
-      <ul>
+    </ul>
+
+    <ul>
       <li *ngFor="let badge of userHero.badges2"
+        class="bohater" 
         (click)="choseBadge(badge)">
-        {{badge.badgeName}} - {{badge.gained}}
+          <p>{{badge.badgeName}}</p> 
+          <img *ngIf="badge.gained" src="assets/ikony/o_pusta.svg" class="pusta">
+          <img *nfIf="!badge.gained" src="{{badge.icon}}"
         </li>
-      </ul>
-      <ul>
+    </ul>
+
+     <ul>
       <li *ngFor="let badge of userHero.badges3"
+        class="bohater" 
         (click)="choseBadge(badge)">
-        {{badge.badgeName}} - {{badge.gained}}
+          <p>{{badge.badgeName}}</p> 
+          <img *ngIf="badge.gained" src="assets/ikony/o_pusta.svg" class="pusta">
+          <img *nfIf="!badge.gained" src="{{badge.icon}}"
         </li>
-      </ul>
+    </ul>
+    
+
+    <div class="odznaki">
+      <img src="{{userHero.icon}}">
+      <img class="green" src="assets/ikony/o_pustaz.svg">
+      <p>Pozostały jeszcze {{nBadges}} odznaki do wykorzystania!</p>
+    </div>
 
   </div>
-
-  <button routerLink='/dziecko'>Powrót do menu </button>
 
   </div>
   `,
@@ -80,7 +92,7 @@ export class KidHeroComponent implements OnInit {
 
 
   choseBadge(badge){
-    if (this.nBadges>0) {
+    if (this.nBadges>0 && badge.gained=='false') {
     badge.gained = 'true'
     this.http.put('http://localhost:3000/userHeroes/'+ this.userHero['id'], this.userHero)
     .subscribe( userHero=> {
