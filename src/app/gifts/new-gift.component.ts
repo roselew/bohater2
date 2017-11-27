@@ -3,12 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'new-gift',
   template: `
-  <p>
-  Wybierz nagrodę z polecanych przez ekspertów albo...
-  </p>
+  <h1> Wybierz nagrody </h1>
+  <h2> polecane przez ekspertów </h2>
+  <span class="X" routerLink='../'> X </span>
+
   <expert-gifts></expert-gifts>
-  <button routerLink="../dodaj-wlasna">... utwórz własną</button>
-  <button routerLink='../'>Powrót</button>
+
+  <button routerLink="../dodaj-wlasna">... lub utwórz własną</button>
+
   `,
   styles: [],
 
