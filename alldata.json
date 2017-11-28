@@ -4,25 +4,6 @@
       "email": "annakowalska@gmail.com",
       "password": "anna",
       "id": 1
-    },
-    {
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "email": "gg",
-      "password": "gg",
-      "id": 5
-    },
-    {
-      "email": "Probny",
-      "password": "kk",
-      "id": 6
     }
   ],
   "kids": [
@@ -41,22 +22,6 @@
       "password": "bs",
       "parentId": 1,
       "id": 2
-    },
-    {
-      "name": "Wojtek",
-      "birth": "2010",
-      "login": "ww",
-      "password": "ww",
-      "parentId": 5,
-      "id": 3
-    },
-    {
-      "name": "Kacper",
-      "birth": "2013",
-      "login": "kk",
-      "password": "kk",
-      "parentId": 6,
-      "id": 4
     }
   ],
   "userMissions": [
@@ -281,63 +246,7 @@
       "waitDates": [],
       "id": 10
     },
-    {
-      "confirmation": true,
-      "name": "Nakarmić zwierzątko",
-      "icon": "assets/dog-food.svg",
-      "points": "10",
-      "kidId": 3,
-      "start": 1511478000000,
-      "days": [
-        0
-      ],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 11
-    },
-    {
-      "confirmation": true,
-      "name": "Nakryć stół",
-      "icon": "assets/cutlery.svg",
-      "points": 2,
-      "kidId": 3,
-      "start": 1511650800000,
-      "days": [],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 12
-    },
-    {
-      "confirmation": true,
-      "name": "Posprzątać pokój",
-      "icon": "assets/room.svg",
-      "points": 2,
-      "kidId": 3,
-      "start": 1511737200000,
-      "days": [
-        1,
-        3
-      ],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 13
-    },
-    {
-      "confirmation": true,
-      "name": "Zęby rano",
-      "icon": "assets/toothbrush.svg",
-      "points": 4,
-      "kidId": 3,
-      "start": 1511737200000,
-      "days": [
-        3,
-        5
-      ],
-      "doneDates": [],
-      "waitDates": [],
-      "id": 14
-    },
-    {
+     {
       "confirmation": true,
       "name": "Nakryć stół",
       "icon": "assets/cutlery.svg",
@@ -453,16 +362,7 @@
       "chosenDate": 1511737200000,
       "id": 6
     },
-    {
-      "name": "Niespodzianka",
-      "icon": "assets/gift.svg",
-      "points": "20",
-      "kidId": 3,
-      "status": "unused",
-      "chosenDate": "",
-      "id": 7
-    },
-    {
+      {
       "name": "Wycieczka na weekend",
       "icon": "assets/walk.svg",
       "points": 2,
@@ -581,12 +481,12 @@
     {
       "id": 1,
       "name": "Zęby rano",
-      "icon": "assets/toothbrush.svg"
+      "icon": "assets/ikony/m_zeby.svg"
     },
     {
       "id": 2,
       "name": "Zęby wieczór",
-      "icon": "assets/toothbrush.svg"
+      "icon": "assets/ikony/m_zeby.svg"
     },
     {
       "id": 3,
@@ -596,12 +496,12 @@
     {
       "id": 4,
       "name": "Poskładać zabawki",
-      "icon": "assets/block.svg"
+      "icon": "assets/ikony/m_zabawki.svg"
     },
     {
       "id": 5,
       "name": "Opróżnić zmywarkę",
-      "icon": "assets/dishwasher.svg"
+      "icon": "assets/ikony/m_zmywarka.svg"
     },
     {
       "id": 6,
@@ -611,12 +511,12 @@
     {
       "id": 7,
       "name": "Pościelić łóżko",
-      "icon": "assets/bed.svg"
+      "icon": "assets/ikony/m_lozko.svg"
     },
     {
       "id": 8,
       "name": "Odkurzyć podłogę",
-      "icon": "assets/vacuum.svg"
+      "icon": "assets/ikony/m_odkurzacz.svg"
     },
     {
       "id": 9,
@@ -636,52 +536,52 @@
     {
       "id": 12,
       "name": "Wynieść śmieci",
-      "icon": "assets/garbage.svg"
+      "icon": "assets/ikony/m_smieci.svg"
     },
     {
       "id": 13,
       "name": "Posprzątać po zwierzątku",
-      "icon": "assets/kennel.svg"
+      "icon": "assets/ikony/m_kuweta.svg"
     },
     {
       "id": 14,
       "name": "Umyć auto",
-      "icon": "assets/car.svg"
+      "icon": "assets/ikony/m_samochod.svg"
     },
     {
       "id": 15,
       "name": "Zetrzeć kurze",
-      "icon": "assets/clean.svg"
+      "icon": "assets/ikony/m_kurz.svg"
     },
     {
       "id": 16,
       "name": "Nakarmić zwierzątko",
-      "icon": "assets/dog-food.svg"
+      "icon": "assets/ikony/m_nakarmic.svg"
     },
     {
       "id": 17,
       "name": "Wyprowadzić zwierzątko",
-      "icon": "assets/pet.svg"
+      "icon": "assets/ikony/m_spacer.svg"
     },
     {
       "id": 18,
       "name": "Rozpakować zakupy",
-      "icon": "assets/basket.svg"
+      "icon": "assets/ikony/m_zakupy.svg"
     },
     {
       "id": 19,
       "name": "Pomoc w ogródku",
-      "icon": "assets/tree.svg"
+      "icon": "assets/ikony/m_ogrod.svg"
     },
     {
       "id": 20,
       "name": "Umyć naczynia",
-      "icon": "assets/wash.svg"
+      "icon": "assets/ikony/m_naczynia.svg"
     },
     {
       "id": 21,
       "name": "Odrobić pracę domową",
-      "icon": "assets/carpentry.svg"
+      "icon": "assets/ikony/m_lekcje.svg"
     },
     {
       "id": 22,
@@ -691,29 +591,29 @@
     {
       "id": 23,
       "name": "Poskładać ubrania",
-      "icon": "assets/shirt.svg"
+      "icon": "assets/ikony/m_ubrania.svg"
     },
     {
       "id": 24,
       "name": "Ubrać się samemu",
-      "icon": "assets/shirt.svg"
+      "icon": "assets/ikony/m_ubrac.svg"
     }
   ],
   "expertGifts": [
     {
       "id": 1,
       "name": "Wyjście na lody",
-      "icon": "assets/icecream.svg"
+      "icon": "assets/ikony/n_lody.svg"
     },
     {
       "id": 2,
       "name": "Wyjście do kina",
-      "icon": "assets/tickets.svg"
+      "icon": "assets/ikony/n_kino.svg"
     },
     {
       "id": 3,
       "name": "Wycieczka na weekend",
-      "icon": "assets/walk.svg"
+      "icon": "assets/ikony/n_wycieczka.svg"
     },
     {
       "id": 4,
@@ -723,17 +623,17 @@
     {
       "id": 5,
       "name": "15 min na gry",
-      "icon": "assets/15-minutes.svg"
+      "icon": "assets/ikony/n_kwadrans.svg"
     },
     {
       "id": 6,
       "name": "30 min na gry",
-      "icon": "assets/30-minutes.svg"
+      "icon": "assets/ikony/n_pol.svg"
     },
     {
       "id": 7,
       "name": "45 min na gry",
-      "icon": "assets/45-minutes.svg"
+      "icon": "assets/ikony/n_trzyczwarte.svg"
     },
     {
       "id": 8,
@@ -743,17 +643,17 @@
     {
       "id": 9,
       "name": "Nowa zabawka",
-      "icon": "assets/gift2.svg"
+      "icon": "assets/ikony/n_prezent.svg"
     },
     {
       "id": 10,
       "name": "Wieczór gier",
-      "icon": "assets/dice.svg"
+      "icon": "assets/ikony/n_gry.svg"
     },
     {
       "id": 11,
       "name": "Deser",
-      "icon": "assets/piece-of-cake.svg"
+      "icon": "assets/ikony/n_deser.svg"
     },
     {
       "id": 12,
@@ -763,7 +663,7 @@
     {
       "id": 13,
       "name": "Deskorolka",
-      "icon": "assets/skateboard.svg"
+      "icon": "assets/ikony/n_deska.svg"
     },
     {
       "id": 14,
@@ -773,7 +673,7 @@
     {
       "id": 15,
       "name": "Klocki LEGO",
-      "icon": "assets/lego.svg"
+      "icon": "assets/ikony/n_lego.svg"
     }
   ],
   "expertHeroes": [
@@ -784,51 +684,51 @@
       "badges1": [
         {
           "badgeName": "Buty mocy",
-          "icon": "assets/o_but1.svg.svg",
+          "icon": "assets/o_but1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Buty super mocy",
-          "icon": "assets/o_but2.svg.svg",
+          "icon": "assets/o_but2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Buty extra mocy",
-          "icon": "assets/o_but3.svg.svg",
+          "icon": "assets/o_but3.svg",
           "gained": "false"
         }
       ],
       "badges2": [
         {
           "badgeName": "Ręka mocy",
-          "icon": "assets/o_reka1.svg.svg",
+          "icon": "assets/o_reka1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Ręka super mocy",
-          "icon": "assets/o_reka2.svg.svg",
+          "icon": "assets/o_reka2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Ręka extra mocy",
-          "icon": "assets/o_reka3.svg.svg",
+          "icon": "assets/o_reka3.svg",
           "gained": "false"
         }
       ],
       "badges3": [
         {
           "badgeName": "Maska mocy",
-          "icon": "assets/o_maska1.svg.svg",
+          "icon": "assets/o_maska1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Maska super mocy",
-          "icon": "assets/o_maska2.svg.svg",
+          "icon": "assets/o_maska2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Maska extra mocy",
-          "icon": "assets/o_maska3.svg.svg",
+          "icon": "assets/o_maska3.svg",
           "gained": "false"
         }
       ]
@@ -840,51 +740,51 @@
       "badges1": [
         {
           "badgeName": "Buty mocy",
-          "icon": "assets/o_but1.svg.svg",
+          "icon": "assets/o_but1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Buty super mocy",
-          "icon": "assets/o_but2.svg.svg",
+          "icon": "assets/o_but2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Buty extra mocy",
-          "icon": "assets/o_but3.svg.svg",
+          "icon": "assets/o_but3.svg",
           "gained": "false"
         }
       ],
       "badges2": [
         {
           "badgeName": "Ręka mocy",
-          "icon": "assets/o_reka1.svg.svg",
+          "icon": "assets/o_reka1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Ręka super mocy",
-          "icon": "assets/o_reka2.svg.svg",
+          "icon": "assets/o_reka2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Ręka extra mocy",
-          "icon": "assets/o_reka3.svg.svg",
+          "icon": "assets/o_reka3.svg",
           "gained": "false"
         }
       ],
       "badges3": [
         {
           "badgeName": "Maska mocy",
-          "icon": "assets/o_maska1.svg.svg",
+          "icon": "assets/o_maska1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Maska super mocy",
-          "icon": "assets/o_maska2.svg.svg",
+          "icon": "assets/o_maska2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Maska extra mocy",
-          "icon": "assets/o_maska3.svg.svg",
+          "icon": "assets/o_maska3.svg",
           "gained": "false"
         }
       ]
@@ -896,51 +796,51 @@
       "badges1": [
         {
           "badgeName": "Buty mocy",
-          "icon": "assets/o_but1.svg.svg",
+          "icon": "assets/o_but1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Buty super mocy",
-          "icon": "assets/o_but2.svg.svg",
+          "icon": "assets/o_but2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Buty extra mocy",
-          "icon": "assets/o_but3.svg.svg",
+          "icon": "assets/o_but3.svg",
           "gained": "false"
         }
       ],
       "badges2": [
         {
           "badgeName": "Ręka mocy",
-          "icon": "assets/o_reka1.svg.svg",
+          "icon": "assets/o_reka1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Ręka super mocy",
-          "icon": "assets/o_reka2.svg.svg",
+          "icon": "assets/o_reka2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Ręka extra mocy",
-          "icon": "assets/o_reka3.svg.svg",
+          "icon": "assets/o_reka3.svg",
           "gained": "false"
         }
       ],
       "badges3": [
         {
           "badgeName": "Maska mocy",
-          "icon": "assets/o_maska1.svg.svg",
+          "icon": "assets/o_maska1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Maska super mocy",
-          "icon": "assets/o_maska2.svg.svg",
+          "icon": "assets/o_maska2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Maska extra mocy",
-          "icon": "assets/o_maska3.svg.svg",
+          "icon": "assets/o_maska3.svg",
           "gained": "false"
         }
       ]
