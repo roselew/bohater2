@@ -18,11 +18,12 @@ import { Location} from "@angular/common";
           <img src="{{userGift.icon}}">
           <star-svg></star-svg>
           <span>{{userGift.points}}</span>
-           <div class='buttonPanel'>
-            <button (click)="chose(userGift)">Kup nagrodę</button>
-            <button (click)="chose(userGift)" class="altButton>Potwierdź odbiór</button>
-          </div>
-      </li> 
+       </li> 
+       <div class='buttonPanel'>
+        <button (click)="chose(userGift)">Kup nagrodę</button>
+        <button (click)="chose(userGift)" class="altButton>Potwierdź odbiór</button>
+      </div>
+    
       </ul>
 
  </div>
