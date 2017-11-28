@@ -10,7 +10,7 @@ import { Location} from "@angular/common";
 
   <div class="week">
     <span [routerLink]="['../',weekId -1]" class="prev">&lsaquo;</span>
-    <a routerLink='../historia'>{{firstDate.getDate()}} {{monthNames[firstDate.getMonth()]}} - {{endDate.getDate()}} {{monthNames[endDate.getMonth()]}}</a>
+    <a routerLink='../historia'>{{firstDate.getDate()}} {{firstDate.getMonth()==endDate.getMonth() ? monthNames[firstDate.getMonth()] : ''}} - {{endDate.getDate()}} {{monthNames[endDate.getMonth()]}}</a>
     <span [routerLink]="['../',weekId +1]" class="next">&rsaquo;</span> 
   </div>		
   
