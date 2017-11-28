@@ -163,6 +163,17 @@ p.smallTitle {
 	margin: 2.0rem 0;
 }
 
+//tables font
+table {
+  td {
+    font: $font_mid_size $font_reg_family;
+  }
+  th {
+    font: $font_mid_size $font_reg_family;
+    font-weight: bold;
+  }
+}
+
 // standard buttons
 button{
 	background-color: $color_base;
