@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   
       <p> {{days[thisDay.getUTCDay()]}} <span></span> </p>
 
-      <div class="day-line">
+      <div *ngIf=(filter=='all') class="day-line">
         <ul class="small-mission-undone">
           <li *ngFor="let mission of undoneMissions" class='circle-small'></li> 
         </ul>	
@@ -25,7 +25,7 @@ import { Router, ActivatedRoute } from '@angular/router';
       </div>
 
       <div class="day-details" >
-        <ul class="mission-undone"> 
+        <ul *ngIf=(filter=='all'||filter='undone') class="mission-undone"> 
           <li *ngFor="let mission of undoneMissions" 
             class='circle-mid'
             (click)="moveUndone(mission)"> 
@@ -34,7 +34,7 @@ import { Router, ActivatedRoute } from '@angular/router';
             <span>{{mission.points}}</span>
           </li> 
         </ul>			
-        <ul class="mission-wait"> 
+        <ul *ngIf=(filter=='all'||filter='wait') class="mission-wait"> 
           <li *ngFor="let mission of waitMissions"
             class='circle-mid'
             (click)="moveWait(mission)"> 
@@ -43,7 +43,7 @@ import { Router, ActivatedRoute } from '@angular/router';
             <span>{{mission.points}}</span>
           </li> 
         </ul>	
-        <ul class="mission-done"> 
+        <ul *ngIf=(filter=='all'||filter='done') class="mission-done"> 
           <li *ngFor="let mission of doneMissions"
             class='circle-mid'
             (click)="moveDone(mission)"> 
@@ -122,6 +122,8 @@ export class OneDayViewComponent implements OnInit {
   @Input() mode
   
   @Input() type
+  
+  @Input() filter
 
   @Output('onChange')
   countMissions = new EventEmitter();
