@@ -32,6 +32,7 @@ import { Location} from "@angular/common";
         (onChange)="show($event,day)" 
         [mode]="mode" 
         [type]="type"
+        [filter]="filter"
         [dayId]="day">
     </one-day-view>
   </div>
