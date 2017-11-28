@@ -8,23 +8,25 @@ import { Location} from "@angular/common";
   template: `
 
    <div *ngIf="chosenGifts.length>0" class="chosenGiftsPanel">
-    <p class="panelTitle">{{kid['name']}} wybrało nagrodę</p>
+     <div class="panelTitle">
+        <img src="assets/gift.svg" height='50px'>
+        <p>{{kid['name']}} wybrało nagrodę</p>
+    </div>
   
-      <ul class="mission-neutral mission-wait"
-        *ngFor="let userGift of chosenGifts" 
-        [routerLink]="['wybrane/'+userGift.id]">
+    <ul class="mission-neutral mission-wait"
+      *ngFor="let userGift of chosenGifts">
       <li class="circle-big"> 
-          <p> {{userGift.name}} </p>
-          <img src="{{userGift.icon}}">
-          <star-svg></star-svg>
-          <span>{{userGift.points}}</span>
-       </li> 
-       <div class='buttonPanel'>
-        <button (click)="chose(userGift)">Kup nagrodę</button>
-        <button (click)="chose(userGift)" class="altButton>Potwierdź odbiór</button>
-      </div>
-    
-      </ul>
+        <p> {{userGift.name}} </p>
+        <img src="{{userGift.icon}}">
+        <star-svg></star-svg>
+        <span>{{userGift.points}}</span>
+     </li> 
+     <div class='buttonPanel'>
+      <button (click)="chose(userGift)">Kup nagrodę</button>
+      <button (click)="chose(userGift)" class="altButton>Potwierdź odbiór</button>
+    </div>
+
+    </ul>
 
  </div>
 
