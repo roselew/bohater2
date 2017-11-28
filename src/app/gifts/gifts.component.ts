@@ -9,7 +9,8 @@ import { Location} from "@angular/common";
 
   <p>Dziecko ma {{totalPoints}} punktów </p>
 
-  <p *ngIf="chosenGifts.length>0" class="smallTitle">{{kid['name']}} wybrał nagrody i czeka na odbiór</p>
+  <div *ngIf="chosenGifts.length>0" class="chosenGiftsPanel">
+    <p class="panelTitle">{{kid['name']}} wybrało nagrodę</p>
   
       <ul class="mission-neutral mission-wait">
       <li 
@@ -22,8 +23,12 @@ import { Location} from "@angular/common";
           <img src="{{userGift.icon}}">
           <star-svg></star-svg>
           <span>{{userGift.points}}</span>
+         <button>Kup nagrodę</button>
+         <button class="altButton>Potwierdź odbiór</button>
       </li> 
       </ul>
+
+ </div>
 
   <p class="smallTitle">Lista dostępnych nagród</p>
 
