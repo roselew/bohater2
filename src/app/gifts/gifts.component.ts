@@ -7,30 +7,27 @@ import { Location} from "@angular/common";
   selector: 'gifts',
   template: `
 
-  <p>Dziecko ma {{totalPoints}} punktów </p>
-
-  <div *ngIf="chosenGifts.length>0" class="chosenGiftsPanel">
+   <div *ngIf="chosenGifts.length>0" class="chosenGiftsPanel">
     <p class="panelTitle">{{kid['name']}} wybrało nagrodę</p>
   
-      <ul class="mission-neutral mission-wait">
-      <li 
+      <ul class="mission-neutral mission-wait"
         *ngFor="let userGift of chosenGifts" 
-        [routerLink]="['wybrane/'+userGift.id]"
-        class="circle-big"> 
-          <p>
-            {{userGift.name}}
-          </p>
+        [routerLink]="['wybrane/'+userGift.id]">
+      <li class="circle-big"> 
+          <p> {{userGift.name}} </p>
           <img src="{{userGift.icon}}">
           <star-svg></star-svg>
           <span>{{userGift.points}}</span>
-         <button>Kup nagrodę</button>
-         <button class="altButton>Potwierdź odbiór</button>
+           <div class='buttonPanel'>
+            <button (click)="chose(userGift)">Kup nagrodę</button>
+            <button (click)="chose(userGift)" class="altButton>Potwierdź odbiór</button>
+          </div>
       </li> 
       </ul>
 
  </div>
 
-  <p class="smallTitle">Lista dostępnych nagród</p>
+<p>Dziecko ma {{totalPoints}} punktów </p>
 
   <ul class="mission-neutral mission-done">
   <li 
@@ -83,6 +80,18 @@ import { Location} from "@angular/common";
   .mission-neutral li.circle-big{
     margin: 2rem 4% 7rem 4%;
   }
+ .chosenGiftsPanel{
+ width: 100%;
+ background-color:white;
+   .buttonPanel {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    }
+ }
+
   `],
 })
 export class GiftsComponent implements OnInit {
@@ -106,7 +115,11 @@ export class GiftsComponent implements OnInit {
 
   ngOnInit(){
     this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
-    this.http.get('http://localhost:3000/kids/'+this.kid['id']+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
+    this.fetchGifts()
+  }
+
+ fetchGifts(){
+       this.http.get('http://localhost:3000/kids/'+this.kid['id']+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
       .subscribe( kid => {
         this.kid = kid;
         this.userMissions = this.kid['userMissions'];
@@ -119,8 +132,7 @@ export class GiftsComponent implements OnInit {
         this.unusedGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points > this.totalPoints);  
         this.availableGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points <= this.totalPoints);
       })
-  }
-
+ }
 
   calculatePoints(){
     for (let mission of this.userMissions){
@@ -136,5 +148,14 @@ export class GiftsComponent implements OnInit {
       this.totalPoints += parseInt(points['points'])
     }
   }
+
+  chose(gift){
+      gift['status']='chosen';
+      let today = new Date().setHours(0,0,0,0);
+      gift['chosenDate']=today;
+      this.http.put('http://localhost:3000/userGifts/'+ gift['id'], gift)
+        .subscribe( ()=> this.fetchGifts() );
+  };
+  
 
 }
