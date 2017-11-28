@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
       <div class="progress-wait" [ngStyle]="{'width' : waitWidth + '%'}"> </div>
       <div class="progress-done" [ngStyle]="{ 'width' : doneWidth + '%'}"> </div> 
       <img src="../../assets/logo.png" class="logo">
+      <ng-content></ng-content>
     </div>
   `,
   styleUrls: ['../../sass/progress-bar-week.scss']
