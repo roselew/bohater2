@@ -7,11 +7,17 @@ import { ActivatedRoute, Router } from "@angular/router";
   template: `
   <p>Historia</p>
   <table> 
+     <colgroup>
+        <col style="width:30%">
+        <col style="width:10%">
+        <col style="width:40%">
+        <col style="width:20%">
+      </colgroup>  
   <thead>
-    <td>Data</td>
-    <td>Typ</td>
-    <td>Nazwa</td>
-    <td>Punkty</td>
+    <th>Data</th>
+    <th>Typ</th>
+    <th>Nazwa</th>
+    <th>Punkty</th>
    </thead>
    <tbody>
     <tr *ngFor="let oneItem of history"> 
@@ -30,7 +36,15 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 
   `,
-  styles: [],
+  styles: [`
+  table{
+    th, td {
+        padding: 1.0rem;
+        border-bottom: 1px dotted #ddd;
+    }
+    tr:hover {background-color: #f5f5f5;}
+  }
+  `],
 
 })
 export class PointsComponent implements OnInit {
