@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
   <div class="day" *ngIf="(type=='weekView')"> 
   
-      <p> {{days[thisDay.getUTCDay()]}} <span></span> (click)="showDetails()"</p>
+      <p> {{days[thisDay.getUTCDay()]}} <span></span> (click)="showDetails()" [ngClass]="{'selected': details }"</p>
 
       <div *ngIf=(filter=='all') class="day-line">
         <ul class="small-mission-undone">
@@ -24,7 +24,7 @@ import { Router, ActivatedRoute } from '@angular/router';
         </ul>		
       </div>
 
-      <div *ngIf="(details)" class="day-details" >
+      <div *ngIf="(details)" class="day-details">
         <ul *ngIf="(filter=='all'||filter='undone')" class="mission-undone"> 
           <li *ngFor="let mission of undoneMissions" 
             class='circle-mid'
