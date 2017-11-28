@@ -16,7 +16,11 @@ import { ActivatedRoute, Router } from "@angular/router";
    <tbody>
     <tr *ngFor="let oneItem of history"> 
       <td>{{ oneItem.date | date: 'shortDate' }} </td>
-      <td>{{ oneItem.type }} </td>
+      <td>
+        <img *ngIf="oneItem.type=='mission'" src="assets/mission.svg" height='5.0rem'>"
+        <img *ngIf="oneItem.type=='gifts'" src="assets/gift.svg" height='5.0rem'>"
+        <img *ngIf="oneItem.type=='ekstra punkty'" src="assets/addstars.svg" height='5.0rem'>"
+      </td>
       <td>{{ oneItem.name }}</td>
       <td>{{ oneItem.points }}</td>
     </tr>
@@ -46,7 +50,7 @@ export class PointsComponent implements OnInit {
   chosenGifts
   receivedGifts
   extraPoints
-
+    
   ngOnInit(){
     this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
     this.http.get('http://localhost:3000/kids/'+this.kid['id']+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
