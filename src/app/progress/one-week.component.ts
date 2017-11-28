@@ -20,10 +20,10 @@ import { Location} from "@angular/common";
   </progress-bar-week>
  
     <div class="filter">
-      <button class="show-all"><span>{{tUndone+tWait+tDone}}</span></button>
-      <button class="show-undone"><span>{{tUndone}}</span></button>
-      <button class ="show-wait"><span>{{tWait}}</span></button>
-      <button class="show-done"><span>{{tDone}}</span></button>
+      <button class="show-all" (click)="applyFilter('all')" ><span>{{tUndone+tWait+tDone}}</span></button>
+      <button class="show-undone" (click)="applyFilter('undone')"><span>{{tUndone}}</span></button>
+      <button class ="show-wait" (click)="applyFilter('wait')"><span>{{tWait}}</span></button>
+      <button class="show-done" (click)="applyFilter('done')"><span>{{tDone}}</span></button>
       <img src="../../assets/bohater.png" class="hero">
     </div>
 
@@ -56,6 +56,11 @@ export class OneWeekComponent implements OnInit {
   firstDay
   mode
   type='weekView'
+  filter='all'
+
+  applyFilter(filterMode){
+    this.filter=filterMode
+  }
 
   ngOnInit() { 
     let today = new Date();
