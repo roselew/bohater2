@@ -11,14 +11,13 @@ import { MissionsService } from '../missions/missions.service';
 
   <div *ngIf="userHero"> 
 
-    Masz jeszcze {{nBadges}} odznak do wykorzystania
     <ul>
       <li *ngFor="let badge of userHero.badges1"
         class="bohater" 
         (click)="choseBadge(badge)">
           <p>{{badge.badgeName}}</p> 
-          <img *ngIf="badge.gained" src="assets/ikony/o_pusta.svg" class="pusta">
-          <img *nfIf="!badge.gained" src="{{badge.icon}}"
+          <img *ngIf="badge.gained=='false'" src="assets/ikony/o_pusta.svg" class="pusta">
+          <img *ngIf="badge.gained=='true'" src="{{badge.icon}}">
         </li>
     </ul>
 
@@ -27,8 +26,8 @@ import { MissionsService } from '../missions/missions.service';
         class="bohater" 
         (click)="choseBadge(badge)">
           <p>{{badge.badgeName}}</p> 
-          <img *ngIf="badge.gained" src="assets/ikony/o_pusta.svg" class="pusta">
-          <img *nfIf="!badge.gained" src="{{badge.icon}}"
+          <img *ngIf="badge.gained=='false'" src="assets/ikony/o_pusta.svg" class="pusta">
+          <img *ngIf="badge.gained=='true'" src="{{badge.icon}}">
         </li>
     </ul>
 
@@ -37,14 +36,14 @@ import { MissionsService } from '../missions/missions.service';
         class="bohater" 
         (click)="choseBadge(badge)">
           <p>{{badge.badgeName}}</p> 
-          <img *ngIf="badge.gained" src="assets/ikony/o_pusta.svg" class="pusta">
-          <img *nfIf="!badge.gained" src="{{badge.icon}}"
+          <img *ngIf="badge.gained=='false'" src="assets/ikony/o_pusta.svg" class="pusta">
+          <img *ngIf="badge.gained=='true'" src="{{badge.icon}}">
         </li>
     </ul>
     
 
     <div class="odznaki">
-      <img src="{{userHero.icon}}">
+      <img src="{{userHero.image}}">
       <img class="green" src="assets/ikony/o_pustaz.svg">
       <p>Pozostały jeszcze {{nBadges}} odznaki do wykorzystania!</p>
     </div>

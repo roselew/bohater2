@@ -10,9 +10,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 
   <div class="day" *ngIf="(type=='weekView')"> 
   
-      <p> {{days[thisDay.getUTCDay()]}} <span></span> (click)="showDetails()" [ngClass]="{'selected': details }"</p>
+      <p (click)="showDetails()" [ngClass]="{'selected': details }">
+        {{days[thisDay.getUTCDay()]}} 
+        <span></span> 
+      </p>
 
-      <div *ngIf=(filter=='all') class="day-line">
+      <div *ngIf="(filter=='all')" class="day-line">
         <ul class="small-mission-undone">
           <li *ngFor="let mission of undoneMissions" class='circle-small'></li> 
         </ul>	
@@ -24,8 +27,8 @@ import { Router, ActivatedRoute } from '@angular/router';
         </ul>		
       </div>
 
-      <div *ngIf="(details)" class="day-details">
-        <ul *ngIf="(filter=='all'||filter='undone')" class="mission-undone"> 
+      <div *ngIf="( (filter=='all' && details) || filter!=='all')" class="day-details">
+        <ul *ngIf="(filter=='all' || filter=='undone')" class="mission-undone"> 
           <li *ngFor="let mission of undoneMissions" 
             class='circle-mid'
             (click)="moveUndone(mission)"> 
@@ -34,7 +37,7 @@ import { Router, ActivatedRoute } from '@angular/router';
             <span>{{mission.points}}</span>
           </li> 
         </ul>			
-        <ul *ngIf="(filter=='all'||filter='wait')" class="mission-wait"> 
+        <ul *ngIf="(filter=='all'||filter=='wait')" class="mission-wait"> 
           <li *ngFor="let mission of waitMissions"
             class='circle-mid'
             (click)="moveWait(mission)"> 
@@ -43,7 +46,7 @@ import { Router, ActivatedRoute } from '@angular/router';
             <span>{{mission.points}}</span>
           </li> 
         </ul>	
-        <ul *ngIf="(filter=='all'||filter='done')" class="mission-done"> 
+        <ul *ngIf="(filter=='all'||filter=='done')" class="mission-done"> 
           <li *ngFor="let mission of doneMissions"
             class='circle-mid'
             (click)="moveDone(mission)"> 
@@ -235,3 +238,4 @@ export class OneDayViewComponent implements OnInit {
    this.details ? document.querySelector('.day>p span').innerHTML='&#x25B2' : document.querySelector('.day>p span').innerHTML='&#x25BC'
    }
    }
+}

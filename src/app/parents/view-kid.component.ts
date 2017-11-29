@@ -17,26 +17,6 @@ import { Component, OnInit, Input } from '@angular/core';
       <input type="radio" name="kids-gender" id="gender-left"><label for="gender-left" class="double">Chłopiec</label>
       <input type="radio" name="kids-gender" id="gender-right"><label for="gender-right" class="double">Dziewczynka</label>
   
-      <div id="avatars">
-        <p class="kr-bohater-text">Wybierz bohatera</p>
-        <form action='rodzic_menu.html'>
-          <label class="avatars">
-              <input class="kr-bohater" type="radio" name="avatar"/>
-            <img src="./assets/bohater.png" alt=""/>  
-          </label> 
-  
-          <label class="avatars">
-              <input class="kr-bohater" type="radio" name="avatar"/>
-              <img src="./assets/bohater2.png" alt=""/>
-          </label>
-          <label class="avatars">
-              <input class="kr-bohater" type="radio" name="avatar"/>
-              <img src="./assets/bohater3.png" alt=""/>
-          </label>
-  
-          </form>
-      </div>  
-
       </form>
 
    

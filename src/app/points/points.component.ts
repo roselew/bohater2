@@ -5,11 +5,10 @@ import { ActivatedRoute, Router } from "@angular/router";
 @Component({
   selector: 'points',
   template: `
-  <p>Historia</p>
   <table> 
      <colgroup>
-        <col style="width:30%">
-        <col style="width:10%">
+        <col style="width:25%">
+        <col style="width:15%">
         <col style="width:40%">
         <col style="width:20%">
       </colgroup>  
@@ -23,9 +22,9 @@ import { ActivatedRoute, Router } from "@angular/router";
     <tr *ngFor="let oneItem of history"> 
       <td>{{ oneItem.date | date: 'shortDate' }} </td>
       <td>
-        <img *ngIf="oneItem.type=='mission'" src="assets/mission.svg" height='5.0rem'>"
-        <img *ngIf="oneItem.type=='gifts'" src="assets/gift.svg" height='5.0rem'>"
-        <img *ngIf="oneItem.type=='ekstra punkty'" src="assets/addstars.svg" height='5.0rem'>"
+        <img *ngIf="(oneItem.type=='mission')" src="assets/mission.svg" height='50px'>
+        <img *ngIf="(oneItem.type=='gifts')" src="assets/gift.svg" height='50px'>
+        <img *ngIf="(oneItem.type=='ekstra punkty')" src="assets/addstars.svg" height='50px'>
       </td>
       <td>{{ oneItem.name }}</td>
       <td>{{ oneItem.points }}</td>
@@ -33,17 +32,19 @@ import { ActivatedRoute, Router } from "@angular/router";
   </tbody>
   </table>
 
-
+  <div class="plus" routerLink="punkty-ekstra">+</div>
 
   `,
   styles: [`
   table{
-    th, td {
-        padding: 1.0rem;
-        border-bottom: 1px dotted #ddd;
-    }
-    tr:hover {background-color: #f5f5f5;}
+    width:80%;
+    margin-left:10%;
   }
+  th, td {
+      padding: 1.0rem;
+      border-bottom: 2px dotted #ddd;
+  }
+  tr:hover {background-color: #f5f5f5;}
   `],
 
 })

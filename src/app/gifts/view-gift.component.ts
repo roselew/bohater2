@@ -30,7 +30,7 @@ lessPoints(){
   }
 }
 morePoints(){
-  if(this.gift.points && this.gift.points>0){
+  if(this.gift.points){
     this.gift.points+=1
   } else {
     this.gift.points = 1;

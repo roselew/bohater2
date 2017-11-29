@@ -10,7 +10,7 @@ import { Location} from "@angular/common";
 
   <div class="week">
     <span [routerLink]="['../',weekId -1]" class="prev">&lsaquo;</span>
-    <a routerLink='../historia'>{{firstDate.getDate()}} {{firstDate.getMonth()==endDate.getMonth() ? monthNames[firstDate.getMonth()] : ''}} - {{endDate.getDate()}} {{monthNames[endDate.getMonth()]}}</a>
+    <a routerLink='../historia'>{{firstDate.getDate()}} {{firstDate.getMonth()==endDate.getMonth() ? '' : monthNames[firstDate.getMonth()]}} - {{endDate.getDate()}} {{monthNames[endDate.getMonth()]}}</a>
     <span [routerLink]="['../',weekId +1]" class="next">&rsaquo;</span> 
   </div>		
   
@@ -20,10 +20,7 @@ import { Location} from "@angular/common";
   </progress-bar-week>
  
     <div class="filter">
-      <button class="show-all" (click)="applyFilter('all')" [ngClass]="{'selected': (filter=='all')}"><span>{{tUndone+tWait+tDone}}</span></button>
-      <button class="show-undone" (click)="applyFilter('undone')" [ngClass]="{'selected': (filter=='undone')}"><span>{{tUndone}}</span></button>
-      <button class ="show-wait" (click)="applyFilter('wait')" [ngClass]="{'selected': (filter=='wait')}"><span>{{tWait}}</span></button>
-      <button class="show-done" (click)="applyFilter('done')" [ngClass]="{'selected': (filter=='done')}"><span>{{tDone}}</span></button>
+      <button class="show-all" (click)="applyFilter('all')" [ngClass]="{'selected': (filter=='all')}"><span>{{tUndone+tWait+tDone}}</span></button><button class="show-undone" (click)="applyFilter('undone')" [ngClass]="{'selected': (filter=='undone')}"><span>{{tUndone}}</span></button><button class ="show-wait" (click)="applyFilter('wait')" [ngClass]="{'selected': (filter=='wait')}"><span>{{tWait}}</span></button><button class="show-done" (click)="applyFilter('done')" [ngClass]="{'selected': (filter=='done')}"><span>{{tDone}}</span></button>
       <img src="../../assets/bohater.png" class="hero">
     </div>
 
@@ -83,7 +80,7 @@ export class OneWeekComponent implements OnInit {
       this.firstDate.setDate(this.firstDate.getDate() + this.firstDay);
       this.firstDate.setHours(0, 0, 0, 0);
       
-      this.endDate = new Date(today);
+      this.endDate = new Date(this.firstDate);
       this.endDate.setDate(this.firstDate.getDate() + 6);
       this.endDate.setHours(0, 0, 0, 0);
       

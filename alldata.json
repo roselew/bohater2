@@ -4,6 +4,11 @@
       "email": "annakowalska@gmail.com",
       "password": "anna",
       "id": 1
+    },
+    {
+      "email": "antoni.kowalski@gmail.com",
+      "password": "antek",
+      "id": 2
     }
   ],
   "kids": [
@@ -22,6 +27,79 @@
       "password": "bs",
       "parentId": 1,
       "id": 2
+    },
+    {
+      "name": "Kacper",
+      "birth": "2010",
+      "login": "kk",
+      "password": "kk",
+      "parentId": 1,
+      "id": 3
+    },
+    {
+      "name": "Kacper",
+      "birth": "2013",
+      "login": "kac",
+      "password": "kac",
+      "parentId": 2,
+      "id": 4
+    },
+    {
+      "name": "Kasia",
+      "birth": "2015",
+      "login": "kasienka",
+      "password": "aha",
+      "parentId": 2,
+      "id": 5
+    },
+    {
+      "name": "Kajtek",
+      "birth": "2013",
+      "login": "kajtek",
+      "password": "kajtek",
+      "parentId": 2,
+      "id": 6
+    },
+    {
+      "name": "Ania",
+      "birth": "2015",
+      "login": "ania",
+      "password": "ani",
+      "parentId": 2,
+      "id": 7
+    },
+    {
+      "name": "Wanda",
+      "birth": "2010",
+      "login": "wanda",
+      "password": "wanda",
+      "parentId": 2,
+      "id": 8
+    },
+    {
+      "name": "Kacper",
+      "password": "k",
+      "parentId": 2,
+      "id": 9
+    },
+    {
+      "password": "k",
+      "name": "k",
+      "parentId": 2,
+      "id": 10
+    },
+    {
+      "name": "Ania",
+      "password": "w",
+      "parentId": 2,
+      "id": 11
+    },
+    {
+      "name": "Wanda",
+      "login": "w",
+      "password": "w",
+      "parentId": 2,
+      "id": 12
     }
   ],
   "userMissions": [
@@ -40,12 +118,11 @@
         1511132400000,
         1511305200000,
         1511478000000,
-        1511737200000
-      ],
-      "waitDates": [
+        1511737200000,
         1511910000000,
         1512082800000
       ],
+      "waitDates": [],
       "id": 1,
       "points": "1"
     },
@@ -188,7 +265,9 @@
       "doneDates": [
         1511737200000
       ],
-      "waitDates": [],
+      "waitDates": [
+        1512342000000
+      ],
       "id": 7
     },
     {
@@ -243,10 +322,16 @@
       "doneDates": [
         1511823600000
       ],
-      "waitDates": [],
+      "waitDates": [
+        1511737200000,
+        1511996400000,
+        1512255600000,
+        1512169200000,
+        1512342000000
+      ],
       "id": 10
     },
-     {
+    {
       "confirmation": true,
       "name": "Nakryć stół",
       "icon": "assets/cutlery.svg",
@@ -254,13 +339,16 @@
       "kidId": 1,
       "start": 1511737200000,
       "days": [
-        1,
-        3
+        4
       ],
       "doneDates": [
-        1512428400000
+        1512428400000,
+        1511996400000,
+        1511823600000
       ],
-      "waitDates": [],
+      "waitDates": [
+        1512082800000
+      ],
       "id": 15
     },
     {
@@ -273,7 +361,9 @@
       "days": [
         3
       ],
-      "doneDates": [],
+      "doneDates": [
+        1511996400000
+      ],
       "waitDates": [],
       "id": 16
     },
@@ -287,7 +377,9 @@
       "days": [
         4
       ],
-      "doneDates": [],
+      "doneDates": [
+        1512082800000
+      ],
       "waitDates": [],
       "id": 17
     },
@@ -303,8 +395,57 @@
         1
       ],
       "doneDates": [],
-      "waitDates": [],
+      "waitDates": [
+        1511823600000,
+        1512342000000
+      ],
       "id": 18
+    },
+    {
+      "confirmation": true,
+      "name": "Poskładać zabawki",
+      "icon": "assets/ikony/m_zabawki.svg",
+      "points": 1,
+      "kidId": 3,
+      "start": 1511910000000,
+      "days": [
+        4
+      ],
+      "doneDates": [
+        1512082800000,
+        1512687600000
+      ],
+      "waitDates": [],
+      "id": 19
+    },
+    {
+      "confirmation": true,
+      "name": "Wstawić pranie",
+      "icon": "assets/laundry.svg",
+      "points": 1,
+      "kidId": 3,
+      "start": 1511910000000,
+      "days": [
+        5
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 20,
+      "finish": 1511910000000
+    },
+    {
+      "confirmation": true,
+      "name": "Zęby wieczór",
+      "icon": "assets/ikony/m_zeby.svg",
+      "points": 2,
+      "kidId": 5,
+      "start": 1511910000000,
+      "days": [
+        3
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 21
     }
   ],
   "userGifts": [
@@ -331,8 +472,8 @@
       "icon": "assets/30-minutes.svg",
       "points": "30",
       "kidId": 1,
-      "status": "unused",
-      "chosenDate": "",
+      "status": "received",
+      "chosenDate": 1511910000000,
       "id": 3
     },
     {
@@ -362,7 +503,7 @@
       "chosenDate": 1511737200000,
       "id": 6
     },
-      {
+    {
       "name": "Wycieczka na weekend",
       "icon": "assets/walk.svg",
       "points": 2,
@@ -415,9 +556,90 @@
       "status": "unused",
       "chosenDate": "",
       "id": 13
+    },
+    {
+      "name": "Wycieczka na weekend",
+      "icon": "assets/ikony/n_wycieczka.svg",
+      "points": 2,
+      "kidId": 1,
+      "status": "received",
+      "chosenDate": 1511910000000,
+      "id": 14
+    },
+    {
+      "name": "15 min na gry",
+      "icon": "assets/ikony/n_kwadrans.svg",
+      "points": 70,
+      "kidId": 1,
+      "status": "received",
+      "chosenDate": 1511910000000,
+      "id": 15
+    },
+    {
+      "name": "30 min na gry",
+      "icon": "assets/ikony/n_pol.svg",
+      "points": 1,
+      "kidId": 1,
+      "status": "received",
+      "chosenDate": 1511910000000,
+      "id": 16
+    },
+    {
+      "name": "Wieczór gier",
+      "icon": "assets/ikony/n_gry.svg",
+      "points": 3,
+      "kidId": 1,
+      "status": "received",
+      "chosenDate": 1511910000000,
+      "id": 17
+    },
+    {
+      "name": "Aquapark ",
+      "icon": "assets/swimming-pool.svg",
+      "points": 1,
+      "kidId": 3,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 18
     }
   ],
-  "extraPoints": [],
+  "extraPoints": [
+    {
+      "description": "Za nic",
+      "points": 5,
+      "kidId": 1,
+      "date": 1511823600000,
+      "id": 1
+    },
+    {
+      "description": "Za to że jesteś",
+      "points": 10,
+      "kidId": 1,
+      "date": 1511823600000,
+      "id": 2
+    },
+    {
+      "points": 4,
+      "description": "Aha",
+      "kidId": 1,
+      "date": 1511910000000,
+      "id": 3
+    },
+    {
+      "description": "Kala",
+      "points": 100,
+      "kidId": 1,
+      "date": 1511910000000,
+      "id": 4
+    },
+    {
+      "points": 2,
+      "description": "nic",
+      "kidId": 3,
+      "date": 1511910000000,
+      "id": 5
+    }
+  ],
   "userHeroes": [
     {
       "id": 2,
@@ -426,55 +648,260 @@
       "badges1": [
         {
           "badgeName": "Buty mocy",
-          "icon": "assets/o_but1.svg.svg",
+          "icon": "assets/ikony/o_but1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Buty super mocy",
-          "icon": "assets/o_but2.svg.svg",
-          "gained": "true"
+          "icon": "assets/ikony/o_but2.svg",
+          "gained": "false"
         },
         {
           "badgeName": "Buty extra mocy",
-          "icon": "assets/o_but3.svg.svg",
+          "icon": "assets/ikony/o_but3.svg",
           "gained": "false"
         }
       ],
       "badges2": [
         {
           "badgeName": "Ręka mocy",
-          "icon": "assets/o_reka1.svg.svg",
-          "gained": "true"
+          "icon": "assets/ikony/o_reka1.svg",
+          "gained": "false"
         },
         {
           "badgeName": "Ręka super mocy",
-          "icon": "assets/o_reka2.svg.svg",
-          "gained": "true"
+          "icon": "assets/ikony/o_reka2.svg",
+          "gained": "false"
         },
         {
           "badgeName": "Ręka extra mocy",
-          "icon": "assets/o_reka3.svg.svg",
+          "icon": "assets/ikony/o_reka3.svg",
           "gained": "false"
         }
       ],
       "badges3": [
         {
           "badgeName": "Maska mocy",
-          "icon": "assets/o_maska1.svg.svg",
+          "icon": "assets/ikony/o_maska1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Maska super mocy",
-          "icon": "assets/o_maska2.svg.svg",
-          "gained": "false"
+          "icon": "assets/ikony/o_maska2.svg",
+          "gained": "true"
         },
         {
           "badgeName": "Maska extra mocy",
-          "icon": "assets/o_maska3.svg.svg",
+          "icon": "assets/ikony/o_maska3.svg",
           "gained": "false"
         }
       ],
       "kidId": 1
+    },
+    {
+      "id": 3,
+      "name": "Waleczny Denis",
+      "image": "assets/bohater3.png",
+      "badges1": [
+        {
+          "badgeName": "Buty mocy",
+          "icon": "assets/o_but1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty super mocy",
+          "icon": "assets/o_but2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty extra mocy",
+          "icon": "assets/o_but3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges2": [
+        {
+          "badgeName": "Ręka mocy",
+          "icon": "assets/o_reka1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka super mocy",
+          "icon": "assets/o_reka2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka extra mocy",
+          "icon": "assets/o_reka3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges3": [
+        {
+          "badgeName": "Maska mocy",
+          "icon": "assets/o_maska1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska super mocy",
+          "icon": "assets/o_maska2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska extra mocy",
+          "icon": "assets/o_maska3.svg",
+          "gained": "false"
+        }
+      ],
+      "kidId": 5
+    },
+    {
+      "id": 1,
+      "name": "Szybki Bil",
+      "image": "assets/bohater.png",
+      "badges1": [
+        {
+          "badgeName": "Buty mocy",
+          "icon": "assets/o_but1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty super mocy",
+          "icon": "assets/o_but2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty extra mocy",
+          "icon": "assets/o_but3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges2": [
+        {
+          "badgeName": "Ręka mocy",
+          "icon": "assets/o_reka1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka super mocy",
+          "icon": "assets/o_reka2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka extra mocy",
+          "icon": "assets/o_reka3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges3": [
+        {
+          "badgeName": "Maska mocy",
+          "icon": "assets/o_maska1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska super mocy",
+          "icon": "assets/o_maska2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska extra mocy",
+          "icon": "assets/o_maska3.svg",
+          "gained": "false"
+        }
+      ],
+      "kidId": 6
+    },
+    {
+      "kidId": 8,
+      "id": 4
+    },
+    {
+      "kidId": 9,
+      "id": 5
+    },
+    {
+      "image": "assets/bohater2.png",
+      "badges1": [
+        {
+          "badgeName": "Buty mocy",
+          "icon": "assets/o_but1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty super mocy",
+          "icon": "assets/o_but2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty extra mocy",
+          "icon": "assets/o_but3.svg",
+          "gained": "false"
+        }
+      ],
+      "kidId": 10,
+      "id": 6
+    },
+    {
+      "kidId": 11,
+      "id": 7
+    },
+    {
+      "name": "Szybki Bil",
+      "image": "assets/bohater.png",
+      "badges1": [
+        {
+          "badgeName": "Buty mocy",
+          "icon": "assets/o_but1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty super mocy",
+          "icon": "assets/o_but2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty extra mocy",
+          "icon": "assets/o_but3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges2": [
+        {
+          "badgeName": "Ręka mocy",
+          "icon": "assets/o_reka1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka super mocy",
+          "icon": "assets/o_reka2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka extra mocy",
+          "icon": "assets/o_reka3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges3": [
+        {
+          "badgeName": "Maska mocy",
+          "icon": "assets/o_maska1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska super mocy",
+          "icon": "assets/o_maska2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska extra mocy",
+          "icon": "assets/o_maska3.svg",
+          "gained": "false"
+        }
+      ],
+      "kidId": 12,
+      "id": 8
     }
   ],
   "expertMissions": [
@@ -680,7 +1107,7 @@
     {
       "id": 1,
       "name": "Szybki Bil",
-      "image": "assets/bohater1.png",
+      "image": "assets/bohater.png",
       "badges1": [
         {
           "badgeName": "Buty mocy",

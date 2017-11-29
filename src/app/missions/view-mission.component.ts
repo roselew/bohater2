@@ -64,7 +64,7 @@ export class ViewMissionComponent implements OnInit {
     }
   }
   morePoints(){
-    if(this.mission.points && this.mission.points>0){
+    if(this.mission.points){
       this.mission.points+=1
     } else {
       this.mission.points = 1;

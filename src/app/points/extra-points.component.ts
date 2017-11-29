@@ -7,14 +7,12 @@ import { ActivatedRoute, Router } from "@angular/router";
   template: `
 
 
-<img src="assets/logoXL.png" width="300px" height="300px">
+<img src="assets/logoXL.png" width="200px" height="200px">
 
 <form class="">
 
-	<input type="text" name="newMissionName" placeholder="Za co punkty?" [(ngModel)]="extraPoints.description">
-	<span class="less">-</span>
-  <input type="number" name="newMissionPoints" placeholder="Liczba punktów ekstra" [(ngModel)]="extraPoints.points">
-  <span class="more">+</span>
+	<input type="text" name="newMissionName" placeholder="Za co punkty?" [(ngModel)]="extraPoints['description']">
+	<span class="less" (click)="lessPoints()">-</span><input type="number" name="newMissionPoints" placeholder="Liczba punktów ekstra" [(ngModel)]="+extraPoints['points']"><span class="more" (click)="morePoints()">+</span>
 	<button (click)="save()">DODAJ PUNKTY</button>
 
 </form>
@@ -47,5 +45,20 @@ export class ExtraPointsComponent implements OnInit {
         this.extraPoints= extraPoints;
         this.router.navigate(['../'],{relativeTo:this.route});
       });
+  }
+
+  lessPoints(){
+    if(this.extraPoints['points'] && this.extraPoints['points']>0){
+      this.extraPoints['points']-=1;
+    } else {
+      this.extraPoints['points'] =0;
+    }
+  }
+  morePoints(){
+    if(this.extraPoints['points'] ){
+      this.extraPoints['points']+=1
+    } else {
+      this.extraPoints['points']= 1;
+    }  
   }
 }

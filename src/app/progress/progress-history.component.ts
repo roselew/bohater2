@@ -11,12 +11,14 @@ import { MissionsService } from '../missions/missions.service';
   <div *ngFor="let week of weekHistory"
         [routerLink]="['../',week.weekId]">
         
-      <p>Tydzień numer: {{showWeekName(week)}} </p>
+      <p> {{showWeekName(week)}} </p>
       
       <progress-bar-week 
         [waitWidth]="100*(week.nDone+week.nWait)/week.nAll" 
         [doneWidth]="100*week.nDone/week.nAll">
+        <p> {{week.nDone}} / {{week.nAll}} </p>
       </progress-bar-week>
+      <br>
   
   </div>
   
@@ -41,18 +43,19 @@ export class ProgressHistoryComponent implements OnInit {
   showWeekName(week){
    let monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
    let today = new Date()
-   today.setHours(0,0,0,0)
-   let dayId=week.id*7-today.getUTCDay() 
-   let startDate=today.getDate()+dayId
-   let endDate = startDate.geDate()+6
+   let dayId=week.weekId*7-today.getUTCDay() 
+   let startDate=new Date(today)
+   startDate.setDate(startDate.getDate()+dayId)
+   let endDate = new Date(startDate)
+   endDate.setDate(endDate.getDate()+6)
    if (startDate.getMonth()==endDate.getMonth()){
-     return [startDate.getDay(), ' - ', endDate.getDay(), monthNames[endDate.getMonth()]]
+     return [startDate.getDate() + ' - ' + endDate.getDate() + monthNames[endDate.getMonth()]]
    } else {
-     return [startDate.getDay(), monthNames[firstDate.getMonth()], ' - ', endDate.getDay(), monthNames[endDate.getMonth()]]
+     return [startDate.getDate() + monthNames[startDate.getMonth()] + ' - '+ endDate.getDate()+ monthNames[endDate.getMonth()]]
    }
   }
-  
-  
+ 
+
   ngOnInit() {
     this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
     this.http.get('http://localhost:3000/kids/' + this.kid['id'] + '?_embed=userMissions')

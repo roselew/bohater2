@@ -62,6 +62,7 @@ import { ProgressHistoryComponent } from './progress/progress-history.component'
 import { ProgressWeekComponent } from './progress/progress-week.component';
 
 import { MissionsService } from './missions/missions.service';
+import { ViewHeroComponent } from './parents/view-hero.component';
 
 
 
@@ -129,6 +130,7 @@ import { MissionsService } from './missions/missions.service';
     ProgressBarWeekComponent,
     ProgressHistoryComponent,
     ProgressWeekComponent,
+    ViewHeroComponent,
     
     
   ],

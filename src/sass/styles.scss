@@ -164,9 +164,12 @@ p.smallTitle {
 }
 
 .panelTitle {
-  background-color: $color_base;
+  background: $color_base url(../assets/gift.svg) center left 20px no-repeat; background-size:80px; 
   color: white;
   padding : 2.0rem;
+}
+.buttonPanel {
+	display: inline-block;
 }
 
 //tables font
@@ -186,7 +189,7 @@ button{
 	color:white;
 	padding: 3.0rem;
 	width: $button_width;
-	margin: 5.0rem auto;
+	margin: 4.0rem auto;
 	font: $font_big_size $font_reg_family;
 	text-align: center;
 	border-radius: $border_radius;

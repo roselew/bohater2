@@ -9,11 +9,10 @@ import { Location} from "@angular/common";
 
    <div *ngIf="chosenGifts.length>0" class="chosenGiftsPanel">
      <div class="panelTitle">
-        <img src="assets/gift.svg" height='50px'>
-        <p>{{kid['name']}} wybrało nagrodę</p>
+         <p>{{kid['name']}} wybrało nagrodę</p>
     </div>
   
-    <ul class="mission-neutral mission-wait"
+    <ul class="mission-neutral"
       *ngFor="let userGift of chosenGifts">
       <li class="circle-big"> 
         <p> {{userGift.name}} </p>
@@ -22,8 +21,8 @@ import { Location} from "@angular/common";
         <span>{{userGift.points}}</span>
      </li> 
      <div class='buttonPanel'>
-      <button (click)="chose(userGift)">Kup nagrodę</button>
-      <button (click)="chose(userGift)" class="altButton>Potwierdź odbiór</button>
+      <button (click)="receive(userGift)">Kup nagrodę</button>
+      <button (click)="receive(userGift)" class="altButton">Potwierdź odbiór</button>
     </div>
 
     </ul>
@@ -83,16 +82,15 @@ import { Location} from "@angular/common";
   .mission-neutral li.circle-big{
     margin: 2rem 4% 7rem 4%;
   }
- .chosenGiftsPanel{
- width: 100%;
- background-color:white;
-   .buttonPanel {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 20px;
-    }
+  .chosenGiftsPanel{
+    width: 100%;
+    background-color:#f5f5f5;
+    margin: 20px 0; 
+  }
+  .buttonPanel button {
+    margin-bottom: 10px;
+  }
+
  }
 
   `],
@@ -152,10 +150,9 @@ export class GiftsComponent implements OnInit {
     }
   }
 
-  chose(gift){
-      gift['status']='chosen';
-      let today = new Date().setHours(0,0,0,0);
-      gift['chosenDate']=today;
+
+  receive(gift){
+      gift['status']='received';
       this.http.put('http://localhost:3000/userGifts/'+ gift['id'], gift)
         .subscribe( ()=> this.fetchGifts() );
   };
