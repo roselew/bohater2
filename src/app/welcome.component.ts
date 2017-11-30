@@ -6,68 +6,55 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 
     <section id="section01" class='page-container'>
     
-      <app-header></app-header>
-  
-  
+      <app-header [simpleH1]="'Bohater'" [skewH1]="'Tygodnia'"></app-header> 
+
       <div class="title-container">
-  
-        <img src="assets/bohater2.png" height="200px">
-        <img src="assets/bohater.png" height="300px">
-        <img src="assets/bohater3.png" height="200px">
-        
-        <br>
-        <form class="enter left" >
-          <button routerLink='/rodzic-logowanie'>RODZIC</button>
-        </form>
-  
-        <form class="enter right">
-          <button routerLink='/dziecko-logowanie'>DZIECKO</button>
-        </form>
-  
+          <button class="enter parent" routerLink='/rodzic-logowanie'>RODZIC</button>
+          <div class="avatar-images">
+            <img src="assets/bohater2.png" width="20%">
+            <img src="assets/bohater.png" width="30%">
+            <img src="assets/bohater3.png" width="20%">
+          </div>
+          <button class="enter kid" routerLink='/dziecko-logowanie'>DZIECKO</button>
       </div>
   
-      <a href="#section02" class="scrolling"><span></span>Dowiedz się więcej</a>
+      <a (click)="goTo('section02')" class="scrolling"><span></span>Dowiedz się więcej</a>
     </section>
   
-    <section id="section02" class="half-page-container">
-    <p>Czy</p>
-    <ul class="blue-square">
-      <li>...masz dość ciągłego przypominania dzieciom o posprzątaniu zabawek, odrabianiu lekcji albo myciu zębów ?</li>
-      <li>...chcesz by Twoje dziecko częściej pomagało Ci w pracach domowych ?</li>
-    </ul>
-  
-    </section>	
-  
-    <section id="section03" class="half-page-container">
-        <div class="logo-banner"><p>Bohater</p> <p class="font-skew">Tygodnia</p></div>
-      
-      <p class="move-down">to narzędzie które sprawi że:</p>
-      <ul class="green-circle">
-        <li>codzienne obowiązki przestaną być problemem,</li>
-        <li>Twoje dziecko będzie bardziej samodzielne,</li>
-        <li>a Ty zyskach więcej czasu dla siebie!</li>
+    <section id="section02">
+      <p>Czy</p>
+      <ul class="blue-square">
+        <li>...masz dość ciągłego przypominania dzieciom o posprzątaniu zabawek, odrabianiu lekcji albo myciu zębów ?</li>
+        <li>...chcesz by Twoje dziecko częściej pomagało Ci w pracach domowych ?</li>
       </ul>
-  
     </section>	
-  
-    <section id="section04" class="page-container">
+
+    <div class="logo-banner"><img src="assets/logo.png"><p>Bohater</p> <p class="font-skew">Tygodnia</p></div>
     
-      <p class="move-all">Bohater Tygodnia motywuje Twoje dziecko na dwa sposoby:</p>
+    <section id="section03">
+        
+        <p>to narzędzie które sprawi że:</p>
+        <ul class="green-circle">
+          <li>codzienne obowiązki przestaną być problemem,</li>
+          <li>Twoje dziecko będzie bardziej samodzielne,</li>
+          <li>a Ty zyskach więcej czasu dla siebie!</li>
+        </ul>
+    </section>	
   
-      <div class="logo-banner-point"><p>Dziecko wykonuje misje i zdobywa punkty za które odbiera wybrane przez Ciebie <span>nagrody</span></p> </div>
-  
-      <p> <img src="assets/gift.svg" class="img-float-right">
+    <section id="section04">
+    
+      <p>Bohater Tygodnia motywuje Twoje dziecko na dwa sposoby:</p>
+      <div class="logo-banner-point"><p>Dziecko wykonuje misje i zdobywa punkty za które odbiera wybrane przez Ciebie <span>nagrody</span><img src="assets/gift.svg" class="img-float-right"></p> </div>
+        <p> 
         Pamiętaj nagrody nie muszą być czymś materialnym - może być to wyjście na lody lub przekazanie pieniędzy na cel charytatywny
-      </p>
-      
-      
-      <div class="logo-banner-point logo-banner-point-right"><p>Po wykonaniu wszystkich misji w każdym tygodniu Dziecko zdobywa <span>odznakę Bohatera Tygodnia</span></p></div>
-      
-      <p> <img src="assets/bohater.png" class="img-float-left">Za odznakę dziecko ulepsza swojego wirtualnego Bohatera dodając mu nowe moce a Ty uczysz dziecko systematyczności!</p>
+        </p>
+            
+      <div class="logo-banner-point logo-banner-point-right"><p>Po wykonaniu wszystkich misji w każdym tygodniu Dziecko zdobywa <span>odznakę Bohatera Tygodnia</span></p></div>   
+      <p> Za odznakę dziecko ulepsza swojego wirtualnego Bohatera dodając mu nowe moce a Ty uczysz dziecko systematyczności!</p>
       
     </section>	
   
-    <section id="section05" class="page-container">
+    <section id="section05">
         
   
       <p class="move-all">Wydaje Ci się że nie masz czasu albo pomysłu od czego zacząć? </p>
@@ -104,5 +91,8 @@ export class WelcomeComponent implements OnInit {
     this.renderer.removeClass(document.body, 'title-page');
   }
 
+  goTo(location: string): void {
+    window.location.hash = location;
+}
 
 }

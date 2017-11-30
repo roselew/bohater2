@@ -100,6 +100,14 @@
       "password": "w",
       "parentId": 2,
       "id": 12
+    },
+    {
+      "name": "Łukasz",
+      "birth": "1984",
+      "login": "lk",
+      "password": "lk",
+      "parentId": 1,
+      "id": 13
     }
   ],
   "userMissions": [
@@ -446,6 +454,95 @@
       "doneDates": [],
       "waitDates": [],
       "id": 21
+    },
+    {
+      "confirmation": false,
+      "name": "Zęby rano",
+      "icon": "assets/ikony/m_zeby.svg",
+      "points": 1,
+      "kidId": 4,
+      "start": 1511910000000,
+      "days": [
+        4
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 22
+    },
+    {
+      "confirmation": true,
+      "name": "Zęby wieczór",
+      "icon": "assets/ikony/m_zeby.svg",
+      "points": 1,
+      "kidId": 12,
+      "start": 1511910000000,
+      "days": [],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 23
+    },
+    {
+      "confirmation": true,
+      "name": "Poskładać zabawki",
+      "icon": "assets/ikony/m_zabawki.svg",
+      "kidId": 12,
+      "start": 1511910000000,
+      "days": [
+        3
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 24
+    },
+    {
+      "confirmation": true,
+      "name": "Opróżnić zmywarkę",
+      "icon": "assets/ikony/m_zmywarka.svg",
+      "kidId": 12,
+      "start": 1511910000000,
+      "days": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "doneDates": [],
+      "waitDates": [],
+      "id": 25
+    },
+    {
+      "confirmation": true,
+      "name": "Poskładać zabawki",
+      "icon": "assets/ikony/m_zabawki.svg",
+      "points": 1,
+      "kidId": 13,
+      "start": 1511910000000,
+      "days": [
+        1,
+        3
+      ],
+      "doneDates": [
+        1511996400000
+      ],
+      "waitDates": [],
+      "id": 26
+    },
+    {
+      "confirmation": true,
+      "name": "Nakarmić zwierzątko",
+      "icon": "assets/ikony/m_nakarmic.svg",
+      "points": 2,
+      "kidId": 13,
+      "start": 1511910000000,
+      "days": [
+        1,
+        5
+      ],
+      "doneDates": [],
+      "waitDates": [
+        1512169200000
+      ],
+      "id": 27
     }
   ],
   "userGifts": [
@@ -601,6 +698,33 @@
       "status": "unused",
       "chosenDate": "",
       "id": 18
+    },
+    {
+      "name": "15 min na gry",
+      "icon": "assets/ikony/n_kwadrans.svg",
+      "points": 1,
+      "kidId": 13,
+      "status": "received",
+      "chosenDate": 1511910000000,
+      "id": 19
+    },
+    {
+      "name": "Wycieczka na weekend",
+      "icon": "assets/ikony/n_wycieczka.svg",
+      "points": 5,
+      "kidId": 13,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 20
+    },
+    {
+      "name": "Wyjście do kina",
+      "icon": "assets/ikony/n_kino.svg",
+      "points": 4,
+      "kidId": 13,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 21
     }
   ],
   "extraPoints": [
@@ -847,8 +971,8 @@
       "id": 7
     },
     {
-      "name": "Szybki Bil",
-      "image": "assets/bohater.png",
+      "name": "Waleczny Denis",
+      "image": "assets/bohater3.png",
       "badges1": [
         {
           "badgeName": "Buty mocy",
@@ -902,6 +1026,63 @@
       ],
       "kidId": 12,
       "id": 8
+    },
+    {
+      "name": "Mocny John",
+      "image": "assets/bohater2.png",
+      "badges1": [
+        {
+          "badgeName": "Buty mocy",
+          "icon": "assets/o_but1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty super mocy",
+          "icon": "assets/o_but2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty extra mocy",
+          "icon": "assets/o_but3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges2": [
+        {
+          "badgeName": "Ręka mocy",
+          "icon": "assets/o_reka1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka super mocy",
+          "icon": "assets/o_reka2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka extra mocy",
+          "icon": "assets/o_reka3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges3": [
+        {
+          "badgeName": "Maska mocy",
+          "icon": "assets/o_maska1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska super mocy",
+          "icon": "assets/o_maska2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska extra mocy",
+          "icon": "assets/o_maska3.svg",
+          "gained": "false"
+        }
+      ],
+      "kidId": 13,
+      "id": 9
     }
   ],
   "expertMissions": [

@@ -7,7 +7,25 @@ import { HttpClient } from '@angular/common/http';
   template: `
 
   
-  <p> Logowanie tymczasowe, kliknij na rodzica żeby się zalogować </p>
+  <app-header [simpleH1]="'Dziecko'" [skewH1]="'Logowanie'"></app-header> 
+  
+  <div class="title-container">
+  
+   <form>
+
+     <input type='text' placeholder='Email' [(ngModel)]="kid['login']" name="login">
+
+     <input type='password' placeholder='Hasło' [(ngModel)]="kid['password']" name="password">
+
+     <input type='checkbox' name='remember'>
+
+     <label for='checkbox'>Zapamiętaj mnie</label>
+
+     <button type='submit'>ZALOGUJ</button>
+
+   </form>
+
+  <p> Logowanie tymczasowe, kliknij na dziecko żeby się zalogować </p>
   <ul>
     <li *ngFor="let kid of kids"
         (click)="logOn(kid.id)">
@@ -15,8 +33,7 @@ import { HttpClient } from '@angular/common/http';
     </li>
   </ul>
 
-  <app-header></app-header>
-  
+
   `,
   styles: [],
 
@@ -39,6 +56,8 @@ export class KidLoginComponent implements OnInit {
     }
 
   kids
+
+  kid={}
 
   ngOnInit() {
     this.http.get('http://localhost:3000/kids/')

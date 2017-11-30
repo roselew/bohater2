@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   selector: 'parent-login',
   template: `
 
-  <app-header></app-header>
+  <app-header [simpleH1]="'Rodzic'" [skewH1]="'Logowanie'"></app-header> 
 
   <div class="title-container">
    

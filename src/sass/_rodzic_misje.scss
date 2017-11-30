@@ -63,17 +63,19 @@
 		.newMissionForm{	
 			
 			input[type="radio"] { display: none;}
-			input[type="checkbox"] { display: none;}
+
 			.day-labels{
 				width: (74%/7);
 				height: $input_height;
 				display: inline-block;
 			}
+		}
 
 
-			input[name='days'] {
+			.newMissionDays input {
+				 display: none;
 
-				& + label{
+				& + span{
 					display: inline-block;
 					width: (74%/7);
 					margin-top: 4.0rem;
@@ -89,10 +91,11 @@
 					line-height: $input_height;
 				}
 
-				&:checked + label {
+				&:checked + span {
 					background-color:$color_base;
 					color: white	
 				}
+
 			}
 		}
-	 }
+	 

@@ -18,33 +18,28 @@ import { Component, OnInit, Input } from '@angular/core';
     <p>Liczba punktów</p>
 
     <span class="less" (click)="lessPoints()">-</span><input type="number" name="newMissionPoints" placeholder="Liczba punktów" [(ngModel)]="+mission.points"><span class="more" (click)="morePoints()">+</span>
-
+    </form>
     <p>W które dni tygodnia?</p>
     
     <div class="newMissionDays">
-     
-      <ng-container *ngFor="let day of days">
-      
+      <label *ngFor="let day of days">
         <input type="checkbox"
                 value="{{day.value}}"
-                id="{{'givenDay'+day.value}}"
                 [(ngModel)]="day.checked"
-                name="days"/>
+                name="day.name">
         
-        <label for="{{'givenDay'+day.value}}">{{day.name}}</label>
-
-      </ng-container>
-      
+        <span>{{day.name}}</span>    
+      </label>     
     </div>
-  </form>
+
+ 
   
   <label class="confirmation-label">
-    <input type="checkbox" 
-          [(ngModel)]="mission.confirmation">
+    <input  type="checkbox" 
+            [(ngModel)]="mission.confirmation">
     Wykonanie misji musi być potwierdzone przez rodzica
   </label>
    
-
 
   `,
   styles: [],
@@ -55,7 +50,6 @@ export class ViewMissionComponent implements OnInit {
   @Input() days
   @Input() mission
  
-
   lessPoints(){
     if(this.mission.points && this.mission.points>0){
       this.mission.points-=1;
@@ -72,10 +66,6 @@ export class ViewMissionComponent implements OnInit {
   }
   constructor() { }
 
-  ngOnInit() {
-    //  for (let i=0; i<7; i++){
-    //   document.querySelectorAll("input[type='checkbox']")[i]['checked']=false
-    //   }
-   }
+  ngOnInit() {document.querySelector('.')}
 
 }

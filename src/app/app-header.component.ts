@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   <a href="index.html">
 	<div class="title-banner">
 			<img src="assets/logoXL.png" class="logo">
-			<h1>Bohater</h1> <br>
-			<h1 class="font-skew">Tygodnia</h1> 
-		</div>
+			<h1>{{simpleH1}}</h1> <br>
+      <h1 class="font-skew">{{skewH1}}</h1> 
+      <ng-content></ng-content>
+	</div>
   </a>
   `,
   styles: [],
@@ -16,6 +17,10 @@ import { Component, OnInit } from '@angular/core';
 export class AppHeaderComponent implements OnInit {
 
   constructor() { }
+
+  @Input() simpleH1
+
+  @Input() skewH1
 
   ngOnInit() {
   }

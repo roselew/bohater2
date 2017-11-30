@@ -7,7 +7,7 @@ import { Location} from "@angular/common";
   selector: 'create-kid',
   template: `
 
-   <app-header></app-header>
+  <app-header [simpleH1]="'Dodaj'" [skewH1]="'Dziecko'"></app-header> 
    
    <div class="title-container">
 

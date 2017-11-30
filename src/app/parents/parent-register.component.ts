@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   selector: 'parent-register',
   template: `
 
-  <app-header></app-header>
+  <app-header [simpleH1]="'Rodzic'" [skewH1]="'Rejestracja'"></app-header> 
 
   <div class="title-container">
   
