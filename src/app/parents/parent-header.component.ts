@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   <header>	
 	<div class="header-banner">{{kid.name}}</div>
 	<img src="assets/logo.png" class="logo">
-	<nav hidden> 
+	<nav id="menu"> 
 			<ul class="nav-main">
 					<li><a routerLink="misje">MISJE</a></li>
 					<li><a routerLink="postepy/0">POSTĘPY</a></li>
@@ -23,7 +23,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 	<label for="nav" (click)="showMenu()"></label>
 </header>
   `,
-  styles: [],
+  styles: [`   
+  nav{
+    display: none;
+  }
+  `
+
+
+],
 
 })
 export class ParentHeaderComponent implements OnInit {

@@ -9,7 +9,6 @@ import { Location} from "@angular/common";
   <div class="edit">
     <span class="X" routerLink='../../'> X </span>
     <view-gift [gift]="gift"></view-gift>
-    <p>Obecny status - {{gift['status']}}</p>
     <button (click)="receive()">Potwierdź odbiór nagrody</button>
   </div>
   `,

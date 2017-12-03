@@ -8,7 +8,7 @@ import { Location} from "@angular/common";
   template: `
 
    <parent-header [kid]="kid"></parent-header>
-   <div class="container">
+   <div class="container" id="panel">
    <router-outlet></router-outlet>
    </div>
   `,

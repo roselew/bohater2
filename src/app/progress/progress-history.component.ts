@@ -62,7 +62,9 @@ export class ProgressHistoryComponent implements OnInit {
       .subscribe(kid => {
         this.kid = kid;
         this.userMissions = this.kid['userMissions'];
+        console.log(this.userMissions)
         this.weekHistory = this.service.getAllWeeksProgress(this.userMissions)
+        console.log(this.weekHistory)
         })
   }
 }

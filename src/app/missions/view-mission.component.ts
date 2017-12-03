@@ -66,6 +66,6 @@ export class ViewMissionComponent implements OnInit {
   }
   constructor() { }
 
-  ngOnInit() {document.querySelector('.')}
+  ngOnInit() {}
 
 }

@@ -11,9 +11,9 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
       <div class="title-container">
           <button class="enter parent" routerLink='/rodzic-logowanie'>RODZIC</button>
           <div class="avatar-images">
-            <img src="assets/bohater2.png" width="20%">
+            <img src="assets/bohater2.png" width="25%">
             <img src="assets/bohater.png" width="30%">
-            <img src="assets/bohater3.png" width="20%">
+            <img src="assets/bohater3.png" width="25%">
           </div>
           <button class="enter kid" routerLink='/dziecko-logowanie'>DZIECKO</button>
       </div>

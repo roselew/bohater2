@@ -21,6 +21,6 @@ export class ProgressBarWeekComponent implements OnInit {
 
     @Input() doneWidth
 
-    ngOnInit() { console.log(this.waitWidth, this.doneWidth)}   
+    ngOnInit() {}   
   
 }

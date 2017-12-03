@@ -7,7 +7,7 @@ import { Location} from "@angular/common";
   selector: 'gifts',
   template: `
 
-   <div *ngIf="chosenGifts.length>0" class="chosenGiftsPanel">
+   <div *ngIf="(chosenGifts && chosenGifts.length>0)" class="chosenGiftsPanel">
      <div class="panelTitle">
          <p>{{kid['name']}} wybrało nagrodę</p>
     </div>
@@ -29,7 +29,7 @@ import { Location} from "@angular/common";
 
  </div>
 
-<p>Dziecko ma {{totalPoints}} punktów </p>
+<p class="smallTitle">Dziecko ma {{totalPoints}} punktów </p>
 
   <ul class="mission-neutral mission-done">
   <li 
@@ -59,7 +59,7 @@ import { Location} from "@angular/common";
 </ul>
 
 
-<p class="smallTitle">Nagrody już zdobyte</p>
+<p *ngIf="(receivedGifts && receivedGifts.length>0)" class="smallTitle">Nagrody już zdobyte</p>
 
 <ul class="mission-neutral mission-unactive">
 <li 
