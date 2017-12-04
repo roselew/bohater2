@@ -25,7 +25,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   `,
   styles: [`   
   nav.hide {
-    display: none;
+    transform: translateX(0);
   } 
   `
 
