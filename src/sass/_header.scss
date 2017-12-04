@@ -53,6 +53,9 @@ header{
 		width: 100%;
 		height: 100vh;
 		background-color: $color_back_parent;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    
 		li{
 			display:block;
 			height: 11vh;
