@@ -43,6 +43,9 @@ import { ProgressHistoryComponent } from './progress/progress-history.component'
 import { PointsComponent } from './points/points.component';
 import { ExtraPointsComponent } from './points/extra-points.component';
 
+import { AuthKidService } from "./auth-kid.service";
+import { AuthParentService } from "./auth-parent.service";
+
 
 
 const routes:Routes = [

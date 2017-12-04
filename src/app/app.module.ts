@@ -63,6 +63,8 @@ import { ProgressWeekComponent } from './progress/progress-week.component';
 
 import { MissionsService } from './missions/missions.service';
 import { ViewHeroComponent } from './parents/view-hero.component';
+import { AuthParentService } from "./auth-parent.service";
+import { AuthKidService } from "./auth-kid.service";
 
 
 

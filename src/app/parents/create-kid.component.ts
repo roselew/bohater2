@@ -29,12 +29,10 @@ export class CreateKidComponent implements OnInit {
     private http: HttpClient,
     private route:ActivatedRoute,
     private renderer: Renderer2) { 
-      this.renderer.addClass(document.body,'parent')
       this.renderer.addClass(document.body,'title-page')
     }
     
     ngOnDestroy() {
-      this.renderer.removeClass(document.body, 'parent');
       this.renderer.removeClass(document.body, 'title-page');
     }
 
