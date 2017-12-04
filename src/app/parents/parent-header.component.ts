@@ -7,26 +7,26 @@ import { Router, ActivatedRoute } from '@angular/router';
   <header>	
 	<div class="header-banner">{{kid.name}}</div>
 	<img src="assets/logo.png" class="logo">
-	<nav id="menu"> 
+	<nav [ngClass]="{'hide': menuVisible == false }"> 
 			<ul class="nav-main">
 					<li><a routerLink="misje">MISJE</a></li>
 					<li><a routerLink="postepy/0">POSTĘPY</a></li>
           <li><a routerLink="nagrody">NAGRODY</a></li>
           <li><a routerLink="punkty">PUNKTY</a></li>
 				</ul>
-				<ul class="nav-add">
+				<ul ngClass="" class="nav-add">
 					<li (click)="goToKid()">Przejdź na stronę dziecka</li>
 					<li><a routerLink="edytuj-dziecko">Ustawienia profilu dziecka</a></li>
 					<li><a routerLink='/rodzic'>Przełącz dziecko</a></li>
 				</ul>
     </nav>
-	<label for="nav" (click)="showMenu()"></label>
+	<label for="nav" (click)="toggleMenu()"></label>
 </header>
   `,
   styles: [`   
-  nav{
+  nav.hide {
     display: none;
-  }
+  } 
   `
 
 
@@ -35,6 +35,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ParentHeaderComponent implements OnInit {
 
+  
+  
   @Input()
   kid
 
@@ -44,13 +46,8 @@ export class ParentHeaderComponent implements OnInit {
     this.router.navigate(['/dziecko'])
    }
 
-   showMenu(){
-    if (document.querySelector('nav').style.display=="none"){
-     document.querySelector('nav').style.display = "block";
-   } else {
-    document.querySelector('nav').style.display = "none";
-   }
-  }
+  menuVisible = false
+  toggleMenu(){ !this.menuVisible ? true : false}
 
    constructor(
     private router: Router,
