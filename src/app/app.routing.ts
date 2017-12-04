@@ -54,7 +54,8 @@ const routes:Routes = [
 
 //FOR KIDS ONLY 
 
-    {path: 'dziecko',                                    component: KidComponent, children: [
+    {path: 'dziecko',                                    
+        component: KidComponent, canActivate: [ AuthKidService ], children: [
         { path: '',                                      redirectTo: 'menu', pathMatch:'full'},
         { path: 'menu',                                  component: KidMenuComponent},
         { path: 'misje/:dayId',                          component: KidMissionsComponent},
@@ -66,7 +67,8 @@ const routes:Routes = [
 
 // FOR PARENTS ONLY 
 
-    { path: 'rodzic',                                    component: ParentComponent, children:[
+    { path: 'rodzic',                                    
+        component: ParentComponent, canActivate: [ AuthParentService ], children:[
         { path: '',                                      redirectTo: 'dzieci', pathMatch:'full'},
         { path: 'dzieci',                                component: KidsComponent}, 
         { path: 'dzieci/dodaj-dziecko',                  component: CreateKidComponent},    
