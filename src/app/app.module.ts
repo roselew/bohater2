@@ -134,15 +134,20 @@ import { ViewHeroComponent } from './parents/view-hero.component';
     
     
   ],
+  
   imports: [
     BrowserModule,
     Routing,
     FormsModule,
     HttpClientModule
   ],
+  
   providers: [
-    MissionsService
+    MissionsService,
+    AuthParentService,
+    AuthKidService
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
