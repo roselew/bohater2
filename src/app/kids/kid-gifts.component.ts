@@ -12,7 +12,7 @@ import { Location} from "@angular/common";
   <ul class="mission-done">
   <li *ngFor="let userGift of availableGifts"
   class="circle-big"
-  [routerLink]="['wybierz/'+userGift.id]">  
+  (click)="select(userGift)">  
   <p>{{ userGift.name }} </p>
   <img src="{{userGift.icon}}">
   <star-svg></star-svg>
@@ -69,9 +69,29 @@ import { Location} from "@angular/common";
 
     </div>
 
+<!-- pop up window for changing mission status -->
+  <div *ngIf="selectedGift" class="alert">
+  <span class="X" (click)="selectedGift=null"> X </span>
+
+  <ul class="mission-neutral">
+    <li class="circle-big">
+      <p> {{selectedGift.name}} </p>
+      <img src="{{selectedGift.icon}}">
+      <star-svg></star-svg>
+      <span>{{selectedGift.points}}</span>
+    </li>
+  </ul>
+
+ <button (click)="moveDown(selectedMission,missionStatus)"></div>    
+ <button class="altButton" (click)="moveUp(selectedMission,missionStatus)"></div>  
+  
+</div>
+
   `,
   styleUrls: ['../../sass/kid-gifts.scss'],
 })
+
+
 export class KidGiftsComponent implements OnInit {
 
   constructor(    
@@ -89,6 +109,11 @@ export class KidGiftsComponent implements OnInit {
   chosenGifts
   receivedGifts
   extraPoints
+  selectedGift
+
+  select(userGift){
+    this.selectedGift=userGift;
+  }
 
 
   ngOnInit(){
