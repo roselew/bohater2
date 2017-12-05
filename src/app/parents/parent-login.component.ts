@@ -10,9 +10,13 @@ import { HttpClient } from '@angular/common/http';
 
   <div class="title-container">
    
-    <form>
+    <form #formRef="ngForm" (submit)="login(formRef)">
 
       <input type='text' placeholder='Email' [(ngModel)]="parent['email']" name="email">
+         <span *ngIf="formRef.controls.email?.touched  || formRef.controls.email?.dirty">
+          <small *ngIf="formRef.controls.email?.errors?.required" class="form-text text-muted">Field is required</small>
+          <small *ngIf="formRef.controls.email?.errors?.email" class="form-text text-muted">Invalid email format</small>
+        </span>
 
       <input type='password' placeholder='Hasło' [(ngModel)]="parent['password']" name="password">
 
@@ -43,6 +47,16 @@ export class ParentLoginComponent implements OnInit {
 
  parent ={}
  
+    login(form) {
+    if(form.invalid){
+      return;
+    }
+      console.log('udalo sie')
+//     localStorage.clear()
+//     localStorage.setItem('loggedParent',parentId)  
+//     this.router.navigate(['/rodzic'])  
+  }
+  
   logOn(parentId){
     localStorage.clear()
     localStorage.setItem('loggedParent',parentId)  
