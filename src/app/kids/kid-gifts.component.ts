@@ -45,38 +45,25 @@ import { Location} from "@angular/common";
   </ul>
 
   
-   <p>Dziecko ma {{totalPoints}} punktów </p>
-
-
-    <p>Lista nagród dziecka niewykorzystanych ale dostępnych</p>
-    <ul> 
-      <li *ngFor="let userGift of availableGifts"
-        [routerLink]="['wybierz/'+userGift.id]"> 
-        {{ userGift.name }} 
+    <p class="smallTitle">Czekamy na potwierdzenie przez rodzica</p>
+    <ul class="mission-wait"> 
+      <li *ngFor="let userGift of chosenGifts" 
+        class="circle-big">
+        <p>{{ userGift.name }} </p>
+        <img src="{{userGift.icon}}">
+        <star-svg></star-svg>
+        <span> {{userGift.points}}</span>
       </li> 
     </ul> 
 
-
-    <p>Lista nagród dziecka niewykorzystanych</p>
-    <ul> 
-      <li *ngFor="let userGift of unusedGifts"
-        [routerLink]="[userGift.id]"> 
-        {{ userGift.name }} 
-      </li> 
-    </ul> 
-
-    <p>Lista nagród wybranych przez dziecko do odbioru</p>
-    <ul> 
-      <li *ngFor="let userGift of chosenGifts"
-        [routerLink]="[userGift.id]"> 
-        {{ userGift.name }} 
-      </li> 
-    </ul> 
-
-    <p>Lista nagród już odebranych</p>
-    <ul> 
-      <li *ngFor="let userGift of receivedGifts"> 
-        {{ userGift.name }} 
+    <p class="smallTitle">Dostałeś już te nagrody</p>
+    <ul  class="mission-neutral mission-unactive"> > 
+      <li *ngFor="let userGift of receivedGifts"
+        class="circle-big">
+        <p>{{ userGift.name }} </p>
+        <img src="{{userGift.icon}}">
+        <star-svg></star-svg>
+        <span> {{userGift.points}}</span>
       </li> 
     </ul> 
 
