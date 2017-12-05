@@ -145,7 +145,8 @@ export class OneDayViewComponent implements OnInit {
 //   [selectedMission]="selectedMission" 
 //   [missionStatus]="missionStatus">
 // </move-mission>
-   
+   //<app-alert *ngIf="showAlert==true" [imageSrc]=" ' assets/bohater.png' " [textTitle]=" 'Gratulacje' " [textPlain]=" 'Misja czeka na potwierdzenie' " [showAlert]="showAlert"></app-alert>
+
   constructor(
     private service: MissionsService,
     private router: Router,
@@ -181,6 +182,7 @@ export class OneDayViewComponent implements OnInit {
   undoneMissions = [];
   selectedMission
   missionStatus
+  showAlert = false
 
   ngOnChanges(){
     //set thisDay 
@@ -197,7 +199,7 @@ export class OneDayViewComponent implements OnInit {
     this.fetchMissions();
   }
 
-  ngOnInit() { }
+  ngOnInit() { this.showAlert = true}
 
   fetchMissions() {
     this.service.fetchMissions(this.kidId)

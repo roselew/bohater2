@@ -11,6 +11,7 @@ import { MissionsService } from '../missions/missions.service';
       <progress-bar-week 
         [waitWidth]="100*(weekProgress.nDone+weekProgress.nWait)/weekProgress.nAll" 
         [doneWidth]="100*weekProgress.nDone/weekProgress.nAll">
+        <p> {{weekProgress.nDone}} / {{weekProgress.nAll}}</p>
       </progress-bar-week>
   
   </div>

@@ -6,8 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
     <div class="progress"> 
       <div class="progress-undone"> </div>
       <div class="progress-wait" [ngStyle]="{'width' : waitWidth + '%'}"> </div>
-      <div class="progress-done" [ngStyle]="{ 'width' : doneWidth + '%'}"> </div> 
-      <img src="../../assets/logo.png" class="logo">
+      <div class="progress-done" [ngStyle]="{ 'width' : doneWidth + '%'}" [ngClass]="{'complete': doneWidth == 100 }"> 
+      
       <ng-content></ng-content>
     </div>
   `,

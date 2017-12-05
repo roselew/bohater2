@@ -68,11 +68,10 @@
         1512946800000,
         1513897200000,
         1513292400000,
-        1512514800000
-      ],
-      "waitDates": [
+        1512514800000,
         1512687600000
       ],
+      "waitDates": [],
       "id": 1,
       "points": "1"
     },
@@ -110,8 +109,7 @@
         1513897200000
       ],
       "waitDates": [
-        1512082800000,
-        1512687600000
+        1512082800000
       ],
       "id": 15
     },
@@ -162,7 +160,8 @@
       ],
       "doneDates": [
         1512687600000,
-        1513897200000
+        1513897200000,
+        1512082800000
       ],
       "waitDates": [],
       "id": 22
@@ -182,10 +181,11 @@
         1512428400000,
         1512601200000,
         1513033200000,
-        1513206000000
+        1513206000000,
+        1513638000000
       ],
       "waitDates": [
-        1513638000000
+        1513810800000
       ],
       "id": 26
     },
@@ -209,10 +209,11 @@
         1512169200000,
         1513033200000,
         1513292400000,
-        1513378800000
+        1513378800000,
+        1513638000000
       ],
       "waitDates": [
-        1513638000000
+        1513897200000
       ],
       "id": 27
     },
@@ -227,7 +228,10 @@
         3,
         4
       ],
-      "doneDates": [],
+      "doneDates": [
+        1512601200000,
+        1512687600000
+      ],
       "waitDates": [
         1513810800000,
         1513897200000
@@ -331,8 +335,8 @@
       "icon": "assets/ikony/n_wycieczka.svg",
       "points": 1,
       "kidId": 13,
-      "status": "unused",
-      "chosenDate": "",
+      "status": "chosen",
+      "chosenDate": 1512428400000,
       "id": 22
     },
     {
@@ -379,6 +383,23 @@
       "status": "received",
       "chosenDate": 1512428400000,
       "id": 27
+    },
+    {
+      "points": 2,
+      "name": "Prezent wlasny",
+      "kidId": 1,
+      "status": "chosen",
+      "chosenDate": 1512428400000,
+      "id": 28
+    },
+    {
+      "name": "Późniejszy powrót do domu",
+      "icon": "assets/history.svg",
+      "points": 50,
+      "kidId": 13,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 29
     }
   ],
   "extraPoints": [
@@ -495,7 +516,7 @@
         {
           "badgeName": "Buty super mocy",
           "icon": "assets/o_but2.svg",
-          "gained": "false"
+          "gained": "true"
         },
         {
           "badgeName": "Buty extra mocy",

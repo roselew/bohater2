@@ -66,6 +66,7 @@ import { ViewHeroComponent } from './parents/view-hero.component';
 import { AuthParentService } from "./auth-parent.service";
 import { AuthKidService } from "./auth-kid.service";
 import { MoveMissionComponent } from './progress/move-mission.component';
+import { AppAlertComponent } from './app-alert.component';
 
 
 
@@ -135,6 +136,7 @@ import { MoveMissionComponent } from './progress/move-mission.component';
     ProgressWeekComponent,
     ViewHeroComponent,
     MoveMissionComponent,
+    AppAlertComponent,
     
     
   ],

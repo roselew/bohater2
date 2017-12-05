@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as moment from 'moment';
 
 @Injectable()
 export class MissionsService {
@@ -83,13 +84,17 @@ export class MissionsService {
       let today = new Date();
       today.setHours(0,0,0,0);
       
+      today.setDate(today.getDate() - today.getUTCDay())
+
       //finds the oldest mission - point where to start checking history 
       let firstMissionStart =new Date(userMissions.sort(function(a,b){
         return a['start']-b['start'];
       })[0].start)
 
+      firstMissionStart.setDate(firstMissionStart.getDate() - firstMissionStart.getUTCDay())
+
       //calculate how many week before today's week we need to go back
-      let firstWeekId = ((firstMissionStart.getDate() - firstMissionStart.getUTCDay()) -(today.getDate() - today.getUTCDay()))/ 7;
+      let firstWeekId = (firstMissionStart.getTime()-today.getTime())/(1000 * 3600 * 24)/ 7;
 
       for (let weekId=firstWeekId; weekId<1; weekId++){   
          weekProgress.push(this.getOneWeekProgress(userMissions,weekId))
