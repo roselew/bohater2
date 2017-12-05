@@ -1,13 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-alert',
   template: `
 
   <div class="alert">
-    <span class="X" (click)="hideAlert()"> X </span>
-    <img src="{{imageSrc}}">
-    <p class="smallTitle">{{textTitle}}</p>
+  <span class="X" (click)="change.emit()"> X </span>
+    <img class="alertImage bounce" src="{{imageSrc}}">
+    <h1 *ngIf="textTitle.length>0" class="smallTitle">{{textTitle}}</h1>
     <p>{{textPlain}}</p>
   </div>
 
@@ -20,13 +20,9 @@ export class AppAlertComponent implements OnInit {
 @Input() imageSrc
 @Input() textTitle
 @Input() textPlain
-@Input() showAlert
 
-
-hideAlert(){
-  this.showAlert=false
-  console.log(this.showAlert)
-}
+@Output() 
+change = new EventEmitter;
 
   constructor() { }
 

@@ -133,9 +133,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   
 </div>
 
-
-
-  `,
+<app-alert *ngIf="alertVisible" (change)="alertVisible=false" [imageSrc]="alertImage" [textTitle]="alertTitle" [textPlain]="alertText"></app-alert>
+ 
+`,
   styleUrls: ['../../sass/one-day-view.scss']
 
 })
@@ -182,7 +182,29 @@ export class OneDayViewComponent implements OnInit {
   undoneMissions = [];
   selectedMission
   missionStatus
-  showAlert = false
+  
+
+  //ALERTS
+
+  alertVisible
+  alertImage
+  alertText
+  alertTitle
+
+
+  showAlert(imageSrc, textTitle, textPlain){
+    this.alertVisible=true
+    this.alertImage=imageSrc 
+    this.alertText=textPlain 
+    this.alertTitle=textTitle
+  }
+
+  hideAlert(){
+    this.alertVisible=false
+    this.alertImage="" 
+    this.alertText=""
+    this.alertTitle=""
+  }
 
   ngOnChanges(){
     //set thisDay 
@@ -199,7 +221,7 @@ export class OneDayViewComponent implements OnInit {
     this.fetchMissions();
   }
 
-  ngOnInit() { this.showAlert = true}
+  ngOnInit() { }
 
   fetchMissions() {
     this.service.fetchMissions(this.kidId)
@@ -223,13 +245,16 @@ export class OneDayViewComponent implements OnInit {
     if (status!=='done'){
       this.addDone(mission)
     } else {
-
+      this.showAlert('assets/like.png','','Ta misja jest już wykonana')
     }
   } else {
     if (status=='undone'){
       this.addWait(mission)
-    } else {
-
+      this.showAlert('assets/bohater.png','Gratulacje','Super Ci idzie!')
+    } else if (status=='wait'){
+      this.showAlert('assets/hourglass.svg','Czekamy','...na akceptację mamy')
+    } else if (status=='done'){
+      this.showAlert('assets/like.svg','Zrobione','Już wykonałeś tą misję')
     }
   }
   }
@@ -240,9 +265,20 @@ export class OneDayViewComponent implements OnInit {
       if (status=='done'){
         this.removeDone(mission)
       } else if (status=='wait'){
-          this.removeWait(mission)
+        this.removeWait(mission)
+      } else {
+        this.showAlert('assets/dislike.svg','','Misja nadal nie jest wykonana')
       }
     } else {
+      if (status=="undone"){
+        this.showAlert('assets/dislike.svg','Niestety','Misja nadal nie jest wykonana')
+      } else if (status=="wait"){
+        this.removeWait(mission)
+        this.showAlert('assets/dislike.svg','Niestety','Nie wykonałeś tej misji')
+      } else if (status=="done"){
+        this.removeDone(mission)
+        this.showAlert('assets/dislike.svg','Niestety','Nie wykonałeś tej misji')
+      }
 
     }
   }

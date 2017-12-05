@@ -76,6 +76,8 @@ a {
 body {
 	font: $font_big_size $font_reg_family;
 }
+
+
 // FORMS
 
 
@@ -157,15 +159,28 @@ span.more {
 	border-top-right-radius: $border_radius;			
 }
 
-p.smallTitle {
-	background-color: white;
-	opacity: 0.5;
+.smallTitle {
+	
 	padding: 2.0rem;
 	margin: 2.0rem 0;
 	width: 80%;
 	margin-left: 10%;
 	border-radius: 2.0rem;
 }
+
+h1.smallTitle { font-size: 6.0rem;}
+
+.parent .smallTitle {
+	opacity: 0.5;
+	background-color: white;
+	color: $color_text_parent;
+}
+.kid .smallTitle {
+	opacity: 0.8;
+	background-color: $color_base;
+	color:white;
+}
+
 
 .panelTitle {
   background: $color_base url(../assets/gift.svg) center left 20px no-repeat; background-size:80px; 
@@ -285,6 +300,7 @@ input[type=checkbox] {
 
 	//alert on whole page
 	.alert{
+		padding: 4.0rem;
 		position:fixed;
 		display: block;
 		top: $header_height;
@@ -320,27 +336,27 @@ input[type=checkbox] {
 			cursor: pointer;
 		}
 
-		// img {
-		// 	width: $mission_mid_size;
-		// 	height: $mission_mid_size;
-		// 	-webkit-animation:spin 4s linear infinite;
-	    // 	-moz-animation:spin 4s linear infinite;
-	    // 	animation:spin 4s linear infinite;
-		// 	@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-		// 	@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-		// 	@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-		// }
+		img.alertImage {
+			width: $mission_mid_size;
+			// height: $mission_mid_size;
+			// -webkit-animation:spin 4s linear infinite;
+			// -moz-animation:spin 4s linear infinite;
+			// animation:spin 4s linear infinite;
+			// @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+			// @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+			// @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+		}
 	}
 
 	
 }
 
 .parent .alert{
-	background-color: rgba($color_dark_grey,0.95);
+	background-color: rgba($color_dark_grey,0.9);
 }
 
 .kid .alert{
-	background-color: rgba($color_alert,0.95);
+	background-color: rgba($color_alert,0.9);
 }
 
 //bouncing class
