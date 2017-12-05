@@ -236,14 +236,14 @@ export class OneDayViewComponent implements OnInit {
     this.selectedMission=undefined
     if (this.mode == 'parent'){
       if (status=='done'){
-        this.addWait(mission)
-      } else {
-
+        this.removeDone(mission)
+      } else if (status=='wait'){
+          this.removeWait(mission)
       }
     } else {
 
     }
-    }
+  }
 
 
   addDone(mission) {
@@ -261,8 +261,37 @@ export class OneDayViewComponent implements OnInit {
           .subscribe(() => this.fetchMissions());
       })
   }
-
+  
+  removeDone(mission){
+    let data=this.thisDay.getTime()
+    let updatedMission={};
+    this.service.getOneMission(mission.id)
+    .subscribe(userMission => {
+      updatedMission = userMission;
+      if (updatedMission['doneDates'].indexOf(data)>-1){
+        let index = updatedMission['doneDates'].indexOf(data)
+        updatedMission['doneDates'].splice(index,1)
+      }  
+      this.service.updateOneMission(mission.id,updatedMission)
+        .subscribe(() => this.fetchMissions());
+    })
+  }
  
+  removeWait(mission){
+    let data=this.thisDay.getTime()
+    let updatedMission={};
+    this.service.getOneMission(mission.id)
+    .subscribe(userMission => {
+      updatedMission = userMission;
+      if (updatedMission['waitDates'].indexOf(data)>-1){
+        let index = updatedMission['waitDates'].indexOf(data)
+        updatedMission['waitDates'].splice(index,1)
+      }  
+      this.service.updateOneMission(mission.id,updatedMission)
+        .subscribe(() => this.fetchMissions());
+    })
+  }
+  
   addWait(mission) {
     if (!mission.confirmation){
       this.addDone(mission)
