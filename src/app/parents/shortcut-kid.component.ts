@@ -26,7 +26,7 @@ import { HttpClient } from '@angular/common/http';
     </a>
   </div>
 
-  <div class="total-progress" [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']">
+  <div class="total-progress" [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']" [queryParams]="{filter: 'wait'}">
       <progress-week [userMissions]="userMissions"></progress-week> 
   </div>
 
