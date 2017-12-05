@@ -12,9 +12,7 @@ import { KidComponent } from './kids/kid.component';
 import { KidMenuComponent } from './kids/kid-menu.component';
 import { KidMissionsComponent } from './kids/kid-missions.component';
 import { KidGiftsComponent } from './kids/kid-gifts.component';
-import { KidChoseGiftComponent } from './kids/kid-chose-gift.component';
 import { KidHeroComponent } from './kids/kid-hero.component';
-import { KidBadgeComponent } from './kids/kid-badge.component';
 import { KidProgressComponent } from './kids/kid-progress.component';
 
 import { ParentComponent } from './parents/parent.component';
@@ -34,8 +32,6 @@ import { NewGiftComponent } from './gifts/new-gift.component';
 import { CreateGiftComponent } from './gifts/create-gift.component';
 import { ExpertGiftComponent } from './gifts/expert-gift.component';
 import { GiftComponent } from './gifts/gift.component';
-import { AvailableGiftComponent } from './gifts/available-gift.component';
-import { ChosenGiftComponent } from './gifts/chosen-gift.component';
 
 import { OneWeekComponent } from './progress/one-week.component';
 import { ProgressHistoryComponent } from './progress/progress-history.component';
@@ -63,7 +59,6 @@ const routes:Routes = [
         { path: 'menu',                                  component: KidMenuComponent},
         { path: 'misje/:dayId',                          component: KidMissionsComponent},
         { path: 'nagrody',                               component: KidGiftsComponent},
-        { path: 'nagrody/wybierz/:giftId',               component: KidChoseGiftComponent},
         { path: 'bohater',                               component: KidHeroComponent},
         { path: 'odznaki/:weekId',                       component: KidProgressComponent},
     ]},
@@ -91,9 +86,7 @@ const routes:Routes = [
             { path: 'nagrody/dodaj-wlasna',              component: CreateGiftComponent},
             { path: 'nagrody/dodaj-polecana/:giftId',    component: ExpertGiftComponent},
             { path: 'nagrody/:giftId',                   component: GiftComponent},  
-            { path: 'nagrody/dostepne/:giftId',          component: AvailableGiftComponent},
-            { path: 'nagrody/wybrane/:giftId',           component: ChosenGiftComponent},   
-
+  
             { path: 'postepy/historia',                  component: ProgressHistoryComponent},
             { path: 'postepy/:weekId',                   component: OneWeekComponent},
 
