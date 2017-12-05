@@ -76,7 +76,23 @@
 		cursor: pointer;
 		padding-right: 20px;
 
-		
+		&::after{
+      content: '&#x25B2';
+      font: $font_small_size $font_reg_family;
+			line-height: $day_height/2;
+			position: absolute;
+			right: 15px;
+			top: $day_height/2 - $font_mid_size/2;
+    }
+    
+    &.selected { 
+      background-color: $color_base;
+    }
+    
+    &.selected::after{
+      content: '&#x25BC';
+    }
+    
 		//small arrow down/up
 		span{
 
