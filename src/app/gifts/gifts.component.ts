@@ -136,6 +136,7 @@ export class GiftsComponent implements OnInit {
  }
 
   calculatePoints(){
+    this.totalPoints = 0
     for (let mission of this.userMissions){
       this.totalPoints += mission['doneDates'].length * parseInt(mission['points'])
     }
