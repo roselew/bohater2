@@ -41,6 +41,7 @@ import { ExtraPointsComponent } from './points/extra-points.component';
 
 import { AuthKidService } from "./auth-kid.service";
 import { AuthParentService } from "./auth-parent.service";
+import { AvailableGiftComponent } from "./gifts/available-gift.component";
 
 
 
@@ -86,6 +87,7 @@ const routes:Routes = [
             { path: 'nagrody/dodaj-wlasna',              component: CreateGiftComponent},
             { path: 'nagrody/dodaj-polecana/:giftId',    component: ExpertGiftComponent},
             { path: 'nagrody/:giftId',                   component: GiftComponent},  
+            { path: 'nagrody/dostepne/:giftId',          component: AvailableGiftComponent},
   
             { path: 'postepy/historia',                  component: ProgressHistoryComponent},
             { path: 'postepy/:weekId',                   component: OneWeekComponent},

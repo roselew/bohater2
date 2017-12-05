@@ -117,7 +117,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   <div *ngIf="selectedMission" class="alert">
   <span class="X" (click)="selectedMission=null"> X </span>
 
-  <ul class="mission-undone">
+  <ul class="mission-neutral">
     <li class="circle-big">
       <p>
       {{selectedMission.name}}

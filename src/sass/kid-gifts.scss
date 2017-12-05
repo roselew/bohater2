@@ -1,6 +1,6 @@
 @import '_zmienne';
 
-li.circle-big{
+.mission-active li.circle-big{
     display:block;
     position: relative;
     color: white;
@@ -42,4 +42,26 @@ li.circle-big{
             color:white;
         }
     }
+}
+
+.mission-done {
+    .progress-done{
+        background-color: $color-done;
+        &::after {
+            content: '';
+            width: 10rem;
+            height: 10rem;
+            position: absolute;
+            top: -10rem;
+            right: 0;
+            background: url(../assets/gift.svg) center center no-repeat; background-size: 100%;
+        }
+    }
+}
+
+.mission-unactive, .mission-wait {
+   li.circle-big {
+        color: white;
+        margin-bottom: 8rem;
+   } 
 }

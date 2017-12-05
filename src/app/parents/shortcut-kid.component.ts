@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 <div *ngIf="userMissions && userGifts">
 
   <div class="kid-icon">
-    <a [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']">
+    <a [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']" [queryParams]="{filter: 'wait'}">
     <img src="../../assets/mission.svg" class="enlarge">
     <missions-to-accept [userMissions]="userMissions"></missions-to-accept> 
     </a>	
@@ -26,7 +26,7 @@ import { HttpClient } from '@angular/common/http';
     </a>
   </div>
 
-  <div class="total-progress" [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']" [queryParams]="{filter: 'wait'}">
+  <div class="total-progress" [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']">
       <progress-week [userMissions]="userMissions"></progress-week> 
   </div>
 

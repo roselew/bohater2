@@ -75,8 +75,7 @@ export class OneWeekComponent implements OnInit {
 
     //get week Id 
     this.route.paramMap.subscribe(paramMap => {
-    
-      this.filter = +paramMap.get('filter') || 'all';
+
       this.weekId = +paramMap.get('weekId');
       
       this.firstDay = 0 - today.getUTCDay() + 7* this.weekId;
@@ -91,6 +90,10 @@ export class OneWeekComponent implements OnInit {
       
       this.days=[this.firstDay, this.firstDay+1, this.firstDay+2, this.firstDay+3, this.firstDay+4, this.firstDay+5, this.firstDay+6]
     
+    })
+
+    this.route.queryParamMap.subscribe(paramMap =>  {
+      this.filter = paramMap.get('filter') || 'all';
     })
   }
 

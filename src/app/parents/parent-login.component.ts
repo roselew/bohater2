@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
     <form #formRef="ngForm" (submit)="login(formRef)">
 
       <input type='text' placeholder='Email' [(ngModel)]="parent['email']" name="email">
-         <span *ngIf="formRef.controls.email?.touched  || formRef.controls.email?.dirty">
+         <span *ngIf="formRef.controls.email?.touched  || formRef.controls.email?.dirty"> 
           <small *ngIf="formRef.controls.email?.errors?.required" class="form-text text-muted">Field is required</small>
           <small *ngIf="formRef.controls.email?.errors?.email" class="form-text text-muted">Invalid email format</small>
         </span>

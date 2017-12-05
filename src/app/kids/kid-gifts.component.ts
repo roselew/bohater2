@@ -9,7 +9,7 @@ import { Location} from "@angular/common";
 
 <div class="container">
 
-  <ul class="mission-done">
+  <ul class="mission-neutral mission-done mission-active">
     <li *ngFor="let userGift of availableGifts"
     class="circle-big"
     (click)="select(userGift)">  
@@ -19,10 +19,9 @@ import { Location} from "@angular/common";
       <star-svg></star-svg>
       <span> {{userGift.points}}</span>
       
-      <div class="progress">
+       <div class="progress">
         <div class="progress-undone"></div>
-        <div class="progress-wait" style="width:80%"></div>
-        <div class="progress-done" style="width:{{totalPoints/userGift.points}}">
+        <div class="progress-done" [ngStyle]="{'width' : getWidth(userGift) + '%'}">
           <p> {{totalPoints}} / {{userGift.points}} </p>
         </div>
       </div>
@@ -30,7 +29,7 @@ import { Location} from "@angular/common";
     </li> 
   </ul>
 
-  <ul class="mission-neutral">
+  <ul class="mission-neutral mission-active">
     <li *ngFor="let userGift of unusedGifts"
     class="circle-big"> 
 
@@ -39,10 +38,9 @@ import { Location} from "@angular/common";
       <star-svg></star-svg>
       <span> {{userGift.points}}</span>
       
-      <div class="progress">
+       <div class="progress">
         <div class="progress-undone"></div>
-        <div class="progress-wait" style="width:80%"></div>
-        <div class="progress-done" style="width:{{totalPoints/userGift.points}}">
+        <div class="progress-done" [ngStyle]="{'width' : getWidth(userGift) + '%'}">
           <p> {{totalPoints}} / {{userGift.points}} </p>
         </div>
       </div>
@@ -51,8 +49,8 @@ import { Location} from "@angular/common";
   </ul>
 
   
-  <p class="smallTitle">Czekamy na potwierdzenie przez rodzica</p>
-  <ul class="mission-wait"> 
+  <p *ngIf="chosenGifts && chosenGifts.length>0" class="smallTitle">Czekamy na potwierdzenie przez rodzica</p>
+  <ul class="mission-neutral mission-wait"> 
     <li *ngFor="let userGift of chosenGifts" 
       class="circle-big">
       <p>{{ userGift.name }} </p>
@@ -62,8 +60,8 @@ import { Location} from "@angular/common";
     </li> 
   </ul> 
 
-  <p class="smallTitle">Dostałeś już te nagrody</p>
-  <ul  class="mission-neutral mission-unactive"> > 
+  <p *ngIf="receivedGifts && receivedGifts.length>0" class="smallTitle">Dostałeś już te nagrody</p>
+  <ul  class="mission-neutral mission-unactive"> 
     <li *ngFor="let userGift of receivedGifts"
       class="circle-big">
       <p>{{ userGift.name }} </p>
@@ -87,7 +85,7 @@ import { Location} from "@angular/common";
     </ul>
 
     <button (click)="chose(selectedGift)">Odbieram nagrodę</button>
-    <button (click)="selectedGift=null">Zbieram punkty dalej</button>
+    <button (click)="selectedGift=undefined">Zbieram punkty dalej</button>
 
   </div>
 
@@ -159,6 +157,7 @@ fetchGifts(kidId){
   }
 
   chose(gift){
+      this.selectedGift=undefined
       gift['status']='chosen';
       let today = new Date().setHours(0,0,0,0);
       gift['chosenDate']=today;
@@ -167,6 +166,10 @@ fetchGifts(kidId){
         let kidId = +localStorage.getItem('loggedKid');
         this.fetchGifts(kidId);
       });
+  }
+
+  getWidth(userGift){
+    return Math.min(100*this.totalPoints/userGift.points,100)
   }
 }
 

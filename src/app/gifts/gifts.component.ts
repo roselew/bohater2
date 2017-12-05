@@ -85,7 +85,15 @@ import { Location} from "@angular/common";
   .chosenGiftsPanel{
     width: 100%;
     background-color:#f5f5f5;
-    margin: 20px 0; 
+    margin: 4rem 0; 
+  }
+  .chosenGiftsPanel li.circle-big{
+    margin-top: 4rem;
+    margin-bottom: 12rem;
+  }
+
+  .buttonPanel {
+    vertical-align: top;
   }
   .buttonPanel button {
     margin-bottom: 10px;
