@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
   <div class="day" *ngIf="(type=='weekView')"> 
   
-      <p (click)="showDetails()" [ngClass]="{'selected': details }">
+      <p *ngIf="(filter=='all')" (click)="showDetails()" [ngClass]="{'selected': details }">
         {{days[thisDay.getUTCDay()]}} 
         <span></span> 
       </p>
@@ -27,7 +27,11 @@ import { Router, ActivatedRoute } from '@angular/router';
         </ul>		
       </div>
 
+
+
       <div *ngIf="( (filter=='all' && details) || filter!=='all')" class="day-details">
+
+        <p *ngIf="(filter=='undone' && undoneMissions && undoneMissions.length>0)">{{days[thisDay.getUTCDay()]}}</p>
         <ul *ngIf="(filter=='all' || filter=='undone')" class="mission-undone"> 
           <li *ngFor="let mission of undoneMissions" 
             class='circle-mid'
@@ -37,6 +41,8 @@ import { Router, ActivatedRoute } from '@angular/router';
             <span>{{mission.points}}</span>
           </li> 
         </ul>			
+
+        <p *ngIf="(filter=='wait' && waitMissions && waitMissions.length>0)">{{days[thisDay.getUTCDay()]}}</p>
         <ul *ngIf="(filter=='all'||filter=='wait')" class="mission-wait"> 
           <li *ngFor="let mission of waitMissions"
             class='circle-mid'
@@ -46,6 +52,8 @@ import { Router, ActivatedRoute } from '@angular/router';
             <span>{{mission.points}}</span>
           </li> 
         </ul>	
+
+        <p *ngIf="(filter=='done' && doneMissions && doneMissions.length>0)">{{days[thisDay.getUTCDay()]}}</p>
         <ul *ngIf="(filter=='all'||filter=='done')" class="mission-done"> 
           <li *ngFor="let mission of doneMissions"
             class='circle-mid'
