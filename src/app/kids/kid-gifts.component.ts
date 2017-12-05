@@ -7,84 +7,90 @@ import { Location} from "@angular/common";
   selector: 'kid-gifts',
   template: `
 
-  <div class="container">
+<div class="container">
 
   <ul class="mission-done">
-  <li *ngFor="let userGift of availableGifts"
-  class="circle-big"
-  (click)="select(userGift)">  
-  <p>{{ userGift.name }} </p>
-  <img src="{{userGift.icon}}">
-  <star-svg></star-svg>
-  <span> {{userGift.points}}</span>
-  <div class="progress">
-    <div class="progress-undone"></div>
-    <div class="progress-wait" style="width:80%"></div>
-    <div class="progress-done" style="width:{{totalPoints/userGift.points}}">
-      <p> {{totalPoints}} / {{userGift.points}} </p>
-    </div>
-  </div>
-  </li> 
-</ul>
+    <li *ngFor="let userGift of availableGifts"
+    class="circle-big"
+    (click)="select(userGift)">  
+
+      <p>{{ userGift.name }} </p>
+      <img src="{{userGift.icon}}">
+      <star-svg></star-svg>
+      <span> {{userGift.points}}</span>
+      
+      <div class="progress">
+        <div class="progress-undone"></div>
+        <div class="progress-wait" style="width:80%"></div>
+        <div class="progress-done" style="width:{{totalPoints/userGift.points}}">
+          <p> {{totalPoints}} / {{userGift.points}} </p>
+        </div>
+      </div>
+
+    </li> 
+  </ul>
 
   <ul class="mission-neutral">
     <li *ngFor="let userGift of unusedGifts"
     class="circle-big"> 
-    <p>{{ userGift.name }} </p>
-    <img src="{{userGift.icon}}">
-    <star-svg></star-svg>
-    <span> {{userGift.points}}</span>
-    <div class="progress">
-      <div class="progress-undone"></div>
-      <div class="progress-wait" style="width:80%"></div>
-      <div class="progress-done" style="width:{{totalPoints/userGift.points}}">
-        <p> {{totalPoints}} / {{userGift.points}} </p>
+
+      <p>{{ userGift.name }} </p>
+      <img src="{{userGift.icon}}">
+      <star-svg></star-svg>
+      <span> {{userGift.points}}</span>
+      
+      <div class="progress">
+        <div class="progress-undone"></div>
+        <div class="progress-wait" style="width:80%"></div>
+        <div class="progress-done" style="width:{{totalPoints/userGift.points}}">
+          <p> {{totalPoints}} / {{userGift.points}} </p>
+        </div>
       </div>
-    </div>
+
     </li> 
   </ul>
 
   
-    <p class="smallTitle">Czekamy na potwierdzenie przez rodzica</p>
-    <ul class="mission-wait"> 
-      <li *ngFor="let userGift of chosenGifts" 
-        class="circle-big">
-        <p>{{ userGift.name }} </p>
-        <img src="{{userGift.icon}}">
-        <star-svg></star-svg>
-        <span> {{userGift.points}}</span>
-      </li> 
-    </ul> 
+  <p class="smallTitle">Czekamy na potwierdzenie przez rodzica</p>
+  <ul class="mission-wait"> 
+    <li *ngFor="let userGift of chosenGifts" 
+      class="circle-big">
+      <p>{{ userGift.name }} </p>
+      <img src="{{userGift.icon}}">
+      <star-svg></star-svg>
+      <span> {{userGift.points}}</span>
+    </li> 
+  </ul> 
 
-    <p class="smallTitle">Dostałeś już te nagrody</p>
-    <ul  class="mission-neutral mission-unactive"> > 
-      <li *ngFor="let userGift of receivedGifts"
-        class="circle-big">
-        <p>{{ userGift.name }} </p>
-        <img src="{{userGift.icon}}">
-        <star-svg></star-svg>
-        <span> {{userGift.points}}</span>
-      </li> 
-    </ul> 
-
-    </div>
+  <p class="smallTitle">Dostałeś już te nagrody</p>
+  <ul  class="mission-neutral mission-unactive"> > 
+    <li *ngFor="let userGift of receivedGifts"
+      class="circle-big">
+      <p>{{ userGift.name }} </p>
+      <img src="{{userGift.icon}}">
+      <star-svg></star-svg>
+      <span> {{userGift.points}}</span>
+    </li> 
+  </ul>  
 
 <!-- pop up window for changing mission status -->
   <div *ngIf="selectedGift" class="alert">
-  <span class="X" (click)="selectedGift=null"> X </span>
+    <span class="X" (click)="selectedGift=null"> X </span>
 
-  <ul class="mission-neutral">
-    <li class="circle-big">
-      <p> {{selectedGift.name}} </p>
-      <img src="{{selectedGift.icon}}">
-      <star-svg></star-svg>
-      <span>{{selectedGift.points}}</span>
-    </li>
-  </ul>
+    <ul class="mission-neutral">
+      <li class="circle-big">
+        <p> {{selectedGift.name}} </p>
+        <img src="{{selectedGift.icon}}">
+        <star-svg></star-svg>
+        <span>{{selectedGift.points}}</span>
+      </li>
+    </ul>
 
- <button (click)="moveDown(selectedMission,missionStatus)"></div>    
- <button class="altButton" (click)="moveUp(selectedMission,missionStatus)"></div>  
-  
+    <button (click)="chose(selectedGift)">Odbieram nagrodę</button>
+    <button (click)="selectedGift=null">Zbieram punkty dalej</button>
+
+  </div>
+
 </div>
 
   `,
@@ -111,14 +117,13 @@ export class KidGiftsComponent implements OnInit {
   extraPoints
   selectedGift
 
-  select(userGift){
-    this.selectedGift=userGift;
+ ngOnInit(){
+    let kidId = +localStorage.getItem('loggedKid');
+    this.fetchGifts(kidId);
   }
 
-
-  ngOnInit(){
-    this.kid['id'] = +localStorage.getItem('loggedKid');
-    this.http.get('http://localhost:3000/kids/'+this.kid['id']+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
+fetchGifts(kidId){
+    this.http.get('http://localhost:3000/kids/'+kidId+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
       .subscribe( kid => {
         this.kid = kid;
         this.userMissions = this.kid['userMissions'];
@@ -131,10 +136,10 @@ export class KidGiftsComponent implements OnInit {
         this.unusedGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points > this.totalPoints);  
         this.availableGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points <= this.totalPoints);
       })
-  }
-
+}
 
   calculatePoints(){
+    this.totalPoints = 0;
     for (let mission of this.userMissions){
       this.totalPoints += mission['doneDates'].length * parseInt(mission['points'])
     }
@@ -149,4 +154,21 @@ export class KidGiftsComponent implements OnInit {
     }
   }
 
+  select(userGift){
+    this.selectedGift=userGift;
+  }
+
+  chose(gift){
+      gift['status']='chosen';
+      let today = new Date().setHours(0,0,0,0);
+      gift['chosenDate']=today;
+      this.http.put('http://localhost:3000/userGifts/'+ gift['id'], gift)
+     .subscribe( ()=> {
+        let kidId = +localStorage.getItem('loggedKid');
+        this.fetchGifts(kidId);
+      });
+  }
 }
+
+
+
