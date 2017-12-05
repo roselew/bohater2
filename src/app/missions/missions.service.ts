@@ -112,7 +112,7 @@ export class MissionsService {
     
     for (let dayId=weekId*7-today.getUTCDay(); dayId<weekId*7+7-today.getUTCDay(); dayId++){
       
-      let thisDay = new Date();
+      let thisDay = new Date(today);
       thisDay.setDate(thisDay.getDate() + dayId)
       thisDay.setHours(0,0,0,0);
       let allMissions = this.getAllMissions(userMissions,thisDay);
