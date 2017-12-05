@@ -159,8 +159,12 @@ span.more {
 
 p.smallTitle {
 	background-color: white;
+	opacity: 0.5;
 	padding: 2.0rem;
 	margin: 2.0rem 0;
+	width: 80%;
+	margin-left: 10%;
+	border-radius: 2.0rem;
 }
 
 .panelTitle {
@@ -289,16 +293,18 @@ input[type=checkbox] {
 		height: 100vh;
 
 		color:$color_text_kid;
-		font: $font_big_size $font_reg_family;
+		
 		text-align: center;
 		line-height: 100px;
 		z-index: 499;
 		
-		p{
-			margin-top: 40vh;
+		ul {
+			margin-top: 30%;
+			li p {font: $font_big_size $font_reg_family;}
 		}
+
 		//X button closing page
-		span {
+		span.X {
 			position: absolute;
 			display: block;
 			right: 2.0rem;
@@ -314,16 +320,16 @@ input[type=checkbox] {
 			cursor: pointer;
 		}
 
-		img {
-			width: $mission_mid_size;
-			height: $mission_mid_size;
-			-webkit-animation:spin 4s linear infinite;
-	    	-moz-animation:spin 4s linear infinite;
-	    	animation:spin 4s linear infinite;
-			@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-			@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-			@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-		}
+		// img {
+		// 	width: $mission_mid_size;
+		// 	height: $mission_mid_size;
+		// 	-webkit-animation:spin 4s linear infinite;
+	    // 	-moz-animation:spin 4s linear infinite;
+	    // 	animation:spin 4s linear infinite;
+		// 	@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+		// 	@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+		// 	@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+		// }
 	}
 
 	

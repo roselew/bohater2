@@ -65,6 +65,7 @@ import { MissionsService } from './missions/missions.service';
 import { ViewHeroComponent } from './parents/view-hero.component';
 import { AuthParentService } from "./auth-parent.service";
 import { AuthKidService } from "./auth-kid.service";
+import { MoveMissionComponent } from './progress/move-mission.component';
 
 
 
@@ -133,6 +134,7 @@ import { AuthKidService } from "./auth-kid.service";
     ProgressHistoryComponent,
     ProgressWeekComponent,
     ViewHeroComponent,
+    MoveMissionComponent,
     
     
   ],

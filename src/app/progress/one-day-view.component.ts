@@ -31,7 +31,7 @@ import { Router, ActivatedRoute } from '@angular/router';
         <ul *ngIf="(filter=='all' || filter=='undone')" class="mission-undone"> 
           <li *ngFor="let mission of undoneMissions" 
             class='circle-mid'
-            (click)="moveUndone(mission)"> 
+            (click)="move(mission,'undone')"> 
             <img src="{{mission.icon}}">
             <star-svg></star-svg>
             <span>{{mission.points}}</span>
@@ -40,7 +40,7 @@ import { Router, ActivatedRoute } from '@angular/router';
         <ul *ngIf="(filter=='all'||filter=='wait')" class="mission-wait"> 
           <li *ngFor="let mission of waitMissions"
             class='circle-mid'
-            (click)="moveWait(mission)"> 
+            (click)="move(mission,'wait')"> 
             <img src="{{mission.icon}}">
             <star-svg></star-svg>
             <span>{{mission.points}}</span>
@@ -49,7 +49,7 @@ import { Router, ActivatedRoute } from '@angular/router';
         <ul *ngIf="(filter=='all'||filter=='done')" class="mission-done"> 
           <li *ngFor="let mission of doneMissions"
             class='circle-mid'
-            (click)="moveDone(mission)"> 
+            (click)="move(mission,'done')"> 
             <img src="{{mission.icon}}">
             <star-svg></star-svg>
             <span>{{mission.points}}</span>
@@ -66,16 +66,18 @@ import { Router, ActivatedRoute } from '@angular/router';
       <div class = 'left-column'>
         <p class = "title">DO ZROBIENIA</p>
         
-        <ul class="mission-undone"> 
+        <ul *ngIf = "undoneMissions && undoneMissions.length>0; else other_content" class="mission-undone"> 
           <li *ngFor="let mission of undoneMissions"
             class='circle-big'
-            (click)="moveUndone(mission)"> 
+            (click)="move(mission,'undone')"> 
             <img src="{{mission.icon}}">
             <star-svg></star-svg>
             <span>{{mission.points}}</span>
           </li> 
         </ul>	
-        
+        <ng-template #other_content><img src="assets/bohater.png" width="30%">
+           <p class="smallTitle"> Brawo! <br> Nie masz już żadnych misji do wykonania !!!</p>
+        </ng-template>
       </div>
       
       <div class="right-column">
@@ -84,7 +86,7 @@ import { Router, ActivatedRoute } from '@angular/router';
         <ul class="mission-wait"> 
           <li *ngFor="let mission of waitMissions"
             class='circle-big'
-            (click)="moveWait(mission)">
+            (click)="move(mission,'wait')">
             <img src="{{mission.icon}}">
             <star-svg></star-svg>
             <span>{{mission.points}}</span>
@@ -93,7 +95,7 @@ import { Router, ActivatedRoute } from '@angular/router';
         <ul class="mission-done"> 
           <li *ngFor="let mission of doneMissions"
             class='circle-big'
-            (click)="moveDone(mission)">
+            (click)="move(mission,'done')">
             <img src="{{mission.icon}}">
             <star-svg></star-svg>
             <span>{{mission.points}}</span>
@@ -103,6 +105,26 @@ import { Router, ActivatedRoute } from '@angular/router';
       </div>
       
   </div>	
+<!-- pop up window for changing mission status -->
+  <div *ngIf="selectedMission" class="alert">
+  <span class="X" (click)="selectedMission=null"> X </span>
+
+  <ul class="mission-undone">
+    <li class="circle-big">
+      <p>
+      {{selectedMission.name}}
+      </p>
+      <img src="{{selectedMission.icon}}">
+      <star-svg></star-svg>
+      <span>{{selectedMission.points}}</span>
+  
+      <div class="thumb thumb-down" (click)="moveDown(selectedMission,missionStatus)"><img src="assets/dislike.svg"></div>    
+      <div class="thumb thumb-up" (click)="moveUp(selectedMission,missionStatus)"><img src="assets/like.svg"></div>     
+    </li>
+  </ul>
+  
+</div>
+
 
 
   `,
@@ -110,7 +132,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 })
 export class OneDayViewComponent implements OnInit {
-
+//   <move-mission 
+//   *ngIf="selectedMission" 
+//   [selectedMission]="selectedMission" 
+//   [missionStatus]="missionStatus">
+// </move-mission>
    
   constructor(
     private service: MissionsService,
@@ -145,6 +171,8 @@ export class OneDayViewComponent implements OnInit {
   doneMissions = [];
   waitMissions = [];
   undoneMissions = [];
+  selectedMission
+  missionStatus
 
   ngOnChanges(){
     //set thisDay 
@@ -174,30 +202,42 @@ export class OneDayViewComponent implements OnInit {
       })
   }
 
- moveUndone(mission) {
-    if (this.mode == 'parent'){
-        this.addDone(mission)
+ move(mission,status){
+  this.selectedMission=mission;
+  this.missionStatus=status;
+ } 
+
+ moveUp(mission,status){
+  this.selectedMission=undefined
+  if (this.mode == 'parent'){
+    if (status!=='done'){
+      this.addDone(mission)
     } else {
+
+    }
+  } else {
+    if (status=='undone'){
+      this.addWait(mission)
+    } else {
+
+    }
+  }
+  }
+
+  moveDown(mission,status){
+    this.selectedMission=undefined
+    if (this.mode == 'parent'){
+      if (status=='done'){
         this.addWait(mission)
-    }
-  }
-  
- moveWait(mission) {
-    if (this.mode == 'parent'){
-        this.addDone(mission)
+      } else {
+
+      }
     } else {
-        
+
     }
-  }
-  
- moveDone(mission) {
-    if (this.mode == 'parent'){
-       
-    } else {
-        
     }
-  }
-  
+
+
   addDone(mission) {
     let data=this.thisDay.getTime()
     let updatedMission={};

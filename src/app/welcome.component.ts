@@ -9,13 +9,13 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
       <app-header [simpleH1]="'Bohater'" [skewH1]="'Tygodnia'"></app-header> 
 
       <div class="title-container">
-          <button class="enter parent" routerLink='/rodzic-logowanie'>RODZIC</button>
+          <button class="enter parent" routerLink='/rodzic'>RODZIC</button>
           <div class="avatar-images">
             <img src="assets/bohater2.png" width="25%">
             <img src="assets/bohater.png" width="30%">
             <img src="assets/bohater3.png" width="25%">
           </div>
-          <button class="enter kid" routerLink='/dziecko-logowanie'>DZIECKO</button>
+          <button class="enter kid" routerLink='/dziecko'>DZIECKO</button>
       </div>
   
       <a (click)="goTo('section02')" class="scrolling"><span></span>Dowiedz się więcej</a>
@@ -49,7 +49,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
         Pamiętaj nagrody nie muszą być czymś materialnym - może być to wyjście na lody lub przekazanie pieniędzy na cel charytatywny
         </p>
             
-      <div class="logo-banner-point logo-banner-point-right"><p>Po wykonaniu wszystkich misji w każdym tygodniu Dziecko zdobywa <span>odznakę Bohatera Tygodnia</span></p></div>   
+      <div class="logo-banner-point logo-banner-point-right"><p>Po wykonaniu wszystkich misji w każdym tygodniu Dziecko zdobywa <img src="assets/bohater.png" class="img-float-left"> <span>odznakę Bohatera Tygodnia</span></p></div>   
       <p> Za odznakę dziecko ulepsza swojego wirtualnego Bohatera dodając mu nowe moce a Ty uczysz dziecko systematyczności!</p>
       
     </section>	
@@ -70,7 +70,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
       <img src="assets/bohater3.png" height="200px">
       
   
-      <a href="#section01" class="scrolling scrolling-reverse"><span></span>Powrót do góry</a>
+      <a (click)="goTo('section01')" class="scrolling scrolling-reverse"><span></span>Powrót do góry</a>
     </section>	
   `,
     styleUrls: ['../sass/welcome.scss']

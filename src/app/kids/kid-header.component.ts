@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   <header>
     <a routerLink='/dziecko/menu'>
       <div class="header-banner"> {{kid.name}} </div>
-      <img src="../../assets/logo.png" class="logo">
+      <img src="../../assets/logoXL.png" class="logo">
     </a>
   </header>
   `,
