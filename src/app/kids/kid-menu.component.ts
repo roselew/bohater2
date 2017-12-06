@@ -5,14 +5,14 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'kid-menu',
   template: `
-  <div class="title-container">
+ 
   <ul>
     <a routerLink="../bohater"><li class="menu-bohater"><p>BOHATER</p></li></a>
     <a routerLink='../misje/0'><li class="menu-misje"><p>MISJE</p></li></a>
     <a routerLink="../odznaki/0"><li class="menu-odznaki"><p>ODZNAKI</p></li></a>
     <a routerLink="../nagrody"><li class="menu-nagrody"><p>NAGRODY</p></li></a>		
   </ul>  
-  </div>
+
 
   `,
   styleUrls: ['../../sass/kid-menu.scss']

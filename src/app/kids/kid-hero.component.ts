@@ -7,8 +7,6 @@ import { MissionsService } from '../missions/missions.service';
   selector: 'kid-hero',
   template: `
 
-  <div class="container">
-
   <div *ngIf="userHero"> 
 
     <ul>
@@ -50,7 +48,6 @@ import { MissionsService } from '../missions/missions.service';
 
   </div>
 
-  </div>
   `,
   styles: [],
 

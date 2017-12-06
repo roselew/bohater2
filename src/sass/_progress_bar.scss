@@ -50,10 +50,14 @@
 		left: -12vw;
 		padding-left: 1%;
 		font: $font_big_size $font_reg_family; 
-		color:$color_text_parent;
+		
 	}
 
 }
+
+.parent .progress p {color:$color_text_parent;}
+.kid .progress p {color:white;}
+
 
 .parent .progress {
 	.progress-wait{

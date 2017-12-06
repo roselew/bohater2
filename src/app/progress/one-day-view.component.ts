@@ -15,7 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
         <span></span> 
       </p>
 
-      <div *ngIf="(filter=='all')" class="day-line">
+      <div *ngIf="(filter=='all')" class="day-line" (click)="showDetails()">
         <ul class="small-mission-undone">
           <li *ngFor="let mission of undoneMissions" class='circle-small'></li> 
         </ul>	
@@ -145,8 +145,7 @@ export class OneDayViewComponent implements OnInit {
 //   [selectedMission]="selectedMission" 
 //   [missionStatus]="missionStatus">
 // </move-mission>
-   //<app-alert *ngIf="showAlert==true" [imageSrc]=" ' assets/bohater.png' " [textTitle]=" 'Gratulacje' " [textPlain]=" 'Misja czeka na potwierdzenie' " [showAlert]="showAlert"></app-alert>
-
+   
   constructor(
     private service: MissionsService,
     private router: Router,
@@ -245,7 +244,7 @@ export class OneDayViewComponent implements OnInit {
     if (status!=='done'){
       this.addDone(mission)
     } else {
-      this.showAlert('assets/like.png','','Ta misja jest już wykonana')
+      this.showAlert('assets/like.svg','','Ta misja jest już wykonana')
     }
   } else {
     if (status=='undone'){

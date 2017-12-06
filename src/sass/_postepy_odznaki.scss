@@ -22,7 +22,7 @@
 			top: -25px;
 			right: -50px;
 
-			background: url(../assets/calendar4.svg) top 20% center no-repeat; background-size: 100%;
+			background: url(../assets/calendar3.svg) top 20% center no-repeat; background-size: 70%;
 		}
 	}
 	//buttons previous and next week
@@ -75,6 +75,7 @@
 		line-height: $day_height;
 		cursor: pointer;
 		padding-right: 20px;
+		
 
 		&::after{
       content: '▼';
@@ -106,7 +107,7 @@
 }
 
 .parent .day{
-	p {	background-color: $color_dark_grey;
+	p {	background-color: $color_dark_grey;color: white;
 		&:hover{background-color: rgba($color_base,0.5);}
 	}
 	p.selected {background-color: $color_base}
@@ -310,7 +311,6 @@ ul.mission-unactive{
 		position: absolute;
 		left: -15%;
 		bottom: 50px;
-		z-index: 500;
 	}
 }
 

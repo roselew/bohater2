@@ -6,8 +6,7 @@ import { MissionsService } from '../missions/missions.service';
 @Component({
   selector: 'progress-history',
   template: `
-  
-  <p class="smallTitle" style="margin: 4rem auto">Historia postepow tygodniowych </p>
+  <p style="margin: 2rem auto">Historia postepow tygodniowych </p>
   <br>
   
   <div *ngFor="let week of weekHistory"
@@ -21,9 +20,8 @@ import { MissionsService } from '../missions/missions.service';
         <p> {{week.nDone}} / {{week.nAll}} </p>
       </progress-bar-week>
       <br>
-  
   </div>
-  
+
   `,
   styles: [],
 
@@ -60,7 +58,7 @@ export class ProgressHistoryComponent implements OnInit {
  
 
   ngOnInit() {
-    this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
+    this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId') || localStorage.getItem('loggedKid');
     this.http.get('http://localhost:3000/kids/' + this.kid['id'] + '?_embed=userMissions')
       .subscribe(kid => {
         this.kid = kid;

@@ -61,6 +61,7 @@ const routes:Routes = [
         { path: 'misje/:dayId',                          component: KidMissionsComponent},
         { path: 'nagrody',                               component: KidGiftsComponent},
         { path: 'bohater',                               component: KidHeroComponent},
+        { path: 'odznaki/historia',                      component: ProgressHistoryComponent},       
         { path: 'odznaki/:weekId',                       component: KidProgressComponent},
     ]},
 

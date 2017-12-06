@@ -5,9 +5,9 @@ import { HttpClient } from '@angular/common/http';
   selector: 'kid',
   template: `
     <kid-header routerLink='menu' [kid]="kid"></kid-header>
-    
+    <div class="container">
     <router-outlet></router-outlet>
-
+    </div>
   `,
   styles: [],
 })

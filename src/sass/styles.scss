@@ -77,6 +77,13 @@ body {
 	font: $font_big_size $font_reg_family;
 }
 
+.kid p {
+	color: $color_text_kid;
+}
+
+// .parent p {
+// 	color: $color_text_parent;
+// }
 
 // FORMS
 
@@ -315,7 +322,7 @@ input[type=checkbox] {
 		z-index: 499;
 		
 		ul {
-			margin-top: 30%;
+			margin-top: 15vh;
 			li p {font: $font_big_size $font_reg_family;}
 		}
 
