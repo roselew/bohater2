@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
 import { GiftsService } from '../gifts/gifts.service';
 
 @Component({
@@ -21,11 +19,9 @@ import { GiftsService } from '../gifts/gifts.service';
 export class AvailableGiftComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
     private service: GiftService,
     private router: Router,
-    private route:ActivatedRoute,
-    private location:Location,
+    private route: ActivatedRoute,
   ) { }
 
   gift = {};
