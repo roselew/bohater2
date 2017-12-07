@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from "@angular/router";
+import { GiftsService } from "../gifts/gifts.service";
 
 @Component({
   selector: 'extra-points',
@@ -24,24 +25,22 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class ExtraPointsComponent implements OnInit {
 
   constructor(    
-    @Inject('API_URL') private API_URL,
+    private service: GiftsService,
     private router: Router,
-    private http: HttpClient,
     private route:ActivatedRoute,
     ) { }
 
   kid = {};
   extraPoints={}
 
-  ngOnInit(){
-      this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
-  }
+  ngOnInit(){ }
 
    save(){
-    this.extraPoints['kidId']=parseInt(this.kid['id']);
+    let kidId = +this.route.parent.snapshot.paramMap.get('kidId');
+    this.extraPoints['kidId']= kidId;
     let today = new Date().setHours(0,0,0,0);
     this.extraPoints['date']=today;
-    this.http.post(this.API_URL+ 'extraPoints/', this.extraPoints)
+    this.service.addExtraPoints(this.extraPoints)
       .subscribe( extraPoints=> {
         this.extraPoints= extraPoints;
         this.router.navigate(['../'],{relativeTo:this.route});

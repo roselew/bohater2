@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
+import { GiftsService } from "../gifts/gifts.service";
 
 @Component({
   selector: 'points',
@@ -52,10 +52,9 @@ export class PointsComponent implements OnInit {
 
 
   constructor(    
-    @Inject('API_URL') private API_URL,
     private router: Router,
-    private http: HttpClient,
     private route:ActivatedRoute,
+    private service: GiftsService,
   ) { }
 
   kid = {};
@@ -69,7 +68,7 @@ export class PointsComponent implements OnInit {
     
   ngOnInit(){
     let kidId = +this.route.parent.snapshot.paramMap.get('kidId');
-    this.http.get(this.API_URL+ 'kids/'+ kidId +'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
+    this.service.getMissionsGiftsPoints(kidId)
       .subscribe( kid => {
         this.kid = kid;
         this.userMissions = this.kid['userMissions'];

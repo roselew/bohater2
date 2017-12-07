@@ -39,4 +39,8 @@ import { HttpClient } from '@angular/common/http';
   createOneGift(gift){
     return this.http.post(this.API_URL+ 'userGifts/', gift)
   }
+
+  addExtraPoints(extraPoints){
+    return this.http.post(this.API_URL+ 'extraPoints/', extraPoints)
+  }
 }
