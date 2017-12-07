@@ -149,7 +149,7 @@ import { AppAlertComponent } from './app-alert.component';
   ],
   
   providers: [
-    { provide: 'API_URL', useValue: 'https://localhost:3000/'},
+    { provide: 'API_URL', useValue: 'http://localhost:3000/'},
     MissionsService,
     AuthParentService,
     AuthKidService
