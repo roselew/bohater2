@@ -43,6 +43,16 @@ export class MissionsService {
     return this.http.get(this.API_URL+ 'expertMissions/' + missionId)     
   }
 
+
+  //dodatkowo bohater 
+  getMissionsHeroes(kidId){
+    return this.http.get(this.API_URL+ 'kids/' + kidId + '?_embed=userHeroes&_embed=userMissions')
+  }
+
+  updateHero(hero){
+    return this.http.put(this.API_URL+ 'userHeroes/'+ hero['id'], hero)
+  }
+
   //get from database ALL missions 
   getAllMissions = function (missions, day) {
     let dayAllMissions = [];

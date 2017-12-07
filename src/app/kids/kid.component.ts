@@ -1,5 +1,5 @@
-import { Component, OnInit, Renderer2, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Renderer2} from '@angular/core';
+import { GiftsService } from "../gifts/gifts.service";
 
 @Component({
   selector: 'kid',
@@ -14,8 +14,7 @@ import { HttpClient } from '@angular/common/http';
 export class KidComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
-    private http: HttpClient,
+    private service: GiftsService,
     private renderer: Renderer2) { 
       this.renderer.addClass(document.body,'kid')
     }
@@ -24,7 +23,7 @@ export class KidComponent implements OnInit {
   
     ngOnInit(){
       let kidId = +localStorage.getItem('loggedKid');
-      this.http.get(this.API_URL+ 'kids/'+ kidId +'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
+      this.service.getMissionsGiftsPoints(kidId)
         .subscribe( kid => this.kid = kid )
     }
     

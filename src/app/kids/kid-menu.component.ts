@@ -1,6 +1,6 @@
-import { Component, OnInit, Renderer2, Inject } from '@angular/core';
+import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { KidsService } from "./kids.service";
 
 @Component({
   selector: 'kid-menu',
@@ -24,9 +24,8 @@ export class KidMenuComponent implements OnInit {
   //   <ng-template #unloggedInfo><p>Nie jesteś zalogowany</p></ng-template>
 
   constructor(
-    @Inject('API_URL') private API_URL,
+    private service: KidsService,
     private router:   Router,
-    private http:     HttpClient,
     private route:    ActivatedRoute,   
     private renderer: Renderer2) { 
       this.renderer.addClass(document.body,'title-page')
@@ -36,9 +35,8 @@ export class KidMenuComponent implements OnInit {
 
   ngOnInit() {
     let kidId = localStorage.getItem('loggedKid');
-    this.http.get(this.API_URL+ 'kids/'+kidId)
+    this.service.getOneKid(kidId)
     .subscribe( kid => this.kid = kid )
-
   }
 
   ngOnDestroy() {

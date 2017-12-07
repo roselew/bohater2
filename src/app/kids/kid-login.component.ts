@@ -1,6 +1,6 @@
-import { Component, OnInit, Renderer2, Inject } from '@angular/core';
+import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { KidsService } from "./kids.service";
 
 @Component({
   selector: 'kid-login',
@@ -47,10 +47,9 @@ export class KidLoginComponent implements OnInit {
   }
 
   constructor(
-    @Inject('API_URL') private API_URL,
+    private service: KidsService,
     private router: Router,
-    private http: HttpClient,
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     private renderer: Renderer2) { 
       this.renderer.addClass(document.body,'kid')
       this.renderer.addClass(document.body,'title-page')
@@ -61,7 +60,7 @@ export class KidLoginComponent implements OnInit {
   kid={}
 
   ngOnInit() {
-    this.http.get(this.API_URL+ 'kids/')
+    this.service.fetchKids()
     .subscribe( kids => this.kids = kids )
   }
 

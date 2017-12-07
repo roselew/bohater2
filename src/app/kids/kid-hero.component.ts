@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { MissionsService } from '../missions/missions.service';
 
 @Component({
@@ -55,9 +54,7 @@ import { MissionsService } from '../missions/missions.service';
 export class KidHeroComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
     private router: Router,
-    private http: HttpClient,
     private route: ActivatedRoute,
     private service: MissionsService,
   ) { }
@@ -70,16 +67,15 @@ export class KidHeroComponent implements OnInit {
   nGainedBadges
 
   ngOnInit() {
-    this.kid['id'] = +localStorage.getItem('loggedKid');
-    this.http.get(this.API_URL+ 'kids/' + this.kid['id'] + '?_embed=userHeroes&_embed=userMissions')
-      .subscribe(kid => {
+    let kidId = +localStorage.getItem('loggedKid');
+    this.service.getMissionsHeroes(kidId)
+       .subscribe(kid => {
         this.kid = kid;
         this.userHero = this.kid['userHeroes'][0];
         this.nUsedBadges = 
           this.userHero['badges1'].filter( x=> x.gained == 'true' ).length
           +this.userHero['badges2'].filter( x=> x.gained == 'true' ).length
           +this.userHero['badges3'].filter( x=> x.gained == 'true' ).length
-
         this.userMissions = this.kid['userMissions'];
         this.nGainedBadges = this.service.getAllWeeksProgress(this.userMissions)
           .filter( x => (x.nAll===x.nDone && x.nAll!==0) ).length;
@@ -91,7 +87,7 @@ export class KidHeroComponent implements OnInit {
   choseBadge(badge){
     if (this.nBadges>0 && badge.gained=='false') {
     badge.gained = 'true'
-    this.http.put(this.API_URL+ 'userHeroes/'+ this.userHero['id'], this.userHero)
+    this.service.updateHero(this.userHero)
     .subscribe( userHero=> {
       this.userHero= userHero;
       this.nBadges -=1;
