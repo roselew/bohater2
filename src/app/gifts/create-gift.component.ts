@@ -18,6 +18,7 @@ import { Location} from "@angular/common";
 export class CreateGiftComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -30,7 +31,7 @@ export class CreateGiftComponent implements OnInit {
       this.gift['kidId']=parseInt(this.kid['id']);
       this.gift['status']='unused';
       this.gift['chosenDate']='';
-      this.http.post('http://localhost:3000/userGifts/', this.gift)
+      this.http.post(this.API_URL+ 'userGifts/', this.gift)
         .subscribe( gift=> {
           this.gift= gift;
           this.router.navigate(['../'],{relativeTo:this.route});
