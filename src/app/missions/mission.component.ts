@@ -19,6 +19,7 @@ import { Location} from "@angular/common";
 export class MissionComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,  
@@ -43,7 +44,7 @@ export class MissionComponent implements OnInit {
 
   ngOnInit(){
     this.mission['id']=this.route.snapshot.paramMap.get('missionId');
-    this.http.get('http://localhost:3000/userMissions/'+this.mission['id'])
+    this.http.get(this.API_URL+ 'userMissions/'+this.mission['id'])
       .subscribe( mission => {
         this.mission = mission;
         for (let day of this.mission['days']) {
@@ -54,7 +55,7 @@ export class MissionComponent implements OnInit {
 
    update(){
     this.mission['days']=this.selectedDays;
-      this.http.put('http://localhost:3000/userMissions/'+ this.mission['id'], this.mission)
+      this.http.put(this.API_URL+ 'userMissions/'+ this.mission['id'], this.mission)
       .subscribe( mission=> {
         this.mission= mission; 
         this.router.navigate(['../'],{relativeTo:this.route});
@@ -62,7 +63,7 @@ export class MissionComponent implements OnInit {
    }
 
    remove(){
-       this.http.delete('http://localhost:3000/userMissions/'+ this.mission['id'])
+       this.http.delete(this.API_URL+ 'userMissions/'+ this.mission['id'])
        .subscribe( ()=> this.router.navigate(['../'],{relativeTo:this.route}))
    }
 
@@ -70,7 +71,7 @@ export class MissionComponent implements OnInit {
      let today = new Date().setHours(0,0,0,0);
      this.mission['finish']=today;
 
-     this.http.put('http://localhost:3000/userMissions/'+ this.mission['id'], this.mission)
+     this.http.put(this.API_URL+ 'userMissions/'+ this.mission['id'], this.mission)
      .subscribe( mission=> {
        this.mission= mission; 
        this.router.navigate(['../'],{relativeTo:this.route});
