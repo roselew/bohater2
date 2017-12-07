@@ -24,6 +24,7 @@ export class KidMenuComponent implements OnInit {
   //   <ng-template #unloggedInfo><p>Nie jesteś zalogowany</p></ng-template>
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router:   Router,
     private http:     HttpClient,
     private route:    ActivatedRoute,   
@@ -35,7 +36,7 @@ export class KidMenuComponent implements OnInit {
 
   ngOnInit() {
     let kidId = localStorage.getItem('loggedKid');
-    this.http.get('http://localhost:3000/kids/'+kidId)
+    this.http.get(this.API_URL+ 'kids/'+kidId)
     .subscribe( kid => this.kid = kid )
 
   }
