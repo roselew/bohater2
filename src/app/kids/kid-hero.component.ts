@@ -55,6 +55,7 @@ import { MissionsService } from '../missions/missions.service';
 export class KidHeroComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -70,7 +71,7 @@ export class KidHeroComponent implements OnInit {
 
   ngOnInit() {
     this.kid['id'] = +localStorage.getItem('loggedKid');
-    this.http.get('http://localhost:3000/kids/' + this.kid['id'] + '?_embed=userHeroes&_embed=userMissions')
+    this.http.get(this.API_URL+ 'kids/' + this.kid['id'] + '?_embed=userHeroes&_embed=userMissions')
       .subscribe(kid => {
         this.kid = kid;
         this.userHero = this.kid['userHeroes'][0];
@@ -90,7 +91,7 @@ export class KidHeroComponent implements OnInit {
   choseBadge(badge){
     if (this.nBadges>0 && badge.gained=='false') {
     badge.gained = 'true'
-    this.http.put('http://localhost:3000/userHeroes/'+ this.userHero['id'], this.userHero)
+    this.http.put(this.API_URL+ 'userHeroes/'+ this.userHero['id'], this.userHero)
     .subscribe( userHero=> {
       this.userHero= userHero;
       this.nBadges -=1;
