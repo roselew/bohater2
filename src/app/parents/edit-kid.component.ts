@@ -19,6 +19,7 @@ import { Location} from "@angular/common";
 export class EditKidComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -33,22 +34,22 @@ export class EditKidComponent implements OnInit {
    }
 
    update(){
-      this.http.put('http://localhost:3000/kids/'+ this.kid['id'], this.kid)
+      this.http.put(this.API_URL+ 'kids/'+ this.kid['id'], this.kid)
       .subscribe( kid=> {
         this.kid= kid;
-        this.http.put('http://localhost:3000/userHeroes/'+ this.userHero['id'], this.userHero)
+        this.http.put(this.API_URL+ 'userHeroes/'+ this.userHero['id'], this.userHero)
         .subscribe( userHeroes => this.router.navigate(['/rodzic/dziecko/',this.kid['id']])
         )
       });
    }
 
    remove(){
-      this.http.delete('http://localhost:3000/kids/'+ this.kid['id'])
+      this.http.delete(this.API_URL+ 'kids/'+ this.kid['id'])
       .subscribe( ()=> this.router.navigate(['/rodzic']))
    }
 
    fetch(kidId){
-      this.http.get('http://localhost:3000/kids/'+kidId + '?_embed=userHeroes')
+      this.http.get(this.API_URL+ 'kids/'+kidId + '?_embed=userHeroes')
       .subscribe( kid => {
         this.kid = kid;
         this.userHero = kid['userHeroes'][0] ;
