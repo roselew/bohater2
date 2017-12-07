@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome.component';
 import { AppHeaderComponent } from './app-header.component';
 import { StarSvgComponent } from './star-svg.component';
+import { AppAlertComponent } from './app-alert.component';
 
 import { ParentComponent } from './parents/parent.component';
 import { CreateKidComponent } from './parents/create-kid.component';
@@ -19,6 +20,7 @@ import { ParentLoginComponent } from './parents/parent-login.component';
 import { ParentRegisterComponent } from './parents/parent-register.component';
 import { ShortcutKidComponent } from './parents/shortcut-kid.component';
 import { ViewKidComponent } from './parents/view-kid.component';
+import { ViewHeroComponent } from './parents/view-hero.component';
 
 import { MissionsComponent } from './missions/missions.component';
 import { CreateMissionComponent } from './missions/create-mission.component';
@@ -60,13 +62,12 @@ import { OneWeekComponent } from './progress/one-week.component';
 import { ProgressBarWeekComponent } from './progress/progress-bar-week.component';
 import { ProgressHistoryComponent } from './progress/progress-history.component';
 import { ProgressWeekComponent } from './progress/progress-week.component';
+import { MoveMissionComponent } from './progress/move-mission.component';
 
 import { MissionsService } from './missions/missions.service';
-import { ViewHeroComponent } from './parents/view-hero.component';
+import { GiftsService } from './gifts/gifts.service';
 import { AuthParentService } from "./auth-parent.service";
 import { AuthKidService } from "./auth-kid.service";
-import { MoveMissionComponent } from './progress/move-mission.component';
-import { AppAlertComponent } from './app-alert.component';
 
 
 
@@ -151,6 +152,7 @@ import { AppAlertComponent } from './app-alert.component';
   providers: [
     { provide: 'API_URL', useValue: 'http://localhost:3000/'},
     MissionsService,
+    GiftsService,
     AuthParentService,
     AuthKidService
   ],
