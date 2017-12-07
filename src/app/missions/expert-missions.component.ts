@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, OnInit} from '@angular/core';
+import { MissionsService } from "./missions.service";
 
 @Component({
   selector: 'expert-missions',
@@ -22,14 +22,13 @@ import { HttpClient } from "@angular/common/http";
 export class ExpertMissionsComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
-    private http: HttpClient
+    private service: MissionsService,
   ) { }
 
   missions
 
    ngOnInit(){
-        this.http.get(this.API_URL+ 'expertMissions')
+      this.service.fetchExpertMissions()
         .subscribe( missions => this.missions = missions )
    }
 

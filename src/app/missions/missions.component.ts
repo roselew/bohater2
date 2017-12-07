@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
+import { MissionsService } from "./missions.service";
 
 @Component({
   selector: 'missions',
@@ -35,10 +34,8 @@ import { Location} from "@angular/common";
       <star-svg></star-svg>
       <span>{{mission.points}}</span>
   </ul>
-
   
     <div class="plus" routerLink="dodaj">+</div>
-
        
         `,
   styles: [],
@@ -46,13 +43,11 @@ import { Location} from "@angular/common";
 export class MissionsComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
+    private service: MissionsService,
     private router: Router,
-    private http: HttpClient,
     private route:ActivatedRoute,
   ) { }
 
-  kid = {};
   userMissions
   activeMissions
   unactiveMissions
@@ -68,10 +63,9 @@ export class MissionsComponent implements OnInit {
     let today = new Date()
     today.setHours(0,0,0,0)
       let kidId=this.route.parent.snapshot.paramMap.get('kidId');
-      this.http.get(this.API_URL+ 'kids/'+kidId+'?_embed=userMissions')
-      .subscribe( kid => {
-        this.kid = kid;
-        this.userMissions = this.kid['userMissions'];
+      this.service.fetchMissions(kidId)
+      .subscribe( userMissions => {
+        this.userMissions = userMissions;
         this.activeMissions=this.userMissions.filter( x => !x.finish)
         this.unactiveMissions = this.userMissions.filter( x => x.finish)
        })

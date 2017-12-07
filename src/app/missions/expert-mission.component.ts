@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
+import { MissionsService } from "./missions.service";
 
 @Component({
   selector: 'expert-mission',
@@ -18,15 +17,11 @@ import { Location} from "@angular/common";
 export class ExpertMissionComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
+    private service: MissionsService,
     private router: Router,
-    private http: HttpClient,
-    private route:ActivatedRoute,
-    private location:Location,
-    
+    private route:ActivatedRoute,   
   ) { }
 
-  kid = {}
   mission={};
   days=[
     {name: 'PN', value: 0, checked: false},
@@ -45,9 +40,8 @@ export class ExpertMissionComponent implements OnInit {
     }
 
    ngOnInit(){
-      let id=this.route.snapshot.paramMap.get('missionId');
-      this.kid['id']=+this.route.parent.snapshot.paramMap.get('kidId');
-      this.http.get(this.API_URL+ 'expertMissions/'+id)
+      let missionId=this.route.snapshot.paramMap.get('missionId');
+      this.service.getOneExpertMission(missionId)
         .subscribe( mission => {
           this.mission['name'] = mission['name'] 
           this.mission['icon'] = mission['icon']
@@ -56,13 +50,14 @@ export class ExpertMissionComponent implements OnInit {
    }
 
     save(){
-      this.mission['kidId']=this.kid['id'];
+      let kidId = +this.route.parent.snapshot.paramMap.get('kidId');
+      this.mission['kidId']=kidId;
       let today = new Date().setHours(0,0,0,0);
       this.mission['start']=today;
       this.mission['days']=this.selectedDays;
       this.mission['doneDates']=[];
       this.mission['waitDates']=[];
-      this.http.post(this.API_URL+ 'userMissions/', this.mission)
+      this.service.createOneMission(this.mission)
         .subscribe( mission=> {
           this.mission= mission;
           this.router.navigate(['../../'],{relativeTo:this.route});

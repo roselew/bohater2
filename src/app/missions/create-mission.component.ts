@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
+import { MissionsService } from "./missions.service";
 
 
 @Component({
@@ -19,13 +18,11 @@ import { Location} from "@angular/common";
 export class CreateMissionComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
+    private service: MissionsService,
     private router: Router,
-    private http: HttpClient,
     private route:ActivatedRoute,
     ) { }
 
-  kid = {}
   mission={};
 
   days=[
@@ -45,18 +42,18 @@ export class CreateMissionComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
     this.mission['confirmation']=true;
   }
 
   save(){
-    this.mission['kidId']=parseInt(this.kid['id']);
+    let kidId = this.route.parent.snapshot.paramMap.get('kidId');
+    this.mission['kidId']=parseInt(kidId);
     let today = new Date().setHours(0,0,0,0);
     this.mission['start']=today;
     this.mission['days']=this.selectedDays;
     this.mission['doneDates']=[];
     this.mission['waitDates']=[];
-    this.http.post(this.API_URL+ 'userMissions/', this.mission)
+    this.service.createOneMission(this.mission)
       .subscribe( mission=> {
         this.mission= mission;
         this.router.navigate(['../'],{relativeTo:this.route});
