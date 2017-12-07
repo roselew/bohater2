@@ -17,7 +17,6 @@ import { GiftsService } from '../gifts/gifts.service';
 export class CreateGiftComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
     private service: GiftService,
     private router: Router,
     private route: ActivatedRoute,
