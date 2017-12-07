@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
+import { GiftsService } from '../gifts/gifts.service';
 
 @Component({
   selector: 'kid-gifts',
@@ -87,9 +86,7 @@ import { Location} from "@angular/common";
 
   </div>
 
-
-
-  `,
+`,
   styleUrls: ['../../sass/kid-gifts.scss'],
 })
 
@@ -97,11 +94,10 @@ import { Location} from "@angular/common";
 export class KidGiftsComponent implements OnInit {
 
   constructor(   
-    @Inject('API_URL') private API_URL,
+    private service: GiftService,
     private router: Router,
-    private http: HttpClient,
-    private route:ActivatedRoute,
-    private location:Location,) { }
+    private route: ActivatedRoute,
+  ) { }
 
   kid = {};
   userMissions
@@ -120,7 +116,7 @@ export class KidGiftsComponent implements OnInit {
   }
 
 fetchGifts(kidId){
-    this.http.get(this.API_URL+ 'kids/'+kidId+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
+    this.service.getMissionsGiftsPoints(kidId)
       .subscribe( kid => {
         this.kid = kid;
         this.userMissions = this.kid['userMissions'];
@@ -160,7 +156,7 @@ fetchGifts(kidId){
       gift['status']='chosen';
       let today = new Date().setHours(0,0,0,0);
       gift['chosenDate']=today;
-      this.http.put(this.API_URL+ 'userGifts/'+ gift['id'], gift)
+      this.service.updateOneGift(gift)
      .subscribe( ()=> {
         let kidId = +localStorage.getItem('loggedKid');
         this.fetchGifts(kidId);
