@@ -18,6 +18,7 @@ import { Location} from "@angular/common";
 export class ExpertMissionComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -45,8 +46,8 @@ export class ExpertMissionComponent implements OnInit {
 
    ngOnInit(){
       let id=this.route.snapshot.paramMap.get('missionId');
-      this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
-      this.http.get('http://localhost:3000/expertMissions/'+id)
+      this.kid['id']=+this.route.parent.snapshot.paramMap.get('kidId');
+      this.http.get(this.API_URL+ 'expertMissions/'+id)
         .subscribe( mission => {
           this.mission['name'] = mission['name'] 
           this.mission['icon'] = mission['icon']
@@ -55,13 +56,13 @@ export class ExpertMissionComponent implements OnInit {
    }
 
     save(){
-      this.mission['kidId']=parseInt(this.kid['id']);
+      this.mission['kidId']=this.kid['id'];
       let today = new Date().setHours(0,0,0,0);
       this.mission['start']=today;
       this.mission['days']=this.selectedDays;
       this.mission['doneDates']=[];
       this.mission['waitDates']=[];
-      this.http.post('http://localhost:3000/userMissions/', this.mission)
+      this.http.post(this.API_URL+ 'userMissions/', this.mission)
         .subscribe( mission=> {
           this.mission= mission;
           this.router.navigate(['../../'],{relativeTo:this.route});
