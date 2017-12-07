@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
+import { GiftsService } from '../gifts/gifts.service';
 
 @Component({
   selector: 'expert-gift',
@@ -18,20 +17,16 @@ import { Location} from "@angular/common";
 export class ExpertGiftComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
+    private service: GiftService,
     private router: Router,
-    private http: HttpClient,
-    private route:ActivatedRoute,
-    private location:Location,
-    
+    private route: ActivatedRoute,   
   ) { }
-  kid = {}
+  
   gift={};
 
    ngOnInit(){
-      let id=this.route.snapshot.paramMap.get('giftId');
-      this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
-      this.http.get(this.API_URL+ 'expertGifts/'+id)
+      let giftId=this.route.snapshot.paramMap.get('giftId');
+      this.service.getOneExpertGift(giftId)
         .subscribe( gift => {
           this.gift['name'] = gift['name'] 
           this.gift['icon'] = gift['icon']
@@ -39,10 +34,11 @@ export class ExpertGiftComponent implements OnInit {
    }
 
    save(){
-    this.gift['kidId']=parseInt(this.kid['id']);
+    let kidId = +this.route.parent.snapshot.paramMap.get('kidId');
+    this.gift['kidId'] = kidId;
     this.gift['status']='unused';
     this.gift['chosenDate']='';
-    this.http.post(this.API_URL+ 'usergifts/', this.gift)
+    this.service.createOneGift(this.gift) 
       .subscribe( gift=> {
         this.gift= gift;
         this.router.navigate(['../../'],{relativeTo:this.route});
