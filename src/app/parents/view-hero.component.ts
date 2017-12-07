@@ -27,6 +27,7 @@ import { HttpClient } from '@angular/common/http';
 export class ViewHeroComponent implements OnInit {
 
   constructor(   
+    @Inject('API_URL') private API_URL,
     private http: HttpClient,
   ) { }
 
@@ -36,7 +37,7 @@ export class ViewHeroComponent implements OnInit {
   expertHeroes
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/expertHeroes')
+    this.http.get(this.API_URL+ 'expertHeroes')
     .subscribe( expertHeroes =>  this.expertHeroes = expertHeroes)
   }
 
