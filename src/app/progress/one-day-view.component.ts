@@ -6,10 +6,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: 'one-day-view',
   template: `
 
-
-
   <div class="day" *ngIf="(type=='weekView')"> 
-  
+    
       <p *ngIf="(filter=='all')" (click)="showDetails()" [ngClass]="{'selected': details }">
         {{days[thisDay.getUTCDay()]}} 
         <span></span> 

@@ -31,7 +31,7 @@ export class ProgressWeekComponent implements OnInit {
   weekProgress
 
   ngOnInit() {
-        this.weekProgress = this.service.getOneWeekProgress(this.userMissions,0)
+      this.weekProgress = this.service.getOneWeekProgress(this.userMissions,0)
   }
   
 }

@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MissionsService } from '../missions/missions.service';
 
@@ -29,14 +28,11 @@ import { MissionsService } from '../missions/missions.service';
 export class ProgressHistoryComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
     private router: Router,
-    private http: HttpClient,
     private route: ActivatedRoute,
     private service: MissionsService,
   ) { }
 
-  kid = {}
   userMissions
   userHero
   weekHistory
@@ -59,11 +55,10 @@ export class ProgressHistoryComponent implements OnInit {
  
 
   ngOnInit() {
-    let kidId = this.route.parent.snapshot.paramMap.get('kidId') || localStorage.getItem('loggedKid');
-    this.http.get(this.API_URL+ 'kids/' + kidId + '?_embed=userMissions')
-      .subscribe(kid => {
-        this.kid = kid;
-        this.userMissions = this.kid['userMissions'];
+    let kidId = +this.route.parent.snapshot.paramMap.get('kidId') || +localStorage.getItem('loggedKid');
+    this.service.fetchMissions(kidId)
+      .subscribe(userMissions => {
+        this.userMissions = userMissions;
         this.weekHistory = this.service.getAllWeeksProgress(this.userMissions)
         })
   }
