@@ -20,6 +20,7 @@ import { Location} from "@angular/common";
 export class GiftComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -29,12 +30,12 @@ export class GiftComponent implements OnInit {
   gift = {};
   ngOnInit() {
     this.gift['id']=this.route.snapshot.paramMap.get('giftId');
-    this.http.get('http://localhost:3000/userGifts/'+this.gift['id'])
+    this.http.get(this.API_URL+ 'userGifts/'+this.gift['id'])
       .subscribe( gift => { this.gift = gift;} )
   }
 
   update(){
-     this.http.put('http://localhost:3000/userGifts/'+ this.gift['id'], this.gift)
+     this.http.put(this.API_URL+ 'userGifts/'+ this.gift['id'], this.gift)
      .subscribe( gift=> {
        this.gift= gift;
        this.router.navigate(['../'],{relativeTo:this.route});
@@ -42,7 +43,7 @@ export class GiftComponent implements OnInit {
   }
 
   remove(){
-      this.http.delete('http://localhost:3000/userGifts/'+ this.gift['id'])
+      this.http.delete(this.API_URL+ 'userGifts/'+ this.gift['id'])
       .subscribe( ()=> this.router.navigate(['../'],{relativeTo:this.route}))
   }
 
