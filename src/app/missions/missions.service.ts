@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class MissionsService {
 
-   constructor(   
+  constructor(   
+    @Inject('API_URL') private API_URL,
     private http: HttpClient
   ) { }
 
@@ -15,15 +16,15 @@ export class MissionsService {
   undoneMissions = [];
 
   fetchMissions(kidId) {
-    return this.http.get('http://localhost:3000/kids/' + kidId + '/userMissions')
+    return this.http.get(this.API_URL+ 'kids/' + kidId + '/userMissions')
   }
 
   getOneMission(missionId){
-    return this.http.get('http://localhost:3000/userMissions/' + missionId)
+    return this.http.get(this.API_URL+ 'userMissions/' + missionId)
   }
 
   updateOneMission(missionId, mission){
-    return this.http.put('http://localhost:3000/userMissions/'+ missionId, mission)
+    return this.http.put(this.API_URL+ 'userMissions/'+ missionId, mission)
   }
 
   //get from database ALL missions 
