@@ -64,6 +64,7 @@ export class ParentLoginComponent implements OnInit {
   }
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -75,7 +76,7 @@ export class ParentLoginComponent implements OnInit {
   parents
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/parents/')
+    this.http.get(this.API_URL+ 'parents/')
     .subscribe( parents => this.parents = parents )
   }
 
