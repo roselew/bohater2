@@ -46,6 +46,7 @@ import { Location} from "@angular/common";
 export class MissionsComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -66,8 +67,8 @@ export class MissionsComponent implements OnInit {
 
     let today = new Date()
     today.setHours(0,0,0,0)
-      this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
-      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'?_embed=userMissions')
+      let kidId=this.route.parent.snapshot.paramMap.get('kidId');
+      this.http.get(this.API_URL+ 'kids/'+kidId+'?_embed=userMissions')
       .subscribe( kid => {
         this.kid = kid;
         this.userMissions = this.kid['userMissions'];
