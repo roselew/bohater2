@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
+import { GiftsService } from '../gifts/gifts.service';
 
 @Component({
   selector: 'gifts',
@@ -106,11 +105,10 @@ import { Location} from "@angular/common";
 export class GiftsComponent implements OnInit {
 
   constructor(    
-    @Inject('API_URL') private API_URL,
+    private service: GiftService,
     private router: Router,
-    private http: HttpClient,
     private route:ActivatedRoute,
-    private location:Location,) { }
+  ) { }
 
   kid = {};
   userMissions
@@ -124,13 +122,13 @@ export class GiftsComponent implements OnInit {
 
 
   ngOnInit(){
-    this.kid['id']=this.route.parent.snapshot.paramMap.get('kidId');
+    this.kid['id'] = +this.route.parent.snapshot.paramMap.get('kidId');
     this.fetchGifts()
   }
 
  fetchGifts(){
-       this.http.get(this.API_URL+ 'kids/'+this.kid['id']+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
-      .subscribe( kid => {
+       this.service.getMissionsGiftsPoints(this.kid['id'])
+        .subscribe( kid => {
         this.kid = kid;
         this.userMissions = this.kid['userMissions'];
         this.userGifts = this.kid['userGifts'];
@@ -163,7 +161,7 @@ export class GiftsComponent implements OnInit {
 
   receive(gift){
       gift['status']='received';
-      this.http.put(this.API_URL+ 'userGifts/'+ gift['id'], gift)
+      this.service.updateOneGift(this.gift)
         .subscribe( ()=> this.fetchGifts() );
   };
   
