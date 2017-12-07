@@ -19,6 +19,7 @@ import { Location} from "@angular/common";
 export class CreateMissionComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -55,7 +56,7 @@ export class CreateMissionComponent implements OnInit {
     this.mission['days']=this.selectedDays;
     this.mission['doneDates']=[];
     this.mission['waitDates']=[];
-    this.http.post('http://localhost:3000/userMissions/', this.mission)
+    this.http.post(this.API_URL+ 'userMissions/', this.mission)
       .subscribe( mission=> {
         this.mission= mission;
         this.router.navigate(['../'],{relativeTo:this.route});
