@@ -8,7 +8,10 @@ import { HttpClient } from '@angular/common/http';
     private http: HttpClient  
    ) { }
   
-
+  getMissionsGiftsPoints(kidId){
+    return this.http.get(this.API_URL+ 'kids/'+kidId+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
+  }
+  
   fetchGifts(kidId){    
     return this.http.get(this.API_URL+ 'kids/' + kidId + '/userGifts')  
   }
