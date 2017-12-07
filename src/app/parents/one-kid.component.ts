@@ -9,7 +9,7 @@ import { Location} from "@angular/common";
 
    <parent-header [kid]="kid"></parent-header>
    <div class="container" id="panel">
-   <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
    </div>
   `,
 
@@ -17,6 +17,7 @@ import { Location} from "@angular/common";
 export class OneKidComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http:   HttpClient,
     private route:  ActivatedRoute,   
@@ -26,9 +27,9 @@ export class OneKidComponent implements OnInit {
   kid = {};
 
    ngOnInit(){
-      this.kid['id']=this.route.snapshot.paramMap.get('kidId');
+      let kidId = +this.route.snapshot.paramMap.get('kidId');
       
-      this.http.get('http://localhost:3000/kids/'+this.kid['id'])
+      this.http.get(this.API_URL+ 'kids/'+ kidId)
         .subscribe( kid => {
           this.kid = kid;
           this.parentId = this.kid['parentId']; 
