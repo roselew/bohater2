@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
+import { GiftsService } from '../gifts/gifts.service';
 
 @Component({
   selector: 'gift',
@@ -20,30 +19,29 @@ import { Location} from "@angular/common";
 export class GiftComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
+    private service: GiftService,
     private router: Router,
-    private http: HttpClient,
     private route:ActivatedRoute,
-    private location:Location,
   ) { }
 
   gift = {};
+  
   ngOnInit() {
-    this.gift['id']=this.route.snapshot.paramMap.get('giftId');
-    this.http.get(this.API_URL+ 'userGifts/'+this.gift['id'])
-      .subscribe( gift => { this.gift = gift;} )
+    let giftId = +this.route.snapshot.paramMap.get('giftId');
+    this.service.getOneGift(giftId)
+      .subscribe( gift => this.gift = gift;)
   }
 
   update(){
-     this.http.put(this.API_URL+ 'userGifts/'+ this.gift['id'], this.gift)
-     .subscribe( gift=> {
+     this.service.updateOneGift(this.gift)
+      .subscribe( gift=> {
        this.gift= gift;
        this.router.navigate(['../'],{relativeTo:this.route});
       });
   }
 
   remove(){
-      this.http.delete(this.API_URL+ 'userGifts/'+ this.gift['id'])
+      this.service.deleteOneGift(this.gift['id'])
       .subscribe( ()=> this.router.navigate(['../'],{relativeTo:this.route}))
   }
 
