@@ -53,6 +53,7 @@ import { HttpClient } from '@angular/common/http';
 export class ShortcutKidComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private http: HttpClient
   ) { }
 
@@ -64,7 +65,7 @@ export class ShortcutKidComponent implements OnInit {
   userGifts
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/kids/'+this.kidId+'?_embed=userMissions&_embed=userGifts')
+    this.http.get(this.API_URL+ 'kids/'+this.kidId+'?_embed=userMissions&_embed=userGifts')
       .subscribe( kid => {
         this.kid=kid;
         this.userMissions = kid['userMissions'];
