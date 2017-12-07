@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { ParentsService } from "./parents.service";
+import { KidsService } from "../kids/kids.service";
 
 @Component({
   selector: 'create-kid',
@@ -24,7 +24,7 @@ import { ParentsService } from "./parents.service";
 export class CreateKidComponent implements OnInit {
 
   constructor(
-    private service: ParentsService,
+    private service: KidsService,
     private router: Router,
     private route:ActivatedRoute,
     private renderer: Renderer2) { 
