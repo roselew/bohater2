@@ -24,6 +24,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class ExtraPointsComponent implements OnInit {
 
   constructor(    
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -40,7 +41,7 @@ export class ExtraPointsComponent implements OnInit {
     this.extraPoints['kidId']=parseInt(this.kid['id']);
     let today = new Date().setHours(0,0,0,0);
     this.extraPoints['date']=today;
-    this.http.post('http://localhost:3000/extraPoints/', this.extraPoints)
+    this.http.post(this.API_URL+ 'extraPoints/', this.extraPoints)
       .subscribe( extraPoints=> {
         this.extraPoints= extraPoints;
         this.router.navigate(['../'],{relativeTo:this.route});
