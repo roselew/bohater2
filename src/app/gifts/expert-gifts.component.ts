@@ -18,12 +18,15 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ExpertGiftsComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    @Inject('API_URL') private API_URL,
+    private http: HttpClient
+  ) { }
   
     gifts
   
      ngOnInit(){
-          this.http.get('http://localhost:3000/expertGifts')
+          this.http.get(this.API_URL+ 'expertGifts')
           .subscribe( gifts => this.gifts = gifts )
      }
 
@@ -38,9 +41,5 @@ export class ExpertGiftsComponent implements OnInit {
         przycisk.target.innerHTML='&#x25BC';
        }  
     }
-  
-  
-
-      
 
 }
