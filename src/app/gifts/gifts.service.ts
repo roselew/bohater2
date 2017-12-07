@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable()export class MissionsService {
+@Injectable()export class GiftsService {
+  
   constructor(       
     @Inject('API_URL') private API_URL,    
     private http: HttpClient  
    ) { }
   
-  userGifts = [];
-  
+
   fetchGifts(kidId){    
     return this.http.get(this.API_URL+ 'kids/' + kidId + '/userGifts')  
   }
