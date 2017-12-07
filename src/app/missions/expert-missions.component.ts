@@ -21,12 +21,15 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ExpertMissionsComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    @Inject('API_URL') private API_URL,
+    private http: HttpClient
+  ) { }
 
   missions
 
    ngOnInit(){
-        this.http.get('http://localhost:3000/expertMissions')
+        this.http.get(this.API_URL+ 'expertMissions')
         .subscribe( missions => this.missions = missions )
    }
 
