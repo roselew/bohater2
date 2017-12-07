@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { GiftsService } from '../gifts/gifts.service';
 
 @Component({
   selector: 'expert-gifts',
@@ -19,27 +19,26 @@ import { HttpClient } from "@angular/common/http";
 export class ExpertGiftsComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
-    private http: HttpClient
+    private service: GiftService,
   ) { }
-  
-    gifts
-  
-     ngOnInit(){
-          this.http.get(this.API_URL+ 'expertGifts')
-          .subscribe( gifts => this.gifts = gifts )
-     }
 
-     showMore(przycisk){
-       let panel=document.getElementsByClassName('mission-neutral')[0]
-       ;
-       if (!panel['style'].height || panel['style'].height !=='auto'){
-        panel['style'].height = 'auto';
-        przycisk.target.innerHTML='&#x25B2';
-       } else {
-        panel['style'].height = '24rem';
-        przycisk.target.innerHTML='&#x25BC';
-       }  
-    }
+    gifts
+
+  ngOnInit(){
+    this.service.fetchExpertGifts()
+    .subscribe( gifts => this.gifts = gifts )
+  }
+
+ showMore(przycisk){
+   let panel=document.getElementsByClassName('mission-neutral')[0]
+   ;
+   if (!panel['style'].height || panel['style'].height !=='auto'){
+    panel['style'].height = 'auto';
+    przycisk.target.innerHTML='&#x25B2';
+   } else {
+    panel['style'].height = '24rem';
+    przycisk.target.innerHTML='&#x25BC';
+   }  
+  }
 
 }
