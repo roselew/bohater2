@@ -25,4 +25,6 @@ import { HttpClient } from '@angular/common/http';
     return this.http.delete(this.API_URL + 'userGifts/'+ giftId)
   }
   
-}
+  createOneGift(gift){
+    return this.http.post(this.API_URL+ 'userGifts/', gift)
+  }
