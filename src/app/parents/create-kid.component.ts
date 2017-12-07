@@ -25,6 +25,7 @@ import { Location} from "@angular/common";
 export class CreateKidComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -44,11 +45,11 @@ export class CreateKidComponent implements OnInit {
 
   save(){
   this.kid['parentId']=parseInt(this.parentId);
-  this.http.post('http://localhost:3000/kids/', this.kid)
+  this.http.post(this.API_URL+ 'kids/', this.kid)
     .subscribe( kid=> {
       this.kid= kid; 
       this.userHero['kidId']=parseInt(this.kid['id'])
-      this.http.post('http://localhost:3000/userHeroes/', this.userHero)
+      this.http.post(this.API_URL+ 'userHeroes/', this.userHero)
         .subscribe( userHero => {
           this.userHero = userHero;
           this.router.navigate(['/rodzic']);
