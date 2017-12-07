@@ -294,7 +294,7 @@ export class OneDayViewComponent implements OnInit {
           let index = updatedMission['waitDates'].indexOf(data)
           updatedMission['waitDates'].splice(index,1)
         }  
-        this.service.updateOneMission(mission.id,updatedMission)
+        this.service.updateOneMission(updatedMission)
           .subscribe(() => this.fetchMissions());
       })
   }
@@ -309,7 +309,7 @@ export class OneDayViewComponent implements OnInit {
         let index = updatedMission['doneDates'].indexOf(data)
         updatedMission['doneDates'].splice(index,1)
       }  
-      this.service.updateOneMission(mission.id,updatedMission)
+      this.service.updateOneMission(updatedMission)
         .subscribe(() => this.fetchMissions());
     })
   }
@@ -324,7 +324,7 @@ export class OneDayViewComponent implements OnInit {
         let index = updatedMission['waitDates'].indexOf(data)
         updatedMission['waitDates'].splice(index,1)
       }  
-      this.service.updateOneMission(mission.id,updatedMission)
+      this.service.updateOneMission(updatedMission)
         .subscribe(() => this.fetchMissions());
     })
   }
@@ -339,7 +339,7 @@ export class OneDayViewComponent implements OnInit {
       .subscribe(userMission => {
         updatedMission = userMission;
         updatedMission['waitDates'].push(data);
-        this.service.updateOneMission(mission.id,updatedMission)
+        this.service.updateOneMission(updatedMission)
           .subscribe(() => this.fetchMissions());
       })
     }

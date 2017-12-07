@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
+import { MissionsService } from "./missions.service";
 
 @Component({
   selector: 'mission',
@@ -19,9 +18,8 @@ import { Location} from "@angular/common";
 export class MissionComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
+    private service: MissionsService,
     private router: Router,
-    private http: HttpClient,
     private route:ActivatedRoute,  
   ) { }
 
@@ -43,19 +41,21 @@ export class MissionComponent implements OnInit {
     }
 
   ngOnInit(){
-    this.mission['id']=this.route.snapshot.paramMap.get('missionId');
-    this.http.get(this.API_URL+ 'userMissions/'+this.mission['id'])
+    let missionId = +this.route.snapshot.paramMap.get('missionId');
+
+    this.service.getOneMission(missionId)
       .subscribe( mission => {
         this.mission = mission;
         for (let day of this.mission['days']) {
           this.days.map(opt => {if (opt.value===day){opt.checked=true}})
         }
         } )
- }
+  }
 
    update(){
     this.mission['days']=this.selectedDays;
-      this.http.put(this.API_URL+ 'userMissions/'+ this.mission['id'], this.mission)
+
+    this.service.updateOneMission(this.mission)
       .subscribe( mission=> {
         this.mission= mission; 
         this.router.navigate(['../'],{relativeTo:this.route});
@@ -63,7 +63,7 @@ export class MissionComponent implements OnInit {
    }
 
    remove(){
-       this.http.delete(this.API_URL+ 'userMissions/'+ this.mission['id'])
+     this.service.deleteOneMission(this.mission['id'])
        .subscribe( ()=> this.router.navigate(['../'],{relativeTo:this.route}))
    }
 
@@ -71,7 +71,7 @@ export class MissionComponent implements OnInit {
      let today = new Date().setHours(0,0,0,0);
      this.mission['finish']=today;
 
-     this.http.put(this.API_URL+ 'userMissions/'+ this.mission['id'], this.mission)
+    this.service.updateOneMission(this.mission)
      .subscribe( mission=> {
        this.mission= mission; 
        this.router.navigate(['../'],{relativeTo:this.route});

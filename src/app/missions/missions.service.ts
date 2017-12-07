@@ -27,8 +27,12 @@ export class MissionsService {
     return this.http.get(this.API_URL+ 'userMissions/' + missionId)
   }
 
-  updateOneMission(missionId, mission){
-    return this.http.put(this.API_URL+ 'userMissions/'+ missionId, mission)
+  updateOneMission(mission){
+    return this.http.put(this.API_URL+ 'userMissions/'+ mission['id'], mission)
+  }
+
+  deleteOneMission(missionId){
+    return this.http.delete(this.API_URL+ 'userMissions/'+ missionId)
   }
 
  createOneMission(mission){
