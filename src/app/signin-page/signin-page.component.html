@@ -1,0 +1,18 @@
+<p>
+  signin-page works!
+</p>
+
+
+{{ session | json }}
+
+<form #signinForm="ngForm" (ngSubmit)="signin(signinForm.value)">
+  <div class="form-group">
+    <label for="">E-mail</label>
+    <input type="text" ngModel name="login" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="">Password</label>
+    <input type="password" ngModel name="password" class="form-control">
+  </div>
+  <button class="btn btn-block">SignIn</button>
+</form>
