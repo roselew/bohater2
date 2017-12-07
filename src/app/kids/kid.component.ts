@@ -14,18 +14,18 @@ import { HttpClient } from '@angular/common/http';
 export class KidComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private http: HttpClient,
     private renderer: Renderer2) { 
       this.renderer.addClass(document.body,'kid')
     }
 
-    kid={}
+    kid
+  
     ngOnInit(){
-      this.kid['id'] = +localStorage.getItem('loggedKid');
-      this.http.get('http://localhost:3000/kids/'+this.kid['id']+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
-        .subscribe( kid => {
-          this.kid = kid;
-        })
+      let kidId = +localStorage.getItem('loggedKid');
+      this.http.get(this.API_URL+ 'kids/'+ kidId +'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
+        .subscribe( kid => this.kid = kid; )
     }
     
   ngOnDestroy() {
