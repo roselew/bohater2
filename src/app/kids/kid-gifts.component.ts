@@ -96,7 +96,8 @@ import { Location} from "@angular/common";
 
 export class KidGiftsComponent implements OnInit {
 
-  constructor(    
+  constructor(   
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -119,7 +120,7 @@ export class KidGiftsComponent implements OnInit {
   }
 
 fetchGifts(kidId){
-    this.http.get('http://localhost:3000/kids/'+kidId+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
+    this.http.get(this.API_URL+ 'kids/'+kidId+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
       .subscribe( kid => {
         this.kid = kid;
         this.userMissions = this.kid['userMissions'];
@@ -159,7 +160,7 @@ fetchGifts(kidId){
       gift['status']='chosen';
       let today = new Date().setHours(0,0,0,0);
       gift['chosenDate']=today;
-      this.http.put('http://localhost:3000/userGifts/'+ gift['id'], gift)
+      this.http.put(this.API_URL+ 'userGifts/'+ gift['id'], gift)
      .subscribe( ()=> {
         let kidId = +localStorage.getItem('loggedKid');
         this.fetchGifts(kidId);
