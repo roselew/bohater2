@@ -10,15 +10,15 @@ import { HttpClient } from '@angular/common/http';
   userGifts = [];
   
   fetchGifts(kidId){    
-    return this.http.get(this.API_URL+ 'kids/' + kidId + '/userGfits')  
+    return this.http.get(this.API_URL+ 'kids/' + kidId + '/userGifts')  
   }
   
   getOneGift(giftId) {  
-    return this.http.get(this.API_URL+ 'userGfits/' + giftId)  
+    return this.http.get(this.API_URL+ 'userGifts/' + giftId)  
   }
   
   updateOneGift(giftId, gift){    
-    return this.http.put(this.API_URL+ 'userGfits/'+ giftId, gift)  
+    return this.http.put(this.API_URL+ 'userGifts/'+ giftId, gift)  
   }
   
   
