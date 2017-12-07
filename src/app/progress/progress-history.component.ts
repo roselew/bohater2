@@ -12,7 +12,7 @@ import { MissionsService } from '../missions/missions.service';
   <div *ngFor="let week of weekHistory"
         [routerLink]="['../',week.weekId]">
         
-      <p> {{showWeekName(week)}} </p>
+      <p style="font-size: 3.5rem"> {{showWeekName(week)}} </p>
       
       <progress-bar-week 
         [waitWidth]="100*(week.nDone+week.nWait)/week.nAll" 

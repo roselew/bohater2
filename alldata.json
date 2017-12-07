@@ -146,8 +146,7 @@
       "doneDates": [
         1512082800000,
         1513897200000,
-        1512687600000,
-        1512601200000
+        1512687600000
       ],
       "waitDates": [],
       "id": 17
@@ -369,7 +368,7 @@
     {
       "name": "Aquapark ",
       "icon": "assets/swimming-pool.svg",
-      "points": 20,
+      "points": 17,
       "kidId": 1,
       "status": "unused",
       "chosenDate": "",

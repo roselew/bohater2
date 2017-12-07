@@ -26,6 +26,8 @@ export class SessionService implements HttpInterceptor {
       req = req.clone({
         headers: req.headers.append("user-token",this.session["user-token"])
       })
+    } else {
+      console.log('nie ma tokena')
     }
     
     return next.handle(req)

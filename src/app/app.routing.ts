@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from "./app.component";
+import { NgModule } from "@angular/core";
 
 
 import { WelcomeComponent } from './welcome.component';
@@ -42,6 +43,7 @@ import { ExtraPointsComponent } from './points/extra-points.component';
 import { AuthKidService } from "./auth-kid.service";
 import { AuthParentService } from "./auth-parent.service";
 import { AvailableGiftComponent } from "./gifts/available-gift.component";
+
 
 
 
@@ -99,6 +101,10 @@ const routes:Routes = [
     ]}
 
 ]
-export const Routing = RouterModule.forRoot(routes,{
-    useHash:false
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
+
+export class Routing { }

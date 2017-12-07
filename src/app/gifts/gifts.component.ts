@@ -161,7 +161,7 @@ export class GiftsComponent implements OnInit {
 
   receive(gift){
       gift['status']='received';
-      this.service.updateOneGift(this.gift)
+      this.service.updateOneGift(gift)
         .subscribe( ()=> this.fetchGifts() );
   };
   

@@ -68,6 +68,7 @@ import { MissionsService } from './missions/missions.service';
 import { GiftsService } from './gifts/gifts.service';
 import { AuthParentService } from "./auth-parent.service";
 import { AuthKidService } from "./auth-kid.service";
+import { SessionModule } from "./session/session.module";
 
 
 
@@ -146,7 +147,8 @@ import { AuthKidService } from "./auth-kid.service";
     BrowserModule,
     Routing,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SessionModule
   ],
   
   providers: [
