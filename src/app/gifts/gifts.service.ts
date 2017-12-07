@@ -17,9 +17,12 @@ import { HttpClient } from '@angular/common/http';
     return this.http.get(this.API_URL+ 'userGifts/' + giftId)  
   }
   
-  updateOneGift(giftId, gift){    
-    return this.http.put(this.API_URL+ 'userGifts/'+ giftId, gift)  
+  updateOneGift(gift){    
+    return this.http.put(this.API_URL+ 'userGifts/'+ gift['id'], gift)  
   }
   
+  deleteOneGift(giftId){  
+    return this.http.delete(this.API_URL + 'userGifts/'+ giftId)
+  }
   
 }
