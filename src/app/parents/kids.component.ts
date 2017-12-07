@@ -27,6 +27,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class KidsComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -43,7 +44,7 @@ export class KidsComponent implements OnInit {
 
    ngOnInit(){
      let parentId = parseInt(localStorage.getItem('loggedParent'));
-      this.http.get('http://localhost:3000/parents/'+parentId+'?_embed=kids')
+      this.http.get(this.API_URL+ 'parents/'+parentId+'?_embed=kids')
         .subscribe( parent => {
           this.parent = parent;
           this.kids = this.parent['kids']
