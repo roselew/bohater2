@@ -1,6 +1,6 @@
-import { Component, OnInit, Renderer2, Inject } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ParentsService } from "./parents.service";
 
 @Component({
   selector: 'kids',
@@ -27,9 +27,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class KidsComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
+    private service: ParentsService,
     private router: Router,
-    private http: HttpClient,
     private route:ActivatedRoute,
     private renderer: Renderer2) { 
       this.renderer.addClass(document.body,'title-page')
@@ -44,7 +43,7 @@ export class KidsComponent implements OnInit {
 
    ngOnInit(){
      let parentId = parseInt(localStorage.getItem('loggedParent'));
-      this.http.get(this.API_URL+ 'parents/'+parentId+'?_embed=kids')
+     this.service.getParentKids(parentId)
         .subscribe( parent => {
           this.parent = parent;
           this.kids = this.parent['kids']

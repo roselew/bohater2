@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
+import { KidsService } from "../kids/kids.service";
 
 @Component({
   selector: 'edit-kid',
@@ -19,9 +18,8 @@ import { Location} from "@angular/common";
 export class EditKidComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
+    private service: KidsService,
     private router: Router,
-    private http: HttpClient,
     private route:ActivatedRoute,
   ) { }
 
@@ -30,31 +28,28 @@ export class EditKidComponent implements OnInit {
 
    ngOnInit(){
       let kidId =this.route.parent.snapshot.paramMap.get('kidId');
-      this.fetch(kidId)
-   }
-
-   update(){
-      this.http.put(this.API_URL+ 'kids/'+ this.kid['id'], this.kid)
-      .subscribe( kid=> {
-        this.kid= kid;
-        this.http.put(this.API_URL+ 'userHeroes/'+ this.userHero['id'], this.userHero)
-        .subscribe( userHeroes => this.router.navigate(['/rodzic/dziecko/',this.kid['id']])
-        )
-      });
-   }
-
-   remove(){
-      this.http.delete(this.API_URL+ 'kids/'+ this.kid['id'])
-      .subscribe( ()=> this.router.navigate(['/rodzic']))
-   }
-
-   fetch(kidId){
-      this.http.get(this.API_URL+ 'kids/'+kidId + '?_embed=userHeroes')
+      this.service.getKidHero(kidId)
       .subscribe( kid => {
         this.kid = kid;
         this.userHero = kid['userHeroes'][0] ;
         delete this.kid['userHeroes'];
       })
    }
+
+   update(){
+     this.service.updateOneKid(this.kid)
+      .subscribe( kid=> {
+        this.kid= kid;
+        this.service.updateOneHero(this.userHero)
+        .subscribe( userHeroes => this.router.navigate(['/rodzic/dziecko/',this.kid['id']])
+        )
+      });
+   }
+
+   remove(){
+     this.service.deleteOneKid(this.kid['id'])
+      .subscribe( ()=> this.router.navigate(['/rodzic']))
+   }
+
 
 }

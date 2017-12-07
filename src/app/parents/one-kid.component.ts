@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location} from "@angular/common";
+import { KidsService } from "../kids/kids.service";
 
 @Component({
   selector: 'one-kid',
@@ -17,9 +16,8 @@ import { Location} from "@angular/common";
 export class OneKidComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
+    private service: KidsService,
     private router: Router,
-    private http:   HttpClient,
     private route:  ActivatedRoute,   
   ) { }
 
@@ -28,8 +26,8 @@ export class OneKidComponent implements OnInit {
 
    ngOnInit(){
       let kidId = +this.route.snapshot.paramMap.get('kidId');
-      
-      this.http.get(this.API_URL+ 'kids/'+ kidId)
+
+      this.service.getOneKid(kidId)
         .subscribe( kid => {
           this.kid = kid;
           this.parentId = this.kid['parentId']; 

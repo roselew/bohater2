@@ -44,7 +44,6 @@ import { ExpertGiftsComponent } from './gifts/expert-gifts.component';
 
 import { KidComponent } from './kids/kid.component';
 import { KidHeroComponent } from './kids/kid-hero.component';
-import { KidBadgeComponent } from './kids/kid-badge.component';
 import { KidLoginComponent } from './kids/kid-login.component';
 import { KidMenuComponent } from './kids/kid-menu.component';
 import { KidMissionsComponent } from './kids/kid-missions.component';
@@ -69,6 +68,8 @@ import { GiftsService } from './gifts/gifts.service';
 import { AuthParentService } from "./auth-parent.service";
 import { AuthKidService } from "./auth-kid.service";
 import { SessionModule } from "./session/session.module";
+import { KidsService } from "./kids/kids.service";
+import { ParentsService } from "./parents/parents.service";
 
 
 
@@ -115,8 +116,7 @@ import { SessionModule } from "./session/session.module";
        
    
     KidComponent,
-    KidHeroComponent,
-    KidBadgeComponent,   
+    KidHeroComponent, 
     KidLoginComponent,
     KidMenuComponent,
     KidMissionsComponent,
@@ -156,7 +156,9 @@ import { SessionModule } from "./session/session.module";
     MissionsService,
     GiftsService,
     AuthParentService,
-    AuthKidService
+    AuthKidService,
+    KidsService,
+    ParentsService
   ],
   
   bootstrap: [AppComponent]

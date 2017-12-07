@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Input} from '@angular/core';
+import { KidsService } from "../kids/kids.service";
 
 @Component({
   selector: 'view-hero',
@@ -27,8 +27,7 @@ import { HttpClient } from '@angular/common/http';
 export class ViewHeroComponent implements OnInit {
 
   constructor(   
-    @Inject('API_URL') private API_URL,
-    private http: HttpClient,
+    private service: KidsService,
   ) { }
 
   @Input()
@@ -37,7 +36,7 @@ export class ViewHeroComponent implements OnInit {
   expertHeroes
 
   ngOnInit() {
-    this.http.get(this.API_URL+ 'expertHeroes')
+    this.service.fetchHeroes()
     .subscribe( expertHeroes =>  this.expertHeroes = expertHeroes)
   }
 

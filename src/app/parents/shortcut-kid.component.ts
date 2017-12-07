@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Input} from '@angular/core';
+import { GiftsService } from "../gifts/gifts.service";
 
 @Component({
   selector: 'shortcut-kid',
@@ -53,8 +53,7 @@ import { HttpClient } from '@angular/common/http';
 export class ShortcutKidComponent implements OnInit {
 
   constructor(
-    @Inject('API_URL') private API_URL,
-    private http: HttpClient
+    private service: GiftsService
   ) { }
 
   @Input()
@@ -65,7 +64,7 @@ export class ShortcutKidComponent implements OnInit {
   userGifts
 
   ngOnInit() {
-    this.http.get(this.API_URL+ 'kids/'+this.kidId+'?_embed=userMissions&_embed=userGifts')
+    this.service.getMissionsGiftsPoints(this.kidId)
       .subscribe( kid => {
         this.kid=kid;
         this.userMissions = kid['userMissions'];

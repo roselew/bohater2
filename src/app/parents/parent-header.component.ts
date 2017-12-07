@@ -28,14 +28,11 @@ import { Router, ActivatedRoute } from '@angular/router';
     transform: translateX(0);
   } 
   `
-
-
 ],
 
 })
 export class ParentHeaderComponent implements OnInit {
-
-  
+ 
   
   @Input()
   kid
