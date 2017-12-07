@@ -33,6 +33,7 @@ import { HttpClient } from '@angular/common/http';
 export class ParentRegisterComponent implements OnInit {
 
   constructor(
+    @Inject('API_URL') private API_URL,
     private router: Router,
     private http: HttpClient,
     private route:ActivatedRoute,
@@ -53,7 +54,7 @@ export class ParentRegisterComponent implements OnInit {
   parent ={}
   addParent(){
      if (this.parent['password']===this.checkpassword){
-      this.http.post('http://localhost:3000/parents/', this.parent)
+      this.http.post(this.API_URL+ 'parents/', this.parent)
       .subscribe( parent => { 
         this.parent = parent; 
         this.router.navigate(['/rodzic-logowanie']);
