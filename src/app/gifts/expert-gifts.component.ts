@@ -19,7 +19,7 @@ import { GiftsService } from '../gifts/gifts.service';
 export class ExpertGiftsComponent implements OnInit {
 
   constructor(
-    private service: GiftService,
+    private service: GiftsService,
   ) { }
 
     gifts

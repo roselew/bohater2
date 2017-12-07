@@ -94,7 +94,7 @@ import { GiftsService } from '../gifts/gifts.service';
 export class KidGiftsComponent implements OnInit {
 
   constructor(   
-    private service: GiftService,
+    private service: GiftsService,
     private router: Router,
     private route: ActivatedRoute,
   ) { }

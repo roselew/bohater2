@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   template: `
   <header>
     <a routerLink='/dziecko/menu'>
-      <div class="header-banner"> {{kid.name}} </div>
+      <div *ngIf="kid" class="header-banner"> {{kid.name}} </div>
       <img src="../../assets/logoXL.png" class="logo">
     </a>
   </header>

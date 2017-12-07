@@ -17,7 +17,7 @@ import { GiftsService } from '../gifts/gifts.service';
 export class ChosenGiftComponent implements OnInit {
 
   constructor(
-    private service: GiftService,
+    private service: GiftsService,
     private router: Router,
     private route:ActivatedRoute,
   ) { }
@@ -26,7 +26,7 @@ export class ChosenGiftComponent implements OnInit {
   ngOnInit() {
     let giftId = +this.route.snapshot.paramMap.get('giftId');
     this.service.getOneGift(giftId)
-      .subscribe( gift => this.gift = gift; )
+      .subscribe( gift => this.gift = gift)
   }
 
    receive(){

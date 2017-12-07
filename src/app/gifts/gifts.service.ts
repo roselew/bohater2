@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()export class GiftsService {
@@ -39,3 +39,4 @@ import { HttpClient } from '@angular/common/http';
   createOneGift(gift){
     return this.http.post(this.API_URL+ 'userGifts/', gift)
   }
+}

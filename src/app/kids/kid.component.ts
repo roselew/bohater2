@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -25,7 +25,7 @@ export class KidComponent implements OnInit {
     ngOnInit(){
       let kidId = +localStorage.getItem('loggedKid');
       this.http.get(this.API_URL+ 'kids/'+ kidId +'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
-        .subscribe( kid => this.kid = kid; )
+        .subscribe( kid => this.kid = kid )
     }
     
   ngOnDestroy() {
