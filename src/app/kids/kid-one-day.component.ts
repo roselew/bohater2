@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
+import { MissionsService } from "../missions/missions.service"
 
 @Component({
   selector: 'kid-one-day',
@@ -12,10 +13,11 @@ import { ActivatedRoute, Router } from "@angular/router";
   </div>
 
   <one-day-view 
-        (onChange)="show($event)" 
+        (onChange)="fetchMissions()" 
         [mode]= "mode"
         [type]= "type"
-        [dayId]= "dayId">
+        [dayId]= "dayId"
+        [userMissions] = "userMissions">
   </one-day-view>
     
    `,
@@ -26,11 +28,13 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class KidOneDayComponent implements OnInit {
 
   constructor(
+    private service: MissionsServices,
     private router: Router,
     private route: ActivatedRoute,  
   ) { }
 
-
+  kidId
+  userMissions
   dayId
   thisDay
   monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
@@ -38,24 +42,22 @@ export class KidOneDayComponent implements OnInit {
   type = 'dayView'
 
   ngOnInit(){
+    
+    this.kidId = this.users.getLoggedUser('kid');
+    this.fetchMissions();
+    
     this.route.paramMap.subscribe(paramMap => {
       this.dayId = +paramMap.get('dayId');
       this.thisDay = new Date();
       this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
       this.thisDay.setHours(0, 0, 0, 0);
     })
+
   }
   
-
-  nDone
-  nWait
-  nUndone
-  
-  show([nDone,nWait,nUndone],day){
-    this.nDone=nDone;
-    this.nWait=nWait;
-    this.nUndone=nUndone;
+  fetchMissions(){
+    this.service.fetchMissions(this.kidId) 
+       .subscribe ( userMissions => this.userMissions = userMissions )     
   }
-
   
 }
