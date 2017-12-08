@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { MissionsService } from '../missions/missions.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UsersService } from "../sessions/users.service";
 
 @Component({
   selector: 'one-day-view',
@@ -145,6 +146,7 @@ export class OneDayViewComponent implements OnInit {
 // </move-mission>
    
   constructor(
+    private users: UsersService,
     private service: MissionsService,
     private router: Router,
     private route:ActivatedRoute,
@@ -209,7 +211,7 @@ export class OneDayViewComponent implements OnInit {
     this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
     this.thisDay.setHours(0, 0, 0, 0);
     if (this.mode=='kid'){
-      this.kidId = +localStorage.getItem('loggedKid');
+      this.kidId = this.user.getLoggedUser('kid');
     } else {
       this.kidId = this.route.parent.snapshot.paramMap.get('kidId');
     }
