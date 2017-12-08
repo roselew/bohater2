@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MissionsService } from '../missions/missions.service';
+import { UsersService } from '../session/users.service';
 
 @Component({
   selector: 'progress-history',
@@ -28,6 +29,7 @@ import { MissionsService } from '../missions/missions.service';
 export class ProgressHistoryComponent implements OnInit {
 
   constructor(
+    private users: UsersService,
     private router: Router,
     private route: ActivatedRoute,
     private service: MissionsService,
@@ -55,7 +57,7 @@ export class ProgressHistoryComponent implements OnInit {
  
 
   ngOnInit() {
-    let kidId = +this.route.parent.snapshot.paramMap.get('kidId') || +localStorage.getItem('loggedKid');
+    let kidId = +this.route.parent.snapshot.paramMap.get('kidId') || this.users.getLoggedUser('kid');
     this.service.fetchMissions(kidId)
       .subscribe(userMissions => {
         this.userMissions = userMissions;
