@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
@@ -47,13 +47,14 @@ export class OneWeekComponent implements OnInit {
   ) { }
 
 
+  @Input() mode
+  
   weekId
   firstDate
   endDate
   days
   monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
   firstDay
-  mode
   type='weekView'
   filter
 
@@ -64,12 +65,7 @@ export class OneWeekComponent implements OnInit {
   ngOnInit() { 
     let today = new Date();
     today.setHours(0,0,0,0);
-    if (localStorage.getItem('loggedParent')){
-      this.mode='parent'
-    } else {
-      this.mode='kid'
-    } 
-
+    
     //get week Id 
     this.route.paramMap.subscribe(paramMap => {
 
