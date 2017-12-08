@@ -34,7 +34,7 @@ import { CreateGiftComponent } from './gifts/create-gift.component';
 import { ExpertGiftComponent } from './gifts/expert-gift.component';
 import { GiftComponent } from './gifts/gift.component';
 
-import { OneWeekComponent } from './progress/one-week.component';
+import { ParentProgressComponent } from './progress/parent-progress.component';
 import { ProgressHistoryComponent } from './progress/progress-history.component';
 
 import { PointsComponent } from './points/points.component';
@@ -93,7 +93,7 @@ const routes:Routes = [
             { path: 'nagrody/dostepne/:giftId',          component: AvailableGiftComponent},
   
             { path: 'postepy/historia',                  component: ProgressHistoryComponent},
-            { path: 'postepy/:weekId',                   component: OneWeekComponent},
+            { path: 'postepy/:weekId',                   component: ParentProgressComponent},
 
             { path: 'punkty',                            component: PointsComponent},
             { path: 'punkty/punkty-ekstra',              component: ExtraPointsComponent}
