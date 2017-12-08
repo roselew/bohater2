@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { KidsService } from "./kids.service";
+import { UsersService } from "../session/users.service";
 
 @Component({
   selector: 'kid-menu',
@@ -24,9 +25,10 @@ export class KidMenuComponent implements OnInit {
   //   <ng-template #unloggedInfo><p>Nie jesteś zalogowany</p></ng-template>
 
   constructor(
+    private users: UsersService,
     private service: KidsService,
-    private router:   Router,
-    private route:    ActivatedRoute,   
+    private router: Router,
+    private route:  ActivatedRoute,   
     private renderer: Renderer2) { 
       this.renderer.addClass(document.body,'title-page')
     }
@@ -34,7 +36,7 @@ export class KidMenuComponent implements OnInit {
   kid
 
   ngOnInit() {
-    let kidId = localStorage.getItem('loggedKid');
+    let kidId = this.users.getLoggedUser('kid');
     this.service.getOneKid(kidId)
     .subscribe( kid => this.kid = kid )
   }
