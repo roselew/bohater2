@@ -19,10 +19,6 @@ export class MissionsService {
     return this.http.get(this.API_URL+ 'kids/' + kidId + '/userMissions')
   }
 
-  fetchExpertMissions(){
-    return this.http.get(this.API_URL+ 'expertMissions')      
-  }
-
   getOneMission(missionId){
     return this.http.get(this.API_URL+ 'userMissions/' + missionId)
   }
@@ -38,12 +34,7 @@ export class MissionsService {
  createOneMission(mission){
     return this.http.post(this.API_URL+ 'userMissions/', mission)
   }
-
-  getOneExpertMission(missionId) {
-    return this.http.get(this.API_URL+ 'expertMissions/' + missionId)     
-  }
-
-
+  
   //dodatkowo bohater 
   getMissionsHeroes(kidId){
     return this.http.get(this.API_URL+ 'kids/' + kidId + '?_embed=userHeroes&_embed=userMissions')
