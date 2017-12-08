@@ -78,14 +78,14 @@ export class OneWeekComponent implements OnInit {
     } else {
       this.kidId = +this.route.parent.snapshot.paramMap.get('kidId');
     }
-
-    //get all UserMissions and calculate week progress
-    this.fetchMissions() 
-   
+  
     //get week Id 
     this.route.paramMap.subscribe(paramMap => {
 
       this.weekId = +paramMap.get('weekId');
+
+      //get all UserMissions and calculate week progress
+      this.fetchMissions() 
       
       let today = new Date();
       today.setHours(0,0,0,0);
