@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { MissionsService } from "../missions/missions.service"
+import { MissionsService } from "../missions/missions.service";
+import { UsersService } from "../session/users.service";
 
 @Component({
   selector: 'kid-one-day',
@@ -28,7 +29,8 @@ import { MissionsService } from "../missions/missions.service"
 export class KidOneDayComponent implements OnInit {
 
   constructor(
-    private service: MissionsServices,
+    private users: UsersService,
+    private service: MissionsService,
     private router: Router,
     private route: ActivatedRoute,  
   ) { }
