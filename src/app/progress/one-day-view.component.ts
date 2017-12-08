@@ -1,7 +1,4 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
-import { MissionsService } from '../missions/missions.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { UsersService } from "../sessions/users.service";
 
 @Component({
   selector: 'one-day-view',
@@ -112,45 +109,26 @@ import { UsersService } from "../sessions/users.service";
       </div>
       
   </div>	
+
 <!-- pop up window for changing mission status -->
-  <div *ngIf="selectedMission" class="alert">
-  <span class="X" (click)="selectedMission=null"> X </span>
 
-  <ul class="mission-neutral">
-    <li class="circle-big">
-      <p>
-      {{selectedMission.name}}
-      </p>
-      <img src="{{selectedMission.icon}}">
-      <star-svg></star-svg>
-      <span>{{selectedMission.points}}</span>
-  
-      <div class="thumb thumb-down" (click)="moveDown(selectedMission,missionStatus)"><img src="assets/dislike.svg"></div>    
-      <div class="thumb thumb-up" (click)="moveUp(selectedMission,missionStatus)"><img src="assets/like.svg"></div>     
-    </li>
-  </ul>
-  
-</div>
-
-<app-alert *ngIf="alertVisible" (change)="alertVisible=false" [imageSrc]="alertImage" [textTitle]="alertTitle" [textPlain]="alertText"></app-alert>
+   <move-mission *ngIf="selectedMission"
+    [mode]="mode"
+    [selectedMission]="selectedMission"
+    [missionStatus]="missionStatus"
+    [data]="thisDay.getTime()"
+    (onMove)="changeMissions.emit()">
+  </move-mission>
  
 `,
+  
   styleUrls: ['../../sass/one-day-view.scss']
 
 })
+
 export class OneDayViewComponent implements OnInit {
-//   <move-mission 
-//   *ngIf="selectedMission" 
-//   [selectedMission]="selectedMission" 
-//   [missionStatus]="missionStatus">
-// </move-mission>
    
-  constructor(
-    private users: UsersService,
-    private service: MissionsService,
-    private router: Router,
-    private route:ActivatedRoute,
-  ) { }
+  constructor() { }
 
   days = ['PN','WT','ŚR','CZ','PT','SB','ND']
 
@@ -174,26 +152,7 @@ export class OneDayViewComponent implements OnInit {
   selectedMission
   missionStatus
   
-  //ALERTS
-  alertVisible
-  alertImage
-  alertText
-  alertTitle
-
-  showAlert(imageSrc, textTitle, textPlain){
-    this.alertVisible=true
-    this.alertImage=imageSrc 
-    this.alertText=textPlain 
-    this.alertTitle=textTitle
-  }
-
-  hideAlert(){
-    this.alertVisible=false
-    this.alertImage="" 
-    this.alertText=""
-    this.alertTitle=""
-  }
-
+  
  ngOnChanges(){
    //set thisDay 
    this.thisDay = new Date();
@@ -216,118 +175,13 @@ export class OneDayViewComponent implements OnInit {
   this.selectedMission=mission;
   this.missionStatus=status;
  } 
-
- moveUp(mission,status){
-  this.selectedMission=undefined
-  if (this.mode == 'parent'){
-    if (status!=='done'){
-      this.addDone(mission)
-    } else {
-      this.showAlert('assets/like.svg','','Ta misja jest już wykonana')
-    }
-  } else {
-    if (status=='undone'){
-      this.addWait(mission)
-      this.showAlert('assets/bohater.png','Gratulacje','Super Ci idzie!')
-    } else if (status=='wait'){
-      this.showAlert('assets/hourglass.svg','Czekamy','...na akceptację mamy')
-    } else if (status=='done'){
-      this.showAlert('assets/like.svg','Zrobione','Już wykonałeś tą misję')
-    }
-  }
-  }
-
-  moveDown(mission,status){
-    this.selectedMission=undefined
-    if (this.mode == 'parent'){
-      if (status=='done'){
-        this.removeDone(mission)
-      } else if (status=='wait'){
-        this.removeWait(mission)
-      } else {
-        this.showAlert('assets/dislike.svg','','Misja nadal nie jest wykonana')
-      }
-    } else {
-      if (status=="undone"){
-        this.showAlert('assets/dislike.svg','Niestety','Misja nadal nie jest wykonana')
-      } else if (status=="wait"){
-        this.removeWait(mission)
-        this.showAlert('assets/dislike.svg','Niestety','Nie wykonałeś tej misji')
-      } else if (status=="done"){
-        this.removeDone(mission)
-        this.showAlert('assets/dislike.svg','Niestety','Nie wykonałeś tej misji')
-      }
-
-    }
-  }
-
-
-  addDone(mission) {
-    let data=this.thisDay.getTime()
-    let updatedMission={};
-    this.service.getOneMission(mission.id)
-      .subscribe(userMission => {
-        updatedMission = userMission;
-        updatedMission['doneDates'].push(data);
-        if (updatedMission['waitDates'].indexOf(data)>-1){
-          let index = updatedMission['waitDates'].indexOf(data)
-          updatedMission['waitDates'].splice(index,1)
-        }  
-        this.service.updateOneMission(updatedMission)
-          .subscribe(() => this.changeMissions.emit());
-      })
-  }
   
-  removeDone(mission){
-    let data=this.thisDay.getTime()
-    let updatedMission={};
-    this.service.getOneMission(mission.id)
-    .subscribe(userMission => {
-      updatedMission = userMission;
-      if (updatedMission['doneDates'].indexOf(data)>-1){
-        let index = updatedMission['doneDates'].indexOf(data)
-        updatedMission['doneDates'].splice(index,1)
-      }  
-      this.service.updateOneMission(updatedMission)
-        .subscribe(() => this.changeMissions.emit());
-    })
-  }
- 
-  removeWait(mission){
-    let data=this.thisDay.getTime()
-    let updatedMission={};
-    this.service.getOneMission(mission.id)
-    .subscribe(userMission => {
-      updatedMission = userMission;
-      if (updatedMission['waitDates'].indexOf(data)>-1){
-        let index = updatedMission['waitDates'].indexOf(data)
-        updatedMission['waitDates'].splice(index,1)
-      }  
-      this.service.updateOneMission(updatedMission)
-        .subscribe(() => this.changeMissions.emit());
-    })
-  }
-  
-  addWait(mission) {
-    if (!mission.confirmation){
-      this.addDone(mission)
-    } else {
-    let data=this.thisDay.getTime()
-    let updatedMission={};
-    this.service.getOneMission(mission.id)
-      .subscribe(userMission => {
-        updatedMission = userMission;
-        updatedMission['waitDates'].push(data);
-        this.service.updateOneMission(updatedMission)
-          .subscribe(() => this.changeMissions.emit());
-      })
-    }
-  }
-  
- details= false
+ // show and hide day details div
+ details = false
  showDetails(){
    if (this.filter=='all') {
     this.details=!this.details
    }
  }
+  
 }
