@@ -80,35 +80,33 @@ export class OneWeekComponent implements OnInit {
     }
   
     //get all UserMissions and calculate week progress
-    // this.fetchMissions() 
-
     this.service.fetchMissions(this.kidId)
-    .subscribe ( userMissions => {
+      .subscribe ( userMissions => {
       this.userMissions = userMissions;
 
-    //get week Id 
-    this.route.paramMap.subscribe(paramMap => {
+      //get week Id 
+      this.route.paramMap.subscribe(paramMap => {
 
-      this.weekId = +paramMap.get('weekId');
+        this.weekId = +paramMap.get('weekId');
 
-      this.weekProgress=this.service.getOneWeekProgress(this.userMissions, this.weekId)
+        this.weekProgress=this.service.getOneWeekProgress(this.userMissions, this.weekId)
 
-      let today = new Date();
-      today.setHours(0,0,0,0); 
-    
-      this.firstDay = 0 - today.getUTCDay() + 7* this.weekId;
+        let today = new Date();
+        today.setHours(0,0,0,0); 
       
-      this.firstDate = new Date(today);
-      this.firstDate.setDate(this.firstDate.getDate() + this.firstDay);
-      this.firstDate.setHours(0, 0, 0, 0);
-      
-      this.endDate = new Date(this.firstDate);
-      this.endDate.setDate(this.firstDate.getDate() + 6);
-      this.endDate.setHours(0, 0, 0, 0);
-      
-      this.days=[this.firstDay, this.firstDay+1, this.firstDay+2, this.firstDay+3, this.firstDay+4, this.firstDay+5, this.firstDay+6]
+        this.firstDay = 0 - today.getUTCDay() + 7* this.weekId;
+        
+        this.firstDate = new Date(today);
+        this.firstDate.setDate(this.firstDate.getDate() + this.firstDay);
+        this.firstDate.setHours(0, 0, 0, 0);
+        
+        this.endDate = new Date(this.firstDate);
+        this.endDate.setDate(this.firstDate.getDate() + 6);
+        this.endDate.setHours(0, 0, 0, 0);
+        
+        this.days=[this.firstDay, this.firstDay+1, this.firstDay+2, this.firstDay+3, this.firstDay+4, this.firstDay+5, this.firstDay+6]
+      })
     })
-  })
 
     this.route.queryParamMap.subscribe(paramMap =>  {
       this.filter = paramMap.get('filter') || 'all';
