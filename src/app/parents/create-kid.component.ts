@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { KidsService } from "../kids/kids.service";
+import { UsersService } from "../session/users.service";
 
 @Component({
   selector: 'create-kid',
@@ -24,6 +25,7 @@ import { KidsService } from "../kids/kids.service";
 export class CreateKidComponent implements OnInit {
 
   constructor(
+    private users: UsersService,
     private service: KidsService,
     private router: Router,
     private route:ActivatedRoute,
@@ -40,7 +42,7 @@ export class CreateKidComponent implements OnInit {
   userHero={};
 
   save(){
-  let parentId = +localStorage.getItem('loggedParent');
+  let parentId = this.users.getLoggedUser('parent');
   this.kid['parentId']=parentId;
   this.service.createOneKid(this.kid)
     .subscribe( kid=> {
