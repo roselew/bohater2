@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { UsersService } from './session/users.service';
 
 @Injectable()
 export class AuthKidService implements CanActivate  {
   
   constructor(
+    private users: UsersService,
     private router: Router
   ){}
   
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (localStorage.getItem('loggedKid')) {
+    if (this.users.getLoggedUser('kid')) {
       return true
     } else {
       this.router.navigate(['/dziecko-logowanie']);
