@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { KidsService } from "./kids.service";
+import { UsersService } from "../session/users.service";
 
 @Component({
   selector: 'kid-login',
@@ -41,12 +42,12 @@ import { KidsService } from "./kids.service";
 export class KidLoginComponent implements OnInit {
 
   logOn(kidId){
-    localStorage.clear()
-    localStorage.setItem('loggedKid',kidId) 
+    this.users.setLoggedUser('kid',kidId)
     this.router.navigate(['/dziecko'])   
   }
 
   constructor(
+    private users: UsersService,
     private service: KidsService,
     private router: Router,
     private route: ActivatedRoute,
@@ -56,7 +57,6 @@ export class KidLoginComponent implements OnInit {
     }
 
   kids
-
   kid={}
 
   ngOnInit() {
