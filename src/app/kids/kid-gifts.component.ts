@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { GiftsService } from '../gifts/gifts.service';
+import { UsersService } from "../session/users.service";
 
 @Component({
   selector: 'kid-gifts',
@@ -94,6 +95,7 @@ import { GiftsService } from '../gifts/gifts.service';
 export class KidGiftsComponent implements OnInit {
 
   constructor(   
+    private users: UsersService,
     private service: GiftsService,
     private router: Router,
     private route: ActivatedRoute,
@@ -111,7 +113,7 @@ export class KidGiftsComponent implements OnInit {
   selectedGift
 
  ngOnInit(){
-    let kidId = +localStorage.getItem('loggedKid');
+    let kidId = this.users.getLoggedUser('kid');
     this.fetchGifts(kidId);
   }
 
