@@ -14,14 +14,12 @@ import { GiftsService } from "../gifts/gifts.service";
 
   <div class="kid-icon">
     <a [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']" [queryParams]="{filter: 'wait'}">
-    <img src="../../assets/mission.svg" class="enlarge">
     <missions-to-accept [userMissions]="userMissions"></missions-to-accept> 
     </a>	
   </div>		
 
   <div class="kid-icon">		
     <a [routerLink]="['/rodzic/dziecko/'+kidId+'/nagrody']">
-    <img src="../../assets/gift.svg" class="enlarge">
     <gifts-to-receive [userGifts]="userGifts"></gifts-to-receive> 
     </a>
   </div>

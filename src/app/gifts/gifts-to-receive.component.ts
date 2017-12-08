@@ -3,7 +3,10 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'gifts-to-receive',
   template: `
-    <p> {{totalToReceive}} nagrody do odbioru </p>
+  
+   <img *ngIf="totalToReceive>0" src="../../assets/gift.svg" class="enlarge">
+   <img *ngIf="totalToReceive==0" src="../../assets/gift_empty.svg" class="enlarge">
+   <p> {{totalToReceive}} nagrody do odbioru </p>
   `,
   styles: [],
 })

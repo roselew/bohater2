@@ -109,7 +109,7 @@ expertHeroes = [
             {        badgeName: "Maska extra mocy",   icon: "assets/ikony/o_maska3.svg",    gained: "false"        }
         ]   
   },
-  {     id:3,        name: "Zwinna Jane",             image: "assets/bohater2.png",
+  {     id:3,        name: "Zwinna Jane",             image: "assets/bohater3.png",
         badges1: [
             {        badgeName: "Buty mocy",          icon: "assets/ikony/o_but1.svg",      gained: "false"        },
             {        badgeName: "Buty super mocy",    icon: "assets/ikony/o_but2.svg",      gained: "false"        },
