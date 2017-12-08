@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MissionsService } from '../missions/missions.service';
+import { UsersService } from '../session/users.service';
 
 @Component({
   selector: 'kid-hero',
@@ -54,6 +55,7 @@ import { MissionsService } from '../missions/missions.service';
 export class KidHeroComponent implements OnInit {
 
   constructor(
+    private users: UsersService,  
     private router: Router,
     private route: ActivatedRoute,
     private service: MissionsService,
@@ -67,7 +69,7 @@ export class KidHeroComponent implements OnInit {
   nGainedBadges
 
   ngOnInit() {
-    let kidId = +localStorage.getItem('loggedKid');
+    let kidId = this.users.getLoggedUser('kid');
     this.service.getMissionsHeroes(kidId)
        .subscribe(kid => {
         this.kid = kid;
