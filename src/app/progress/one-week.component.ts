@@ -28,7 +28,7 @@ import { UsersService } from "../session/users.service"
     </div>
 
    <div *ngFor="let day of days">
-    <one-day-view 
+    <one-day-view *ngIf="userMissions"
         (onChange)="fetchMissions()" 
         [mode]="mode" 
         [type]="type"
