@@ -13,7 +13,7 @@ import { UsersService } from "../session/users.service";
     <span [routerLink]="['../',dayId +1]" class="next">&gt;</span> 
   </div>
 
-  <one-day-view 
+  <one-day-view *ngIf="userMissions"
         (onChange)="fetchMissions()" 
         [mode]= "mode"
         [type]= "type"
