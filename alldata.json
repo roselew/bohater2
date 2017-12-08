@@ -21,14 +21,6 @@
       "id": 1
     },
     {
-      "name": "Kacper",
-      "birth": "2013",
-      "login": "kac",
-      "password": "kac",
-      "parentId": 2,
-      "id": 4
-    },
-    {
       "name": "Łukasz",
       "birth": "1984",
       "login": "lk",
@@ -37,10 +29,10 @@
       "id": 13
     },
     {
-      "name": "Wanda",
+      "name": "Antek",
       "birth": "2013",
-      "login": "wanda",
-      "password": "wanda",
+      "login": "antos",
+      "password": "antoni",
       "parentId": 2,
       "id": 14
     }
@@ -150,24 +142,6 @@
       "id": 17
     },
     {
-      "confirmation": false,
-      "name": "Zęby rano",
-      "icon": "assets/ikony/m_zeby.svg",
-      "points": 1,
-      "kidId": 4,
-      "start": 1511910000000,
-      "days": [
-        4
-      ],
-      "doneDates": [
-        1512687600000,
-        1513897200000,
-        1512082800000
-      ],
-      "waitDates": [],
-      "id": 22
-    },
-    {
       "confirmation": true,
       "name": "Poskładać zabawki",
       "icon": "assets/ikony/m_zabawki.svg",
@@ -219,26 +193,6 @@
     },
     {
       "confirmation": true,
-      "name": "Poskładać zabawki",
-      "icon": "assets/ikony/m_zabawki.svg",
-      "points": 2,
-      "kidId": 4,
-      "start": 1512342000000,
-      "days": [
-        3,
-        4
-      ],
-      "doneDates": [
-        1512601200000,
-        1512687600000,
-        1513810800000,
-        1513897200000
-      ],
-      "waitDates": [],
-      "id": 28
-    },
-    {
-      "confirmation": true,
       "name": "Umyć naczynia",
       "icon": "assets/ikony/m_naczynia.svg",
       "points": 1,
@@ -254,6 +208,60 @@
         1516316400000
       ],
       "id": 29
+    },
+    {
+      "name": "Nakarmić zwierzątko",
+      "icon": "assets/ikony/m_nakarmic.svg",
+      "confirmation": true,
+      "points": 1,
+      "kidId": 14,
+      "start": 1512687600000,
+      "days": [
+        2,
+        4
+      ],
+      "doneDates": [
+        1512687600000
+      ],
+      "waitDates": [],
+      "id": 30
+    },
+    {
+      "name": "Pomoc w ogródku",
+      "icon": "assets/ikony/m_ogrod.svg",
+      "confirmation": true,
+      "points": 3,
+      "kidId": 14,
+      "start": 1512687600000,
+      "days": [
+        1,
+        5
+      ],
+      "doneDates": [
+        1512774000000
+      ],
+      "waitDates": [],
+      "id": 31
+    },
+    {
+      "name": "Poskładać zabawki",
+      "icon": "assets/ikony/m_zabawki.svg",
+      "confirmation": false,
+      "points": 5,
+      "kidId": 14,
+      "start": 1512687600000,
+      "days": [
+        0,
+        2,
+        6
+      ],
+      "doneDates": [
+        1513119600000,
+        1512946800000,
+        1512860400000
+      ],
+      "waitDates": [],
+      "id": 32
     }
   ],
   "userGifts": [
@@ -419,28 +427,28 @@
       "id": 29
     },
     {
-      "name": "Deser",
-      "icon": "assets/ikony/n_deser.svg",
-      "points": 40,
-      "kidId": 4,
-      "status": "unused",
-      "chosenDate": "",
+      "name": "Wyjście na lody",
+      "icon": "assets/ikony/n_lody.svg",
+      "points": 1,
+      "kidId": 14,
+      "status": "received",
+      "chosenDate": 1512687600000,
       "id": 30
     },
     {
-      "name": "Wycieczka na weekend",
-      "icon": "assets/ikony/n_wycieczka.svg",
-      "points": 60,
-      "kidId": 4,
+      "name": "45 min na gry",
+      "icon": "assets/ikony/n_trzyczwarte.svg",
+      "points": 25,
+      "kidId": 14,
       "status": "unused",
       "chosenDate": "",
       "id": 31
     },
     {
-      "name": "Wyjście do kina",
-      "icon": "assets/ikony/n_kino.svg",
-      "points": 80,
-      "kidId": 4,
+      "name": "Wycieczka na weekend",
+      "icon": "assets/ikony/n_wycieczka.svg",
+      "points": 50,
+      "kidId": 14,
       "status": "unused",
       "chosenDate": "",
       "id": 32
@@ -490,10 +498,10 @@
       "id": 6
     },
     {
-      "description": "Za to że ",
-      "points": 50,
-      "kidId": 4,
-      "date": 1512514800000,
+      "description": "Za śniadanie",
+      "points": 3,
+      "kidId": 14,
+      "date": 1512687600000,
       "id": 7
     }
   ],
@@ -556,61 +564,118 @@
       "kidId": 1
     },
     {
-      "name": "Szybki Bil",
-      "image": "assets/bohater.png",
+      "name": "Silny Jack",
+      "image": "assets/bohater2.png",
       "badges1": [
         {
           "badgeName": "Buty mocy",
-          "icon": "assets/o_but1.svg",
+          "icon": "assets/ikony/o_but1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Buty super mocy",
-          "icon": "assets/o_but2.svg",
+          "icon": "assets/ikony/o_but2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Buty extra mocy",
-          "icon": "assets/o_but3.svg",
+          "icon": "assets/ikony/o_but3.svg",
           "gained": "false"
         }
       ],
       "badges2": [
         {
           "badgeName": "Ręka mocy",
-          "icon": "assets/o_reka1.svg",
+          "icon": "assets/ikony/o_reka1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Ręka super mocy",
-          "icon": "assets/o_reka2.svg",
+          "icon": "assets/ikony/o_reka2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Ręka extra mocy",
-          "icon": "assets/o_reka3.svg",
+          "icon": "assets/ikony/o_reka3.svg",
           "gained": "false"
         }
       ],
       "badges3": [
         {
           "badgeName": "Maska mocy",
-          "icon": "assets/o_maska1.svg",
+          "icon": "assets/ikony/o_maska1.svg",
           "gained": "false"
         },
         {
           "badgeName": "Maska super mocy",
-          "icon": "assets/o_maska2.svg",
+          "icon": "assets/ikony/o_maska2.svg",
           "gained": "false"
         },
         {
           "badgeName": "Maska extra mocy",
-          "icon": "assets/o_maska3.svg",
+          "icon": "assets/ikony/o_maska3.svg",
           "gained": "false"
         }
       ],
       "kidId": 13,
       "id": 9
+    },
+    {
+      "name": "Szybki Bil",
+      "image": "assets/bohater.png",
+      "badges1": [
+        {
+          "badgeName": "Buty mocy",
+          "icon": "assets/ikony/o_but1.svg",
+          "gained": "true"
+        },
+        {
+          "badgeName": "Buty super mocy",
+          "icon": "assets/ikony/o_but2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty extra mocy",
+          "icon": "assets/ikony/o_but3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges2": [
+        {
+          "badgeName": "Ręka mocy",
+          "icon": "assets/ikony/o_reka1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka super mocy",
+          "icon": "assets/ikony/o_reka2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka extra mocy",
+          "icon": "assets/ikony/o_reka3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges3": [
+        {
+          "badgeName": "Maska mocy",
+          "icon": "assets/ikony/o_maska1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska super mocy",
+          "icon": "assets/ikony/o_maska2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska extra mocy",
+          "icon": "assets/ikony/o_maska3.svg",
+          "gained": "false"
+        }
+      ],
+      "kidId": 14,
+      "id": 10
     }
   ]
 }

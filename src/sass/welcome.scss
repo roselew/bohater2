@@ -1,16 +1,30 @@
 @import '_zmienne';
 
-#section01 { background: $color_back_kid url(../assets/background_kid_title.svg) top 275px center no-repeat; background-size: 100%;
-height: 100vh;
+#section01 { 
+	background: $color_back_kid url(../assets/background_kid_title.svg) top 275px center no-repeat; background-size: 100%;
+	height: 100vh;
 }
 
-#section02 { background-color: white;}
+#section02 { 
+	background-color: white;
+	p {color: $color_text_parent;}
+}
 
 #section03 { background-color: $color_back_kid; color: white; padding-top: 10.0rem;}
 
-#section04 { background-color: white; a{color:black; span{border-color:black;}}}
+#section04 { 
+	background-color: white; 
+	p {color: $color_text_parent;}
+	a span{border-color:$color_text_parent;}
+	.logo-banner-point p {color:white; }
+}
 
-#section05 { background-color: $color_back_kid;color: white; text-align: center;}
+#section05 { 
+	background-color: $color_back_kid;
+	color: white; 
+	text-align: center; 
+	padding-bottom: 20rem;
+}
 
 button.enter {
 	display: inline-block;

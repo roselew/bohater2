@@ -29,7 +29,7 @@ import { UsersService } from "../session/users.service";
     </form>
     <a routerLink='/rodzic-rejestracja'>Nie masz konta? Zarejestruj się</a>
 
-    <p> Logowanie tymczasowe, kliknij na rodzica żeby się zalogować </p>
+    <p style="color: red"> Logowanie tymczasowe, kliknij na rodzica żeby się zalogować </p>
     <ul>
       <li *ngFor="let parent of parents"
           (click)="logOn(parent.id)">
