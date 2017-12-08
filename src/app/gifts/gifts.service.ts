@@ -15,19 +15,11 @@ import { HttpClient } from '@angular/common/http';
   fetchGifts(kidId){    
     return this.http.get(this.API_URL+ 'kids/' + kidId + '/userGifts')  
   }
-  
-  fetchExpertGifts(){
-    return this.http.get(this.API_URL+ 'expertGifts')      
-  }
-  
+   
   getOneGift(giftId) {  
     return this.http.get(this.API_URL+ 'userGifts/' + giftId)  
   }
-  
-  getOneExpertGift(giftId) {
-    return this.http.get(this.API_URL+ 'expertGifts/' + giftId)     
-  }
-  
+    
   updateOneGift(gift){    
     return this.http.put(this.API_URL+ 'userGifts/'+ gift['id'], gift)  
   }
