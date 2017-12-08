@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { KidsService } from "../kids/kids.service";
+import { ExpertsService } from "../services/experts.service";
 
 @Component({
   selector: 'view-hero',
@@ -27,7 +27,7 @@ import { KidsService } from "../kids/kids.service";
 export class ViewHeroComponent implements OnInit {
 
   constructor(   
-    private service: KidsService,
+    private experts: ExpertsService,
   ) { }
 
   @Input()
@@ -36,8 +36,7 @@ export class ViewHeroComponent implements OnInit {
   expertHeroes
 
   ngOnInit() {
-    this.service.fetchHeroes()
-    .subscribe( expertHeroes =>  this.expertHeroes = expertHeroes)
+    this.expertHeroes = this.experts.getExpertHeroes()
   }
 
   selectHero(expertHero){
