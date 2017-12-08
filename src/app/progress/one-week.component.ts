@@ -1,6 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { MissionsService } from "../missions/missions.service"
+import { UsersService } from "../session/users.service"
 
 @Component({
   selector: 'one-week',
@@ -44,6 +45,7 @@ import { MissionsService } from "../missions/missions.service"
 export class OneWeekComponent implements OnInit {
 
   constructor(
+    private users: UsersService,
     private service: MissionsServices,
     private router: Router,
     private route: ActivatedRoute, 
@@ -77,7 +79,7 @@ export class OneWeekComponent implements OnInit {
       
       //get kid Id
       if (this.mode=='kid'){
-        this.kidId = this.user.getLoggedUser('kid');
+        this.kidId = this.users.getLoggedUser('kid');
       } else {
         this.kidId = +this.route.parent.snapshot.paramMap.get('kidId');
       }
