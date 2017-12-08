@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { GiftsService } from '../gifts/gifts.service';
+import { ExpertsService } from '../services/experts.service';
 
 @Component({
   selector: 'expert-gift',
@@ -17,6 +18,7 @@ import { GiftsService } from '../gifts/gifts.service';
 export class ExpertGiftComponent implements OnInit {
 
   constructor(
+    private experts: ExpertsService,
     private service: GiftsService,
     private router: Router,
     private route: ActivatedRoute,   
@@ -26,11 +28,9 @@ export class ExpertGiftComponent implements OnInit {
 
    ngOnInit(){
       let giftId=this.route.snapshot.paramMap.get('giftId');
-      this.service.getOneExpertGift(giftId)
-        .subscribe( gift => {
-          this.gift['name'] = gift['name'] 
-          this.gift['icon'] = gift['icon']
-        })
+      let expertsGift = this.experts.getOneExpertGift(giftId)
+      this.gift['name'] = expertsGift['name'] 
+      this.gift['icon'] = expertsGift['icon']
    }
 
    save(){
