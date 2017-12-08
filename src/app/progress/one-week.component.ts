@@ -13,16 +13,16 @@ import { UsersService } from "../session/users.service"
     <span [routerLink]="['../',weekId +1]" class="next">&rsaquo;</span> 
   </div>		
   
-  <progress-bar-week 
+  <progress-bar-week *ngIf="weekProgress"
     [waitWidth]="100*(weekProgress.nWait+weekProgress.nDone)/weekProgress.nAll" 
     [doneWidth]="100*weekProgress.nDone/weekProgress.nAll">
   </progress-bar-week>
  
-    <div class="filter">
-      <button class="show-all" (click)="applyFilter('all')" [ngClass]="{'selected': (filter=='all')}"><span>{{tUndone+tWait+tDone}}</span>
-        </button><button class="show-undone" (click)="applyFilter('undone')" [ngClass]="{'selected': (filter=='undone')}"><span>{{tUndone}}</span>
-        </button><button class ="show-wait" (click)="applyFilter('wait')" [ngClass]="{'selected': (filter=='wait')}"><span>{{tWait}}</span>
-        </button><button class="show-done" (click)="applyFilter('done')" [ngClass]="{'selected': (filter=='done')}"><span>{{tDone}}</span>
+    <div class="filter" *ngIf="weekProgress">
+      <button class="show-all" (click)="applyFilter('all')" [ngClass]="{'selected': (filter=='all')}"><span>{{weekProgress.nAll}}</span>
+        </button><button class="show-undone" (click)="applyFilter('undone')" [ngClass]="{'selected': (filter=='undone')}"><span>{{weekProgress.nAll-weekProgress.nWait-weekProgress.nDone}}</span>
+        </button><button class ="show-wait" (click)="applyFilter('wait')" [ngClass]="{'selected': (filter=='wait')}"><span>{{weekProgress.nWait}}</span>
+        </button><button class="show-done" (click)="applyFilter('done')" [ngClass]="{'selected': (filter=='done')}"><span>{{weekProgress.nDone}}</span>
       </button>
       <img src="../../assets/bohater.png" class="hero">
     </div>
@@ -71,23 +71,26 @@ export class OneWeekComponent implements OnInit {
   }
 
   ngOnInit() { 
-    let today = new Date();
-    today.setHours(0,0,0,0);
-    
+
+    //get kid Id
+    if (this.mode=='kid'){
+      this.kidId = this.users.getLoggedUser('kid');
+    } else {
+      this.kidId = +this.route.parent.snapshot.paramMap.get('kidId');
+    }
+
+    //get all UserMissions and calculate week progress
+    this.fetchMissions() 
+   
     //get week Id 
     this.route.paramMap.subscribe(paramMap => {
 
       this.weekId = +paramMap.get('weekId');
       
-      //get kid Id
-      if (this.mode=='kid'){
-        this.kidId = this.users.getLoggedUser('kid');
-      } else {
-        this.kidId = +this.route.parent.snapshot.paramMap.get('kidId');
-      }
+      let today = new Date();
+      today.setHours(0,0,0,0);
       
-      //get all UserMissions and calculate week progress
-      this.fetchMissions()     
+    
      
       this.firstDay = 0 - today.getUTCDay() + 7* this.weekId;
       

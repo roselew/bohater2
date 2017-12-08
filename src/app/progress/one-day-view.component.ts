@@ -113,12 +113,13 @@ import { MissionsService } from '../missions/missions.service';
 
 <!-- pop up window for changing mission status -->
 
-   <move-mission *ngIf="selectedMission"
+   <move-mission 
     [mode]="mode"
     [selectedMission]="selectedMission"
     [missionStatus]="missionStatus"
     [data]="thisDay.getTime()"
-    (onMove)="changeMissions.emit()">
+    (onMove)="changeMissions.emit()"
+    (onFinish)="selectedMission = undefined">
   </move-mission>
  
 `,
@@ -148,10 +149,13 @@ export class OneDayViewComponent implements OnInit {
   @Output('onChange')
   changeMissions = new EventEmitter();
 
-  thisDay;
-  doneMissions = [];
-  waitMissions = [];
-  undoneMissions = [];
+  thisDay
+
+  allMissions
+  doneMissions 
+  waitMissions 
+  undoneMissions 
+
   selectedMission
   missionStatus
   
@@ -169,9 +173,10 @@ export class OneDayViewComponent implements OnInit {
  ngOnInit() { }
 
  orderMissions() {
-   this.waitMissions = this.service.getWaitMissions(this.userMissions,this.thisDay);
-   this.doneMissions = this.service.getDoneMissions(this.userMissions,this.thisDay);
-   this.undoneMissions = this.service.getUndoneMissions(this.userMissions, this.waitMissions, this.doneMissions);
+   this.allMissions=this.service.getAllMissions(this.userMissions,this.thisDay)
+   this.waitMissions = this.service.getWaitMissions(this.allMissions,this.thisDay);
+   this.doneMissions = this.service.getDoneMissions(this.allMissions,this.thisDay);
+   this.undoneMissions = this.service.getUndoneMissions(this.allMissions, this.waitMissions, this.doneMissions);
  }
 
  move(mission,status){

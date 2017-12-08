@@ -6,17 +6,17 @@ import { MissionsService } from "../missions/missions.service";
   selector: 'move-mission',
   template: `
 
-<div class="alert">
+<div class="alert" *ngIf="selectedMission">
   
-  <span class="X" (click)="selectedMission=null"> X </span>  
+  <span class="X" (click)="clearSelection()"> X </span>  
   <ul class="mission-neutral">
     <li class="circle-big">
       <p> {{selectedMission.name}} </p>
       <img src="{{selectedMission.icon}}">
       <star-svg></star-svg>
       <span>{{selectedMission.points}}</span>
-      <div class="thumb thumb-down" (click)="moveDown()"><img src="assets/dislike.svg"></div>   
-      <div class="thumb thumb-up" (click)="moveUp()"><img src="assets/like.svg"></div> 
+      <div class="thumb thumb-down" (click)="moveDown(selectedMission)"><img src="assets/dislike.svg"></div>   
+      <div class="thumb thumb-up" (click)="moveUp(selectedMission)"><img src="assets/like.svg"></div> 
     </li>  
    </ul>
 
@@ -41,8 +41,7 @@ export class MoveMissionComponent implements OnInit {
     private service: MissionsService, 
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
   @Input() mode
   
@@ -54,17 +53,25 @@ export class MoveMissionComponent implements OnInit {
   
   @Output('onMove')
   moveMission = new EventEmitter();
+
+  @Output('onFinish')
+  finishSelection = new EventEmitter();
   
-  moveUp() {
+  clearSelection(){
+    this.finishSelection.emit()
+  }
+
+  moveUp(mission) {
+    this.clearSelection()
     if (this.mode == 'parent'){
       if (this.missionStatus!=='done'){
-        this.addDone(this.selectedMission)
+        this.addDone(mission)
       } else {
         this.showAlert('assets/like.svg','','Ta misja jest już wykonana')
       }
     } else {
       if (this.missionStatus=='undone'){
-        this.addWait(this.selectedMission)
+        this.addWait(mission)
         this.showAlert('assets/bohater.png','Gratulacje','Super Ci idzie!')
       } else if (this.missionStatus=='wait'){
         this.showAlert('assets/hourglass.svg','Czekamy','...na akceptację mamy')
@@ -72,15 +79,15 @@ export class MoveMissionComponent implements OnInit {
         this.showAlert('assets/like.svg','Zrobione','Już wykonałeś tą misję')
       }
     }
-    this.selectedMission=undefined;
   }
   
-  moveDown() {
+  moveDown(mission) {
+      this.clearSelection()
       if (this.mode == 'parent'){
         if (this.missionStatus=='done'){
-          this.removeDone(this.selectedMission)
+          this.removeDone(mission)
         } else if (this.missionStatus=='wait'){
-          this.removeWait(this.selectedMission)
+          this.removeWait(mission)
         } else {
           this.showAlert('assets/dislike.svg','','Misja nadal nie jest wykonana')
         }
@@ -88,14 +95,13 @@ export class MoveMissionComponent implements OnInit {
         if (this.missionStatus=="undone"){
           this.showAlert('assets/dislike.svg','Niestety','Misja nadal nie jest wykonana')
         } else if (this.missionStatus=="wait"){
-          this.removeWait(this.selectedMission)
+          this.removeWait(mission)
           this.showAlert('assets/dislike.svg','Niestety','Nie wykonałeś tej misji')
         } else if (this.missionStatus=="done"){
-          this.removeDone(this.selectedMission)
+          this.removeDone(mission)
           this.showAlert('assets/dislike.svg','Niestety','Nie wykonałeś tej misji')
         }
       }
-      this.selectedMission=undefined;
     }
   
   addWait(mission) {
@@ -137,7 +143,6 @@ export class MoveMissionComponent implements OnInit {
     this.service.updateOneMission(mission)
       .subscribe( () => {
         this.moveMission.emit();
-        this.selectedMission = undefined;
     })
   }
 
