@@ -168,21 +168,17 @@ export class OneDayViewComponent implements OnInit {
   changeMissions = new EventEmitter();
 
   thisDay;
-  userMissions = [];
   doneMissions = [];
   waitMissions = [];
   undoneMissions = [];
   selectedMission
   missionStatus
   
-
   //ALERTS
-
   alertVisible
   alertImage
   alertText
   alertTitle
-
 
   showAlert(imageSrc, textTitle, textPlain){
     this.alertVisible=true
@@ -198,24 +194,23 @@ export class OneDayViewComponent implements OnInit {
     this.alertTitle=""
   }
 
-  ngOnChanges(){
-    //set thisDay 
-    this.thisDay = new Date();
-    this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
-    this.thisDay.setHours(0, 0, 0, 0);
+ ngOnChanges(){
+   //set thisDay 
+   this.thisDay = new Date();
+   this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
+   this.thisDay.setHours(0, 0, 0, 0);
    
-    //missions are already fetched, now we need to get their status
-    this.orderMissions();
-  }
+   //missions are already fetched, now we need to get their status
+   this.orderMissions();
+ }
 
-  ngOnInit() { }
+ ngOnInit() { }
 
-  orderMissions() {
-      this.waitMissions = this.service.getWaitMissions(this.userMissions,this.thisDay);
-      this.doneMissions = this.service.getDoneMissions(this.userMissions,this.thisDay);
-      this.undoneMissions = this.service.getUndoneMissions(this.userMissions, this.waitMissions, this.doneMissions);
-    })
-  }
+ orderMissions() {
+   this.waitMissions = this.service.getWaitMissions(this.userMissions,this.thisDay);
+   this.doneMissions = this.service.getDoneMissions(this.userMissions,this.thisDay);
+   this.undoneMissions = this.service.getUndoneMissions(this.userMissions, this.waitMissions, this.doneMissions);
+ }
 
  move(mission,status){
   this.selectedMission=mission;
