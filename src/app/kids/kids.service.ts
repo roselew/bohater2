@@ -14,10 +14,6 @@ export class KidsService {
     return this.http.get(this.API_URL+ 'kids/')
   }
 
-  fetchHeroes(){
-    return this.http.get(this.API_URL+ 'expertHeroes')
-  }
-
   getOneKid(kidId) {
     return this.http.get(this.API_URL+ 'kids/'+kidId)
   }
