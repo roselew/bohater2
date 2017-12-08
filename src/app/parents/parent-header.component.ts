@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UsersService } from "../session/users.service";
 
 @Component({
   selector: 'parent-header',
@@ -38,8 +39,7 @@ export class ParentHeaderComponent implements OnInit {
   kid
 
   goToKid(){
-    localStorage.clear()
-    localStorage.setItem('loggedKid',this.kid['id'])
+    this.user.setLoggedUser('kid',this.kid['id'])
     this.router.navigate(['/dziecko'])
    }
 
@@ -47,6 +47,7 @@ export class ParentHeaderComponent implements OnInit {
   toggleMenu(){ this.menuVisible  = !this.menuVisible}
 
    constructor(
+    private users: UsersService,
     private router: Router,
     private route:  ActivatedRoute,   
   ) { }
