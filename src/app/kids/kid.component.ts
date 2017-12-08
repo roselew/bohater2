@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { GiftsService } from "../gifts/gifts.service";
+import { UsersService } from "../session/users.service";
 
 @Component({
   selector: 'kid',
@@ -14,6 +15,7 @@ import { GiftsService } from "../gifts/gifts.service";
 export class KidComponent implements OnInit {
 
   constructor(
+    private users: UsersService,
     private service: GiftsService,
     private renderer: Renderer2) { 
       this.renderer.addClass(document.body,'kid')
@@ -22,7 +24,7 @@ export class KidComponent implements OnInit {
     kid
   
     ngOnInit(){
-      let kidId = +localStorage.getItem('loggedKid');
+      let kidId = this.users.getLoggedUser('kid');
       this.service.getMissionsGiftsPoints(kidId)
         .subscribe( kid => this.kid = kid )
     }
