@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GiftsService } from '../gifts/gifts.service';
+import { ExpertsService } from "../services/experts.service";
 
 @Component({
   selector: 'expert-gifts',
@@ -19,14 +19,13 @@ import { GiftsService } from '../gifts/gifts.service';
 export class ExpertGiftsComponent implements OnInit {
 
   constructor(
-    private service: GiftsService,
+    private experts: ExpertsService,
   ) { }
 
     gifts
 
   ngOnInit(){
-    this.service.fetchExpertGifts()
-    .subscribe( gifts => this.gifts = gifts )
+    this.gifts = this.experts.getExpertGifts()
   }
 
  showMore(przycisk){
