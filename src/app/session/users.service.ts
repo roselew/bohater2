@@ -12,6 +12,7 @@ export class UsersService {
    } else if (mode=='kid') {
      return +localStorage.getItem('loggedKid')
    } 
+  }
 
   setLoggedUser(mode,id){
       localStorage.clear()
@@ -20,5 +21,6 @@ export class UsersService {
     } else if (mode=='kid') {
       localStorage.setItem('loggedKid',id)
     }
+  }
 
 }
