@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
+import { MissionsService } from "../missions/missions.service"
 
 @Component({
   selector: 'one-week',
@@ -12,8 +13,8 @@ import { ActivatedRoute, Router } from "@angular/router";
   </div>		
   
   <progress-bar-week 
-    [waitWidth]="100*(tWait+tDone)/(tUndone+tWait+tDone)" 
-    [doneWidth]="100*tDone/(tUndone+tWait+tDone)">
+    [waitWidth]="100*(weekProgress.nWait+weekProgress.nDone)/weekProgress.nAll" 
+    [doneWidth]="100*weekProgress.nDone/weekProgress.nAll">
   </progress-bar-week>
  
     <div class="filter">
@@ -27,11 +28,12 @@ import { ActivatedRoute, Router } from "@angular/router";
 
    <div *ngFor="let day of days">
     <one-day-view 
-        (onChange)="show($event,day)" 
+        (onChange)="fetchMissions()" 
         [mode]="mode" 
         [type]="type"
         [filter]="filter"
-        [dayId]="day">
+        [dayId]="day"
+        [userMissions]="userMissions">
     </one-day-view>
   </div>
   
@@ -42,8 +44,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class OneWeekComponent implements OnInit {
 
   constructor(
+    private service: MissionsServices,
     private router: Router,
-    private route:ActivatedRoute, 
+    private route: ActivatedRoute, 
   ) { }
 
 
@@ -52,6 +55,7 @@ export class OneWeekComponent implements OnInit {
   weekId
   firstDate
   endDate
+  weekProgress
   days
   monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
   firstDay
@@ -71,6 +75,16 @@ export class OneWeekComponent implements OnInit {
 
       this.weekId = +paramMap.get('weekId');
       
+      //get kid Id
+      if (this.mode=='kid'){
+        this.kidId = this.user.getLoggedUser('kid');
+      } else {
+        this.kidId = +this.route.parent.snapshot.paramMap.get('kidId');
+      }
+      
+      //get all UserMissions and calculate week progress
+      this.fetchMissions()     
+     
       this.firstDay = 0 - today.getUTCDay() + 7* this.weekId;
       
       this.firstDate = new Date(today);
@@ -82,7 +96,6 @@ export class OneWeekComponent implements OnInit {
       this.endDate.setHours(0, 0, 0, 0);
       
       this.days=[this.firstDay, this.firstDay+1, this.firstDay+2, this.firstDay+3, this.firstDay+4, this.firstDay+5, this.firstDay+6]
-    
     })
 
     this.route.queryParamMap.subscribe(paramMap =>  {
@@ -90,21 +103,12 @@ export class OneWeekComponent implements OnInit {
     })
   }
 
-
-  tDone =0
-  tWait =0
-  tUndone=0
-  nDone=[];
-  nWait=[];
-  nUndone=[];
-
-
-  show([nDone,nWait,nUndone],day){
-    this.nDone[day-this.firstDay]=nDone;
-    this.nWait[day-this.firstDay]=nWait;
-    this.nUndone[day-this.firstDay]=nUndone;
-    this.tDone=this.nDone.reduce((a, b) => a + b, 0);
-    this.tWait=this.nWait.reduce((a, b) => a + b, 0);
-    this.tUndone=this.nUndone.reduce((a, b) => a + b, 0);
+  fetchMissions(){
+    this.service.fetchMissions(this.kidId)
+      .subscribe ( userMissions => {
+        this.userMissions = userMissions;
+        this.weekProgress=this.service.getOneWeekProgress(this.userMissions, this.weekId)
+    })
   }
+
 }
