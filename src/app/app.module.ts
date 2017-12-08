@@ -71,7 +71,8 @@ import { AuthKidService } from "./auth-kid.service";
 import { SessionModule } from "./session/session.module";
 import { KidsService } from "./kids/kids.service";
 import { ParentsService } from "./parents/parents.service";
-
+import { UsersService } from "./session/users.service";
+import { ExpertsService } from "./services/experts.service";
 
 
 @NgModule({
@@ -160,7 +161,9 @@ import { ParentsService } from "./parents/parents.service";
     AuthParentService,
     AuthKidService,
     KidsService,
-    ParentsService
+    ParentsService,
+    UsersService,
+    ExpertsService
   ],
   
   bootstrap: [AppComponent]
