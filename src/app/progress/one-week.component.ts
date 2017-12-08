@@ -7,7 +7,7 @@ import { UsersService } from "../session/users.service"
   selector: 'one-week',
   template: `
 
-  <div class="week">
+  <div class="week" *ngIf="firstDate">
     <span [routerLink]="['../',weekId -1]" class="prev">&lsaquo;</span>
     <a routerLink='../historia'>{{firstDate.getDate()}} {{firstDate.getMonth()==endDate.getMonth() ? '' : monthNames[firstDate.getMonth()]}} - {{endDate.getDate()}} {{monthNames[endDate.getMonth()]}}</a>
     <span [routerLink]="['../',weekId +1]" class="next">&rsaquo;</span> 
@@ -79,19 +79,23 @@ export class OneWeekComponent implements OnInit {
       this.kidId = +this.route.parent.snapshot.paramMap.get('kidId');
     }
   
+    //get all UserMissions and calculate week progress
+    // this.fetchMissions() 
+
+    this.service.fetchMissions(this.kidId)
+    .subscribe ( userMissions => {
+      this.userMissions = userMissions;
+
     //get week Id 
     this.route.paramMap.subscribe(paramMap => {
 
       this.weekId = +paramMap.get('weekId');
 
-      //get all UserMissions and calculate week progress
-      this.fetchMissions() 
-      
+      this.weekProgress=this.service.getOneWeekProgress(this.userMissions, this.weekId)
+
       let today = new Date();
-      today.setHours(0,0,0,0);
-      
+      today.setHours(0,0,0,0); 
     
-     
       this.firstDay = 0 - today.getUTCDay() + 7* this.weekId;
       
       this.firstDate = new Date(today);
@@ -104,6 +108,7 @@ export class OneWeekComponent implements OnInit {
       
       this.days=[this.firstDay, this.firstDay+1, this.firstDay+2, this.firstDay+3, this.firstDay+4, this.firstDay+5, this.firstDay+6]
     })
+  })
 
     this.route.queryParamMap.subscribe(paramMap =>  {
       this.filter = paramMap.get('filter') || 'all';

@@ -2,7 +2,11 @@
 
 @import '_zmienne';
 
-ul {margin-top: -15rem;}
+ul {
+    @media (orientation: portrait){ 
+        margin-top: -15rem;
+    }
+}
 ul {
 	position: relative;
 	width: 100%;
