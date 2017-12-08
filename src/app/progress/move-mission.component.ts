@@ -37,7 +37,6 @@ export class MoveMissionComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private http: HttpClient,
     private route: ActivatedRoute,  
     private service: MissionsService, 
   ) { }
@@ -111,7 +110,7 @@ export class MoveMissionComponent implements OnInit {
   addDone(mission){
     mission['doneDates'].push(this.data)
     //check if it was WAIT before
-    let index = mission['waitDates'].indexOf(data)
+    let index = mission['waitDates'].indexOf(this.data)
     if (index>-1){
       mission['waitDates'].splice(index,1)
     }
@@ -119,7 +118,7 @@ export class MoveMissionComponent implements OnInit {
   }
   
   removeDone(mission){
-    let index = mission['doneDates'].indexOf(data)
+    let index = mission['doneDates'].indexOf(this.data)
     if (index>-1){
       mission['doneDates'].splice(index,1)
       this.updateMission(mission)
@@ -127,7 +126,7 @@ export class MoveMissionComponent implements OnInit {
    }
   
    removeWait(mission){
-     let index = mission['waitDates'].indexOf(data)
+     let index = mission['waitDates'].indexOf(this.data)
      if (index >-1){
        mission['waitDates'].splice(index,1)
        this.updateMission(mission)

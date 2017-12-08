@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { MissionsService } from "./missions.service";
+import { ExpertsService } from '../services/experts.service';
 
 @Component({
   selector: 'expert-mission',
@@ -17,6 +18,7 @@ import { MissionsService } from "./missions.service";
 export class ExpertMissionComponent implements OnInit {
 
   constructor(
+    private experts: ExpertsService,
     private service: MissionsService,
     private router: Router,
     private route:ActivatedRoute,   

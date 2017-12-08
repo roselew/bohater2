@@ -46,7 +46,7 @@ export class OneWeekComponent implements OnInit {
 
   constructor(
     private users: UsersService,
-    private service: MissionsServices,
+    private service: MissionsService,
     private router: Router,
     private route: ActivatedRoute, 
   ) { }
@@ -63,6 +63,8 @@ export class OneWeekComponent implements OnInit {
   firstDay
   type='weekView'
   filter
+  kidId
+  userMissions
 
   applyFilter(filterMode){
     this.filter=filterMode

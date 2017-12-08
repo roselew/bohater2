@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
+import { MissionsService } from '../missions/missions.service';
 
 @Component({
   selector: 'one-day-view',
@@ -128,7 +129,9 @@ import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angu
 
 export class OneDayViewComponent implements OnInit {
    
-  constructor() { }
+  constructor(
+    private service: MissionsService,
+  ) { }
 
   days = ['PN','WT','ŚR','CZ','PT','SB','ND']
 

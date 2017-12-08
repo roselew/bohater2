@@ -1,7 +1,7 @@
 import { Injectable} from '@angular/core';
 
 @Injectable()
-export class UsersService {
+export class ExpertsService {
 
   constructor() { }  
 
@@ -14,7 +14,7 @@ getOneExpertMission(missionId){
 }
   
 getExpertGifts(){
-  return this.expertGift
+  return this.expertGifts
 }
   
 getOneExpertGift(giftId){
