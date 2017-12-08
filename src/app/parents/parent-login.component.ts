@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ParentsService } from "./parents.service";
+import { UsersService } from "../session/users.service";
 
 @Component({
   selector: 'parent-login',
@@ -58,12 +59,12 @@ export class ParentLoginComponent implements OnInit {
   }
   
   logOn(parentId){
-    localStorage.clear()
-    localStorage.setItem('loggedParent',parentId)  
+    this.users.setLoggedUser('parent',parentId)
     this.router.navigate(['/rodzic'])  
   }
 
   constructor(
+    private users: UsersService,
     private service: ParentsService,
     private router: Router,
     private route:ActivatedRoute,
