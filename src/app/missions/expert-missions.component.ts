@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { MissionsService } from "./missions.service";
+import { ExpertsService} from "../services/experts.service";
 
 @Component({
   selector: 'expert-missions',
@@ -22,14 +22,13 @@ import { MissionsService } from "./missions.service";
 export class ExpertMissionsComponent implements OnInit {
 
   constructor(
-    private service: MissionsService,
+    private experts: ExpertsService,
   ) { }
 
   missions
 
    ngOnInit(){
-      this.service.fetchExpertMissions()
-        .subscribe( missions => this.missions = missions )
+      this.missions = this.experts.getExpertMissions()
    }
 
    showMore(przycisk){
