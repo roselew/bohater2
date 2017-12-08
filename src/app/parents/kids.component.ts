@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ParentsService } from "./parents.service";
+import { UsersService } from "../session/users.service";
 
 @Component({
   selector: 'kids',
@@ -27,6 +28,7 @@ import { ParentsService } from "./parents.service";
 export class KidsComponent implements OnInit {
 
   constructor(
+    private users: UsersService,
     private service: ParentsService,
     private router: Router,
     private route:ActivatedRoute,
@@ -42,7 +44,7 @@ export class KidsComponent implements OnInit {
   kids
 
    ngOnInit(){
-     let parentId = parseInt(localStorage.getItem('loggedParent'));
+     let parentId = this.users.getLoggedUser('parent');
      this.service.getParentKids(parentId)
         .subscribe( parent => {
           this.parent = parent;
