@@ -162,18 +162,11 @@ export class OneDayViewComponent implements OnInit {
   
   @Input() filter
 
+  @Input() userMissions
+  
   @Output('onChange')
-  countMissions = new EventEmitter();
+  changeMissions = new EventEmitter();
 
-  countAll() {
-    let nDone = this.doneMissions.length;
-    let nWait = this.waitMissions.length;
-    let nUndone = this.undoneMissions.length;
-
-    this.countMissions.emit([nDone, nWait, nUndone])
-  }
-
-  kidId;
   thisDay;
   userMissions = [];
   doneMissions = [];
@@ -210,27 +203,18 @@ export class OneDayViewComponent implements OnInit {
     this.thisDay = new Date();
     this.thisDay.setDate(this.thisDay.getDate() + this.dayId);
     this.thisDay.setHours(0, 0, 0, 0);
-    if (this.mode=='kid'){
-      this.kidId = this.user.getLoggedUser('kid');
-    } else {
-      this.kidId = this.route.parent.snapshot.paramMap.get('kidId');
-    }
-
-    //fetch all Missions
-    this.fetchMissions();
+   
+    //missions are already fetched, now we need to get their status
+    this.orderMissions();
   }
 
   ngOnInit() { }
 
-  fetchMissions() {
-    this.service.fetchMissions(this.kidId)
-      .subscribe(userMissions => {
-        this.userMissions = this.service.getAllMissions(userMissions,this.thisDay);
-        this.waitMissions = this.service.getWaitMissions(this.userMissions,this.thisDay);
-        this.doneMissions = this.service.getDoneMissions(this.userMissions,this.thisDay);
-        this.undoneMissions = this.service.getUndoneMissions(this.userMissions, this.waitMissions, this.doneMissions);
-        this.countAll();
-      })
+  orderMissions() {
+      this.waitMissions = this.service.getWaitMissions(this.userMissions,this.thisDay);
+      this.doneMissions = this.service.getDoneMissions(this.userMissions,this.thisDay);
+      this.undoneMissions = this.service.getUndoneMissions(this.userMissions, this.waitMissions, this.doneMissions);
+    })
   }
 
  move(mission,status){
@@ -295,7 +279,7 @@ export class OneDayViewComponent implements OnInit {
           updatedMission['waitDates'].splice(index,1)
         }  
         this.service.updateOneMission(updatedMission)
-          .subscribe(() => this.fetchMissions());
+          .subscribe(() => this.changeMissions.emit());
       })
   }
   
@@ -310,7 +294,7 @@ export class OneDayViewComponent implements OnInit {
         updatedMission['doneDates'].splice(index,1)
       }  
       this.service.updateOneMission(updatedMission)
-        .subscribe(() => this.fetchMissions());
+        .subscribe(() => this.changeMissions.emit());
     })
   }
  
@@ -325,7 +309,7 @@ export class OneDayViewComponent implements OnInit {
         updatedMission['waitDates'].splice(index,1)
       }  
       this.service.updateOneMission(updatedMission)
-        .subscribe(() => this.fetchMissions());
+        .subscribe(() => this.changeMissions.emit());
     })
   }
   
@@ -340,7 +324,7 @@ export class OneDayViewComponent implements OnInit {
         updatedMission = userMission;
         updatedMission['waitDates'].push(data);
         this.service.updateOneMission(updatedMission)
-          .subscribe(() => this.fetchMissions());
+          .subscribe(() => this.changeMissions.emit());
       })
     }
   }
@@ -349,7 +333,6 @@ export class OneDayViewComponent implements OnInit {
  showDetails(){
    if (this.filter=='all') {
     this.details=!this.details
-   this.details ? document.querySelector('.day>p span').innerHTML='&#x25B2' : document.querySelector('.day>p span').innerHTML='&#x25BC'
    }
-   }
+ }
 }
