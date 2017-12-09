@@ -43,6 +43,14 @@
       "password": "krycha",
       "parentId": 2,
       "id": 15
+    },
+    {
+      "name": "Ania",
+      "birth": "2015",
+      "login": "ani",
+      "password": "ani",
+      "parentId": 1,
+      "id": 16
     }
   ],
   "userMissions": [
@@ -63,10 +71,15 @@
         1512514800000,
         1511132400000,
         1511737200000,
-        1515970800000
+        1515970800000,
+        1512342000000,
+        1511910000000,
+        1512082800000,
+        1511478000000,
+        1511305200000,
+        1512687600000
       ],
       "waitDates": [
-        1512342000000,
         1516143600000,
         1516316400000,
         1514761200000
@@ -105,7 +118,9 @@
         1512428400000,
         1511996400000,
         1511823600000,
-        1513897200000
+        1513897200000,
+        1512082800000,
+        1512687600000
       ],
       "waitDates": [
         1516316400000
@@ -124,7 +139,8 @@
       ],
       "doneDates": [
         1513206000000,
-        1512601200000
+        1512601200000,
+        1511996400000
       ],
       "waitDates": [],
       "id": 16
@@ -142,7 +158,10 @@
       ],
       "doneDates": [
         1513897200000,
-        1512687600000
+        1512687600000,
+        1511996400000,
+        1512082800000,
+        1512601200000
       ],
       "waitDates": [
         1516316400000
@@ -194,7 +213,8 @@
         1513378800000,
         1513638000000,
         1513897200000,
-        1512082800000
+        1512082800000,
+        1512428400000
       ],
       "waitDates": [],
       "id": 27
@@ -270,6 +290,40 @@
       ],
       "waitDates": [],
       "id": 32
+    },
+    {
+      "name": "Poskładać zabawki",
+      "icon": "assets/ikony/m_zabawki.svg",
+      "confirmation": true,
+      "points": 1,
+      "kidId": 16,
+      "start": 1512774000000,
+      "days": [
+        2,
+        4
+      ],
+      "doneDates": [],
+      "waitDates": [
+        1513119600000
+      ],
+      "id": 33
+    },
+    {
+      "name": "Opróżnić zmywarkę",
+      "icon": "assets/ikony/m_zmywarka.svg",
+      "confirmation": false,
+      "points": 1,
+      "kidId": 16,
+      "start": 1512774000000,
+      "days": [
+        3,
+        4
+      ],
+      "doneDates": [
+        1513206000000
+      ],
+      "waitDates": [],
+      "id": 34
     }
   ],
   "userGifts": [
@@ -368,7 +422,7 @@
       "icon": "assets/ikony/n_wycieczka.svg",
       "points": 1,
       "kidId": 13,
-      "status": "chosen",
+      "status": "received",
       "chosenDate": 1512428400000,
       "id": 22
     },
@@ -386,8 +440,8 @@
       "icon": "assets/swimming-pool.svg",
       "points": 17,
       "kidId": 1,
-      "status": "unused",
-      "chosenDate": "",
+      "status": "chosen",
+      "chosenDate": 1512774000000,
       "id": 24
     },
     {
@@ -460,6 +514,33 @@
       "status": "unused",
       "chosenDate": "",
       "id": 32
+    },
+    {
+      "name": "Aquapark ",
+      "icon": "assets/swimming-pool.svg",
+      "points": 4,
+      "kidId": 16,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 33
+    },
+    {
+      "name": "Deser",
+      "icon": "assets/ikony/n_deser.svg",
+      "points": 8,
+      "kidId": 16,
+      "status": "unused",
+      "chosenDate": "",
+      "id": 34
+    },
+    {
+      "name": "Wieczór gier",
+      "icon": "assets/ikony/n_gry.svg",
+      "points": 1,
+      "kidId": 16,
+      "status": "received",
+      "chosenDate": 1512774000000,
+      "id": 35
     }
   ],
   "extraPoints": [
@@ -511,18 +592,25 @@
       "kidId": 14,
       "date": 1512687600000,
       "id": 7
+    },
+    {
+      "description": "Za nic",
+      "points": 4,
+      "kidId": 1,
+      "date": 1512774000000,
+      "id": 8
     }
   ],
   "userHeroes": [
     {
       "id": 2,
-      "name": "Mocny John",
+      "name": "Silny Jack",
       "image": "assets/bohater2.png",
       "badges1": [
         {
           "badgeName": "Buty mocy",
           "icon": "assets/ikony/o_but1.svg",
-          "gained": "false"
+          "gained": "true"
         },
         {
           "badgeName": "Buty super mocy",
@@ -539,7 +627,7 @@
         {
           "badgeName": "Ręka mocy",
           "icon": "assets/ikony/o_reka1.svg",
-          "gained": "false"
+          "gained": "true"
         },
         {
           "badgeName": "Ręka super mocy",
@@ -556,12 +644,12 @@
         {
           "badgeName": "Maska mocy",
           "icon": "assets/ikony/o_maska1.svg",
-          "gained": "false"
+          "gained": "true"
         },
         {
           "badgeName": "Maska super mocy",
           "icon": "assets/ikony/o_maska2.svg",
-          "gained": "true"
+          "gained": "false"
         },
         {
           "badgeName": "Maska extra mocy",
@@ -578,12 +666,12 @@
         {
           "badgeName": "Buty mocy",
           "icon": "assets/ikony/o_but1.svg",
-          "gained": "false"
+          "gained": "true"
         },
         {
           "badgeName": "Buty super mocy",
           "icon": "assets/ikony/o_but2.svg",
-          "gained": "false"
+          "gained": "true"
         },
         {
           "badgeName": "Buty extra mocy",
@@ -741,6 +829,63 @@
       ],
       "kidId": 15,
       "id": 11
+    },
+    {
+      "name": "Zwinna Jane",
+      "image": "assets/bohater3.png",
+      "badges1": [
+        {
+          "badgeName": "Buty mocy",
+          "icon": "assets/ikony/o_but1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty super mocy",
+          "icon": "assets/ikony/o_but2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Buty extra mocy",
+          "icon": "assets/ikony/o_but3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges2": [
+        {
+          "badgeName": "Ręka mocy",
+          "icon": "assets/ikony/o_reka1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka super mocy",
+          "icon": "assets/ikony/o_reka2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Ręka extra mocy",
+          "icon": "assets/ikony/o_reka3.svg",
+          "gained": "false"
+        }
+      ],
+      "badges3": [
+        {
+          "badgeName": "Maska mocy",
+          "icon": "assets/ikony/o_maska1.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska super mocy",
+          "icon": "assets/ikony/o_maska2.svg",
+          "gained": "false"
+        },
+        {
+          "badgeName": "Maska extra mocy",
+          "icon": "assets/ikony/o_maska3.svg",
+          "gained": "false"
+        }
+      ],
+      "kidId": 16,
+      "id": 12
     }
   ]
 }

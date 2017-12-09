@@ -9,6 +9,14 @@ import { UsersService } from '../session/users.service';
 
   <div *ngIf="userHero"> 
 
+  <div class="odznaki">
+  <img src="{{userHero.image}}">
+  <img *ngIf="nBadges>0" class="green" src="assets/ikony/o_pustaz.svg">
+  <img *ngIf="nBadges==0" class="green" src="assets/ikony/o_pusta.svg">
+  <p class="smallTitle">Pozostały jeszcze {{nBadges}} odznaki do wykorzystania!</p>
+</div>
+
+
     <ul>
       <li *ngFor="let badge of userHero.badges1"
         class="bohater" 
@@ -40,11 +48,7 @@ import { UsersService } from '../session/users.service';
     </ul>
     
 
-    <div class="odznaki">
-      <img src="{{userHero.image}}">
-      <img class="green" src="assets/ikony/o_pustaz.svg">
-      <p>Pozostały jeszcze {{nBadges}} odznaki do wykorzystania!</p>
-    </div>
+
 
   </div>
 
