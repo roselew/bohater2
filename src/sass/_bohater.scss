@@ -51,6 +51,12 @@ img.green:hover{
   }
 
 div.odznaki {
+	@media (orientation: landscape){
+		display: inline-block;
+		vertical-align: top;
+		width: 30%;		
+	}
+
 	margin-top: 10.0rem;
 
 
@@ -58,4 +64,12 @@ div.odznaki {
 	p {
 		font: $font_mid_size $font_reg_family;
 	}
+}
+
+.lista-odznak {
+	@media (orientation: landscape){
+		display: inline-block;
+		width: 65%;		
+	}
+
 }

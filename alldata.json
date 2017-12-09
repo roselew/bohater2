@@ -25,7 +25,7 @@
         true,
         true,
         false,
-        false,
+        true,
         false,
         false,
         false,
@@ -160,7 +160,8 @@
       "days": [
         0,
         2,
-        4
+        4,
+        6
       ],
       "doneDates": [
         1512946800000,
@@ -174,7 +175,11 @@
         1512082800000,
         1511478000000,
         1511305200000,
-        1512687600000
+        1512687600000,
+        1511046000000,
+        1511650800000,
+        1512255600000,
+        1512860400000
       ],
       "waitDates": [
         1516143600000,
@@ -457,6 +462,22 @@
         1513206000000
       ],
       "id": 36
+    },
+    {
+      "name": "Poskładać zabawki",
+      "icon": "assets/ikony/m_zabawki.svg",
+      "confirmation": true,
+      "points": 2,
+      "kidId": 15,
+      "start": 1512774000000,
+      "days": [
+        5
+      ],
+      "doneDates": [
+        1512774000000
+      ],
+      "waitDates": [],
+      "id": 37
     }
   ],
   "userGifts": [

@@ -17,7 +17,7 @@ import { ExpertsService } from '../services/experts.service';
       <p class="smallTitle">Pozostały jeszcze {{nBadges}} odznaki do wykorzystania!</p>
     </div>
 
-    <ul>
+    <ul class="lista-odznak">
       <li *ngFor="let badge of userHero['badges']; let i = index"
         class="bohater" 
         (click)="choseBadge(i)">
@@ -28,6 +28,13 @@ import { ExpertsService } from '../services/experts.service';
     </ul>
 
   </div>
+
+  <app-alert *ngIf="alertVisible" 
+  (change)="alertVisible=false" 
+  [imageSrc]="alertImage" 
+  [textTitle]="alertTitle" 
+  [textPlain]="alertText">
+</app-alert>
 
   `,
   styles: [],
@@ -72,15 +79,42 @@ export class KidHeroComponent implements OnInit {
 
 
   choseBadge(i){
-    if (this.nBadges>0 && this.kid.badges[i]==false) {
-    this.kid.badges[i]=true
-    this.users.updateOneKid(this.kid)
-    .subscribe( kid=> {
-      this.kid = kid;
-      this.nBadges -=1;
-    }) 
+    if (this.kid.badges[i]==true){
+      this.showAlert(this.userHero.image,this.userHero.badges[i].badgeName,'Ta odznaka jest już Twoja !')
+    } else if ( this.nBadges<=0 ) {
+      this.showAlert(this.userHero.image,'Niestety','Musiszy wykonać więcej misji żeby zdobyć tą nagrodę')
+    } else { 
+      this.showAlert(this.userHero.image,'Gratulacje','Właśnie zdobyłeś kolejną odznakę')
+      this.kid.badges[i]=true
+      this.users.updateOneKid(this.kid)
+      .subscribe( kid=> {
+        this.kid = kid;
+        this.nBadges -=1;
+      }) 
+    }
   }
-  }
+
+
+
+    //obsługa alertów
+    alertVisible = false
+    alertImage
+    alertText
+    alertTitle
+    
+    showAlert(imageSrc,textTitle,textPlain){
+      this.alertVisible = true
+      this.alertImage = imageSrc
+      this.alertText = textPlain
+      this.alertTitle = textTitle
+    }
+    
+    hideAlert(){
+      this.alertVisible = false
+      this.alertImage=""
+      this.alertText=""
+      this.alertTitle=""
+    }
 
 
 }
