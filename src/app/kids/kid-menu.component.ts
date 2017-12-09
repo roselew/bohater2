@@ -2,13 +2,14 @@ import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { KidsService } from "./kids.service";
 import { UsersService } from "../session/users.service";
+import { ExpertsService } from '../services/experts.service';
 
 @Component({
   selector: 'kid-menu',
   template: `
  
   <ul>
-    <a routerLink="../bohater"><li class="menu-bohater"><p>BOHATER</p></li></a>
+    <a routerLink="../bohater"><li class="menu-bohater" [ngStyle]="{'background': heroImage}"><p>BOHATER</p></li></a>
     <a routerLink='../misje/0'><li class="menu-misje"><p>MISJE</p></li></a>
     <a routerLink="../odznaki/0"><li class="menu-odznaki"><p>ODZNAKI</p></li></a>
     <a routerLink="../nagrody"><li class="menu-nagrody"><p>NAGRODY</p></li></a>		
@@ -26,6 +27,7 @@ export class KidMenuComponent implements OnInit {
 
   constructor(
     private users: UsersService,
+    private experts: ExpertsService,
     private service: KidsService,
     private router: Router,
     private route:  ActivatedRoute,   
@@ -34,11 +36,14 @@ export class KidMenuComponent implements OnInit {
     }
 
   kid
-
+  heroImage
   ngOnInit() {
     let kidId = this.users.getLoggedUser('kid');
     this.service.getOneKid(kidId)
-    .subscribe( kid => this.kid = kid )
+    .subscribe( kid => {
+      this.kid = kid
+      this.heroImage = '#FDB524 url(../' + this.experts.getHeroImage(this.kid['heroId'])+') top 30% center no-repeat' 
+     })
   }
 
   ngOnDestroy() {

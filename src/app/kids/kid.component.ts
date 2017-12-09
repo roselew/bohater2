@@ -25,7 +25,7 @@ export class KidComponent implements OnInit {
   
     ngOnInit(){
       let kidId = this.users.getLoggedUser('kid');
-      this.service.getMissionsGiftsPoints(kidId)
+      this.users.getOneKid(kidId)
         .subscribe( kid => this.kid = kid )
     }
     

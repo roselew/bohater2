@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { MissionsService } from "../missions/missions.service";
 import { UsersService } from "../session/users.service";
+import { ExpertsService } from '../services/experts.service';
 
 @Component({
   selector: 'kid-one-day',
@@ -18,7 +19,8 @@ import { UsersService } from "../session/users.service";
         [mode]= "mode"
         [type]= "type"
         [dayId]= "dayId"
-        [userMissions] = "userMissions">
+        [userMissions] = "userMissions"
+        [heroImage] = "heroImage">
   </one-day-view>
     
    `,
@@ -29,6 +31,7 @@ import { UsersService } from "../session/users.service";
 export class KidOneDayComponent implements OnInit {
 
   constructor(
+    private experts: ExpertsService,
     private users: UsersService,
     private service: MissionsService,
     private router: Router,
@@ -42,12 +45,16 @@ export class KidOneDayComponent implements OnInit {
   monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
   mode = 'kid'
   type = 'dayView'
+  heroImage
 
   ngOnInit(){
     
     this.kidId = this.users.getLoggedUser('kid');
     this.fetchMissions();
     
+    this.users.getOneKid(this.kidId)
+      .subscribe ( kid => this.heroImage = this.experts.getHeroImage(kid['heroId']))
+
     this.route.paramMap.subscribe(paramMap => {
       this.dayId = +paramMap.get('dayId');
       this.thisDay = new Date();

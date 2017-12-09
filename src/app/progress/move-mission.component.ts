@@ -50,6 +50,9 @@ export class MoveMissionComponent implements OnInit {
   @Input() missionStatus
 
   @Input() data
+
+  @Input() heroImage
+
   
   @Output('onMove')
   moveMission = new EventEmitter();
@@ -72,7 +75,7 @@ export class MoveMissionComponent implements OnInit {
     } else {
       if (this.missionStatus=='undone'){
         this.addWait(mission)
-        this.showAlert('assets/bohater.png','Gratulacje','Super Ci idzie!')
+        this.showAlert(this.heroImage,'Gratulacje','Super Ci idzie!')
       } else if (this.missionStatus=='wait'){
         this.showAlert('assets/hourglass.svg','Czekamy','...na akceptację mamy')
       } else if (this.missionStatus=='done'){

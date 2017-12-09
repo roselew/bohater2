@@ -18,7 +18,19 @@
       "login": "kasie",
       "password": "kasie",
       "parentId": 1,
-      "id": 1
+      "id": 1,
+      "heroId": 1,
+      "badges": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
     },
     {
       "name": "Łukasz",
@@ -26,7 +38,19 @@
       "login": "lk",
       "password": "lk",
       "parentId": 1,
-      "id": 13
+      "id": 13,
+      "heroId": 3,
+      "badges": [
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
     },
     {
       "name": "Antek",
@@ -34,7 +58,19 @@
       "login": "antos",
       "password": "antoni",
       "parentId": 2,
-      "id": 14
+      "id": 14,
+      "heroId": 2,
+      "badges": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
     },
     {
       "name": "Krysia",
@@ -42,7 +78,19 @@
       "login": "krycha",
       "password": "krycha",
       "parentId": 2,
-      "id": 15
+      "id": 15,
+      "heroId": 3,
+      "badges": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
     },
     {
       "name": "Ania",
@@ -50,7 +98,56 @@
       "login": "ani",
       "password": "ani",
       "parentId": 1,
-      "id": 16
+      "id": 16,
+      "heroId": 1,
+      "badges": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "Basia",
+      "birth": "2013",
+      "login": "basia",
+      "password": "basia",
+      "parentId": 1,
+      "heroId": 1,
+      "badges": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "id": 17
+    },
+    {
+      "name": "Ania",
+      "heroId": 2,
+      "parentId": 1,
+      "badges": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "id": 18
     }
   ],
   "userMissions": [
@@ -216,7 +313,9 @@
         1512082800000,
         1512428400000
       ],
-      "waitDates": [],
+      "waitDates": [
+        1513983600000
+      ],
       "id": 27
     },
     {
@@ -324,6 +423,40 @@
       ],
       "waitDates": [],
       "id": 34
+    },
+    {
+      "name": "Poskładać zabawki",
+      "icon": "assets/ikony/m_zabawki.svg",
+      "confirmation": true,
+      "points": 1,
+      "kidId": 18,
+      "start": 1512774000000,
+      "days": [
+        3,
+        6
+      ],
+      "doneDates": [],
+      "waitDates": [
+        1513206000000,
+        1513465200000
+      ],
+      "id": 35
+    },
+    {
+      "name": "Nakryć stół",
+      "icon": "assets/cutlery.svg",
+      "confirmation": true,
+      "points": 2,
+      "kidId": 18,
+      "start": 1512774000000,
+      "days": [
+        3
+      ],
+      "doneDates": [],
+      "waitDates": [
+        1513206000000
+      ],
+      "id": 36
     }
   ],
   "userGifts": [
@@ -599,293 +732,6 @@
       "kidId": 1,
       "date": 1512774000000,
       "id": 8
-    }
-  ],
-  "userHeroes": [
-    {
-      "id": 2,
-      "name": "Silny Jack",
-      "image": "assets/bohater2.png",
-      "badges1": [
-        {
-          "badgeName": "Buty mocy",
-          "icon": "assets/ikony/o_but1.svg",
-          "gained": "true"
-        },
-        {
-          "badgeName": "Buty super mocy",
-          "icon": "assets/ikony/o_but2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Buty extra mocy",
-          "icon": "assets/ikony/o_but3.svg",
-          "gained": "false"
-        }
-      ],
-      "badges2": [
-        {
-          "badgeName": "Ręka mocy",
-          "icon": "assets/ikony/o_reka1.svg",
-          "gained": "true"
-        },
-        {
-          "badgeName": "Ręka super mocy",
-          "icon": "assets/ikony/o_reka2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Ręka extra mocy",
-          "icon": "assets/ikony/o_reka3.svg",
-          "gained": "false"
-        }
-      ],
-      "badges3": [
-        {
-          "badgeName": "Maska mocy",
-          "icon": "assets/ikony/o_maska1.svg",
-          "gained": "true"
-        },
-        {
-          "badgeName": "Maska super mocy",
-          "icon": "assets/ikony/o_maska2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Maska extra mocy",
-          "icon": "assets/ikony/o_maska3.svg",
-          "gained": "false"
-        }
-      ],
-      "kidId": 1
-    },
-    {
-      "name": "Silny Jack",
-      "image": "assets/bohater2.png",
-      "badges1": [
-        {
-          "badgeName": "Buty mocy",
-          "icon": "assets/ikony/o_but1.svg",
-          "gained": "true"
-        },
-        {
-          "badgeName": "Buty super mocy",
-          "icon": "assets/ikony/o_but2.svg",
-          "gained": "true"
-        },
-        {
-          "badgeName": "Buty extra mocy",
-          "icon": "assets/ikony/o_but3.svg",
-          "gained": "false"
-        }
-      ],
-      "badges2": [
-        {
-          "badgeName": "Ręka mocy",
-          "icon": "assets/ikony/o_reka1.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Ręka super mocy",
-          "icon": "assets/ikony/o_reka2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Ręka extra mocy",
-          "icon": "assets/ikony/o_reka3.svg",
-          "gained": "false"
-        }
-      ],
-      "badges3": [
-        {
-          "badgeName": "Maska mocy",
-          "icon": "assets/ikony/o_maska1.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Maska super mocy",
-          "icon": "assets/ikony/o_maska2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Maska extra mocy",
-          "icon": "assets/ikony/o_maska3.svg",
-          "gained": "false"
-        }
-      ],
-      "kidId": 13,
-      "id": 9
-    },
-    {
-      "name": "Szybki Bil",
-      "image": "assets/bohater.png",
-      "badges1": [
-        {
-          "badgeName": "Buty mocy",
-          "icon": "assets/ikony/o_but1.svg",
-          "gained": "true"
-        },
-        {
-          "badgeName": "Buty super mocy",
-          "icon": "assets/ikony/o_but2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Buty extra mocy",
-          "icon": "assets/ikony/o_but3.svg",
-          "gained": "false"
-        }
-      ],
-      "badges2": [
-        {
-          "badgeName": "Ręka mocy",
-          "icon": "assets/ikony/o_reka1.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Ręka super mocy",
-          "icon": "assets/ikony/o_reka2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Ręka extra mocy",
-          "icon": "assets/ikony/o_reka3.svg",
-          "gained": "false"
-        }
-      ],
-      "badges3": [
-        {
-          "badgeName": "Maska mocy",
-          "icon": "assets/ikony/o_maska1.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Maska super mocy",
-          "icon": "assets/ikony/o_maska2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Maska extra mocy",
-          "icon": "assets/ikony/o_maska3.svg",
-          "gained": "false"
-        }
-      ],
-      "kidId": 14,
-      "id": 10
-    },
-    {
-      "name": "Zwinna Jane",
-      "image": "assets/bohater2.png",
-      "badges1": [
-        {
-          "badgeName": "Buty mocy",
-          "icon": "assets/ikony/o_but1.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Buty super mocy",
-          "icon": "assets/ikony/o_but2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Buty extra mocy",
-          "icon": "assets/ikony/o_but3.svg",
-          "gained": "false"
-        }
-      ],
-      "badges2": [
-        {
-          "badgeName": "Ręka mocy",
-          "icon": "assets/ikony/o_reka1.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Ręka super mocy",
-          "icon": "assets/ikony/o_reka2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Ręka extra mocy",
-          "icon": "assets/ikony/o_reka3.svg",
-          "gained": "false"
-        }
-      ],
-      "badges3": [
-        {
-          "badgeName": "Maska mocy",
-          "icon": "assets/ikony/o_maska1.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Maska super mocy",
-          "icon": "assets/ikony/o_maska2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Maska extra mocy",
-          "icon": "assets/ikony/o_maska3.svg",
-          "gained": "false"
-        }
-      ],
-      "kidId": 15,
-      "id": 11
-    },
-    {
-      "name": "Zwinna Jane",
-      "image": "assets/bohater3.png",
-      "badges1": [
-        {
-          "badgeName": "Buty mocy",
-          "icon": "assets/ikony/o_but1.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Buty super mocy",
-          "icon": "assets/ikony/o_but2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Buty extra mocy",
-          "icon": "assets/ikony/o_but3.svg",
-          "gained": "false"
-        }
-      ],
-      "badges2": [
-        {
-          "badgeName": "Ręka mocy",
-          "icon": "assets/ikony/o_reka1.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Ręka super mocy",
-          "icon": "assets/ikony/o_reka2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Ręka extra mocy",
-          "icon": "assets/ikony/o_reka3.svg",
-          "gained": "false"
-        }
-      ],
-      "badges3": [
-        {
-          "badgeName": "Maska mocy",
-          "icon": "assets/ikony/o_maska1.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Maska super mocy",
-          "icon": "assets/ikony/o_maska2.svg",
-          "gained": "false"
-        },
-        {
-          "badgeName": "Maska extra mocy",
-          "icon": "assets/ikony/o_maska3.svg",
-          "gained": "false"
-        }
-      ],
-      "kidId": 16,
-      "id": 12
     }
   ]
 }

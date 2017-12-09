@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ExpertsService } from '../services/experts.service';
 
 @Component({
   selector: 'view-kid',
@@ -19,20 +20,47 @@ import { Component, OnInit, Input } from '@angular/core';
   
       </form>
 
-   
+      <div class="avatars">
+
+  <p>Wybierz bohatera</p>
+
+  <form>
+
+    <label *ngFor="let expertHero of expertHeroes"
+        (click)="selectHero(expertHero)">
+
+      <input type="radio" name="expertHeroes" [checked]="(kid['heroId']==expertHero['id'])">
+      <img src="{{expertHero.image}}" alt=""/>  
+      
+    </label> 
+
+  </form>
+
+</div>  
+
   `,
   styles: [],
 
 })
 export class ViewKidComponent implements OnInit {
 
-@Input()
-kid 
+@Input() kid 
+
+expertHeroes
 
 checkpassword
-  constructor() { }
+  constructor(
+    private experts: ExpertsService,
+  ) { }
 
   ngOnInit() {
+    this.expertHeroes = this.experts.getExpertHeroes()
   }
+
+  selectHero(expertHero){
+    this.kid['heroId']=expertHero['id'];
+    console.log(this.kid)
+  }
+  
 
 }

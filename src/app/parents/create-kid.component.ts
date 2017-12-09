@@ -12,7 +12,6 @@ import { UsersService } from "../session/users.service";
    <div class="title-container">
 
       <view-kid [kid]="kid" ></view-kid>
-      <view-hero [userHero]="userHero"></view-hero>
 
     <button (click)="save()">DODAJ DZIECKO</button>
     <button class="altButton" routerLink="../">Powrót</button>
@@ -39,21 +38,17 @@ export class CreateKidComponent implements OnInit {
 
   expertHeroes
   kid={};
-  userHero={};
+  userHeroId
 
   save(){
   let parentId = this.users.getLoggedUser('parent');
   this.kid['parentId']=parentId;
+  this.kid['badges']=[false,false,false,false,false,false,false,false,false]
   this.service.createOneKid(this.kid)
     .subscribe( kid=> {
       this.kid= kid; 
-      this.userHero['kidId']=parseInt(this.kid['id'])
-      this.service.createOneHero(this.userHero)
-        .subscribe( userHero => {
-          this.userHero = userHero;
-          this.router.navigate(['/rodzic']);
-        }) 
-    });
+      this.router.navigate(['/rodzic']);
+    })
   }
 
   ngOnInit() { }

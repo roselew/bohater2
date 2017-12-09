@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { MissionsService } from '../missions/missions.service';
+import { UsersService } from '../session/users.service';
 
 @Component({
   selector: 'one-day-view',
@@ -80,7 +81,7 @@ import { MissionsService } from '../missions/missions.service';
             <span>{{mission.points}}</span>
           </li> 
         </ul>	
-        <ng-template #other_content><img src="assets/bohater.png" width="30%">
+        <ng-template #other_content><img *ngIf="heroImage" src="{{heroImage}}" width="30%">
            <p class="smallTitle"> Brawo! <br> Nie masz już żadnych misji do wykonania !!!</p>
         </ng-template>
       </div>
@@ -118,6 +119,7 @@ import { MissionsService } from '../missions/missions.service';
     [selectedMission]="selectedMission"
     [missionStatus]="missionStatus"
     [data]="thisDay.getTime()"
+    [heroImage]="heroImage"
     (onMove)="changeMissions.emit()"
     (onFinish)="selectedMission = undefined">
   </move-mission>
@@ -146,6 +148,8 @@ export class OneDayViewComponent implements OnInit {
 
   @Input() userMissions
   
+  @Input() heroImage
+
   @Output('onChange')
   changeMissions = new EventEmitter();
 
@@ -159,7 +163,7 @@ export class OneDayViewComponent implements OnInit {
   selectedMission
   missionStatus
   
-  
+
  ngOnChanges(){
    //set thisDay 
    this.thisDay = new Date();
@@ -170,7 +174,8 @@ export class OneDayViewComponent implements OnInit {
    this.orderMissions();
  }
 
- ngOnInit() { }
+ ngOnInit() {
+  }
 
  orderMissions() {
    this.allMissions=this.service.getAllMissions(this.userMissions,this.thisDay)

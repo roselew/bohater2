@@ -2,53 +2,30 @@ import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MissionsService } from '../missions/missions.service';
 import { UsersService } from '../session/users.service';
+import { ExpertsService } from '../services/experts.service';
 
 @Component({
   selector: 'kid-hero',
   template: `
 
-  <div *ngIf="userHero"> 
+  <div *ngIf="kid"> 
 
-  <div class="odznaki">
-  <img src="{{userHero.image}}">
-  <img *ngIf="nBadges>0" class="green" src="assets/ikony/o_pustaz.svg">
-  <img *ngIf="nBadges==0" class="green" src="assets/ikony/o_pusta.svg">
-  <p class="smallTitle">Pozostały jeszcze {{nBadges}} odznaki do wykorzystania!</p>
-</div>
-
-
-    <ul>
-      <li *ngFor="let badge of userHero.badges1"
-        class="bohater" 
-        (click)="choseBadge(badge)">
-          <p>{{badge.badgeName}}</p> 
-          <img *ngIf="badge.gained=='false'" src="assets/ikony/o_pusta.svg" class="pusta">
-          <img *ngIf="badge.gained=='true'" src="{{badge.icon}}">
-        </li>
-    </ul>
+    <div class="odznaki">
+      <img src="{{userHero.image}}">
+      <img *ngIf="nBadges>0" class="green" src="assets/ikony/o_pustaz.svg">
+      <img *ngIf="nBadges==0" class="green" src="assets/ikony/o_pusta.svg">
+      <p class="smallTitle">Pozostały jeszcze {{nBadges}} odznaki do wykorzystania!</p>
+    </div>
 
     <ul>
-      <li *ngFor="let badge of userHero.badges2"
+      <li *ngFor="let badge of userHero['badges']; let i = index"
         class="bohater" 
-        (click)="choseBadge(badge)">
+        (click)="choseBadge(i)">
           <p>{{badge.badgeName}}</p> 
-          <img *ngIf="badge.gained=='false'" src="assets/ikony/o_pusta.svg" class="pusta">
-          <img *ngIf="badge.gained=='true'" src="{{badge.icon}}">
+          <img *ngIf="kid['badges'][i]==false" src="assets/ikony/o_pusta.svg" class="pusta">
+          <img *ngIf="kid['badges'][i]==true" src="{{badge.icon}}">
         </li>
     </ul>
-
-     <ul>
-      <li *ngFor="let badge of userHero.badges3"
-        class="bohater" 
-        (click)="choseBadge(badge)">
-          <p>{{badge.badgeName}}</p> 
-          <img *ngIf="badge.gained=='false'" src="assets/ikony/o_pusta.svg" class="pusta">
-          <img *ngIf="badge.gained=='true'" src="{{badge.icon}}">
-        </li>
-    </ul>
-    
-
-
 
   </div>
 
@@ -59,43 +36,47 @@ import { UsersService } from '../session/users.service';
 export class KidHeroComponent implements OnInit {
 
   constructor(
+    private experts: ExpertsService,
     private users: UsersService,  
     private router: Router,
     private route: ActivatedRoute,
     private service: MissionsService,
   ) { }
 
-  kid = {}
+  kid 
   userMissions
   userHero
-  nUsedBadges
   nBadges 
-  nGainedBadges
 
   ngOnInit() {
+
     let kidId = this.users.getLoggedUser('kid');
-    this.service.getMissionsHeroes(kidId)
-       .subscribe(kid => {
-        this.kid = kid;
-        this.userHero = this.kid['userHeroes'][0];
-        this.nUsedBadges = 
-          this.userHero['badges1'].filter( x=> x.gained == 'true' ).length
-          +this.userHero['badges2'].filter( x=> x.gained == 'true' ).length
-          +this.userHero['badges3'].filter( x=> x.gained == 'true' ).length
-        this.userMissions = this.kid['userMissions'];
-        this.nGainedBadges = this.service.getAllWeeksProgress(this.userMissions)
-          .filter( x => (x.nAll===x.nDone && x.nAll!==0) ).length;
-        this.nBadges = this.nGainedBadges - this.nUsedBadges
-        })
+
+    this.service.fetchMissions(kidId)
+      .subscribe(userMissions => {
+      this.userMissions = userMissions;
+      let nGainedBadges = this.service.getAllWeeksProgress(this.userMissions)
+      .filter( x => (x.nAll===x.nDone && x.nAll!==0) ).length;
+      
+      this.users.getOneKid(kidId)
+        .subscribe(kid => {
+          this.kid= kid
+          this.userHero = this.experts.getOneExpertHero(this.kid.heroId)
+          let nUsedBadges = this.kid.badges.filter( x => x == true).length
+          this.nBadges = nGainedBadges - nUsedBadges;
+      }) 
+    
+    })
+
   }
 
 
-  choseBadge(badge){
-    if (this.nBadges>0 && badge.gained=='false') {
-    badge.gained = 'true'
-    this.service.updateHero(this.userHero)
-    .subscribe( userHero=> {
-      this.userHero= userHero;
+  choseBadge(i){
+    if (this.nBadges>0 && this.kid.badges[i]==false) {
+    this.kid.badges[i]=true
+    this.users.updateOneKid(this.kid)
+    .subscribe( kid=> {
+      this.kid = kid;
       this.nBadges -=1;
     }) 
   }

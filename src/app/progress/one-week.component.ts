@@ -2,6 +2,7 @@ import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { MissionsService } from "../missions/missions.service"
 import { UsersService } from "../session/users.service"
+import { ExpertsService } from '../services/experts.service';
 
 @Component({
   selector: 'one-week',
@@ -24,7 +25,7 @@ import { UsersService } from "../session/users.service"
         </button><button class ="show-wait" (click)="applyFilter('wait')" [ngClass]="{'selected': (filter=='wait')}"><span>{{weekProgress.nWait}}</span>
         </button><button class="show-done" (click)="applyFilter('done')" [ngClass]="{'selected': (filter=='done')}"><span>{{weekProgress.nDone}}</span>
       </button>
-      <img src="../../assets/bohater.png" class="hero">
+      <img *ngIf="heroImage" src="{{heroImage}}" class="hero">
     </div>
 
    <div *ngFor="let day of days">
@@ -45,6 +46,7 @@ import { UsersService } from "../session/users.service"
 export class OneWeekComponent implements OnInit {
 
   constructor(
+    private experts: ExpertsService,
     private users: UsersService,
     private service: MissionsService,
     private router: Router,
@@ -65,6 +67,7 @@ export class OneWeekComponent implements OnInit {
   filter
   kidId
   userMissions
+  heroImage
 
   applyFilter(filterMode){
     this.filter=filterMode
@@ -105,6 +108,9 @@ export class OneWeekComponent implements OnInit {
         this.endDate.setHours(0, 0, 0, 0);
         
         this.days=[this.firstDay, this.firstDay+1, this.firstDay+2, this.firstDay+3, this.firstDay+4, this.firstDay+5, this.firstDay+6]
+
+        this.users.getOneKid(this.kidId)
+          .subscribe ( kid => this.heroImage = this.experts.getHeroImage(kid['heroId']))
       })
     })
 

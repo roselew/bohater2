@@ -36,8 +36,8 @@ export class MissionsService {
   }
   
   //dodatkowo bohater 
-  getMissionsHeroes(kidId){
-    return this.http.get(this.API_URL+ 'kids/' + kidId + '?_embed=userHeroes&_embed=userMissions')
+  getKidWithMissions(kidId){
+    return this.http.get(this.API_URL+ 'kids/' + kidId + '?_embed=userMissions')
   }
 
   updateHero(hero){
@@ -96,6 +96,10 @@ export class MissionsService {
  
   
   getAllWeeksProgress(userMissions){
+
+      if (userMissions.length==0){
+        return [{weekId: 0, nAll:0, nWait:0, nUndone:0}]
+      }
 
       let  weekProgress=[];
 
