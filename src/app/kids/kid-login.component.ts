@@ -1,7 +1,6 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { KidsService } from "./kids.service";
-import { UsersService } from "../session/users.service";
+import { UsersService } from "../services/users.service";
 
 @Component({
   selector: 'kid-login',
@@ -48,7 +47,6 @@ export class KidLoginComponent implements OnInit {
 
   constructor(
     private users: UsersService,
-    private service: KidsService,
     private router: Router,
     private route: ActivatedRoute,
     private renderer: Renderer2) { 
@@ -60,7 +58,7 @@ export class KidLoginComponent implements OnInit {
   kid={}
 
   ngOnInit() {
-    this.service.fetchKids()
+    this.users.fetchKids()
     .subscribe( kids => this.kids = kids )
   }
 

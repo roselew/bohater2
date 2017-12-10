@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
-import { GiftsService } from "../gifts/gifts.service";
-import { UsersService } from "../session/users.service";
+import { GiftsService } from "../services/gifts.service";
+import { UsersService } from "../services/users.service";
 
 @Component({
   selector: 'kid',

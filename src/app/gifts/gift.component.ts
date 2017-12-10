@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { GiftsService } from '../gifts/gifts.service';
+import { GiftsService } from '../services/gifts.service';
 
 @Component({
   selector: 'gift',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { GiftsService } from '../gifts/gifts.service';
-import { UsersService } from "../session/users.service";
+import { GiftsService } from '../services/gifts.service';
+import { UsersService } from "../services/users.service";
 
 @Component({
   selector: 'kid-gifts',

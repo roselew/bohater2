@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
-import { MissionsService } from '../missions/missions.service';
-import { UsersService } from '../session/users.service';
+import { MissionsService } from '../services/missions.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'one-day-view',

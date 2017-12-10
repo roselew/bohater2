@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from "@angular/router";
-import { GiftsService } from "../gifts/gifts.service";
+import { GiftsService } from "../services/gifts.service";
 
 @Component({
   selector: 'extra-points',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { MissionsService } from '../missions/missions.service';
+import { MissionsService } from '../services/missions.service';
 
 @Component({
   selector: 'progress-week',

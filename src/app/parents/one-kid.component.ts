@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { KidsService } from "../kids/kids.service";
+import { UsersService } from "../services/users.service";
 
 @Component({
   selector: 'one-kid',
@@ -16,7 +16,7 @@ import { KidsService } from "../kids/kids.service";
 export class OneKidComponent implements OnInit {
 
   constructor(
-    private service: KidsService,
+    private users: UsersService,
     private router: Router,
     private route:  ActivatedRoute,   
   ) { }
@@ -27,13 +27,11 @@ export class OneKidComponent implements OnInit {
    ngOnInit(){
       let kidId = +this.route.snapshot.paramMap.get('kidId');
 
-      this.service.getOneKid(kidId)
+      this.users.getOneKid(kidId)
         .subscribe( kid => {
           this.kid = kid;
           this.parentId = this.kid['parentId']; 
         })
    }
-
-
 
 }

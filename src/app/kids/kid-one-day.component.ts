@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { MissionsService } from "../missions/missions.service";
-import { UsersService } from "../session/users.service";
+import { MissionsService } from "../services/missions.service";
+import { UsersService } from "../services/users.service";
 import { ExpertsService } from '../services/experts.service';
 
 @Component({

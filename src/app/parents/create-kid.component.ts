@@ -1,7 +1,6 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { KidsService } from "../kids/kids.service";
-import { UsersService } from "../session/users.service";
+import { UsersService } from "../services/users.service";
 
 @Component({
   selector: 'create-kid',
@@ -25,7 +24,6 @@ export class CreateKidComponent implements OnInit {
 
   constructor(
     private users: UsersService,
-    private service: KidsService,
     private router: Router,
     private route:ActivatedRoute,
     private renderer: Renderer2) { 
@@ -44,7 +42,7 @@ export class CreateKidComponent implements OnInit {
   let parentId = this.users.getLoggedUser('parent');
   this.kid['parentId']=parentId;
   this.kid['badges']=[false,false,false,false,false,false,false,false,false]
-  this.service.createOneKid(this.kid)
+  this.users.createOneKid(this.kid)
     .subscribe( kid=> {
       this.kid= kid; 
       this.router.navigate(['/rodzic']);

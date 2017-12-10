@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UsersService } from "../session/users.service";
+import { UsersService } from "../services/users.service";
 
 @Component({
   selector: 'parent-header',

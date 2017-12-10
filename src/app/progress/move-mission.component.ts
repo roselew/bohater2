@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MissionsService } from "../missions/missions.service";
+import { MissionsService } from "../services/missions.service";
 
 @Component({
   selector: 'move-mission',

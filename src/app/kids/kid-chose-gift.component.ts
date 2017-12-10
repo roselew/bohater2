@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { GiftsService } from '../gifts/gifts.service';
+import { GiftsService } from '../services/gifts.service';
 
 @Component({
   selector: 'kid-chose-gift',
@@ -8,7 +8,7 @@ import { GiftsService } from '../gifts/gifts.service';
 
   <view-gift [gift]="gift"></view-gift>
   <br>
-  <p>Obecny status - {{gift.status}}</p>
+  <p>Obecny status - {{gift['status']}}</p>
   <button (click)="chose()">Odbierz nagrodę</button>
   <button routerLink='../../'>Powrót</button>
   `,

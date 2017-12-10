@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ParentsService } from "./parents.service";
+import { UsersService } from "../services/users.service";
 
 @Component({
   selector: 'parent-register',
@@ -33,7 +33,7 @@ import { ParentsService } from "./parents.service";
 export class ParentRegisterComponent implements OnInit {
 
   constructor(
-    private service: ParentsService,
+    private users: UsersService,
     private router: Router,
     private route:ActivatedRoute,
     private renderer: Renderer2) { 
@@ -53,7 +53,7 @@ export class ParentRegisterComponent implements OnInit {
   parent ={}
   addParent(){
      if (this.parent['password']===this.checkpassword){
-      this.service.createOneParent(this.parent)
+      this.users.createOneParent(this.parent)
       .subscribe( parent => { 
         this.parent = parent; 
         this.router.navigate(['/rodzic-logowanie']);

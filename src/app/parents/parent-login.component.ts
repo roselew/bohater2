@@ -1,7 +1,6 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ParentsService } from "./parents.service";
-import { UsersService } from "../session/users.service";
+import { UsersService } from "../services/users.service";
 
 @Component({
   selector: 'parent-login',
@@ -65,7 +64,6 @@ export class ParentLoginComponent implements OnInit {
 
   constructor(
     private users: UsersService,
-    private service: ParentsService,
     private router: Router,
     private route:ActivatedRoute,
     private renderer: Renderer2) { 
@@ -76,7 +74,7 @@ export class ParentLoginComponent implements OnInit {
   parents
 
   ngOnInit() {
-    this.service.fetchParents()
+    this.users.fetchParents()
     .subscribe( parents => this.parents = parents )
   }
 

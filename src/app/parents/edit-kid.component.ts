@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { KidsService } from "../kids/kids.service";
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'edit-kid',
@@ -17,7 +17,7 @@ import { KidsService } from "../kids/kids.service";
 export class EditKidComponent implements OnInit {
 
   constructor(
-    private service: KidsService,
+    private users: UsersService,
     private router: Router,
     private route: ActivatedRoute,
   ) { }
@@ -26,14 +26,14 @@ export class EditKidComponent implements OnInit {
 
    ngOnInit(){
       let kidId = +this.route.parent.snapshot.paramMap.get('kidId');
-      this.service.getOneKid(kidId)
+      this.users.getOneKid(kidId)
       .subscribe( kid => {
         this.kid = kid;
       })
    }
 
    update(){
-     this.service.updateOneKid(this.kid)
+     this.users.updateOneKid(this.kid)
       .subscribe( kid=> {
         this.kid= kid;
         this.router.navigate(['/rodzic'])
@@ -41,7 +41,7 @@ export class EditKidComponent implements OnInit {
    }
 
    remove(){
-     this.service.deleteOneKid(this.kid['id'])
+     this.users.deleteOneKid(this.kid['id'])
       .subscribe( ()=> this.router.navigate(['/rodzic']))
    }
 

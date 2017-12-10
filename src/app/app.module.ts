@@ -20,7 +20,6 @@ import { ParentLoginComponent } from './parents/parent-login.component';
 import { ParentRegisterComponent } from './parents/parent-register.component';
 import { ShortcutKidComponent } from './parents/shortcut-kid.component';
 import { ViewKidComponent } from './parents/view-kid.component';
-import { ViewHeroComponent } from './parents/view-hero.component';
 
 import { MissionsComponent } from './missions/missions.component';
 import { CreateMissionComponent } from './missions/create-mission.component';
@@ -52,6 +51,7 @@ import { KidChoseGiftComponent } from './kids/kid-chose-gift.component';
 import { KidOneDayComponent } from './kids/kid-one-day.component';
 import { KidHeaderComponent } from './kids/kid-header.component';
 import { KidProgressComponent } from './kids/kid-progress.component';
+import { HeroProgressComponent } from './kids/hero-progress.component';
 
 import { ExtraPointsComponent } from './points/extra-points.component';
 import { PointsComponent } from './points/points.component';
@@ -64,16 +64,14 @@ import { ProgressWeekComponent } from './progress/progress-week.component';
 import { MoveMissionComponent } from './progress/move-mission.component';
 import { ParentProgressComponent } from './progress/parent-progress.component';
 
-import { MissionsService } from './missions/missions.service';
-import { GiftsService } from './gifts/gifts.service';
-import { AuthParentService } from "./auth-parent.service";
-import { AuthKidService } from "./auth-kid.service";
+import { MissionsService } from './services/missions.service';
+import { GiftsService } from './services/gifts.service';
+import { AuthParentService } from "./services/auth-parent.service";
+import { AuthKidService } from "./services/auth-kid.service";
 import { SessionModule } from "./session/session.module";
-import { KidsService } from "./kids/kids.service";
-import { ParentsService } from "./parents/parents.service";
-import { UsersService } from "./session/users.service";
+import { UsersService } from "./services/users.service";
 import { ExpertsService } from "./services/experts.service";
-import { HeroProgressComponent } from './kids/hero-progress.component';
+
 
 
 @NgModule({
@@ -140,7 +138,6 @@ import { HeroProgressComponent } from './kids/hero-progress.component';
     ProgressHistoryComponent,
     ProgressWeekComponent,
     ParentProgressComponent,
-    ViewHeroComponent,
     MoveMissionComponent,
     AppAlertComponent,
     HeroProgressComponent,
@@ -162,8 +159,6 @@ import { HeroProgressComponent } from './kids/hero-progress.component';
     GiftsService,
     AuthParentService,
     AuthKidService,
-    KidsService,
-    ParentsService,
     UsersService,
     ExpertsService
   ],

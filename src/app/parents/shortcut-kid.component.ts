@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { GiftsService } from "../gifts/gifts.service";
+import { GiftsService } from "../services/gifts.service";
 
 @Component({
   selector: 'shortcut-kid',
