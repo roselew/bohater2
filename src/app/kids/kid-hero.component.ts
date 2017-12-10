@@ -14,7 +14,8 @@ import { ExpertsService } from '../services/experts.service';
       <img src="{{userHero.image}}">
       <img *ngIf="nBadges>0" class="green" src="assets/ikony/o_pustaz.svg">
       <img *ngIf="nBadges==0" class="green" src="assets/ikony/o_pusta.svg">
-      <p class="smallTitle">Pozostały jeszcze {{nBadges}} odznaki do wykorzystania!</p>
+      <hero-progress *ngIf="heroProgress && !alertVisible" [heroProgress]="heroProgress"></hero-progress>
+      <p>Pozostały jeszcze {{nBadges}} odznaki do wykorzystania!</p>
     </div>
 
     <ul class="lista-odznak">
@@ -22,6 +23,7 @@ import { ExpertsService } from '../services/experts.service';
         class="bohater" 
         (click)="choseBadge(i)">
           <p>{{badge.badgeName}}</p> 
+          <p style="bottom: -15rem">{{showBadgeGain(badge)}}</p>
           <img *ngIf="kid['badges'][i]==false" src="assets/ikony/o_pusta.svg" class="pusta">
           <img *ngIf="kid['badges'][i]==true" src="{{badge.icon}}">
         </li>
@@ -54,7 +56,7 @@ export class KidHeroComponent implements OnInit {
   userMissions
   userHero
   nBadges 
-
+  heroProgress
   ngOnInit() {
 
     let kidId = this.users.getLoggedUser('kid');
@@ -71,6 +73,7 @@ export class KidHeroComponent implements OnInit {
           this.userHero = this.experts.getOneExpertHero(this.kid.heroId)
           let nUsedBadges = this.kid.badges.filter( x => x == true).length
           this.nBadges = nGainedBadges - nUsedBadges;
+          this.heroProgress = this.experts.getHeroPowers(this.kid.heroId, this.kid.badges)
       }) 
     
     })
@@ -89,12 +92,21 @@ export class KidHeroComponent implements OnInit {
       this.users.updateOneKid(this.kid)
       .subscribe( kid=> {
         this.kid = kid;
+        this.heroProgress = this.experts.getHeroPowers(this.kid.heroId, this.kid.badges)
         this.nBadges -=1;
       }) 
     }
   }
 
-
+  showBadgeGain(badge){
+    if (badge.gained[0]>0){
+      return ['+' + badge.gained[0] + ' szybkość']
+    } else if (badge.gained[1]>0){
+      return ['+' + badge.gained[1] + ' siła']
+    } else {
+      return ['+' + badge.gained[2] + ' zwinność']
+    }
+  }
 
     //obsługa alertów
     alertVisible = false

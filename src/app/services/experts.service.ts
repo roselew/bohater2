@@ -32,6 +32,21 @@ getOneExpertHero(heroId){
 getHeroImage(heroId){
   return this.expertHeroes.find(x=>x.id == heroId)['image']
 }
+
+getHeroPowers(heroId,badges){
+  let hero = this.expertHeroes.find(x=>x.id==heroId)
+  let powers= hero.powers
+
+  badges.forEach((badge,index) => {
+    if (badge == true){
+      let gained = hero.badges[index].gained
+      powers = powers.map(function(x,i){return  x + gained[i]})
+    }
+  })
+
+  return powers
+}
+
   
 expertMissions = [ 
   {      id: 1,      name: "Zęby rano",               icon: "assets/ikony/m_zeby.svg"     },    
@@ -79,43 +94,43 @@ expertGifts = [
 ]
   
 expertHeroes = [
-  {     id: 1,      name: "Szybki Bil",              image: "assets/bohater.png",      
+  {     id: 1,      name: "Szybki Bil",              image: "assets/bohater.png",           powers: [60,20,40],  
         badges: [        
-            {        badgeName: "Buty mocy",          icon: "assets/ikony/o_but1.svg",      gained: "false"        },        
-            {        badgeName: "Buty super mocy",    icon: "assets/ikony/o_but2.svg",      gained: "false"        },        
-            {        badgeName: "Buty extra mocy",    icon: "assets/ikony/o_but3.svg",      gained: "false"        },             
-            {        badgeName: "Ręka mocy",          icon: "assets/ikony/o_reka1.svg",     gained: "false"        },        
-            {        badgeName: "Ręka super mocy",    icon: "assets/ikony/o_reka2.svg",     gained: "false"        },        
-            {        badgeName: "Ręka extra mocy",    icon: "assets/ikony/o_reka3.svg",     gained: "false"        },            
-            {        badgeName: "Maska mocy",         icon: "assets/ikony/o_maska1.svg",    gained: "false"        },        
-            {        badgeName: "Maska super mocy",   icon: "assets/ikony/o_maska2.svg",    gained: "false"        },        
-            {        badgeName: "Maska extra mocy",   icon: "assets/ikony/o_maska3.svg",    gained: "false"        }      
+            {        badgeName: "Buty mocy",          icon: "assets/ikony/o_but1.svg",      gained: [10,0,0]     },        
+            {        badgeName: "Buty super mocy",    icon: "assets/ikony/o_but2.svg",      gained: [10,0,0]     },        
+            {        badgeName: "Buty extra mocy",    icon: "assets/ikony/o_but3.svg",      gained: [10,0,0]     },             
+            {        badgeName: "Ręka mocy",          icon: "assets/ikony/o_reka1.svg",     gained: [0,10,0]     },        
+            {        badgeName: "Ręka super mocy",    icon: "assets/ikony/o_reka2.svg",     gained: [0,10,0]     },        
+            {        badgeName: "Ręka extra mocy",    icon: "assets/ikony/o_reka3.svg",     gained: [0,10,0]     },            
+            {        badgeName: "Maska mocy",         icon: "assets/ikony/o_maska1.svg",    gained: [0,0,10]     },        
+            {        badgeName: "Maska super mocy",   icon: "assets/ikony/o_maska2.svg",    gained: [0,0,10]     },        
+            {        badgeName: "Maska extra mocy",   icon: "assets/ikony/o_maska3.svg",    gained: [0,0,10]     }      
         ]    
   },
-  {     id:2,        name: "Silny Jack",              image: "assets/bohater2.png",
+  {     id:2,        name: "Silny Jack",              image: "assets/bohater2.png",       powers: [20,60,40],
         badges: [
-            {        badgeName: "Buty mocy",          icon: "assets/ikony/o_but1.svg",      gained: "false"        },
-            {        badgeName: "Buty super mocy",    icon: "assets/ikony/o_but2.svg",      gained: "false"        },
-            {        badgeName: "Buty extra mocy",    icon: "assets/ikony/o_but3.svg",      gained: "false"        },
-            {        badgeName: "Ręka mocy",          icon: "assets/ikony/o_reka1.svg",     gained: "false"        },
-            {        badgeName: "Ręka super mocy",    icon: "assets/ikony/o_reka2.svg",     gained: "false"        },
-            {        badgeName: "Ręka extra mocy",    icon: "assets/ikony/o_reka3.svg",     gained: "false"        },
-            {        badgeName: "Maska mocy",         icon: "assets/ikony/o_maska1.svg",    gained: "false"        },
-            {        badgeName: "Maska super mocy",   icon: "assets/ikony/o_maska2.svg",    gained: "false"        },
-            {        badgeName: "Maska extra mocy",   icon: "assets/ikony/o_maska3.svg",    gained: "false"        }
+          {        badgeName: "Buty mocy",          icon: "assets/ikony/o_but1.svg",      gained: [10,0,0]     },        
+          {        badgeName: "Buty super mocy",    icon: "assets/ikony/o_but2.svg",      gained: [10,0,0]     },        
+          {        badgeName: "Buty extra mocy",    icon: "assets/ikony/o_but3.svg",      gained: [10,0,0]     },             
+          {        badgeName: "Ręka mocy",          icon: "assets/ikony/o_reka1.svg",     gained: [0,10,0]     },        
+          {        badgeName: "Ręka super mocy",    icon: "assets/ikony/o_reka2.svg",     gained: [0,10,0]     },        
+          {        badgeName: "Ręka extra mocy",    icon: "assets/ikony/o_reka3.svg",     gained: [0,10,0]     },            
+          {        badgeName: "Maska mocy",         icon: "assets/ikony/o_maska1.svg",    gained: [0,0,10]     },        
+          {        badgeName: "Maska super mocy",   icon: "assets/ikony/o_maska2.svg",    gained: [0,0,10]     },        
+          {        badgeName: "Maska extra mocy",   icon: "assets/ikony/o_maska3.svg",    gained: [0,0,10]     }  
         ]   
   },
-  {     id:3,        name: "Zwinna Jane",             image: "assets/bohater3.png",
+  {     id:3,        name: "Zwinna Jane",             image: "assets/bohater3.png",       powers: [40,20,60],
         badges: [
-            {        badgeName: "Buty mocy",          icon: "assets/ikony/o_but1.svg",      gained: "false"        },
-            {        badgeName: "Buty super mocy",    icon: "assets/ikony/o_but2.svg",      gained: "false"        },
-            {        badgeName: "Buty extra mocy",    icon: "assets/ikony/o_but3.svg",      gained: "false"        },
-            {        badgeName: "Ręka mocy",          icon: "assets/ikony/o_reka1.svg",     gained: "false"        },
-            {        badgeName: "Ręka super mocy",    icon: "assets/ikony/o_reka2.svg",     gained: "false"        },
-            {        badgeName: "Ręka extra mocy",    icon: "assets/ikony/o_reka3.svg",     gained: "false"        },
-            {        badgeName: "Maska mocy",         icon: "assets/ikony/o_maska1.svg",    gained: "false"        },
-            {        badgeName: "Maska super mocy",   icon: "assets/ikony/o_maska2.svg",    gained: "false"        },
-            {        badgeName: "Maska extra mocy",   icon: "assets/ikony/o_maska3.svg",    gained: "false"        }
+          {        badgeName: "Buty mocy",          icon: "assets/ikony/o_but1.svg",      gained: [10,0,0]     },        
+          {        badgeName: "Buty super mocy",    icon: "assets/ikony/o_but2.svg",      gained: [10,0,0]     },        
+          {        badgeName: "Buty extra mocy",    icon: "assets/ikony/o_but3.svg",      gained: [10,0,0]     },             
+          {        badgeName: "Ręka mocy",          icon: "assets/ikony/o_reka1.svg",     gained: [0,10,0]     },        
+          {        badgeName: "Ręka super mocy",    icon: "assets/ikony/o_reka2.svg",     gained: [0,10,0]     },        
+          {        badgeName: "Ręka extra mocy",    icon: "assets/ikony/o_reka3.svg",     gained: [0,10,0]     },            
+          {        badgeName: "Maska mocy",         icon: "assets/ikony/o_maska1.svg",    gained: [0,0,10]     },        
+          {        badgeName: "Maska super mocy",   icon: "assets/ikony/o_maska2.svg",    gained: [0,0,10]     },        
+          {        badgeName: "Maska extra mocy",   icon: "assets/ikony/o_maska3.svg",    gained: [0,0,10]     }  
         ]
   }
 ]

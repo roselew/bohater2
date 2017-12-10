@@ -22,13 +22,13 @@
       "heroId": 1,
       "badges": [
         true,
+        false,
+        false,
         true,
         true,
         false,
+        false,
         true,
-        false,
-        false,
-        false,
         false
       ]
     },
@@ -148,6 +148,63 @@
         false
       ],
       "id": 18
+    },
+    {
+      "name": "Anka",
+      "birth": "2015",
+      "login": "anka",
+      "password": "anka",
+      "heroId": 3,
+      "parentId": 2,
+      "badges": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "id": 19
+    },
+    {
+      "name": "Bartek",
+      "birth": "2013",
+      "login": "bartek",
+      "password": "bartek",
+      "heroId": 1,
+      "parentId": 2,
+      "badges": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "id": 20
+    },
+    {
+      "name": "Karol",
+      "heroId": 1,
+      "parentId": 1,
+      "badges": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "id": 21
     }
   ],
   "userMissions": [
@@ -478,6 +535,56 @@
       ],
       "waitDates": [],
       "id": 37
+    },
+    {
+      "name": "Zęby wieczór",
+      "icon": "assets/ikony/m_zeby.svg",
+      "confirmation": true,
+      "points": 1,
+      "kidId": 19,
+      "start": 1512774000000,
+      "days": [
+        5
+      ],
+      "doneDates": [
+        1512774000000
+      ],
+      "waitDates": [],
+      "id": 38
+    },
+    {
+      "name": "Zęby wieczór",
+      "icon": "assets/ikony/m_zeby.svg",
+      "confirmation": true,
+      "points": 1,
+      "kidId": 20,
+      "start": 1512774000000,
+      "days": [
+        5
+      ],
+      "doneDates": [
+        1512774000000
+      ],
+      "waitDates": [],
+      "id": 39
+    },
+    {
+      "name": "Wynieść śmieci",
+      "icon": "assets/ikony/m_smieci.svg",
+      "confirmation": true,
+      "points": 1,
+      "kidId": 21,
+      "start": 1512860400000,
+      "days": [
+        3,
+        5,
+        6
+      ],
+      "doneDates": [
+        1512860400000
+      ],
+      "waitDates": [],
+      "id": 40
     }
   ],
   "userGifts": [

@@ -59,7 +59,6 @@ checkpassword
 
   selectHero(expertHero){
     this.kid['heroId']=expertHero['id'];
-    console.log(this.kid)
   }
   
 

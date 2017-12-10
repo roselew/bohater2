@@ -54,7 +54,7 @@ div.odznaki {
 	@media (orientation: landscape){
 		display: inline-block;
 		vertical-align: top;
-		width: 30%;		
+		width: 48%;		
 	}
 
 	margin-top: 10.0rem;
@@ -69,7 +69,24 @@ div.odznaki {
 .lista-odznak {
 	@media (orientation: landscape){
 		display: inline-block;
-		width: 65%;		
+		width: 48%;		
 	}
 
+}
+
+.heroProgress{
+    padding: 20px;
+
+
+  .progress-done p {
+    width: 200px;
+    left: -220px;
+    text-align: right;
+  }
+
+  @media (orientation: portrait){
+	  display: inline-block;
+	  width: 48%;
+	  vertical-align: top;
+  }
 }

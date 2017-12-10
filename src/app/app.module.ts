@@ -73,6 +73,7 @@ import { KidsService } from "./kids/kids.service";
 import { ParentsService } from "./parents/parents.service";
 import { UsersService } from "./session/users.service";
 import { ExpertsService } from "./services/experts.service";
+import { HeroProgressComponent } from './kids/hero-progress.component';
 
 
 @NgModule({
@@ -142,6 +143,7 @@ import { ExpertsService } from "./services/experts.service";
     ViewHeroComponent,
     MoveMissionComponent,
     AppAlertComponent,
+    HeroProgressComponent,
     
     
   ],
