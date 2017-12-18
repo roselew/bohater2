@@ -40,8 +40,8 @@ import { ProgressHistoryComponent } from './progress/progress-history.component'
 import { PointsComponent } from './points/points.component';
 import { ExtraPointsComponent } from './points/extra-points.component';
 
-import { AuthKidService } from "./auth-kid.service";
-import { AuthParentService } from "./auth-parent.service";
+import { AuthKidService } from "./services/auth-kid.service";
+import { AuthParentService } from "./services/auth-parent.service";
 import { AvailableGiftComponent } from "./gifts/available-gift.component";
 
 

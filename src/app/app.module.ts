@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { Routing } from "./app.routing";
 import { FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome.component';
@@ -71,6 +75,7 @@ import { AuthKidService } from "./services/auth-kid.service";
 import { SessionModule } from "./session/session.module";
 import { UsersService } from "./services/users.service";
 import { ExpertsService } from "./services/experts.service";
+import { FirebaseService } from './services/firebase.service';
 
 
 
@@ -150,7 +155,10 @@ import { ExpertsService } from "./services/experts.service";
     Routing,
     FormsModule,
     HttpClientModule,
-    SessionModule
+    SessionModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
   
   providers: [
@@ -160,7 +168,8 @@ import { ExpertsService } from "./services/experts.service";
     AuthParentService,
     AuthKidService,
     UsersService,
-    ExpertsService
+    ExpertsService,
+    FirebaseService,
   ],
   
   bootstrap: [AppComponent]

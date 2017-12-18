@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { FirebaseService } from './services/firebase.service';
 
 @Component({
   selector: 'welcome',
@@ -79,12 +80,25 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 export class WelcomeComponent implements OnInit {
 
   constructor(
+    private service: FirebaseService, 
     private renderer: Renderer2) { 
       this.renderer.addClass(document.body,'kid')
       this.renderer.addClass(document.body,'title-page')
     }
   
-    ngOnInit(){}
+  
+
+    ngOnInit(){
+      this.service.getKids().subscribe( kids => {
+        console.log(kids)
+      })
+      this.service.getUserMissions('RrsKnBvXZ8qft0O0FMtv').subscribe( userMissions => {
+          console.log(userMissions)
+      })
+
+      
+    }
+    
 
   ngOnDestroy() {
     this.renderer.removeClass(document.body, 'kid');

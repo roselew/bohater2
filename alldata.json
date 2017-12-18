@@ -205,6 +205,26 @@
         false
       ],
       "id": 21
+    },
+    {
+      "name": "Wojtek",
+      "birth": "2010",
+      "login": "wojtek",
+      "password": "wojtek",
+      "heroId": 1,
+      "parentId": 1,
+      "badges": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "id": 22
     }
   ],
   "userMissions": [
@@ -227,7 +247,6 @@
         1511132400000,
         1511737200000,
         1515970800000,
-        1512342000000,
         1511910000000,
         1512082800000,
         1511478000000,

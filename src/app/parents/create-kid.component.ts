@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { UsersService } from "../services/users.service";
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'create-kid',
@@ -23,6 +24,7 @@ import { UsersService } from "../services/users.service";
 export class CreateKidComponent implements OnInit {
 
   constructor(
+    private kidsService: FirebaseService,
     private users: UsersService,
     private router: Router,
     private route:ActivatedRoute,
@@ -42,6 +44,7 @@ export class CreateKidComponent implements OnInit {
   let parentId = this.users.getLoggedUser('parent');
   this.kid['parentId']=parentId;
   this.kid['badges']=[false,false,false,false,false,false,false,false,false]
+  this.kidsService.addKid(this.kid)
   this.users.createOneKid(this.kid)
     .subscribe( kid=> {
       this.kid= kid; 
