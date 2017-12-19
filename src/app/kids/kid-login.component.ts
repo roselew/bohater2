@@ -28,7 +28,7 @@ import { UsersService } from "../services/users.service";
   <p> Logowanie tymczasowe, kliknij na dziecko żeby się zalogować </p>
   <ul>
     <li *ngFor="let kid of kids"
-        (click)="logOn(kid.id)">
+        (click)="logOn(kid.login)">
         {{kid.name}}
     </li>
   </ul>
@@ -42,6 +42,7 @@ export class KidLoginComponent implements OnInit {
 
   logOn(kidId){
     this.users.setLoggedUser('kid',kidId)
+    debugger
     this.router.navigate(['/dziecko'])   
   }
 

@@ -1,19 +1,39 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+import { Kid } from '../models/Kid';
 
 @Injectable()
 export class UsersService {
 
-  constructor(   
-    @Inject('API_URL') private API_URL,
-    private http: HttpClient, 
-   ) { }
+  kidsCollection: AngularFirestoreCollection<Kid>
+  kids: Observable<Kid[]>
+  kidDoc: AngularFirestoreDocument<Kid>
+  kid: Observable<Kid>
+
+  parentsCollection: AngularFirestoreCollection<any>
+  parents: Observable<any[]>
+  parentDoc: AngularFirestoreDocument<any>
+  parent: Observable<any>
+
+  parentsKidsCollection: AngularFirestoreCollection<any>
+  parentsKids: Observable<any[]>
+
+  constructor(public afs: AngularFirestore) { 
+
+    this.kidsCollection = this.afs.collection('kids');
+    this.kids = this.kidsCollection.valueChanges();
+
+    this.parentsCollection = this.afs.collection('parents');
+    this.parents = this.parentsCollection.valueChanges();
+   }
    
   getLoggedUser(mode){
    if (mode=='parent') {
-     return +localStorage.getItem('loggedParent')
+     return localStorage.getItem('loggedParent')
    } else if (mode=='kid') {
-     return +localStorage.getItem('loggedKid')
+     return localStorage.getItem('loggedKid')
    } 
   }
 
@@ -27,39 +47,54 @@ export class UsersService {
   }
 
   fetchKids() {
-    return this.http.get(this.API_URL+ 'kids/')
+    return this.kids
   }
 
   getOneKid(kidId) {
-    return this.http.get(this.API_URL+ 'kids/'+kidId)
+    this.kidDoc = this.afs.doc(`kids/${kidId}`)
+    this.kid = this.kidDoc.valueChanges()
+    return this.kid
   }
 
-  deleteOneKid(kidId){
-    return this.http.delete(this.API_URL+ 'kids/'+ kidId)
+  deleteOneKid(kid){
+    this.kidDoc = this.afs.doc(`kids/${kid.login}`)
+    this.kidDoc.delete()
+    return this.kids
   }
 
   updateOneKid(kid){
-    return this.http.put(this.API_URL+ 'kids/'+ kid['id'], kid)
+    this.kidDoc = this.afs.doc(`kids/${kid.login}`)
+    this.kidDoc.update(kid)  
+    return this.kid 
   }
 
   createOneKid(kid){
-    return this.http.post(this.API_URL+ 'kids/',kid)
+    this.kidsCollection.doc(`${kid.login}`).set(kid)
+    return this.kids
   }
 
   fetchParents() {
-    return this.http.get(this.API_URL+ 'parents/')
+    return this.parents
   }
 
   getOneParent(parentId) {
-    return this.http.get(this.API_URL+ 'parents/'+parentId)
+    this.parentDoc = this.afs.doc(`parents/${parentId}`)
+    this.parent = this.parentDoc.valueChanges()
+    return this.parent
   }
 
   getParentKids(parentId){
-    return this.http.get(this.API_URL+ 'parents/'+parentId+'?_embed=kids')
+    this.parentsKidsCollection = this.afs.collection<any>('kids', ref => {
+      return ref
+              .where('parentId', '==', parentId)
+    });
+    this.parentsKids = this.parentsKidsCollection.valueChanges();
+    return this.parentsKids
   }
 
   createOneParent(parent){
-    return this.http.post(this.API_URL+ 'parents/', parent)
+    this.parentsCollection.doc(`${parent.email}`).set(parent)
+    return this.parents
   }
 
 

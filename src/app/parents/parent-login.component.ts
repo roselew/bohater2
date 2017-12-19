@@ -31,7 +31,7 @@ import { UsersService } from "../services/users.service";
     <p style="color: red"> Logowanie tymczasowe, kliknij na rodzica żeby się zalogować </p>
     <ul>
       <li *ngFor="let parent of parents"
-          (click)="logOn(parent.id)">
+          (click)="logOn(parent.email)">
           {{parent.email}}
       </li>
     </ul>

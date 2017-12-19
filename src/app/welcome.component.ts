@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FirebaseService } from './services/firebase.service';
+import { UsersService } from './services/users.service';
 
 @Component({
   selector: 'welcome',
@@ -81,6 +82,7 @@ export class WelcomeComponent implements OnInit {
 
   constructor(
     private service: FirebaseService, 
+    private users: UsersService,
     private renderer: Renderer2) { 
       this.renderer.addClass(document.body,'kid')
       this.renderer.addClass(document.body,'title-page')
@@ -92,10 +94,15 @@ export class WelcomeComponent implements OnInit {
       this.service.getKids().subscribe( kids => {
         console.log(kids)
       })
-      this.service.getUserMissions('RrsKnBvXZ8qft0O0FMtv').subscribe( userMissions => {
+      this.service.getUserMissions('kasia2').subscribe( userMissions => {
           console.log(userMissions)
       })
-
+      this.service.getUserGifts('kasia2').subscribe( userGifts => {
+        console.log(userGifts)
+      })
+      this.users.getParentKids('annakowalska@gmail.com').subscribe( kids => {
+        console.log(kids)
+      })
       
     }
     

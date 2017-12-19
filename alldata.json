@@ -225,6 +225,26 @@
         false
       ],
       "id": 22
+    },
+    {
+      "name": "Kasia",
+      "birth": "2010",
+      "login": "kasia2",
+      "password": "kasia",
+      "heroId": 3,
+      "parentId": 1,
+      "badges": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "id": 23
     }
   ],
   "userMissions": [
