@@ -40,10 +40,12 @@ export class MissionComponent implements OnInit {
               .map(opt => opt.value)
     }
 
-  ngOnInit(){
-    let missionId = +this.route.snapshot.paramMap.get('missionId');
+  missionId
 
-    this.service.getOneMission(missionId)
+  ngOnInit(){
+    this.missionId = this.route.snapshot.paramMap.get('missionId');
+
+    this.service.getOneMission(this.missionId)
       .subscribe( mission => {
         this.mission = mission;
         for (let day of this.mission['days']) {
@@ -55,7 +57,7 @@ export class MissionComponent implements OnInit {
    update(){
     this.mission['days']=this.selectedDays;
 
-    this.service.updateOneMission(this.mission)
+    this.service.updateOneMission(this.mission, this.missionId)
       .subscribe( mission=> {
         this.mission= mission; 
         this.router.navigate(['../'],{relativeTo:this.route});
@@ -63,7 +65,7 @@ export class MissionComponent implements OnInit {
    }
 
    remove(){
-     this.service.deleteOneMission(this.mission['id'])
+     this.service.deleteOneMission(this.missionId)
        .subscribe( ()=> this.router.navigate(['../'],{relativeTo:this.route}))
    }
 
@@ -71,7 +73,7 @@ export class MissionComponent implements OnInit {
      let today = new Date().setHours(0,0,0,0);
      this.mission['finish']=today;
 
-    this.service.updateOneMission(this.mission)
+    this.service.updateOneMission(this.mission, this.missionId)
      .subscribe( mission=> {
        this.mission= mission; 
        this.router.navigate(['../'],{relativeTo:this.route});

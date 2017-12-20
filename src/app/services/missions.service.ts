@@ -1,47 +1,73 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 // import * as moment from 'moment';
 
 @Injectable()
 export class MissionsService {
 
-  constructor(   
-    @Inject('API_URL') private API_URL,
-    private http: HttpClient
-  ) { }
+  userMissionsCollection: AngularFirestoreCollection<any>
+  userMissions: Observable<any[]>
+  userMissionDoc: AngularFirestoreDocument<any>
+  userMission : Observable<any>
 
-  userMissions = [];
+  constructor(private afs: AngularFirestore) { }
+
+
   doneMissions = [];
   waitMissions = [];
   undoneMissions = [];
 
   fetchMissions(kidId) {
-    return this.http.get(this.API_URL+ 'kids/' + kidId + '/userMissions')
+    this.userMissionsCollection = this.afs.collection<any>('userMissions', ref => {
+      // Compose a query using multiple .where() methods
+      return ref
+              .where('kidId', '==', kidId)
+    });
+    this.userMissions = this.userMissionsCollection.snapshotChanges().map(changes => {
+      return changes.map( a => {
+        const data = a.payload.doc.data();
+        data.id = a.payload.doc.id;
+        return data;
+      })
+    })
+    return this.userMissions
   }
+
+
 
   getOneMission(missionId){
-    return this.http.get(this.API_URL+ 'userMissions/' + missionId)
+    this.userMissionDoc = this.afs.doc(`userMissions/${missionId}`)
+    this.userMission = this.userMissionDoc.valueChanges()
+    return this.userMission 
   }
 
-  updateOneMission(mission){
-    return this.http.put(this.API_URL+ 'userMissions/'+ mission['id'], mission)
+  updateOneMission(mission,missionId){
+    console.log(mission)
+    console.log(missionId)
+    this.userMissionDoc = this.afs.doc(`userMissions/${missionId}`) 
+    this.userMissionDoc.update(mission)  
+    return this.userMission
   }
 
-  deleteOneMission(missionId){
-    return this.http.delete(this.API_URL+ 'userMissions/'+ missionId)
+  deleteOneMission(mission){
+    this.userMissionDoc = this.afs.doc(`userMissions/${mission.id}`)
+    this.userMissionDoc.delete()
+    return this.userMissions
   }
 
  createOneMission(mission){
-    return this.http.post(this.API_URL+ 'userMissions/', mission)
+    this.userMissionsCollection.add(mission)
+    return this.userMissions
   }
   
   //dodatkowo bohater 
   getKidWithMissions(kidId){
-    return this.http.get(this.API_URL+ 'kids/' + kidId + '?_embed=userMissions')
+    //return this.http.get(this.API_URL+ 'kids/' + kidId + '?_embed=userMissions')
   }
 
   updateHero(hero){
-    return this.http.put(this.API_URL+ 'userHeroes/'+ hero['id'], hero)
+    //return this.http.put(this.API_URL+ 'userHeroes/'+ hero['id'], hero)
   }
 
   //get from database ALL missions 

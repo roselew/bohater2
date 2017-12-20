@@ -79,7 +79,7 @@ export class OneWeekComponent implements OnInit {
     if (this.mode=='kid'){
       this.kidId = this.users.getLoggedUser('kid');
     } else {
-      this.kidId = +this.route.parent.snapshot.paramMap.get('kidId');
+      this.kidId = this.route.parent.snapshot.paramMap.get('kidId');
     }
   
     //get all UserMissions and calculate week progress

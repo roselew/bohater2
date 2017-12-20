@@ -57,7 +57,7 @@ export class ProgressHistoryComponent implements OnInit {
  
 
   ngOnInit() {
-    let kidId = +this.route.parent.snapshot.paramMap.get('kidId') || this.users.getLoggedUser('kid');
+    let kidId = this.route.parent.snapshot.paramMap.get('kidId') || this.users.getLoggedUser('kid');
     this.service.fetchMissions(kidId)
       .subscribe(userMissions => {
         this.userMissions = userMissions;

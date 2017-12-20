@@ -143,7 +143,7 @@ export class MoveMissionComponent implements OnInit {
    }
    
   updateMission(mission){
-    this.service.updateOneMission(mission)
+    this.service.updateOneMission(mission,mission.id)
       .subscribe( () => {
         this.moveMission.emit();
     })

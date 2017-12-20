@@ -25,7 +25,7 @@ export class OneKidComponent implements OnInit {
   kid = {};
 
    ngOnInit(){
-      let kidId = +this.route.snapshot.paramMap.get('kidId');
+      let kidId = this.route.snapshot.paramMap.get('kidId');
 
       this.users.getOneKid(kidId)
         .subscribe( kid => {

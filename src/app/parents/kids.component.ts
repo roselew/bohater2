@@ -44,9 +44,9 @@ export class KidsComponent implements OnInit {
    ngOnInit(){
      let parentId = this.users.getLoggedUser('parent');
      this.users.getParentKids(parentId)
-        .subscribe( kids => {
+        .subscribe( parentsKids => {
           //this.parent = parent;
-          this.kids = kids;
+          this.kids = parentsKids;
          })
    } 
 }

@@ -6,7 +6,7 @@ import { MissionsService } from "../services/missions.service";
   selector: 'missions',
   template: `
 
-  <ul class="mission-neutral">
+  <ul *ngIf="userMissions && userMissions.length>0" class="mission-neutral">
     <li 
       *ngFor="let mission of activeMissions" 
       [routerLink]="[mission.id]"
@@ -68,6 +68,8 @@ export class MissionsComponent implements OnInit {
         this.userMissions = userMissions;
         this.activeMissions=this.userMissions.filter( x => !x.finish)
         this.unactiveMissions = this.userMissions.filter( x => x.finish)
-       })
+        console.log(this.activeMissions)
+        console.log(this.unactiveMissions)
+      })
    }
 }

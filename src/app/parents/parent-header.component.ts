@@ -39,7 +39,7 @@ export class ParentHeaderComponent implements OnInit {
   kid
 
   goToKid(){
-    this.users.setLoggedUser('kid',this.kid['id'])
+    this.users.setLoggedUser('kid',this.kid.login)
     this.router.navigate(['/dziecko'])
    }
 

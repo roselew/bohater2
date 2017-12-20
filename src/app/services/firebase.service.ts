@@ -18,7 +18,7 @@ export class FirebaseService {
   userGifts: Observable<any[]>
   userGiftDoc: AngularFirestoreDocument<any>
 
-  constructor(public db: AngularFirestore) {
+  constructor(private db: AngularFirestore) {
     //if we don't need id
     //this.kids = db.collection('kids').valueChanges();
 
