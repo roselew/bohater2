@@ -25,7 +25,7 @@ export class EditKidComponent implements OnInit {
   kid 
 
    ngOnInit(){
-      let kidId = +this.route.parent.snapshot.paramMap.get('kidId');
+      let kidId = this.route.parent.snapshot.paramMap.get('kidId');
       this.users.getOneKid(kidId)
       .subscribe( kid => {
         this.kid = kid;
@@ -41,7 +41,7 @@ export class EditKidComponent implements OnInit {
    }
 
    remove(){
-     this.users.deleteOneKid(this.kid['id'])
+     this.users.deleteOneKid(this.kid)
       .subscribe( ()=> this.router.navigate(['/rodzic']))
    }
 

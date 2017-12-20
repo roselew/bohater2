@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { GiftsService } from '../services/gifts.service';
+import { MissionsService } from '../services/missions.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'gifts',
@@ -105,7 +107,8 @@ import { GiftsService } from '../services/gifts.service';
 export class GiftsComponent implements OnInit {
 
   constructor(    
-    private service: GiftsService,
+    private giftsService: GiftsService,
+    private missionsService: MissionsService,
     private router: Router,
     private route:ActivatedRoute,
   ) { }
@@ -119,27 +122,35 @@ export class GiftsComponent implements OnInit {
   chosenGifts
   receivedGifts
   extraPoints
-
+  kidId
 
   ngOnInit(){
-    this.kid['id'] = +this.route.parent.snapshot.paramMap.get('kidId');
+    this.kidId = this.route.parent.snapshot.paramMap.get('kidId');
     this.fetchGifts()
   }
 
  fetchGifts(){
-       this.service.getMissionsGiftsPoints(this.kid['id'])
-        .subscribe( kid => {
-        this.kid = kid;
-        this.userMissions = this.kid['userMissions'];
-        this.userGifts = this.kid['userGifts'];
-        this.chosenGifts = this.userGifts.filter (x => x.status==='chosen');
-        this.receivedGifts = this.userGifts.filter (x => x.status==='received'); 
-        this.extraPoints = this.kid['extraPoints'];
-        this.calculatePoints();
-        //dopiero po policzeniu punktów mogę pokazać które nagrody można wybrać
-        this.unusedGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points > this.totalPoints);  
-        this.availableGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points <= this.totalPoints);
-      })
+    this.giftsService.fetchGifts(this.kidId)
+    .subscribe( userGifts => {
+      this.userGifts = userGifts
+      this.chosenGifts = this.userGifts.filter (x => x.status==='chosen');
+      this.receivedGifts = this.userGifts.filter (x => x.status==='received'); 
+
+      this.missionsService.fetchMissions(this.kidId)
+        .subscribe( userMissions => {
+          this.userMissions = userMissions
+
+        })
+      this.giftsService.fetchExtraPoints(this.kidId)
+        .subscribe (extraPoints => {
+          this.extraPoints = extraPoints
+
+          this.calculatePoints();
+          this.unusedGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points > this.totalPoints);  
+          this.availableGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points <= this.totalPoints);
+        
+        })
+    }) 
  }
 
   calculatePoints(){
@@ -161,7 +172,7 @@ export class GiftsComponent implements OnInit {
 
   receive(gift){
       gift['status']='received';
-      this.service.updateOneGift(gift)
+      this.giftsService.updateOneGift(gift, gift['id'])
         .subscribe( ()=> this.fetchGifts() );
   };
   

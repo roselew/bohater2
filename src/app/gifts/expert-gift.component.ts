@@ -27,14 +27,14 @@ export class ExpertGiftComponent implements OnInit {
   gift={};
 
    ngOnInit(){
-      let giftId=this.route.snapshot.paramMap.get('giftId');
+      let giftId = this.route.snapshot.paramMap.get('giftId');
       let expertsGift = this.experts.getOneExpertGift(giftId)
       this.gift['name'] = expertsGift['name'] 
       this.gift['icon'] = expertsGift['icon']
    }
 
    save(){
-    let kidId = +this.route.parent.snapshot.paramMap.get('kidId');
+    let kidId = this.route.parent.snapshot.paramMap.get('kidId');
     this.gift['kidId'] = kidId;
     this.gift['status']='unused';
     this.gift['chosenDate']='';

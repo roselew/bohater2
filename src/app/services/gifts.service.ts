@@ -1,38 +1,70 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()export class GiftsService {
   
-  constructor(       
-    @Inject('API_URL') private API_URL,    
-    private http: HttpClient  
-   ) { }
+  userGiftsCollection: AngularFirestoreCollection<any>
+  userGifts: Observable<any[]>
+  userGiftDoc: AngularFirestoreDocument<any>
+  userGift : Observable<any>
   
-  getMissionsGiftsPoints(kidId){
-    return this.http.get(this.API_URL+ 'kids/'+kidId+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
-  }
+  extraPointsCollection: AngularFirestoreCollection<any>
+  extraPoints: Observable<any[]>
+
+  constructor(private afs: AngularFirestore) { }
+  
+   getMissionsGiftsPoints(kidId){
+  //  return this.http.get(this.API_URL+ 'kids/'+kidId+'?_embed=userMissions&_embed=userGifts&_embed=extraPoints')
+   }
   
   fetchGifts(kidId){    
-    return this.http.get(this.API_URL+ 'kids/' + kidId + '/userGifts')  
+    this.userGiftsCollection = this.afs.collection<any>('userGifts', ref => {
+      return ref.where('kidId', '==', kidId)
+    });
+    this.userGifts = this.userGiftsCollection.snapshotChanges().map(changes => {
+      return changes.map( a => {
+        const data = a.payload.doc.data();
+        data.id = a.payload.doc.id;
+        return data;
+      })
+    })
+    return this.userGifts
   }
    
   getOneGift(giftId) {  
-    return this.http.get(this.API_URL+ 'userGifts/' + giftId)  
+    this.userGiftDoc = this.afs.doc(`userGifts/${giftId}`)
+    this.userGift = this.userGiftDoc.valueChanges()
+    return this.userGift 
   }
-    
-  updateOneGift(gift){    
-    return this.http.put(this.API_URL+ 'userGifts/'+ gift['id'], gift)  
+
+  updateOneGift(gift,giftId){
+    this.userGiftDoc = this.afs.doc(`userGifts/${giftId}`) 
+    this.userGiftDoc.update(gift)  
+    return this.userGift
   }
-  
-  deleteOneGift(giftId){  
-    return this.http.delete(this.API_URL + 'userGifts/'+ giftId)
+
+  deleteOneGift(gift){
+    this.userGiftDoc = this.afs.doc(`userGifts/${gift.id}`)
+    this.userGiftDoc.delete()
+    return this.userGifts
   }
-  
+
   createOneGift(gift){
-    return this.http.post(this.API_URL+ 'userGifts/', gift)
+    this.userGiftsCollection.add(gift)
+    return this.userGifts
+  }
+
+  fetchExtraPoints(kidId){
+    this.extraPointsCollection = this.afs.collection<any>('extraPoints', ref => {
+      return ref.where('kidId', '==', kidId)
+    });
+    this.extraPoints = this.extraPointsCollection.valueChanges()
+    return this.extraPoints
   }
 
   addExtraPoints(extraPoints){
-    return this.http.post(this.API_URL+ 'extraPoints/', extraPoints)
+    this.extraPointsCollection.add(extraPoints)
+    return this.extraPoints
   }
 }

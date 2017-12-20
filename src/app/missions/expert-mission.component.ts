@@ -42,7 +42,7 @@ export class ExpertMissionComponent implements OnInit {
     }
 
    ngOnInit(){
-      let missionId=this.route.snapshot.paramMap.get('missionId');
+      let missionId = this.route.snapshot.paramMap.get('missionId');
       let expertMission = this.experts.getOneExpertMission(missionId);
       this.mission['name'] = expertMission['name'] 
       this.mission['icon'] = expertMission['icon']

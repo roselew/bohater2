@@ -1,5 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { GiftsService } from "../services/gifts.service";
+import { MissionsService } from '../services/missions.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'shortcut-kid',
@@ -51,22 +53,32 @@ import { GiftsService } from "../services/gifts.service";
 export class ShortcutKidComponent implements OnInit {
 
   constructor(
-    private service: GiftsService
+    private usersService: UsersService,
+    private giftsService: GiftsService,
+    private missionsService: MissionsService,
   ) { }
 
   @Input()
   kidId 
-  
+
   kid
   userMissions
   userGifts
 
+
+
   ngOnInit() {
-    this.service.getMissionsGiftsPoints(this.kidId)
-      .subscribe( kid => {
-        this.kid=kid;
-        this.userMissions = kid['userMissions'];
-        this.userGifts = kid['userGifts'];
-       })
-  }
+
+    this.usersService.getOneKid(this.kidId)
+      .subscribe ( kid => this.kid = kid )
+
+    this.giftsService.fetchGifts(this.kidId)
+      .subscribe ( userGifts => this.userGifts = userGifts)
+
+    this.missionsService.fetchMissions(this.kidId)
+    .subscribe ( userMissions => this.userMissions = userMissions )
+    
+  }    
+
+
 }

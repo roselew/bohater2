@@ -25,15 +25,16 @@ export class AvailableGiftComponent implements OnInit {
   ) { }
 
   gift = {};
-  
+  giftId
+
   ngOnInit() {
-    let giftId = +this.route.snapshot.paramMap.get('giftId');
-    this.service.getOneGift(giftId)
+    this.giftId = this.route.snapshot.paramMap.get('giftId');
+    this.service.getOneGift(this.giftId)
       .subscribe( gift => this.gift = gift )
   }
 
   update(){ 
-     this.service.updateOneGift(this.gift)
+     this.service.updateOneGift(this.gift,this.giftId)
      .subscribe( gift=> {
        this.gift= gift;
        this.router.navigate(['../../'],{relativeTo:this.route});
@@ -41,7 +42,7 @@ export class AvailableGiftComponent implements OnInit {
   }
 
   remove(){
-      this.service.deleteOneGift(this.gift['id'])
+      this.service.deleteOneGift(this.giftId)
       .subscribe( ()=> this.router.navigate(['../../'],{relativeTo:this.route}))
   }
 
@@ -49,7 +50,7 @@ export class AvailableGiftComponent implements OnInit {
       this.gift['status']='chosen';
       let today = new Date().setHours(0,0,0,0);
       this.gift['chosenDate']=today;     
-      this.service.updateOneGift(this.gift)
+      this.service.updateOneGift(this.gift,this.giftId)
        .subscribe( gift=> {
        this.gift= gift;
        this.router.navigate(['../../'],{relativeTo:this.route});

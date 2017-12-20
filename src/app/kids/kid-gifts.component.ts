@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { GiftsService } from '../services/gifts.service';
 import { UsersService } from "../services/users.service";
+import { MissionsService } from '../services/missions.service';
 
 @Component({
   selector: 'kid-gifts',
@@ -96,7 +97,8 @@ export class KidGiftsComponent implements OnInit {
 
   constructor(   
     private users: UsersService,
-    private service: GiftsService,
+    private giftsService: GiftsService,
+    private missionsService: MissionsService,
     private router: Router,
     private route: ActivatedRoute,
   ) { }
@@ -111,27 +113,36 @@ export class KidGiftsComponent implements OnInit {
   receivedGifts
   extraPoints
   selectedGift
+  kidId
 
  ngOnInit(){
-    let kidId = this.users.getLoggedUser('kid');
-    this.fetchGifts(kidId);
+    this.kidId = this.users.getLoggedUser('kid');
+    this.fetchGifts();
   }
 
-fetchGifts(kidId){
-    this.service.getMissionsGiftsPoints(kidId)
-      .subscribe( kid => {
-        this.kid = kid;
-        this.userMissions = this.kid['userMissions'];
-        this.userGifts = this.kid['userGifts'];
-        this.chosenGifts = this.userGifts.filter (x => x.status==='chosen');
-        this.receivedGifts = this.userGifts.filter (x => x.status==='received'); 
-        this.extraPoints = this.kid['extraPoints'];
-        this.calculatePoints();
-        //dopiero po policzeniu punktów mogę pokazać które nagrody można wybrać
-        this.unusedGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points > this.totalPoints);  
-        this.availableGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points <= this.totalPoints);
-      })
-}
+  fetchGifts(){
+    this.giftsService.fetchGifts(this.kidId)
+    .subscribe( userGifts => {
+      this.userGifts = userGifts
+      this.chosenGifts = this.userGifts.filter (x => x.status==='chosen');
+      this.receivedGifts = this.userGifts.filter (x => x.status==='received'); 
+
+      this.missionsService.fetchMissions(this.kidId)
+        .subscribe( userMissions => {
+          this.userMissions = userMissions
+
+        })
+      this.giftsService.fetchExtraPoints(this.kidId)
+        .subscribe (extraPoints => {
+          this.extraPoints = extraPoints
+
+          this.calculatePoints();
+          this.unusedGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points > this.totalPoints);  
+          this.availableGifts = this.userGifts.filter( x => x.status==='unused').filter( x => x.points <= this.totalPoints);
+        
+        })
+    }) 
+ }
 
   calculatePoints(){
     this.totalPoints = 0;
@@ -158,10 +169,9 @@ fetchGifts(kidId){
       gift['status']='chosen';
       let today = new Date().setHours(0,0,0,0);
       gift['chosenDate']=today;
-      this.service.updateOneGift(gift)
+      this.giftsService.updateOneGift(gift,gift['id'])
      .subscribe( ()=> {
-        let kidId = +localStorage.getItem('loggedKid');
-        this.fetchGifts(kidId);
+        this.fetchGifts();
       });
   }
 

@@ -68,8 +68,6 @@ export class MissionsComponent implements OnInit {
         this.userMissions = userMissions;
         this.activeMissions=this.userMissions.filter( x => !x.finish)
         this.unactiveMissions = this.userMissions.filter( x => x.finish)
-        console.log(this.activeMissions)
-        console.log(this.unactiveMissions)
       })
    }
 }

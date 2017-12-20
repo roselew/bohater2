@@ -56,8 +56,8 @@ export class UsersService {
     return this.kid
   }
 
-  deleteOneKid(kid){
-    this.kidDoc = this.afs.doc(`kids/${kid.login}`)
+  deleteOneKid(kidId){
+    this.kidDoc = this.afs.doc(`kids/${kidId}`)
     this.kidDoc.delete()
     return this.kids
   }
@@ -85,10 +85,15 @@ export class UsersService {
 
   getParentKids(parentId){
     this.parentsKidsCollection = this.afs.collection<any>('kids', ref => {
-      return ref
-              .where('parentId', '==', parentId)
+      return ref.where('parentId', '==', parentId)
     });
-    this.parentsKids = this.parentsKidsCollection.valueChanges();
+    this.parentsKids = this.parentsKidsCollection.snapshotChanges().map(changes => {
+      return changes.map( a => {
+        const data = a.payload.doc.data();
+        data.id = a.payload.doc.id;
+        return data;
+      })
+    })
     return this.parentsKids
   }
 

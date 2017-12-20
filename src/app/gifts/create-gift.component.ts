@@ -25,7 +25,7 @@ export class CreateGiftComponent implements OnInit {
     gift={};
 
     save(){
-      let kidId = +this.route.parent.snapshot.paramMap.get('kidId');
+      let kidId = this.route.parent.snapshot.paramMap.get('kidId');
       this.gift['kidId'] = kidId;
       this.gift['status']='unused';
       this.gift['chosenDate']='';

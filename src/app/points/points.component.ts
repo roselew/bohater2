@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { GiftsService } from "../services/gifts.service";
+import { MissionsService } from '../services/missions.service';
 
 @Component({
   selector: 'points',
@@ -54,10 +55,10 @@ export class PointsComponent implements OnInit {
   constructor(    
     private router: Router,
     private route:ActivatedRoute,
-    private service: GiftsService,
+    private giftsService: GiftsService,
+    private missionsService: MissionsService,
   ) { }
 
-  kid = {};
   userMissions
   userGifts
   unusedGifts
@@ -67,17 +68,28 @@ export class PointsComponent implements OnInit {
   extraPoints
     
   ngOnInit(){
-    let kidId = +this.route.parent.snapshot.paramMap.get('kidId');
-    this.service.getMissionsGiftsPoints(kidId)
-      .subscribe( kid => {
-        this.kid = kid;
-        this.userMissions = this.kid['userMissions'];
-        this.userGifts = this.kid['userGifts'];
+    let kidId = this.route.parent.snapshot.paramMap.get('kidId');
+
+    this.giftsService.fetchGifts(kidId)
+      .subscribe( userGifts => {
+        this.userGifts = userGifts
         this.chosenGifts = this.userGifts.filter (x => x.status==='chosen');
         this.receivedGifts = this.userGifts.filter (x => x.status==='received'); 
-        this.extraPoints = this.kid['extraPoints'];
-        this.showHistory() ;
+        
+        this.giftsService.fetchExtraPoints(kidId)
+          .subscribe( extraPoints => {
+            this.extraPoints = extraPoints
+
+            this.missionsService.fetchMissions(kidId)
+              .subscribe ( userMissions => {
+                this.userMissions = userMissions
+
+                this.showHistory() ;
+              })
+          })
       })
+
+
   }
   
   history=[]
