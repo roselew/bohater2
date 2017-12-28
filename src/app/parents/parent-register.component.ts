@@ -1,6 +1,8 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from "../services/users.service";
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'parent-register',
@@ -53,14 +55,13 @@ export class ParentRegisterComponent implements OnInit {
   parent ={}
   addParent(){
      if (this.parent['password']===this.checkpassword){
-      this.users.createOneParent(this.parent)
-      .subscribe( parent => { 
-        this.parent = parent; 
-        this.router.navigate(['/rodzic-logowanie']);
-      } )
+
+        this.users.parentRegister(this.parent)
+
+       } 
     } 
   }
   
 
 
-}
+

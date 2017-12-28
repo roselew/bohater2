@@ -64,7 +64,9 @@ import { Observable } from 'rxjs/Observable';
   }
 
   addExtraPoints(extraPoints){
+    this.extraPointsCollection = this.afs.collection<any>('extraPoints')
     this.extraPointsCollection.add(extraPoints)
+    this.extraPoints = this.extraPointsCollection.valueChanges()
     return this.extraPoints
   }
 }

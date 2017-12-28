@@ -185,7 +185,6 @@ export class OneDayViewComponent implements OnInit {
  }
 
  move(mission,status){
-   console.log(mission)
   this.selectedMission=mission;
   this.missionStatus=status;
  } 

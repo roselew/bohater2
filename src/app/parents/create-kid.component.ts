@@ -40,14 +40,10 @@ export class CreateKidComponent implements OnInit {
   userHeroId
 
   save(){
-  let parentId = this.users.getLoggedUser('parent');
+  let parentId = this.users.currentUserEmail;
   this.kid['parentId']=parentId;
   this.kid['badges']=[false,false,false,false,false,false,false,false,false]
-  this.users.createOneKid(this.kid)
-    .subscribe( kid=> {
-      this.kid= kid; 
-      this.router.navigate(['/rodzic']);
-    })
+  this.users.kidRegister(this.kid)
   }
 
   ngOnInit() { }

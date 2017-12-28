@@ -43,10 +43,9 @@ export class MissionsService {
   }
 
   updateOneMission(mission,missionId){
-    console.log(mission)
-    console.log(missionId)
     this.userMissionDoc = this.afs.doc(`userMissions/${missionId}`) 
     this.userMissionDoc.update(mission)  
+    this.userMission=this.userMissionDoc.valueChanges()
     return this.userMission
   }
 

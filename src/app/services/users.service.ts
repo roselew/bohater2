@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Kid } from '../models/Kid';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class UsersService {
@@ -20,21 +23,100 @@ export class UsersService {
   parentsKidsCollection: AngularFirestoreCollection<any>
   parentsKids: Observable<any[]>
 
-  constructor(public afs: AngularFirestore) { 
+  authState: any = null;
 
+  constructor(
+    public afs: AngularFirestore,
+    public afAuth: AngularFireAuth,
+    private router: Router,
+    private route:ActivatedRoute,) { 
+    
     this.kidsCollection = this.afs.collection('kids');
     this.kids = this.kidsCollection.valueChanges();
 
     this.parentsCollection = this.afs.collection('parents');
     this.parents = this.parentsCollection.valueChanges();
-   }
+    
+    this.afAuth.authState.subscribe((auth) => {
+      this.authState = auth
+    });
+
+  }
+
+
+  parentLogin(parent){
+    return this.afAuth.auth.signInWithEmailAndPassword(parent.email, parent.password)
+    .then((user) => {
+      this.authState = user
+      //this.createOneParent(user,parent)
+      this.router.navigate(['/rodzic']);
+    })
+    .catch(error => console.log(error));
+  }
+
+
+  parentRegister(parent) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(parent.email, parent.password)
+      .then((user) => {
+        this.authState = user
+        this.createOneParent(user,parent)
+        this.router.navigate(['/rodzic']);
+      })
+      .catch(error => console.log(error));
+  }
+
+  kidLogin(kid){
+    kid.email=kid.login+'@bt.com'
+    return this.afAuth.auth.signInWithEmailAndPassword(kid.email, kid.password)
+    .then((user) => {
+      this.authState = user
+      //this.createOneKid(user,kid)
+      this.router.navigate(['/dziecko']);
+    })
+    .catch(error => console.log(error));
+  }
+
+  kidRegister(kid) {
+    kid.email = kid.login + '@bt.com'
+    return this.afAuth.auth.createUserWithEmailAndPassword(kid.email, kid.password)
+    .then((user) => {
+      this.authState = user
+      this.createOneKid(user,kid)
+      this.router.navigate(['/rodzic']);
+    })
+    .catch(error => console.log(error));
+  }
+  
+
+
+ // Returns true if user is logged in
+  get authenticated(): boolean {
+    return this.authState !== null;
+  }
+
+      // Returns current user UID
+  get currentUserId(): string {
+    return this.authenticated ? this.authState.uid : '';
+  }
+
+  get currentUserEmail(): string {
+    if (!this.authState) { return 'Guest' }
+    else { return this.authState['email'] || 'No email provided' }
+  }
+
+  get currentUserLogin(): string {
+    if (!this.authState) { return 'Guest' }
+    else { return this.authState['email'].replace('@bt.com','') || 'No login provided' }
+  }
    
   getLoggedUser(mode){
+
    if (mode=='parent') {
-     return localStorage.getItem('loggedParent')
+    return this.currentUserEmail
    } else if (mode=='kid') {
-     return localStorage.getItem('loggedKid')
+    return this.currentUserLogin
    } 
+
   }
 
   setLoggedUser(mode,id){
@@ -68,10 +150,7 @@ export class UsersService {
     return this.kid 
   }
 
-  createOneKid(kid){
-    this.kidsCollection.doc(`${kid.login}`).set(kid)
-    return this.kids
-  }
+
 
   fetchParents() {
     return this.parents
@@ -83,23 +162,50 @@ export class UsersService {
     return this.parent
   }
 
-  getParentKids(parentId){
-    this.parentsKidsCollection = this.afs.collection<any>('kids', ref => {
-      return ref.where('parentId', '==', parentId)
+  getParentKids(){
+
+    this.kidsCollection = this.afs.collection<any>('kids', ref => {
+      return ref.where('parentId', '==', this.currentUserEmail)
     });
-    this.parentsKids = this.parentsKidsCollection.snapshotChanges().map(changes => {
+    this.kids = this.kidsCollection.snapshotChanges().map(changes => {
       return changes.map( a => {
         const data = a.payload.doc.data();
         data.id = a.payload.doc.id;
         return data;
       })
     })
-    return this.parentsKids
+    return this.kids
   }
 
-  createOneParent(parent){
-    this.parentsCollection.doc(`${parent.email}`).set(parent)
-    return this.parents
+  createOneParent(user,parent){
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`parents/${parent.email}`);
+
+    const data = {
+      uid: user.uid,
+      email: parent.email,
+      displayname: 'mama'
+    }
+
+    return userRef.set(data)
+    
+  }
+
+  createOneKid(user,kid){
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`kids/${kid.login}`);
+
+    const data = {
+      uid: user.uid,
+      login: kid.login,
+      name: kid.name,
+      parentId: kid.parentId,
+      badges: kid.badges,
+      birth: kid.birth,
+      heroId: kid.heroId,
+      password: kid.password,
+    }
+
+    return userRef.set(data)
+    
   }
 
 

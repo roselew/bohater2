@@ -35,7 +35,7 @@ export class ExtraPointsComponent implements OnInit {
   ngOnInit(){ }
 
    save(){
-    let kidId = +this.route.parent.snapshot.paramMap.get('kidId');
+    let kidId = this.route.parent.snapshot.paramMap.get('kidId');
     this.extraPoints['kidId']= kidId;
     let today = new Date().setHours(0,0,0,0);
     this.extraPoints['date']=today;

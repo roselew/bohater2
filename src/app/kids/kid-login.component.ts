@@ -11,7 +11,7 @@ import { UsersService } from "../services/users.service";
   
   <div class="title-container">
   
-   <form>
+   <form #formRef="ngForm" (submit)="login()">
 
      <input type='text' placeholder='Email' [(ngModel)]="kid['login']" name="login">
 
@@ -25,13 +25,8 @@ import { UsersService } from "../services/users.service";
 
    </form>
 
-  <p> Logowanie tymczasowe, kliknij na dziecko żeby się zalogować </p>
-  <ul>
-    <li *ngFor="let kid of kids"
-        (click)="logOn(kid.login)">
-        {{kid.name}}
-    </li>
-  </ul>
+   </div>
+
 
 
   `,
@@ -40,14 +35,8 @@ import { UsersService } from "../services/users.service";
 })
 export class KidLoginComponent implements OnInit {
 
-  logOn(kidId){
-    this.users.setLoggedUser('kid',kidId)
-    debugger
-    this.router.navigate(['/dziecko'])   
-  }
-
   constructor(
-    private users: UsersService,
+    public users: UsersService,
     private router: Router,
     private route: ActivatedRoute,
     private renderer: Renderer2) { 
@@ -55,13 +44,13 @@ export class KidLoginComponent implements OnInit {
       this.renderer.addClass(document.body,'title-page')
     }
 
-  kids
   kid={}
 
-  ngOnInit() {
-    this.users.fetchKids()
-    .subscribe( kids => this.kids = kids )
+  login() {
+    this.users.kidLogin(this.kid)
   }
+
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.renderer.removeClass(document.body, 'kid');

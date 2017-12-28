@@ -27,7 +27,7 @@ import { UsersService } from "../services/users.service";
 export class KidsComponent implements OnInit {
 
   constructor(
-    private users: UsersService,
+    public users: UsersService,
     private router: Router,
     private route:ActivatedRoute,
     private renderer: Renderer2) { 
@@ -38,15 +38,12 @@ export class KidsComponent implements OnInit {
       this.renderer.removeClass(document.body, 'title-page');
     }
   
-  parent = {};
   kids
 
    ngOnInit(){
-     let parentId = this.users.getLoggedUser('parent');
-     this.users.getParentKids(parentId)
-        .subscribe( parentsKids => {
-          //this.parent = parent;
-          this.kids = parentsKids;
+     this.users.getParentKids()
+        .subscribe( kids => {
+          this.kids = kids;
          })
    } 
 }

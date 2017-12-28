@@ -91,18 +91,18 @@ export class WelcomeComponent implements OnInit {
   
 
     ngOnInit(){
-      this.service.getKids().subscribe( kids => {
-        console.log(kids)
-      })
-      this.service.getUserMissions('kasia2').subscribe( userMissions => {
-          console.log(userMissions)
-      })
-      this.service.getUserGifts('kasia2').subscribe( userGifts => {
-        console.log(userGifts)
-      })
-      this.users.getParentKids('annakowalska@gmail.com').subscribe( kids => {
-        console.log(kids)
-      })
+      // this.service.getKids().subscribe( kids => {
+      //   console.log(kids)
+      // })
+      // this.service.getUserMissions('kasia2').subscribe( userMissions => {
+      //     console.log(userMissions)
+      // })
+      // this.service.getUserGifts('kasia2').subscribe( userGifts => {
+      //   console.log(userGifts)
+      // })
+      // this.users.getParentKids('annakowalska@gmail.com').subscribe( kids => {
+      //   console.log(kids)
+      // })
       
     }
     
