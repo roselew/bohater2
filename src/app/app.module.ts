@@ -72,7 +72,6 @@ import { MissionsService } from './services/missions.service';
 import { GiftsService } from './services/gifts.service';
 import { AuthParentService } from "./services/auth-parent.service";
 import { AuthKidService } from "./services/auth-kid.service";
-import { SessionModule } from "./session/session.module";
 import { UsersService } from "./services/users.service";
 import { ExpertsService } from "./services/experts.service";
 import { FirebaseService } from './services/firebase.service';
@@ -158,7 +157,6 @@ import { AppSpinnerComponent } from './app-spinner.component';
     Routing,
     FormsModule,
     HttpClientModule,
-    SessionModule,
     CoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features

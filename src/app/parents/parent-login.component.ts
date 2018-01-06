@@ -81,10 +81,6 @@ export class ParentLoginComponent implements OnInit {
       .then ( () => this.showSpinner = false)
     }
 
-    logout() {
-      this.afAuth.auth.signOut();
-    }
-
   parents
   ngOnInit() {}
 

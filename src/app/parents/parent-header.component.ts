@@ -10,15 +10,27 @@ import { UsersService } from "../services/users.service";
 	<img src="assets/logo.png" class="logo">
 	<nav [ngClass]="{'hide': menuVisible == false }"> 
 			<ul class="nav-main">
-					<li><a routerLink="misje" (click)="toggleMenu()">MISJE</a></li>
-					<li><a routerLink="postepy/0" (click)="toggleMenu()">POSTĘPY</a></li>
-          <li><a routerLink="nagrody" (click)="toggleMenu()">NAGRODY</a></li>
-          <li><a routerLink="punkty" (click)="toggleMenu()">PUNKTY</a></li>
+          <li routerLink="misje" (click)="toggleMenu()">
+            <img src="../../assets/mission.svg"> 
+            <p>MISJE</p>
+          </li>
+          <li routerLink="postepy/0" (click)="toggleMenu()">
+            <img src="../../assets/odznaki.png"> 
+            <p>POSTĘPY</p>
+          </li>
+          <li routerLink="nagrody" (click)="toggleMenu()">
+            <img src="../../assets/gift.svg"> 
+            <p>NAGRODY</p>
+          </li>
+          <li routerLink="punkty" (click)="toggleMenu()">
+            <img src="../../assets/addstars.svg"> 
+            <p>PUNKTY</p>
+          </li>
 				</ul>
 				<ul ngClass="" class="nav-add">
 					<li (click)="goToKid()">Przejdź na stronę dziecka</li>
-					<li><a routerLink="edytuj-dziecko" (click)="toggleMenu()">Ustawienia profilu dziecka</a></li>
-					<li><a routerLink='/rodzic'>Przełącz dziecko</a></li>
+					<li routerLink="edytuj-dziecko" (click)="toggleMenu()">Ustawienia profilu dziecka</li>
+					<li routerLink='/rodzic'>Przełącz dziecko</li>
 				</ul>
     </nav>
 	<label for="nav" (click)="toggleMenu()"></label>

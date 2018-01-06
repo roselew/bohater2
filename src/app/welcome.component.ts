@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FirebaseService } from './services/firebase.service';
 import { UsersService } from './services/users.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'welcome',
@@ -10,14 +11,17 @@ import { UsersService } from './services/users.service';
     
       <app-header [simpleH1]="'Bohater'" [skewH1]="'Tygodnia'"></app-header> 
 
+      
+
       <div class="title-container">
-          <button class="enter parent" routerLink='/rodzic'>RODZIC</button>
-          <div class="avatar-images">
+          <button class="enter parent" (click)="goToParent()">RODZIC</button>
+          <app-spinner class="avatar-images" *ngIf="showSpinner"></app-spinner>
+          <div class="avatar-images" *ngIf="!showSpinner">
             <img src="assets/bohater2.png" width="25%">
             <img src="assets/bohater.png" width="30%">
             <img src="assets/bohater3.png" width="25%">
           </div>
-          <button class="enter kid" routerLink='/dziecko'>DZIECKO</button>
+          <button class="enter kid" (click)="goToKid()" >DZIECKO</button>
       </div>
   
       <a (click)="goTo('section02')" class="scrolling"><span></span>Dowiedz się więcej</a>
@@ -81,6 +85,8 @@ import { UsersService } from './services/users.service';
 export class WelcomeComponent implements OnInit {
 
   constructor(
+    private router: Router,
+    private route:  ActivatedRoute,   
     private service: FirebaseService, 
     private users: UsersService,
     private renderer: Renderer2) { 
@@ -88,7 +94,18 @@ export class WelcomeComponent implements OnInit {
       this.renderer.addClass(document.body,'title-page')
     }
   
+    showSpinner: boolean = false
+
   
+    goToKid() {
+      this.showSpinner = true; 
+      this.router.navigate(['/dziecko'])
+    }
+
+    goToParent() {
+      this.showSpinner = true; 
+      this.router.navigate(['/rodzic'])
+    }
 
     ngOnInit(){
       // this.service.getKids().subscribe( kids => {

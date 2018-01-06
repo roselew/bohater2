@@ -392,6 +392,17 @@ input[type=checkbox] {
 	cursor: pointer;
 }
 
+p.logout{
+	padding: 10px;
+	color: white;
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: $font_mini_size;
+	text-align: right;
+	cursor: pointer;
+}
+
 /* Scroll down indicator (bouncing) */
 @-webkit-keyframes bounce {
 	0%, 20%, 50%, 80%, 100% {

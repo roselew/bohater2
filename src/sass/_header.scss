@@ -25,7 +25,8 @@ header{
 		left: 0px;
 		width: 100%;
 		height: $header_banner_height;
-		
+		cursor: pointer;
+
 		font: $font_title_size $font_title_family;
 		text-align: center;
 		padding-left: 5%;
@@ -78,8 +79,28 @@ header{
 		li:hover {
 			box-shadow: 0 0 50px dimgray;
 		}
-		.nav-main li {	background-color: white}
-		.nav-add li { background-color: mix($color_back_parent,white)}
+		.nav-main {
+			margin-left: 1%;
+		}
+		.nav-main li {	
+			position: relative;
+			display: inline-block;
+			height: 22vh;
+			width: 49%;
+			// text-align: right;
+			padding: 2vh 0;
+			font: 1.5*$font_big_size $font_reg_family;
+			background-color: mix($color_back_parent, white);
+			vertical-align: bottom;
+			// line-height: 25vh;
+			img {
+				// position: absolute;
+				// top: 1rem;
+				// left: 1rem;
+				height: 10vh;
+			}
+		}
+		.nav-add li { background-color: mix($color_back_parent, white);}
 	}
 }
 

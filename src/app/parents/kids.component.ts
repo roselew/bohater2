@@ -1,14 +1,16 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from "../services/users.service";
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'kids',
   template: `
 
   <header>	
-	  <div class="header-banner">MENU</div>
-	  <img src="assets/logo.png" class="logo">
+	  <div [routerLink]="['/witaj']" class="header-banner">MENU</div>
+    <img src="assets/logo.png" class="logo">
+    <p class="logout" (click)="logout()">Witaj {{parent}}! <br> Wyloguj </p>
   </header>
 
   <div class="container">
@@ -30,6 +32,7 @@ import { UsersService } from "../services/users.service";
 export class KidsComponent implements OnInit {
 
   constructor(
+    public afAuth: AngularFireAuth,
     public users: UsersService,
     private router: Router,
     private route:ActivatedRoute,
@@ -43,9 +46,17 @@ export class KidsComponent implements OnInit {
   
     showSpinner: boolean = true
 
-  kids
+    logout() {
+      this.afAuth.auth.signOut()
+      .then( () => this.router.navigate(['/witaj']))
+    }
 
+  kids
+  parent 
    ngOnInit(){
+
+    this.parent = this.users.currentUserEmail
+
      this.users.getParentKids()
         .subscribe( kids => {
           this.kids = kids;
