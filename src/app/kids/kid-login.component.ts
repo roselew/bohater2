@@ -11,7 +11,9 @@ import { UsersService } from "../services/users.service";
   
   <div class="title-container">
   
-   <form #formRef="ngForm" (submit)="login()">
+  <app-spinner *ngIf="showSpinner"></app-spinner>
+
+   <form #formRef="ngForm" *ngIf="!showSpinner" (submit)="login()">
 
      <input type='text' placeholder='Email' [(ngModel)]="kid['login']" name="login">
 
@@ -46,8 +48,12 @@ export class KidLoginComponent implements OnInit {
 
   kid={}
 
+  showSpinner: boolean = false
+
   login() {
+    this.showSpinner = true
     this.users.kidLogin(this.kid)
+    .then ( () => this.showSpinner = false)
   }
 
   ngOnInit() {}

@@ -12,10 +12,10 @@ li.circle-big {
 	border-style: solid;
 	border-radius: $mission_big_size;
 	background-color: white;
-	transition: all 1s;
-	transform-origin: 50% 50%;
-	&:hover{transform: scale(1.2);}
 	cursor: pointer;
+	&:hover {
+		box-shadow: 0 0 100px rgba(black, 0.4);
+	}
 
 	// mission icon
 	img{
@@ -97,10 +97,12 @@ li.circle-mid {
 	border-radius: $mission_mid_size;
 	background-color: white;
 	cursor: pointer;
+	&:hover {
+		box-shadow: 0 0 50px rgba(black, 0.4);
+		//box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
 
-	transition: all 1s;
-	transform-origin: 50% 50%;
-	&:hover{transform: scale(1.2);}
+
 
 	// mission icon
 	img{

@@ -53,6 +53,7 @@ header{
 		width: 100%;
 		height: 100vh;
 		background-color: $color_back_parent;
+		// background-color: $color_back_parent;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     
@@ -62,7 +63,7 @@ header{
 			width: 100%;
 			font: $font_big_size $font_reg_family;
 			line-height: 11vh; 
-			color: white;
+			color: $color_text_parent;
 			text-align: center;
 			margin-bottom: 5px;
 		}
@@ -72,10 +73,13 @@ header{
 			width: 100%;
 			font: $font_big_size $font_reg_family;
 			line-height: 11vh;
-			color: white !important; 
+			color: $color_text_parent !important; 
 		}
-		.nav-main li {	background-color: $color_text_parent;}
-		.nav-add li { background-color: $color_dark_grey}
+		li:hover {
+			box-shadow: 0 0 50px dimgray;
+		}
+		.nav-main li {	background-color: white}
+		.nav-add li { background-color: mix($color_back_parent,white)}
 	}
 }
 

@@ -8,6 +8,10 @@ import { MissionsService } from '../services/missions.service';
   selector: 'kid-gifts',
   template: `
 
+  <p *ngIf="userGifts && userGifts.length==0" class="smallTitle"> 
+     Nie masz żadnych nagród. Poproś rodzica o dodanie.
+  </p>
+
   <ul class="mission-neutral mission-done mission-active">
     <li *ngFor="let userGift of availableGifts"
     class="circle-big"

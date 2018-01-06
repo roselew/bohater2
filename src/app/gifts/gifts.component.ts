@@ -8,9 +8,13 @@ import { UsersService } from '../services/users.service';
   selector: 'gifts',
   template: `
 
+  <p *ngIf="userGifts && userGifts.length==0" class="smallTitle"> 
+    Dziecko nie ma jeszcze żadnych nagród. Dodaj kilka przyciskiem + w prawym dolnym rogu strony
+  </p>
+
    <div *ngIf="(chosenGifts && chosenGifts.length>0)" class="chosenGiftsPanel">
      <div class="panelTitle">
-         <p>{{kid['name']}} wybrało nagrodę</p>
+         <p> Dziecko wybrało nagrodę</p>
     </div>
   
     <ul class="mission-neutral"
@@ -30,7 +34,7 @@ import { UsersService } from '../services/users.service';
 
  </div>
 
-<p class="smallTitle">Dziecko ma {{totalPoints}} punktów </p>
+<p class="smallTitle">Dziecko zdobyło {{totalPoints}} pkt </p>
 
   <ul class="mission-neutral mission-done">
   <li 
@@ -45,7 +49,7 @@ import { UsersService } from '../services/users.service';
       <span>{{userGift.points}}</span>
   </li> 
 </ul>
-<ul class="mission-neutral">
+<ul class="mission-neutral highlight">
 <li 
   *ngFor="let userGift of unusedGifts" 
   [routerLink]="[userGift.id]"

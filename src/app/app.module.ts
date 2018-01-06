@@ -77,6 +77,7 @@ import { UsersService } from "./services/users.service";
 import { ExpertsService } from "./services/experts.service";
 import { FirebaseService } from './services/firebase.service';
 import { CoreModule } from './core.module';
+import { AppSpinnerComponent } from './app-spinner.component';
 
 
 
@@ -146,6 +147,7 @@ import { CoreModule } from './core.module';
     ParentProgressComponent,
     MoveMissionComponent,
     AppAlertComponent,
+    AppSpinnerComponent,
     HeroProgressComponent,
     
     

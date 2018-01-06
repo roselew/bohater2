@@ -6,7 +6,7 @@ import { MissionsService } from "../services/missions.service";
   selector: 'missions',
   template: `
 
-  <ul *ngIf="userMissions && userMissions.length>0" class="mission-neutral">
+  <ul *ngIf="userMissions && userMissions.length>0; else other_content" class="mission-neutral">
     <li 
       *ngFor="let mission of activeMissions" 
       [routerLink]="[mission.id]"
@@ -20,6 +20,10 @@ import { MissionsService } from "../services/missions.service";
         <span>{{mission.points}}</span>
     </li> 
   </ul>
+
+  <ng-template #other_content>
+    <p class="smallTitle"> Dziecko nie ma jeszcze żadnych misji. Dodaj kilka przyciskiem + w prawym dolnym rogu strony</p>
+  </ng-template>
 
  <p *ngIf="unactiveMissions && unactiveMissions.length>0" class="smallTitle">Zakończone misje </p>
   <ul class="mission-neutral mission-unactive">

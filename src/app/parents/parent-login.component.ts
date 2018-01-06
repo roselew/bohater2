@@ -21,7 +21,9 @@ import * as firebase from 'firebase/app';
 
   <div class="title-container">
    
-    <form #formRef="ngForm" (submit)="login()">
+  <app-spinner *ngIf="showSpinner"></app-spinner>
+
+    <form #formRef="ngForm" *ngIf="!showSpinner" (submit)="login()">
 
       <input type='text' placeholder='Email' [(ngModel)]="parent['email']" name="email">
         <!-- <span *ngIf="formRef.controls.email?.touched  || formRef.controls.email?.dirty"> 
@@ -50,6 +52,8 @@ export class ParentLoginComponent implements OnInit {
 
  parent ={}
  
+ showSpinner: boolean = false
+
 //     login(form) {
 //     if(form.invalid){
 //       return;
@@ -72,7 +76,9 @@ export class ParentLoginComponent implements OnInit {
     }
 
     login() {
+      this.showSpinner = true
       this.users.parentLogin(this.parent)
+      .then ( () => this.showSpinner = false)
     }
 
     logout() {

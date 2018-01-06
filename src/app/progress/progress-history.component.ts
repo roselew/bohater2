@@ -10,8 +10,9 @@ import { UsersService } from '../services/users.service';
   <br>
   
   <div *ngFor="let week of weekHistory"
-        [routerLink]="['../',week.weekId]">
-        
+        [routerLink]="['../',week.weekId]"
+        class="div-highlight">
+          
       <p style="font-size: 3.5rem"> {{showWeekName(week)}} </p>
       
       <progress-bar-week 
@@ -23,7 +24,7 @@ import { UsersService } from '../services/users.service';
   </div>
 
   `,
-  styles: [],
+  styles: [ ],
 
 })
 export class ProgressHistoryComponent implements OnInit {

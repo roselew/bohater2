@@ -8,18 +8,28 @@ import { ExpertsService } from '../services/experts.service';
   selector: 'one-week',
   template: `
 
-  <div class="week" *ngIf="firstDate">
+  
+  <p *ngIf="userMissions && userMissions.length==0 && mode=='parent'" class="smallTitle"> 
+    Nie ma żadnych postępów, bo nie dodałeś jeszcze żadnych misji do wykonania. <br>
+    Wybierz przycisk MENU w prawym górnym rogu, a następnie MISJE. 
+  </p>
+
+  <p *ngIf="userMissions && userMissions.length==0 && mode=='kid'" class="smallTitle"> 
+    Poproś rodzica o dodanie misji do wykonania. 
+  </p>
+  
+  <div class="week" *ngIf="firstDate && userMissions && userMissions.length>0"> 
     <span [routerLink]="['../',weekId -1]" class="prev">&lsaquo;</span>
     <a routerLink='../historia'>{{firstDate.getDate()}} {{firstDate.getMonth()==endDate.getMonth() ? '' : monthNames[firstDate.getMonth()]}} - {{endDate.getDate()}} {{monthNames[endDate.getMonth()]}}</a>
     <span [routerLink]="['../',weekId +1]" class="next">&rsaquo;</span> 
   </div>		
   
-  <progress-bar-week *ngIf="weekProgress"
+  <progress-bar-week *ngIf="weekProgress && userMissions && userMissions.length>0"
     [waitWidth]="100*(weekProgress.nWait+weekProgress.nDone)/weekProgress.nAll" 
     [doneWidth]="100*weekProgress.nDone/weekProgress.nAll">
   </progress-bar-week>
  
-    <div class="filter" *ngIf="weekProgress">
+    <div class="filter" *ngIf="weekProgress && userMissions && userMissions.length>0">
       <button class="show-all" (click)="applyFilter('all')" [ngClass]="{'selected': (filter=='all')}"><span>{{weekProgress.nAll}}</span>
         </button><button class="show-undone" (click)="applyFilter('undone')" [ngClass]="{'selected': (filter=='undone')}"><span>{{weekProgress.nAll-weekProgress.nWait-weekProgress.nDone}}</span>
         </button><button class ="show-wait" (click)="applyFilter('wait')" [ngClass]="{'selected': (filter=='wait')}"><span>{{weekProgress.nWait}}</span>
@@ -29,7 +39,7 @@ import { ExpertsService } from '../services/experts.service';
     </div>
 
    <div *ngFor="let day of days">
-    <one-day-view *ngIf="userMissions"
+    <one-day-view *ngIf="userMissions && userMissions.length>0"
         (onChange)="fetchMissions()" 
         [mode]="mode" 
         [type]="type"
@@ -38,6 +48,8 @@ import { ExpertsService } from '../services/experts.service';
         [userMissions]="userMissions">
     </one-day-view>
   </div>
+
+
   
   `,
   styles: [],

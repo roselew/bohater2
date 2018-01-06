@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { UsersService } from "../services/users.service";
 import { FirebaseService } from '../services/firebase.service';
+import { SpinnerService } from '../services/spinner.service';
 
 @Component({
   selector: 'create-kid',
@@ -11,12 +12,16 @@ import { FirebaseService } from '../services/firebase.service';
    
    <div class="title-container">
 
-      <view-kid [kid]="kid" ></view-kid>
+      <app-spinner *ngIf="showSpinner"></app-spinner>
+
+      <view-kid *ngIf="!showSpinner" [kid]="kid"></view-kid>
 
     <button (click)="save()">DODAJ DZIECKO</button>
     <button class="altButton" routerLink="../">Powrót</button>
 
   </div>
+
+  
 
   `,
   styles: [],
@@ -39,14 +44,24 @@ export class CreateKidComponent implements OnInit {
   kid={};
   userHeroId
 
+  showSpinner: boolean = false
+
   save(){
-  let parentId = this.users.currentUserEmail;
-  this.kid['parentId']=parentId;
-  this.kid['badges']=[false,false,false,false,false,false,false,false,false]
-  this.users.kidRegister(this.kid)
+    if (this.kid['password']===this.kid['checkpassword']){
+      this.showSpinner = true
+      let parentId = this.users.currentUserEmail;
+      this.kid['parentId']=parentId;
+      this.kid['badges']=[false,false,false,false,false,false,false,false,false]
+      this.users.kidRegister(this.kid)
+      .then( () => this.showSpinner = false )
+    } else {
+      alert('Upewnij się czy dobrze wpisałeś hasło')
+      this.showSpinner = false 
+    }
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+  }
 
 
 }

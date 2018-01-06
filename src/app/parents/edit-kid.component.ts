@@ -41,8 +41,7 @@ export class EditKidComponent implements OnInit {
    }
 
    remove(){
-     this.users.deleteOneKid(this.kid)
-      .subscribe( ()=> this.router.navigate(['/rodzic']))
+     this.users.deleteOneKid(this.kid.login)
    }
 
 

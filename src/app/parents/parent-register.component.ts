@@ -11,8 +11,10 @@ import * as firebase from 'firebase/app';
   <app-header [simpleH1]="'Rodzic'" [skewH1]="'Rejestracja'"></app-header> 
 
   <div class="title-container">
+
+  <app-spinner *ngIf="showSpinner"></app-spinner>
   
-    <form action='rodzic_login.html'>
+    <form action='rodzic_login.html' *ngIf="!showSpinner">
     
       <input type='text' placeholder='E-mail' [(ngModel)]="parent['email']" name="email">
 
@@ -53,13 +55,18 @@ export class ParentRegisterComponent implements OnInit {
 
   checkpassword
   parent ={}
+  showSpinner: boolean = false
+
   addParent(){
      if (this.parent['password']===this.checkpassword){
-
+        this.showSpinner = true
         this.users.parentRegister(this.parent)
+        .then ( () => this.showSpinner = false)
+      } else {
+        alert('Hasło się nie zgadza')
+      }
+  } 
 
-       } 
-    } 
   }
   
 

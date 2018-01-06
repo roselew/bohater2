@@ -6,6 +6,7 @@ import { Kid } from '../models/Kid';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Router, ActivatedRoute } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UsersService {
@@ -48,10 +49,20 @@ export class UsersService {
     return this.afAuth.auth.signInWithEmailAndPassword(parent.email, parent.password)
     .then((user) => {
       this.authState = user
-      //this.createOneParent(user,parent)
-      this.router.navigate(['/rodzic']);
+      return this.router.navigate(['/rodzic']);
     })
-    .catch(error => console.log(error));
+    .catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === 'auth/invalid-email') {
+        alert('Niepoprawny adres email');
+      } else if (errorCode === "auth/wrong-password") {
+        alert('Niepoprawne hasło');
+      } else {        
+        alert(errorMessage);
+      }
+      console.log(error)
+    });
   }
 
 
@@ -70,21 +81,48 @@ export class UsersService {
     return this.afAuth.auth.signInWithEmailAndPassword(kid.email, kid.password)
     .then((user) => {
       this.authState = user
-      //this.createOneKid(user,kid)
-      this.router.navigate(['/dziecko']);
+      return this.router.navigate(['/dziecko']);
     })
-    .catch(error => console.log(error));
+    .catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === 'auth/invalid-email') {
+        alert('Niepoprawny login');
+      } else if (errorCode === "auth/wrong-password") {
+        alert('Niepoprawne hasło');
+      } else {        
+        alert(errorMessage);
+      }
+      console.log(error)
+    });
   }
 
   kidRegister(kid) {
+
+    var secondaryApp = firebase.initializeApp(environment.firebase, "Secondary")
+
     kid.email = kid.login + '@bt.com'
-    return this.afAuth.auth.createUserWithEmailAndPassword(kid.email, kid.password)
-    .then((user) => {
-      this.authState = user
-      this.createOneKid(user,kid)
-      this.router.navigate(['/rodzic']);
-    })
-    .catch(error => console.log(error));
+    return secondaryApp.auth().createUserWithEmailAndPassword(kid.email, kid.password)
+    .then((user) => 
+      this.createOneKid(user,kid).then( () => 
+        secondaryApp.delete().then( () => 
+          this.router.navigate(['/rodzic/dziecko/'+kid.login+'/misje'])
+        )      
+      )
+    )
+    .catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === 'auth/weak-password') {
+        alert('Hasło za słabe. Minimalna długość to 6 znaków');
+      } else if (errorCode === "auth/email-already-in-use") {
+        alert('Taki użytkownik jest już dostępny. Wybierz inny login');
+      } else {        
+        alert(errorMessage);
+      }
+      console.log(error)
+      secondaryApp.delete()
+    }) 
   }
   
 
@@ -139,10 +177,28 @@ export class UsersService {
   }
 
   deleteOneKid(kidId){
-    this.kidDoc = this.afs.doc(`kids/${kidId}`)
-    this.kidDoc.delete()
-    return this.kids
-  }
+    console.log(kidId)
+    this.afs.doc(`kids/${kidId}`).delete()
+    .then( () => {
+
+      // let userMissionsCollection = this.afs.collection<any>('userMissions', ref => {
+      //   // Compose a query using multiple .where() methods
+
+      //   return ref
+      //           .where('kidId', '==', kidId)
+                
+      // });
+
+      // userMissionsCollection.snapshotChanges().map(changes => {
+      //   return changes.map( a => {
+      //     console.log(a.payload.doc.ref)
+      //     return a.payload.doc.ref.delete()
+      //   })
+      
+      this.router.navigate(['/rodzic']) 
+    })
+    // 
+}
 
   updateOneKid(kid){
     this.kidDoc = this.afs.doc(`kids/${kid.login}`)

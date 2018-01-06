@@ -5,7 +5,7 @@ import { UsersService } from "../services/users.service";
 @Component({
   selector: 'parent-header',
   template: `
-  <header>	
+  <header *ngIf="kid">	
 	<div class="header-banner">{{kid.name}}</div>
 	<img src="assets/logo.png" class="logo">
 	<nav [ngClass]="{'hide': menuVisible == false }"> 

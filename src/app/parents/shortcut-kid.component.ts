@@ -7,8 +7,8 @@ import { UsersService } from '../services/users.service';
   selector: 'shortcut-kid',
   template: `
 
-  <a [routerLink]="['/rodzic/dziecko/'+kidId]" *ngIf="kid">
-    <div class="kid-label" [routerLink]="['/rodzic/dziecko/'+kidId]">{{kid.name}}
+  <a [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']" *ngIf="kid">
+    <div class="kid-label">{{kid.name}}
     </div>	
   </a>
 
@@ -46,6 +46,8 @@ import { UsersService } from '../services/users.service';
   
 </div>
 
+<app-spinner *ngIf="!userMissions || !userGifts"></app-spinner>
+
   `,
   styles: [],
 
@@ -65,12 +67,12 @@ export class ShortcutKidComponent implements OnInit {
   userMissions
   userGifts
 
-
+  ready = 0
 
   ngOnInit() {
 
     this.usersService.getOneKid(this.kidId)
-      .subscribe ( kid => this.kid = kid )
+      .subscribe ( kid => {this.kid = kid} )
 
     this.giftsService.fetchGifts(this.kidId)
       .subscribe ( userGifts => this.userGifts = userGifts)

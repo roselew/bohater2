@@ -16,11 +16,14 @@ import { UsersService } from "../services/users.service";
   <div class="kid-container" *ngFor="let kid of kids">
     <shortcut-kid [kidId]="kid.id"></shortcut-kid>
   </div>
+
+  <p *ngIf="kids && kids.length == 0" class="smallTitle"> Dodaj dziecko przyciskiem + w prawym dolnym rogu strony</p>
   
   <a routerLink="dodaj-dziecko">
     <div class="plus">+</div>
   </a>
 
+  <app-spinner *ngIf="showSpinner"></app-spinner>
   `,
   styles: [],
 })
@@ -38,12 +41,15 @@ export class KidsComponent implements OnInit {
       this.renderer.removeClass(document.body, 'title-page');
     }
   
+    showSpinner: boolean = true
+
   kids
 
    ngOnInit(){
      this.users.getParentKids()
         .subscribe( kids => {
           this.kids = kids;
+          this.showSpinner = false
          })
    } 
 }

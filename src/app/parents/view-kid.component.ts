@@ -13,7 +13,7 @@ import { ExpertsService } from '../services/experts.service';
   
       <input type='password' placeholder='Hasło dziecka' [(ngModel)]="kid.password" name="password">
   
-      <input type='password' placeholder='Powtórz hasło dziecka' [(ngModel)]="checkpassword" name="checkpassword">
+      <input type='password' placeholder='Powtórz hasło dziecka' [(ngModel)]="kid.checkpassword" name="checkpassword">
   
       <input type="radio" name="kids-gender" id="gender-left"><label for="gender-left" class="double">Chłopiec</label>
       <input type="radio" name="kids-gender" id="gender-right"><label for="gender-right" class="double">Dziewczynka</label>
@@ -48,7 +48,7 @@ export class ViewKidComponent implements OnInit {
 
 expertHeroes
 
-checkpassword
+
   constructor(
     private experts: ExpertsService,
   ) { }
