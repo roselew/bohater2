@@ -143,10 +143,22 @@ export class UsersService {
   }
 
   get currentUserLogin(): string {
-    if (!this.authState) { return 'Guest' }
+    if (this.currentKid) { return this.currentKid} 
+    else if (!this.authState) { return 'Guest' }
     else { return this.authState['email'].replace('@bt.com','') || 'No login provided' }
   }
    
+  currentParentKid: string;
+
+  get currentKid(): string {
+    return this.currentParentKid
+  }
+
+  set currentKid(value: string) {
+    this.currentParentKid = value;
+}
+
+
   getLoggedUser(mode){
 
    if (mode=='parent') {

@@ -19,7 +19,7 @@ export class AuthKidService implements CanActivate  {
   canActivate(
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot): Observable<boolean> | boolean {
-     return this.auth.kid
+     return !!this.users.currentKid || this.auth.kid
       .take(1)
       .map(kid => !!kid)
       .do (loggedIn => {

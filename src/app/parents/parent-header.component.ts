@@ -27,10 +27,11 @@ import { UsersService } from "../services/users.service";
             <p>PUNKTY</p>
           </li>
 				</ul>
-				<ul ngClass="" class="nav-add">
+        <ul ngClass="" class="nav-add">
+          <li routerLink='/rodzic'>Powrót do listy dzieci</li>  
 					<li (click)="goToKid()">Przejdź na stronę dziecka</li>
-					<li routerLink="edytuj-dziecko" (click)="toggleMenu()">Ustawienia profilu dziecka</li>
-					<li routerLink='/rodzic'>Przełącz dziecko</li>
+					<li routerLink='edytuj-dziecko' (click)="toggleMenu()">Edytuj profil dziecka</li>
+
 				</ul>
     </nav>
 	<label for="nav" (click)="toggleMenu()"></label>
@@ -51,7 +52,7 @@ export class ParentHeaderComponent implements OnInit {
   kid
 
   goToKid(){
-    this.users.setLoggedUser('kid',this.kid.login)
+    this.users.currentKid = this.kid.login
     this.router.navigate(['/dziecko'])
    }
 

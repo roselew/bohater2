@@ -2,11 +2,14 @@ import { Component, OnInit, Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from "../services/users.service";
 import { ExpertsService } from '../services/experts.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'kid-menu',
   template: `
- 
+
+  <p class="logout" (click)="logout()">Witaj {{kid.name}}! <br> Wyloguj </p>
+
   <ul>
     <a routerLink="../bohater"><li class="menu-bohater" [ngStyle]="{'background': heroImage}"><p>BOHATER</p></li></a>
     <a routerLink='../misje/0'><li class="menu-misje"><p>MISJE</p></li></a>
@@ -25,12 +28,19 @@ export class KidMenuComponent implements OnInit {
   //   <ng-template #unloggedInfo><p>Nie jesteś zalogowany</p></ng-template>
 
   constructor(
+    public afAuth: AngularFireAuth,
     private users: UsersService,
     private experts: ExpertsService,
     private router: Router,
     private route:  ActivatedRoute,   
     private renderer: Renderer2) { 
       this.renderer.addClass(document.body,'title-page')
+    }
+
+    logout() {
+      this.users.currentKid = ""
+      this.afAuth.auth.signOut()
+      .then( () => this.router.navigate(['/witaj']))
     }
 
   kid
