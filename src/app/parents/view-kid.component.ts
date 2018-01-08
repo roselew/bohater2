@@ -15,28 +15,40 @@ import { ExpertsService } from '../services/experts.service';
   
       <input type='password' placeholder='Powtórz hasło dziecka' [(ngModel)]="kid.checkpassword" name="checkpassword">
   
-      <input type="radio" name="kids-gender" id="gender-left"><label for="gender-left" class="double">Chłopiec</label>
-      <input type="radio" name="kids-gender" id="gender-right"><label for="gender-right" class="double">Dziewczynka</label>
+      <input type="radio" [(ngModel)]="kid.gender" value="M" name="kids-gender" id="gender-left"><label for="gender-left" class="double">Chłopiec</label>
+      <input type="radio" [(ngModel)]="kid.gender" value="F" name="kids-gender" id="gender-right"><label for="gender-right" class="double">Dziewczynka</label>
   
       </form>
 
-      <div class="avatars">
+      <div *ngIf="kid.gender" class="avatars">
 
-  <p>Wybierz bohatera</p>
+        <p>Wybierz bohatera</p>
 
-  <form>
+        <form *ngIf="kid.gender == 'M'">
 
-    <label *ngFor="let expertHero of expertHeroes"
-        (click)="selectHero(expertHero)">
+          <label *ngFor="let expertHero of expertHeroesM"
+              (click)="selectHero(expertHero)">
 
-      <input type="radio" name="expertHeroes" [checked]="(kid['heroId']==expertHero['id'])">
-      <img src="{{expertHero.image}}" alt=""/>  
-      
-    </label> 
+            <input type="radio" name="expertHeroes" [checked]="(kid['heroId']==expertHero['id'])">
+            <img src="{{expertHero.image}}" alt=""/>  
+            
+          </label> 
 
-  </form>
+        </form>
 
-</div>  
+        <form *ngIf="kid.gender == 'F'">
+        
+          <label *ngFor="let expertHero of expertHeroesF"
+              (click)="selectHero(expertHero)">
+
+            <input type="radio" name="expertHeroes" [checked]="(kid['heroId']==expertHero['id'])">
+            <img src="{{expertHero.image}}" alt=""/>  
+            
+          </label> 
+        
+        </form>
+
+      </div>  
 
   `,
   styles: [],
@@ -46,16 +58,18 @@ export class ViewKidComponent implements OnInit {
 
 @Input() kid 
 
-expertHeroes
+expertHeroesF
+expertHeroesM
 
 
   constructor(
     private experts: ExpertsService,
   ) { }
 
-  ngOnInit() {
-    this.expertHeroes = this.experts.getExpertHeroes()
-  }
+  ngOnInit() { 
+    this.expertHeroesF = this.experts.getExpertHeroes("F")
+    this.expertHeroesM = this.experts.getExpertHeroes("M")
+   }
 
   selectHero(expertHero){
     this.kid['heroId']=expertHero['id'];

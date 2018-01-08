@@ -11,7 +11,7 @@ import { ExpertsService } from '../services/experts.service';
   
   <p *ngIf="userMissions && userMissions.length==0 && mode=='parent'" class="smallTitle"> 
     Nie ma żadnych postępów, bo nie dodałeś jeszcze żadnych misji do wykonania. <br>
-    Wybierz przycisk MENU w prawym górnym rogu, a następnie MISJE. 
+    Wybierz przycisk <img src="assets/menu-button.svg" width="40px"> w prawym górnym rogu, a następnie MISJE. 
   </p>
 
   <p *ngIf="userMissions && userMissions.length==0 && mode=='kid'" class="smallTitle"> 
@@ -39,12 +39,13 @@ import { ExpertsService } from '../services/experts.service';
     </div>
 
    <div *ngFor="let day of days">
-    <one-day-view *ngIf="userMissions && userMissions.length>0"
+    <one-day-view *ngIf="userMissions && userMissions.length>0 && heroImage"
         (onChange)="fetchMissions()" 
         [mode]="mode" 
         [type]="type"
         [filter]="filter"
         [dayId]="day"
+        [heroImage]="heroImage"
         [userMissions]="userMissions">
     </one-day-view>
   </div>

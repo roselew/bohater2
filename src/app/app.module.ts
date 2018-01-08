@@ -74,7 +74,6 @@ import { AuthParentService } from "./services/auth-parent.service";
 import { AuthKidService } from "./services/auth-kid.service";
 import { UsersService } from "./services/users.service";
 import { ExpertsService } from "./services/experts.service";
-import { FirebaseService } from './services/firebase.service';
 import { CoreModule } from './core.module';
 import { AppSpinnerComponent } from './app-spinner.component';
 
@@ -137,7 +136,7 @@ import { AppSpinnerComponent } from './app-spinner.component';
     ExtraPointsComponent,   
     PointsComponent,
     
-    
+
     OneDayViewComponent,   
     OneWeekComponent,    
     ProgressBarWeekComponent,
@@ -148,15 +147,12 @@ import { AppSpinnerComponent } from './app-spinner.component';
     AppAlertComponent,
     AppSpinnerComponent,
     HeroProgressComponent,
-    
-    
   ],
   
   imports: [
     BrowserModule,
     Routing,
     FormsModule,
-    HttpClientModule,
     CoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
@@ -164,14 +160,12 @@ import { AppSpinnerComponent } from './app-spinner.component';
   ],
   
   providers: [
-    { provide: 'API_URL', useValue: 'http://localhost:3000/'},
     MissionsService,
     GiftsService,
     AuthParentService,
     AuthKidService,
     UsersService,
     ExpertsService,
-    FirebaseService,
   ],
   
   bootstrap: [AppComponent]

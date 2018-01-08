@@ -1,5 +1,4 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { FirebaseService } from './services/firebase.service';
 import { UsersService } from './services/users.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -87,7 +86,6 @@ export class WelcomeComponent implements OnInit {
   constructor(
     private router: Router,
     private route:  ActivatedRoute,   
-    private service: FirebaseService, 
     private users: UsersService,
     private renderer: Renderer2) { 
       this.renderer.addClass(document.body,'kid')

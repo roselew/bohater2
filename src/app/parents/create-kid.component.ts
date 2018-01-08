@@ -1,7 +1,6 @@
 import { Component, OnInit, Renderer2} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { UsersService } from "../services/users.service";
-import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'create-kid',

@@ -9,7 +9,7 @@ import { UsersService } from '../services/users.service';
   template: `
 
   <p *ngIf="userGifts && userGifts.length==0" class="smallTitle"> 
-    Dziecko nie ma jeszcze żadnych nagród. Dodaj kilka przyciskiem + w prawym dolnym rogu strony
+    Dziecko nie ma jeszcze żadnych nagród. Dodaj kilka przyciskiem <span>+</span> w prawym dolnym rogu strony
   </p>
 
    <div *ngIf="(chosenGifts && chosenGifts.length>0)" class="chosenGiftsPanel">

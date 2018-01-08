@@ -86,7 +86,7 @@ li.menu-bohater{
         width: 60vh;
         height: 60vh;
     }
-    background: $color_wait url(../assets/bohater.png) top 30% center no-repeat; 
+    background: $color_wait; 
     background-size: 40%;
     &:hover{background-color: darken($color_wait,10%);}
     p{bottom: 10% !important}
@@ -113,6 +113,7 @@ li.menu-nagrody{
 }
 
 .logout {
+    position: fixed;
     top: auto;
     bottom: 0;
     right: 0;

@@ -32,7 +32,7 @@ button.enter {
 	margin: 3%;
 	border: 3px white solid;
 	font: 0.8*$font_title_size $font_title_family;
-	margin-top: 60%;
+	margin-top: 50%;
 
 	@media (orientation: landscape){
 		width: 30%;
@@ -59,7 +59,7 @@ title.container{
 .avatar-images{
 	text-align: center;
 	position: absolute;
-	top: 5%;
+	top: 0%;
 	left:10%;
 	width: 80%;
 	@media (orientation: landscape){
@@ -83,7 +83,7 @@ a.scrolling {
 	padding-top: 80px;
 
 	position: absolute;
-	bottom: 10vh;
+	bottom: 1rem;
 	left: 0px;
 	text-align: center;
 	z-index: 2;

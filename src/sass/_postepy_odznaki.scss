@@ -2,6 +2,8 @@
 
 // ------- WEEK --------
 
+
+.kid .week a::after {background: url(../assets/calendar6.svg) top center no-repeat; background-size: 100%;}
 .week {
 	position: relative;
 	margin: 30px 0px 30px $odznaki_left;
@@ -20,9 +22,9 @@
 			width: 50px;
 			position: absolute;
 			top: -25px;
-			right: -50px;
+			right: -70px;
 
-			background: url(../assets/calendar3.svg) top 20% center no-repeat; background-size: 70%;
+			background: url(../assets/calendar5.svg) top center no-repeat; background-size: 100%;
 		}
 	}
 	//buttons previous and next week
@@ -307,9 +309,9 @@ ul.mission-unactive{
 	}
 	// hero img 
 	img.hero{
-		height: 250px;
+		width: 15%;
 		position: absolute;
-		left: -15%;
+		left: -18%;
 		bottom: 50px;
 	}
 }

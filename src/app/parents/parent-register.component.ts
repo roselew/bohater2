@@ -22,8 +22,8 @@ import * as firebase from 'firebase/app';
 
       <input type='password' placeholder='Powtórz Hasło' [(ngModel)]="checkpassword" name="checkpassword">
 
-      <input type="radio" name="parent-name" id="parent-left"><label for="parent-left" class="double">Jestem Tatą</label>
-      <input type="radio" name="parent-name" id="parent-right"><label for="parent-right" class="double">Jestem Mamą</label>
+      <input type="radio" [(ngModel)]="parent['gender']" value="M" name="parent-name" id="parent-left"><label for="parent-left" class="double">Jestem Tatą</label>
+      <input type="radio" [(ngModel)]="parent['gender']" value="F" name="parent-name" id="parent-right"><label for="parent-right" class="double">Jestem Mamą</label>
 
       <button type='submit' (click)="addParent()">ZAREJESTRUJ</button>
 

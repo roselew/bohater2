@@ -22,7 +22,7 @@ import { MissionsService } from "../services/missions.service";
   </ul>
 
   <ng-template #other_content>
-    <p class="smallTitle"> Dziecko nie ma jeszcze żadnych misji. Dodaj kilka przyciskiem + w prawym dolnym rogu strony</p>
+    <p class="smallTitle"> Dziecko nie ma jeszcze żadnych misji. Dodaj kilka przyciskiem <span>+</span> w prawym dolnym rogu strony</p>
   </ng-template>
 
  <p *ngIf="unactiveMissions && unactiveMissions.length>0" class="smallTitle">Zakończone misje </p>

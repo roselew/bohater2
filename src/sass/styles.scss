@@ -168,6 +168,12 @@ span.more {
 
 .smallTitle {
 	
+	span {
+		padding: 0.3rem 1.5rem;
+		background-color: $color_base;
+		color:white;
+		border-radius: 100%;
+	}
 	padding: 2.0rem;
 	margin: 2.0rem 0;
 	width: 80%;

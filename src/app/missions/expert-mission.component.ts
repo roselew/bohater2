@@ -52,8 +52,9 @@ export class ExpertMissionComponent implements OnInit {
     save(){
       let kidId = this.route.parent.snapshot.paramMap.get('kidId');
       this.mission['kidId']=kidId;
-      let today = new Date().setHours(0,0,0,0);
-      this.mission['start']=today;
+      let today = new Date();
+      today.setHours(0,0,0,0);
+      this.mission['start']=today.getTime();
       this.mission['days']=this.selectedDays;
       this.mission['doneDates']=[];
       this.mission['waitDates']=[];

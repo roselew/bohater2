@@ -12,6 +12,8 @@ import { MissionsService } from '../services/missions.service';
      Nie masz żadnych nagród. Poproś rodzica o dodanie.
   </p>
 
+ <p *ngIf="userGifts && userMissions && extraPoints" class="smallTitle">Obecnie masz {{totalPoints}} pkt</p>
+
   <ul class="mission-neutral mission-done mission-active">
     <li *ngFor="let userGift of availableGifts"
     class="circle-big"
@@ -25,7 +27,7 @@ import { MissionsService } from '../services/missions.service';
        <div class="progress">
         <div class="progress-undone"></div>
         <div class="progress-done" [ngStyle]="{'width' : getWidth(userGift) + '%'}">
-          <p> {{totalPoints}} / {{userGift.points}} </p>
+        <p> Możes odebrać nagrodę</p>
         </div>
       </div>
 
@@ -44,7 +46,7 @@ import { MissionsService } from '../services/missions.service';
        <div class="progress">
         <div class="progress-undone"></div>
         <div class="progress-done" [ngStyle]="{'width' : getWidth(userGift) + '%'}">
-          <p> {{totalPoints}} / {{userGift.points}} </p>
+          <p> Jeszcze tylko {{userGift.points-totalPoints}} pkt ... </p>
         </div>
       </div>
 

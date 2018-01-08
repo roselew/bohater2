@@ -121,7 +121,6 @@ export class MissionsService {
  
   
   getAllWeeksProgress(userMissions){
-
       if (userMissions.length==0){
         return [{weekId: 0, nAll:0, nWait:0, nUndone:0}]
       }
@@ -152,7 +151,6 @@ export class MissionsService {
   }
   
   getOneWeekProgress(userMissions,weekId){
-
     let thisWeek={
       weekId: weekId,
       nAll: 0,

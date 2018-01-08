@@ -92,8 +92,7 @@ export class KidHeroComponent implements OnInit {
       this.users.updateOneKid(this.kid)
       .subscribe( kid=> {
         this.kid = kid;
-        this.heroProgress = this.experts.getHeroPowers(this.kid.heroId, this.kid.badges)
-        this.nBadges -=1;
+        this.heroProgress = this.experts.getHeroPowers(this.kid.heroId, this.kid.badges);
       }) 
     }
   }

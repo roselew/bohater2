@@ -19,7 +19,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
     <shortcut-kid [kidId]="kid.id"></shortcut-kid>
   </div>
 
-  <p *ngIf="kids && kids.length == 0" class="smallTitle"> Dodaj dziecko przyciskiem + w prawym dolnym rogu strony</p>
+  <p *ngIf="kids && kids.length == 0" class="smallTitle"> Dodaj dziecko przyciskiem <span>+</span> w prawym dolnym rogu strony</p>
   
   <a routerLink="dodaj-dziecko">
     <div class="plus">+</div>

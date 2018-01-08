@@ -8,7 +8,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   selector: 'kid-menu',
   template: `
 
-  <p class="logout" (click)="logout()">Witaj {{kid.name}}! <br> Wyloguj </p>
+  <p class="logout" *ngIf="kid" (click)="logout()">Witaj {{kid.name}}! <br> Wyloguj </p>
 
   <ul>
     <a routerLink="../bohater"><li class="menu-bohater" [ngStyle]="{'background': heroImage}"><p>BOHATER</p></li></a>

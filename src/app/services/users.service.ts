@@ -251,7 +251,7 @@ export class UsersService {
     const data = {
       uid: user.uid,
       email: parent.email,
-      displayname: 'mama'
+      gender: parent.gender
     }
 
     return userRef.set(data)
@@ -269,7 +269,7 @@ export class UsersService {
       badges: kid.badges,
       birth: kid.birth,
       heroId: kid.heroId,
-      password: kid.password,
+      gender: kid.gender,
     }
 
     return userRef.set(data)
