@@ -14,6 +14,10 @@ import { UsersService } from '../services/users.service';
 
 <div *ngIf="userMissions && userGifts">
 
+<div class="total-progress" [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']">
+<progress-week [userMissions]="userMissions"></progress-week> 
+</div>
+
   <div class="kid-icon">
     <a [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']" [queryParams]="{filter: 'wait'}">
     <missions-to-accept [userMissions]="userMissions"></missions-to-accept> 
@@ -26,23 +30,23 @@ import { UsersService } from '../services/users.service';
     </a>
   </div>
 
-  <div class="total-progress" [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']">
-      <progress-week [userMissions]="userMissions"></progress-week> 
-  </div>
-
   <div class="kid-icon">
-    <a [routerLink]="['/rodzic/dziecko/'+kidId+'/misje/dodaj']">
-      <img src="../../assets/list2.svg" class="enlarge">
-      <p>Dodaj nową misję</p>
-    </a>
-  </div>
+  <a [routerLink]="['/rodzic/dziecko/'+kidId+'/misje/dodaj']">
+    <img src="../../assets/list2.svg" class="enlarge">
+    <p>Dodaj nową misję</p>
+  </a>
+</div>
 
-  <div class="kid-icon">
-    <a [routerLink]="['/rodzic/dziecko/'+kidId+'/punkty/punkty-ekstra']">
-      <img src="../../assets/addstars.svg" class="enlarge">
-      <p>Dodaj punkty ekstra</p>
-    </a>
-  </div>
+<div class="kid-icon">
+  <a [routerLink]="['/rodzic/dziecko/'+kidId+'/punkty/punkty-ekstra']">
+    <img src="../../assets/addstars.svg" class="enlarge">
+    <p>Dodaj punkty ekstra</p>
+  </a>
+</div>
+
+
+
+
   
 </div>
 

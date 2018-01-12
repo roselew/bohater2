@@ -12,7 +12,7 @@ import { UsersService } from "../services/users.service";
 
       <app-spinner *ngIf="showSpinner"></app-spinner>
 
-      <view-kid *ngIf="!showSpinner" [kid]="kid"></view-kid>
+      <view-kid *ngIf="!showSpinner" [kid]="kid" [codes]="codes" [codeExist]="codeExist"></view-kid>
 
     <button (click)="save()">DODAJ DZIECKO</button>
     <button class="altButton" routerLink="../">Powrót</button>
@@ -44,22 +44,35 @@ export class CreateKidComponent implements OnInit {
 
   showSpinner: boolean = false
 
+  codes=[
+    {name: 'code1', value: 0, checked: false},
+    {name: 'code2', value: 1, checked: false},
+    {name: 'code3', value: 2, checked: false},
+    {name: 'code4', value: 3, checked: false},
+    {name: 'code5', value: 4, checked: false},
+    {name: 'code6', value: 5, checked: false},
+    {name: 'code7', value: 6, checked: false},
+    {name: 'code8', value: 7, checked: false},
+    {name: 'code9', value: 8, checked: false}
+  ];
+  codeExist
+
   save(){
-    if (this.kid['password']===this.kid['checkpassword']){
       this.showSpinner = true
+      this.kid['codeExist'] = (this.codeExist == 'T') ? true : false;
+      this.kid['code']=this.codes.filter(x => x.checked==true).map(x => x.value);
       let parentId = this.users.currentUserEmail;
       this.kid['parentId']=parentId;
       this.kid['badges']=[false,false,false,false,false,false,false,false,false]
-      this.users.kidRegister(this.kid)
-      .then( () => this.showSpinner = false )
-    } else {
-      alert('Upewnij się czy dobrze wpisałeś hasło')
-      this.showSpinner = false 
+      this.users.createOneKid(this.kid)
+      .then( () => {
+        this.router.navigate(['/rodzina/rodzic/dzieci']); 
+        this.showSpinner = false;
+      })
     }
-  }
+  
 
-  ngOnInit() { 
-  }
+  ngOnInit(){ }
 
 
 }

@@ -44,61 +44,70 @@ import { AuthKidService } from "./services/auth-kid.service";
 import { AuthParentService } from "./services/auth-parent.service";
 import { AvailableGiftComponent } from "./gifts/available-gift.component";
 
+import { FamilyPanelComponent } from './parents/family-panel.component';
+import { FamilyLoginComponent } from './parents/family-login.component';
+import { FamilyComponent } from './parents/family.component';
+
 
 
 
 const routes:Routes = [
-    { path: '',                                          redirectTo: '/witaj', pathMatch:'full'},
+    { path: '',                                          redirectTo: '/rodzina', pathMatch:'full'},
     { path: 'witaj',                                     component: WelcomeComponent},
-    { path: 'rodzic-logowanie',                          component: ParentLoginComponent},
-    { path: 'rodzic-rejestracja',                        component: ParentRegisterComponent},  
-    { path: 'dziecko-logowanie',                         component: KidLoginComponent},
+    { path: 'rodzina-logowanie',                          component: FamilyLoginComponent},
+    { path: 'rodzina-rejestracja',                        component: ParentRegisterComponent},  
 
-//FOR KIDS ONLY 
+    { path: 'rodzina', component: FamilyComponent, canActivate: [ AuthParentService ], children: [
 
-    {path: 'dziecko',                                    
-        component: KidComponent, canActivate: [ AuthKidService ], children: [
-        { path: '',                                      redirectTo: 'menu', pathMatch:'full'},
-        { path: 'menu',                                  component: KidMenuComponent},
-        { path: 'misje/:dayId',                          component: KidMissionsComponent},
-        { path: 'nagrody',                               component: KidGiftsComponent},
-        { path: 'bohater',                               component: KidHeroComponent},
-        { path: 'odznaki/historia',                      component: ProgressHistoryComponent},       
-        { path: 'odznaki/:weekId',                       component: KidProgressComponent},
+        {path:'',                                       redirectTo: 'menu', pathMatch: 'full'},
+        {path: 'menu',                                  component: FamilyPanelComponent},
+
+        // FOR KIDS ONLY
+        {path: 'dziecko-logowanie',                     component: KidLoginComponent},
+        {path: 'dziecko/:kidId',    component: KidComponent, canActivate: [ AuthKidService ], children: [
+            { path: '',                                     redirectTo: 'menu', pathMatch:'full'},
+            { path: 'menu',                                 component: KidMenuComponent},
+            { path: 'misje/:dayId',                         component: KidMissionsComponent},
+            { path: 'nagrody',                              component: KidGiftsComponent},
+            { path: 'bohater',                              component: KidHeroComponent},
+            { path: 'odznaki/historia',                     component: ProgressHistoryComponent},       
+            { path: 'odznaki/:weekId',                      component: KidProgressComponent},
+        ]},
+
+        // FOR PARENTS ONLY 
+        {path: 'rodzic-logowanie',                     component: ParentLoginComponent},
+        { path: 'rodzic',                              component: ParentComponent, children:[
+            { path: '',                                      redirectTo: 'dzieci', pathMatch:'full'},   
+            { path: 'dzieci',                                component: KidsComponent}, 
+            { path: 'dzieci/dodaj-dziecko',                  component: CreateKidComponent},    
+
+            { path: 'dziecko/:kidId',                        component: OneKidComponent, children:[
+                { path: '',                                  redirectTo: 'postepy/0', pathMatch: 'full'},
+                { path: 'edytuj-dziecko',                    component: EditKidComponent},
+    
+                { path: 'misje',                             component: MissionsComponent},    
+                { path: 'misje/dodaj',                       component: NewMissionComponent},
+                { path: 'misje/dodaj-wlasna',                component: CreateMissionComponent},
+                { path: 'misje/dodaj-polecana/:missionId',   component: ExpertMissionComponent},
+                { path: 'misje/:missionId',                  component: MissionComponent},
+
+                { path: 'nagrody',                           component: GiftsComponent},
+                { path: 'nagrody/dodaj',                     component: NewGiftComponent},
+                { path: 'nagrody/dodaj-wlasna',              component: CreateGiftComponent},
+                { path: 'nagrody/dodaj-polecana/:giftId',    component: ExpertGiftComponent},
+                { path: 'nagrody/:giftId',                   component: GiftComponent},  
+                { path: 'nagrody/dostepne/:giftId',          component: AvailableGiftComponent},
+    
+                { path: 'postepy/historia',                  component: ProgressHistoryComponent},
+                { path: 'postepy/:weekId',                   component: ParentProgressComponent},
+
+                { path: 'punkty',                            component: PointsComponent},
+                { path: 'punkty/punkty-ekstra',              component: ExtraPointsComponent}
+            ]},
+        ]},
     ]},
 
-// FOR PARENTS ONLY 
-
-    { path: 'rodzic',                                    
-        component: ParentComponent, canActivate: [ AuthParentService ], children:[
-        { path: '',                                      redirectTo: 'dzieci', pathMatch:'full'},
-        { path: 'dzieci',                                component: KidsComponent}, 
-        { path: 'dzieci/dodaj-dziecko',                  component: CreateKidComponent},    
-
-        { path: 'dziecko/:kidId',                        component: OneKidComponent, children:[
-            { path: '',                                  redirectTo: 'postepy/0', pathMatch: 'full'},
-            { path: 'edytuj-dziecko',                    component: EditKidComponent},
-   
-            { path: 'misje',                             component: MissionsComponent},    
-            { path: 'misje/dodaj',                       component: NewMissionComponent},
-            { path: 'misje/dodaj-wlasna',                component: CreateMissionComponent},
-            { path: 'misje/dodaj-polecana/:missionId',   component: ExpertMissionComponent},
-            { path: 'misje/:missionId',                  component: MissionComponent},
-
-            { path: 'nagrody',                           component: GiftsComponent},
-            { path: 'nagrody/dodaj',                     component: NewGiftComponent},
-            { path: 'nagrody/dodaj-wlasna',              component: CreateGiftComponent},
-            { path: 'nagrody/dodaj-polecana/:giftId',    component: ExpertGiftComponent},
-            { path: 'nagrody/:giftId',                   component: GiftComponent},  
-            { path: 'nagrody/dostepne/:giftId',          component: AvailableGiftComponent},
-  
-            { path: 'postepy/historia',                  component: ProgressHistoryComponent},
-            { path: 'postepy/:weekId',                   component: ParentProgressComponent},
-
-            { path: 'punkty',                            component: PointsComponent},
-            { path: 'punkty/punkty-ekstra',              component: ExtraPointsComponent}
-        ]},
-    ]}
+    { path: '**',                                        redirectTo: '/witaj', pathMatch:'full'},
 
 ]
 

@@ -3,7 +3,7 @@
   //  height: 700px;
     border: 4px solid #008aff;
     color: $color_text_parent;
-    width: 80%;
+    width: 85%;
     margin: 5.0rem auto;
     margin-bottom: 7.0rem;
     font: 4rem $font_reg_family;
@@ -28,13 +28,14 @@
 }
 
 .total-progress {
-  margin: 20px auto;
+  margin: 0px auto;
+  margin-bottom: 20px;
   width: 100%;
   background-color: $color_back_parent;
   padding: 20px;
-  .progress{
-    margin: 20px auto;
-  }
+  // .progress{
+  //   margin: 20px auto;
+  // }
 }
 
 .kid-label {
@@ -45,11 +46,11 @@
   position: relative;
   background-color: $color_base;
   text-align: center;
-  padding: 10px;
+  padding: 20px 10px;
   font: 5.0rem $font_title_family;
   width: 70%;
   margin: auto;
-  margin-bottom: -35px;
+  margin-bottom: 0px;
   &::after{
         content: '';
         height: 100%;
@@ -62,14 +63,34 @@
 }
 
 .kid-icon {
-  margin: 3rem 5%;
-  width: 25%;
+  margin: 3rem 2%;
+  width: 19%;
   display: inline-block;
   vertical-align: top;
   img {
     width: 80%;
   }
+  position:relative;
+  .star {
+    position: absolute;
+    top: 0;
+    right: 0;
+    fill: $color_base;
+    width: 40%;
+  }
+  span{
+    position: absolute;
+    width:40%;
+    text-align: center;
+
+    top: 0px;
+    right: 0;
+    color:white;
+    font: $font_small_size $font_reg_family;
+    line-height: 70px;
+  }
 }
+
 
 
 .enlarge:hover {

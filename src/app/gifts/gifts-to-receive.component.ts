@@ -6,7 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   
    <img *ngIf="totalToReceive>0" src="../../assets/gift.svg" class="enlarge">
    <img *ngIf="totalToReceive==0" src="../../assets/gift_empty.svg" class="enlarge">
-   <p> {{totalToReceive}} nagrody do odbioru </p>
+   <p> Nagrody do odbioru </p>
+   <star-svg><span>0</span></star-svg>
+   <span>{{totalToReceive}}</span>
   `,
   styles: [],
 })

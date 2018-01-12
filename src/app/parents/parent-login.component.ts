@@ -23,35 +23,55 @@ import * as firebase from 'firebase/app';
    
   <app-spinner *ngIf="showSpinner"></app-spinner>
 
-    <form #formRef="ngForm" *ngIf="!showSpinner" (submit)="login()">
+      <div *ngIf="!showSpinner && parent" class="code-box">
+        <label *ngFor="let code of codes">
+          <input type="checkbox"
+                  value="{{code.value}}"
+                  [(ngModel)]="code.checked"
+                  name="code.name"
+                  (ngModelChange)="show()"
+          >
+          <span>★</span>    
+        </label>     
+    </div>
 
-      <input type='text' placeholder='Email' [(ngModel)]="parent['email']" name="email">
-        <!-- <span *ngIf="formRef.controls.email?.touched  || formRef.controls.email?.dirty"> 
-          <small *ngIf="formRef.controls.email?.errors?.required" class="form-text text-muted">Field is required</small>
-          <small *ngIf="formRef.controls.email?.errors?.email" class="form-text text-muted">Invalid email format</small>
-        </span> -->
-
-      <input type='password' placeholder='Hasło' [(ngModel)]="parent['password']" name="password">
-
-      <input type='checkbox' name='remember'>
-      <label for='checkbox'>Zapamiętaj mnie</label>
-
-      <button type='submit'>ZALOGUJ</button>
-
-    </form>
-    <a routerLink='/rodzic-rejestracja'>Nie masz konta? Zarejestruj się</a>
+    <a [routerLink]="['/rodzina']">
+      <div class="back">↩</div>
+    </a>
   
+
   </div>
 
 
   `,
-  styles: [],
+  styleUrls: ['../../sass/login.scss'],
 
 })
 export class ParentLoginComponent implements OnInit {
 
- parent ={}
- 
+ parent
+
+ show () {
+   let a1 = this.codes.filter(x => x.checked==true).map(x => x.value);
+   let a2 = this.parent['code'];
+
+   if (a1.length==a2.length && a1.every((v,i)=> v === a2[i])) {
+     console.log('suksec')
+      this.showSpinner = true
+   }
+ }
+ codes=[
+  {name: 'code1', value: 0, checked: false},
+  {name: 'code2', value: 1, checked: false},
+  {name: 'code3', value: 2, checked: false},
+  {name: 'code4', value: 3, checked: false},
+  {name: 'code5', value: 4, checked: false},
+  {name: 'code6', value: 5, checked: false},
+  {name: 'code7', value: 6, checked: false},
+  {name: 'code8', value: 7, checked: false},
+  {name: 'code9', value: 8, checked: false}
+];
+
  showSpinner: boolean = false
 
 //     login(form) {
@@ -75,15 +95,22 @@ export class ParentLoginComponent implements OnInit {
       this.renderer.addClass(document.body,'title-page')
     }
 
+
     login() {
       this.showSpinner = true
       this.users.parentLogin(this.parent)
       .then ( () => this.showSpinner = false)
     }
 
-  parents
-  ngOnInit() {}
-
+  ngOnInit() {
+    this.users.getOneParent(this.users.currentUserEmail)
+    .subscribe( parent => {
+      this.parent = parent;
+      console.log(this.parent)
+      console.log(this.users.currentUserEmail)
+    })
+    
+  }
 
   ngOnDestroy() {
     this.renderer.removeClass(document.body, 'parent');

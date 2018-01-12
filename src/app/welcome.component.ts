@@ -13,14 +13,15 @@ import { Router, ActivatedRoute } from '@angular/router';
       
 
       <div class="title-container">
-          <button class="enter parent" (click)="goToParent()">RODZIC</button>
+          <button class="enter parent" (click)="goToRegister()">ZAREJESTRUJ</button>
           <app-spinner class="avatar-images" *ngIf="showSpinner"></app-spinner>
           <div class="avatar-images" *ngIf="!showSpinner">
             <img src="assets/bohater2.png" width="25%">
             <img src="assets/bohater.png" width="30%">
             <img src="assets/bohater3.png" width="25%">
           </div>
-          <button class="enter kid" (click)="goToKid()" >DZIECKO</button>
+          <button class="enter kid" (click)="goToLogin()" >ZALOGUJ</button>
+
       </div>
   
       <a (click)="goTo('section02')" class="scrolling"><span></span>Dowiedz się więcej</a>
@@ -95,14 +96,14 @@ export class WelcomeComponent implements OnInit {
     showSpinner: boolean = false
 
   
-    goToKid() {
+    goToLogin() {
       this.showSpinner = true; 
-      this.router.navigate(['/dziecko'])
+      this.router.navigate(['/rodzina-logowanie'])
     }
 
-    goToParent() {
+    goToRegister() {
       this.showSpinner = true; 
-      this.router.navigate(['/rodzic'])
+      this.router.navigate(['/rodzina-rejestracja'])
     }
 
     ngOnInit(){

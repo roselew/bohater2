@@ -244,35 +244,73 @@ button.altButton{
 	}
 }
 
-input[type="radio"] { display: none;}
+input[type="radio"] { 
+	display: none; 
 
-			input[type='radio'] + label.double {
-				display:inline-block;
-        width:40%;
-				border: 2px solid $color_base;
-				color: $color_dark_grey;
-        vertical-align: middle;
-        cursor: pointer;
-        height: $input_height;
-        font: $font_mid_size $font_reg_family;
-        line-height: $input_height;
-        text-align: center;
-        background-color: white;
-			}
+	& + label { margin-bottom: 5.0rem;}
+
+	& + label.double {
+		display:inline-block;
+		width:40%;
+		border: 2px solid $color_base;
+		color: $color_dark_grey;
+		vertical-align: middle;
+		cursor: pointer;
+		height: $input_height;
+		font: $font_mid_size $font_reg_family;
+		line-height: $input_height;
+		text-align: center;
+		background-color: white;
+	}
+
+	& + label.double:first-of-type{
+		border-bottom-left-radius: 20px;
+		border-top-left-radius: 20px;
+		margin-left: 0;
+	}
+	& + label.double:last-of-type{
+		border-bottom-right-radius: 20px;
+		border-top-right-radius: 20px;
+		margin-left: -14px;
+	}
+	&:checked + label.double {
+		background-color:$color_base;
+		color: white;
+		border-color: white;
+	}
+
+	& + label.triple {
+		display:inline-block;
+		width:26.7%;
+		border: 2px solid $color_base;
+		color: $color_dark_grey;
+		vertical-align: middle;
+		cursor: pointer;
+		height: $input_height;
+		font: $font_mid_size $font_reg_family;
+		line-height: $input_height;
+		text-align: center;
+		background-color: white;
+		margin-left: -12px;
+	}
 
 
-			input[type='radio'] + label.double:first-of-type{
-				border-bottom-left-radius: 20px;
-				border-top-left-radius: 20px;
-			}
-			input[type='radio'] + label.double:last-of-type{
-				border-bottom-right-radius: 20px;
-				border-top-right-radius: 20px;
-			}
-			input[type='radio']:checked + label.double {
-				background-color:$color_base;
-        color: white;
-        border-color: white;}
+	& + label.triple:first-of-type{
+		border-bottom-left-radius: 20px;
+		border-top-left-radius: 20px;
+		margin-left: 0;
+	}
+	& + label.triple:last-of-type{
+		border-bottom-right-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+	&:checked + label.triple {
+		background-color:$color_base;
+		color: white;
+		border-color: white;
+	}
+
+} 
 
 input[type=checkbox] {
 	margin-top: 1.0rem;
@@ -292,6 +330,36 @@ input[type=checkbox] {
 		vertical-align: bottom;			
 	}
 }
+
+.code-box{
+	
+	
+		margin-top: 0px;
+	
+		input {
+			display: none;
+		
+			& + span{
+				display: inline-block;
+				width: 20vw;
+				height: 20vw;
+				margin: 3vw;
+				border: 2px solid $color_base;
+				border-radius: 100%;
+				color:$color_dark_grey;
+				font: 1.5*$font_title_size $font_reg_family;
+				cursor: pointer;
+				text-align: center;
+				line-height: 20vw;
+				background-color: rgba(white,0.4);
+			}
+	
+			&:checked + span {
+				background-color:$color_base;
+				color: white	
+			}
+		}
+	}
 
 .parent label{
 	color: $color_text_parent;
@@ -443,3 +511,12 @@ p.logout{
 	  -ms-transform: translateY(-15px);
 	  -o-transform: translateY(-15px);
 	  transform: translateY(-15px); } }
+
+.kid-card {
+	.star{
+		display: inline-block;
+        fill: $color_base;
+		width: 6.0rem;
+		height: 6.0rem;
+	}
+}

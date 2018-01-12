@@ -25,6 +25,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
     <div class="plus">+</div>
   </a>
 
+  <a [routerLink]="['/rodzina']">
+    <div class="back">↩</div>
+  </a>
+
   <app-spinner *ngIf="showSpinner"></app-spinner>
   `,
   styles: [],

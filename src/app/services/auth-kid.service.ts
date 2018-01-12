@@ -18,18 +18,14 @@ export class AuthKidService implements CanActivate  {
   
   canActivate(
     route: ActivatedRouteSnapshot, 
-    state: RouterStateSnapshot): Observable<boolean> | boolean {
-     return !!this.users.currentKid || this.auth.kid
-      .take(1)
-      .map(kid => !!kid)
-      .do (loggedIn => {
-        if (!loggedIn) {
-          console.log('access denied')
-          this.router.navigate(['/dziecko-logowanie']);
-        } else {
-          console.log('access granted')
-        }
-      })
+    state: RouterStateSnapshot): boolean {
+      if (!!this.users.currentKid){
+        console.log('access granted')
+        return true
+      } else {
+        console.log('access denied')
+        this.router.navigate(['/rodzina/dziecko-logowanie']);
+      }
 
   }
   

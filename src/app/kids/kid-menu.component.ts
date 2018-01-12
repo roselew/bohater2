@@ -17,6 +17,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
     <a routerLink="../nagrody"><li class="menu-nagrody"><p>NAGRODY</p></li></a>		
   </ul>  
 
+  <a [routerLink]="['/rodzina']">
+    <div class="back">↩</div>
+  </a>
 
   `,
   styleUrls: ['../../sass/kid-menu.scss']

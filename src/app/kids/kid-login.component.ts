@@ -11,21 +11,22 @@ import { UsersService } from "../services/users.service";
   
   <div class="title-container">
   
-  <app-spinner *ngIf="showSpinner"></app-spinner>
+    <div class="code-box">
+    <label *ngFor="let code of codes">
+      <input type="checkbox"
+              value="{{code.value}}"
+              [(ngModel)]="code.checked"
+              name="code.name"
+      >
+      <span>★</span>    
+    </label>     
+  </div>
 
-   <form #formRef="ngForm" *ngIf="!showSpinner" (submit)="login()">
+  <a [routerLink]="['/rodzina']">
+    <div class="back">↩</div>
+  </a>
 
-     <input type='text' placeholder='Email' [(ngModel)]="kid['login']" name="login">
-
-     <input type='password' placeholder='Hasło' [(ngModel)]="kid['password']" name="password">
-
-     <input type='checkbox' name='remember'>
-
-     <label for='checkbox'>Zapamiętaj mnie</label>
-
-     <button type='submit'>ZALOGUJ</button>
-
-   </form>
+  <button (click)="login()">ZALOGUJ</button>
 
    </div>
 
@@ -36,6 +37,18 @@ import { UsersService } from "../services/users.service";
 
 })
 export class KidLoginComponent implements OnInit {
+
+  codes=[
+    {name: 'code1', value: 0, checked: false},
+    {name: 'code2', value: 1, checked: false},
+    {name: 'code3', value: 2, checked: false},
+    {name: 'code4', value: 3, checked: false},
+    {name: 'code5', value: 4, checked: false},
+    {name: 'code6', value: 5, checked: false},
+    {name: 'code7', value: 6, checked: false},
+    {name: 'code8', value: 7, checked: false},
+    {name: 'code9', value: 8, checked: false}
+  ];
 
   constructor(
     public users: UsersService,
@@ -52,11 +65,14 @@ export class KidLoginComponent implements OnInit {
 
   login() {
     this.showSpinner = true
-    this.users.kidLogin(this.kid)
-    .then ( () => this.showSpinner = false)
+    this.users.currentKid = this.kidLogin
+    this.router.navigate(['rodzina/dziecko/'+this.kidLogin])
   }
 
-  ngOnInit() {}
+  kidLogin
+  ngOnInit() {
+    this.kidLogin = this.users.toLogUser
+  }
 
   ngOnDestroy() {
     this.renderer.removeClass(document.body, 'kid');

@@ -160,7 +160,7 @@ expertHeroes = [
         ]   
   },
   {     id:6,        name: "Zwinna Jane",             image: "assets/bohater6.png",       powers: [40,20,60],
-        gender: 'dziewczynka', badges: [
+        gender: 'F', badges: [
           {        badgeName: "Buty mocy",          icon: "assets/ikony/o_but1.svg",      gained: [10,0,0]     },        
           {        badgeName: "Buty super mocy",    icon: "assets/ikony/o_but2.svg",      gained: [10,0,0]     },        
           {        badgeName: "Buty extra mocy",    icon: "assets/ikony/o_but3.svg",      gained: [10,0,0]     },             

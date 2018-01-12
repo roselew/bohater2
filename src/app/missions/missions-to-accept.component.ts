@@ -5,7 +5,9 @@ import { Component, OnInit, Input } from '@angular/core';
   template: `
     <img *ngIf="totalToAccept>0" src="../../assets/mission.svg" class="enlarge">
     <img *ngIf="totalToAccept==0" src="../../assets/mission_empty.svg" class="enlarge">
-    <p> {{totalToAccept}} misje do akceptacji </p>
+    <p> Misje do akceptacji </p>
+    <star-svg><span>0</span></star-svg>
+    <span>{{totalToAccept}}</span>
   `,
   styles: [],
 })

@@ -22,8 +22,27 @@ import * as firebase from 'firebase/app';
 
       <input type='password' placeholder='Powtórz Hasło' [(ngModel)]="checkpassword" name="checkpassword">
 
-      <input type="radio" [(ngModel)]="parent['gender']" value="M" name="parent-name" id="parent-left"><label for="parent-left" class="double">Jestem Tatą</label>
-      <input type="radio" [(ngModel)]="parent['gender']" value="F" name="parent-name" id="parent-right"><label for="parent-right" class="double">Jestem Mamą</label>
+      <div class="triple-radio">
+        <input type="radio" [(ngModel)]="parent['gender']" value="tata" name="parent-name" id="parent-left"><label for="parent-left" class="triple">Tata</label>
+        <input type="radio" [(ngModel)]="parent['gender']" value="mama" name="parent-name" id="parent-center"><label for="parent-center" class="triple">Mama</label>
+        <input type="radio" [(ngModel)]="parent['gender']" value="rodzic" name="parent-name" id="parent-right"><label for="parent-right" class="triple">Rodzic</label>
+      </div>     
+
+      <div class="double-radio">
+        <input type="radio" [(ngModel)]="codeExist" value="T" name="codeExist" id="code-left"><label for="code-left" class="double">Z hasłem</label>
+        <input type="radio" [(ngModel)]="codeExist" value="F" name="codeExist" id="code-right"><label for="code-right" class="double">Bez hasła</label>
+      </div>
+      
+      <div *ngIf="codeExist == 'T'" class="code-box">
+        <label *ngFor="let code of codes">
+          <input type="checkbox"
+                  value="{{code.value}}"
+                  [(ngModel)]="code.checked"
+                  name="code.name"
+          >
+          <span>★</span>    
+        </label>     
+      </div>
 
       <button type='submit' (click)="addParent()">ZAREJESTRUJ</button>
 
@@ -31,7 +50,7 @@ import * as firebase from 'firebase/app';
 
   </div>
   `,
-  styles: [],
+  styles: [``],
 
 })
 export class ParentRegisterComponent implements OnInit {
@@ -44,6 +63,20 @@ export class ParentRegisterComponent implements OnInit {
       this.renderer.addClass(document.body,'parent')
       this.renderer.addClass(document.body,'title-page')
     }
+
+  codeExist
+
+  codes=[
+    {name: 'code1', value: 0, checked: false},
+    {name: 'code2', value: 1, checked: false},
+    {name: 'code3', value: 2, checked: false},
+    {name: 'code4', value: 3, checked: false},
+    {name: 'code5', value: 4, checked: false},
+    {name: 'code6', value: 5, checked: false},
+    {name: 'code7', value: 6, checked: false},
+    {name: 'code8', value: 7, checked: false},
+    {name: 'code9', value: 8, checked: false}
+  ];
 
   ngOnInit() {
   }
@@ -59,7 +92,9 @@ export class ParentRegisterComponent implements OnInit {
 
   addParent(){
      if (this.parent['password']===this.checkpassword){
-        this.showSpinner = true
+        this.showSpinner = true;
+        this.parent['codeExist'] = (this.codeExist == 'T') ? true : false;
+        this.parent['code']=this.codes.filter(x => x.checked==true).map(x => x.value);
         this.users.parentRegister(this.parent)
         .then ( () => this.showSpinner = false)
       } else {

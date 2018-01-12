@@ -77,6 +77,9 @@ import { ExpertsService } from "./services/experts.service";
 import { CoreModule } from './core.module';
 import { AppSpinnerComponent } from './app-spinner.component';
 
+import { FamilyPanelComponent } from './parents/family-panel.component';
+import { FamilyLoginComponent } from './parents/family-login.component';
+import { FamilyComponent } from './parents/family.component';
 
 
 @NgModule({
@@ -147,6 +150,10 @@ import { AppSpinnerComponent } from './app-spinner.component';
     AppAlertComponent,
     AppSpinnerComponent,
     HeroProgressComponent,
+
+    FamilyPanelComponent,
+    FamilyLoginComponent,
+    FamilyComponent,
   ],
   
   imports: [

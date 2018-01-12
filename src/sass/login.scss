@@ -1,0 +1,32 @@
+@import '_zmienne';
+
+.code-box{
+
+
+    margin-top: 0px;
+
+    input {
+        display: none;
+    
+        & + span{
+            display: inline-block;
+            width: 20vw;
+            height: 20vw;
+            margin: 3vw;
+            border: 2px solid $color_base;
+            border-radius: 100%;
+            color:$color_dark_grey;
+            font: 1.5*$font_title_size $font_reg_family;
+            cursor: pointer;
+            text-align: center;
+            line-height: 20vw;
+            background-color: rgba(white,0.4);
+        }
+
+        &:checked + span {
+            background-color:$color_base;
+            color: white	
+        }
+    }
+}
+

@@ -25,7 +25,7 @@ export class AuthParentService implements CanActivate  {
       .do (loggedIn => {
         if (!loggedIn) {
           console.log('access denied')
-          this.router.navigate(['/rodzic-logowanie']);
+          this.router.navigate(['/rodzina-logowanie']);
         } else {
           console.log('access granted')
         }

@@ -49,7 +49,7 @@ export class UsersService {
     return this.afAuth.auth.signInWithEmailAndPassword(parent.email, parent.password)
     .then((user) => {
       this.authState = user
-      return this.router.navigate(['/rodzic']);
+      return this.router.navigate(['/rodzina/menu']);
     })
     .catch(function(error) {
       var errorCode = error.code;
@@ -97,33 +97,33 @@ export class UsersService {
     });
   }
 
-  kidRegister(kid) {
+  // kidRegister(kid) {
 
-    var secondaryApp = firebase.initializeApp(environment.firebase, "Secondary")
+  //   var secondaryApp = firebase.initializeApp(environment.firebase, "Secondary")
 
-    kid.email = kid.login + '@bt.com'
-    return secondaryApp.auth().createUserWithEmailAndPassword(kid.email, kid.password)
-    .then((user) => 
-      this.createOneKid(user,kid).then( () => 
-        secondaryApp.delete().then( () => 
-          this.router.navigate(['/rodzic/dziecko/'+kid.login+'/misje'])
-        )      
-      )
-    )
-    .catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      if (errorCode === 'auth/weak-password') {
-        alert('Hasło za słabe. Minimalna długość to 6 znaków');
-      } else if (errorCode === "auth/email-already-in-use") {
-        alert('Taki użytkownik jest już dostępny. Wybierz inny login');
-      } else {        
-        alert(errorMessage);
-      }
-      console.log(error)
-      secondaryApp.delete()
-    }) 
-  }
+  //   kid.email = kid.login + '@bt.com'
+  //   return secondaryApp.auth().createUserWithEmailAndPassword(kid.email, kid.password)
+  //   .then((user) => 
+  //     this.createOneKid(user,kid).then( () => 
+  //       secondaryApp.delete().then( () => 
+  //         this.router.navigate(['/rodzic/dziecko/'+kid.login+'/misje'])
+  //       )      
+  //     )
+  //   )
+  //   .catch(function(error) {
+  //     var errorCode = error.code;
+  //     var errorMessage = error.message;
+  //     if (errorCode === 'auth/weak-password') {
+  //       alert('Hasło za słabe. Minimalna długość to 6 znaków');
+  //     } else if (errorCode === "auth/email-already-in-use") {
+  //       alert('Taki użytkownik jest już dostępny. Wybierz inny login');
+  //     } else {        
+  //       alert(errorMessage);
+  //     }
+  //     console.log(error)
+  //     secondaryApp.delete()
+  //   }) 
+  // }
   
 
 
@@ -158,6 +158,15 @@ export class UsersService {
     this.currentParentKid = value;
 }
 
+  toLoginUser: string;
+
+  get toLogUser(): string {
+    return this.toLoginUser;
+  }
+
+  set toLogUser(value: string) {
+    this.toLoginUser = value;
+  }
 
   getLoggedUser(mode){
 
@@ -251,28 +260,19 @@ export class UsersService {
     const data = {
       uid: user.uid,
       email: parent.email,
-      gender: parent.gender
+      gender: parent.gender,
+      codeExist: parent.codeExist,
+      code: parent.code
     }
 
     return userRef.set(data)
     
   }
 
-  createOneKid(user,kid){
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`kids/${kid.login}`);
-
-    const data = {
-      uid: user.uid,
-      login: kid.login,
-      name: kid.name,
-      parentId: kid.parentId,
-      badges: kid.badges,
-      birth: kid.birth,
-      heroId: kid.heroId,
-      gender: kid.gender,
-    }
-
-    return userRef.set(data)
+  createOneKid(kid){
+    
+    return this.kidsCollection.add(kid)
+    
     
   }
 
