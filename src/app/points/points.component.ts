@@ -8,7 +8,7 @@ import { MissionsService } from '../services/missions.service';
   template: `
 
   <p *ngIf="extraPoints && extraPoints.length==0" class="smallTitle">   
-  Zawsze możesz dodać dziecku punkty ekstra za coś niestandardowego. Wystraczy kliknąć + w prawym dolnym rogu strony.  
+  Zawsze możesz dodać dziecku punkty ekstra za coś niestandardowego. Wystraczy kliknąć <span>+</span> w prawym dolnym rogu strony.  
   </p>
 
   <table> 

@@ -12,25 +12,22 @@ import { UsersService } from "../services/users.service";
   <div class="title-container">
   
     <div class="code-box">
-    <label *ngFor="let code of codes">
-      <input type="checkbox"
-              value="{{code.value}}"
-              [(ngModel)]="code.checked"
-              name="code.name"
-      >
-      <span>★</span>    
-    </label>     
+      <label *ngFor="let code of codes">
+        <input type="checkbox"
+                value="{{code.value}}"
+                [(ngModel)]="code.checked"
+                name="code.name"
+                (ngModelChange)="show()"
+        >
+        <span>★</span>    
+      </label>     
+    </div>
+
+    <a [routerLink]="['/rodzina']">
+      <div class="back">↩</div>
+    </a>
+
   </div>
-
-  <a [routerLink]="['/rodzina']">
-    <div class="back">↩</div>
-  </a>
-
-  <button (click)="login()">ZALOGUJ</button>
-
-   </div>
-
-
 
   `,
   styles: [],
@@ -38,17 +35,6 @@ import { UsersService } from "../services/users.service";
 })
 export class KidLoginComponent implements OnInit {
 
-  codes=[
-    {name: 'code1', value: 0, checked: false},
-    {name: 'code2', value: 1, checked: false},
-    {name: 'code3', value: 2, checked: false},
-    {name: 'code4', value: 3, checked: false},
-    {name: 'code5', value: 4, checked: false},
-    {name: 'code6', value: 5, checked: false},
-    {name: 'code7', value: 6, checked: false},
-    {name: 'code8', value: 7, checked: false},
-    {name: 'code9', value: 8, checked: false}
-  ];
 
   constructor(
     public users: UsersService,
@@ -59,19 +45,38 @@ export class KidLoginComponent implements OnInit {
       this.renderer.addClass(document.body,'title-page')
     }
 
-  kid={}
+    codes=[
+      {name: 'code1', value: 0, checked: false},
+      {name: 'code2', value: 1, checked: false},
+      {name: 'code3', value: 2, checked: false},
+      {name: 'code4', value: 3, checked: false},
+      {name: 'code5', value: 4, checked: false},
+      {name: 'code6', value: 5, checked: false},
+      {name: 'code7', value: 6, checked: false},
+      {name: 'code8', value: 7, checked: false},
+      {name: 'code9', value: 8, checked: false}
+    ];
+  
+    show () {
+      let a1 = this.codes.filter(x => x.checked==true).map(x => x.value);
+      let a2 = this.kid['code'];
+   
+      if (a1.length==a2.length && a1.every((v,i)=> v === a2[i])) {
+         this.showSpinner = true
+         this.users.currentKid = this.kidId
+         this.router.navigate(['rodzina/dziecko/'+this.kidId])
+      }
+    }
+
 
   showSpinner: boolean = false
 
-  login() {
-    this.showSpinner = true
-    this.users.currentKid = this.kidLogin
-    this.router.navigate(['rodzina/dziecko/'+this.kidLogin])
-  }
-
-  kidLogin
+  kid
+  kidId
   ngOnInit() {
-    this.kidLogin = this.users.toLogUser
+    this.kidId  = this.users.toLogUser
+    this.users.getOneKid(this.kidId)
+    .subscribe( kid => this.kid = kid)
   }
 
   ngOnDestroy() {

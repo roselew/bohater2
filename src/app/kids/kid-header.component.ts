@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'kid-header',
   template: `
-  <header routerLink='/dziecko/menu'>
+  <header [routerLink]="['/rodzina/dziecko/'+kidId+'/menu']">
     <div *ngIf="kid" class="header-banner"> {{kid.name}} </div>
     <img src="../../assets/logoXL.png" class="logo">
   </header>
@@ -16,9 +17,13 @@ export class KidHeaderComponent implements OnInit {
   @Input()
   kid
 
-  constructor() { }
+  constructor(    
+    private route:ActivatedRoute
+  ) { }
 
+  kidId
   ngOnInit() {
+    this.kidId = this.route.parent.snapshot.paramMap.get('kidId');
   }
 
 }

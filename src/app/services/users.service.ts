@@ -71,7 +71,7 @@ export class UsersService {
       .then((user) => {
         this.authState = user
         this.createOneParent(user,parent)
-        this.router.navigate(['/rodzic']);
+        this.router.navigate(['/rodzina']);
       })
       .catch(error => console.log(error));
   }
@@ -156,7 +156,17 @@ export class UsersService {
 
   set currentKid(value: string) {
     this.currentParentKid = value;
-}
+  }
+
+  currentParentParent: string;
+
+  get currentParent(): string {
+    return this.currentParentParent
+  }
+
+  set currentParent(value: string) {
+    this.currentParentParent = value;
+  }
 
   toLoginUser: string;
 
@@ -198,33 +208,11 @@ export class UsersService {
   }
 
   deleteOneKid(kidId){
-    console.log(kidId)
-    this.afs.doc(`kids/${kidId}`).delete()
-    .then( () => {
+    return this.afs.doc(`kids/${kidId}`).delete()
+  }
 
-      // let userMissionsCollection = this.afs.collection<any>('userMissions', ref => {
-      //   // Compose a query using multiple .where() methods
-
-      //   return ref
-      //           .where('kidId', '==', kidId)
-                
-      // });
-
-      // userMissionsCollection.snapshotChanges().map(changes => {
-      //   return changes.map( a => {
-      //     console.log(a.payload.doc.ref)
-      //     return a.payload.doc.ref.delete()
-      //   })
-      
-      this.router.navigate(['/rodzic']) 
-    })
-    // 
-}
-
-  updateOneKid(kid){
-    this.kidDoc = this.afs.doc(`kids/${kid.login}`)
-    this.kidDoc.update(kid)  
-    return this.kid 
+  updateOneKid(kid,kidId){
+    return this.afs.doc(`kids/${kidId}`).update(kid) 
   }
 
 

@@ -47,20 +47,23 @@ import { AvailableGiftComponent } from "./gifts/available-gift.component";
 import { FamilyPanelComponent } from './parents/family-panel.component';
 import { FamilyLoginComponent } from './parents/family-login.component';
 import { FamilyComponent } from './parents/family.component';
+import { AuthFamilyService } from './services/auth-family.service';
+import { ParentEditComponent } from './parents/parent-edit.component';
 
 
 
 
 const routes:Routes = [
-    { path: '',                                          redirectTo: '/rodzina', pathMatch:'full'},
+    { path: '',                                          redirectTo: '/witaj', pathMatch:'full'},
     { path: 'witaj',                                     component: WelcomeComponent},
     { path: 'rodzina-logowanie',                          component: FamilyLoginComponent},
     { path: 'rodzina-rejestracja',                        component: ParentRegisterComponent},  
 
-    { path: 'rodzina', component: FamilyComponent, canActivate: [ AuthParentService ], children: [
+    { path: 'rodzina', component: FamilyComponent, canActivate: [ AuthFamilyService ], children: [
 
         {path:'',                                       redirectTo: 'menu', pathMatch: 'full'},
         {path: 'menu',                                  component: FamilyPanelComponent},
+        {path: 'edytuj',                                component: ParentEditComponent},
 
         // FOR KIDS ONLY
         {path: 'dziecko-logowanie',                     component: KidLoginComponent},
@@ -76,7 +79,7 @@ const routes:Routes = [
 
         // FOR PARENTS ONLY 
         {path: 'rodzic-logowanie',                     component: ParentLoginComponent},
-        { path: 'rodzic',                              component: ParentComponent, children:[
+        { path: 'rodzic',         component: ParentComponent, canActivate: [AuthParentService ], children:[
             { path: '',                                      redirectTo: 'dzieci', pathMatch:'full'},   
             { path: 'dzieci',                                component: KidsComponent}, 
             { path: 'dzieci/dodaj-dziecko',                  component: CreateKidComponent},    

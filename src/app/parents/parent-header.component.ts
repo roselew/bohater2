@@ -28,7 +28,7 @@ import { UsersService } from "../services/users.service";
           </li>
 				</ul>
         <ul ngClass="" class="nav-add">
-          <li routerLink='/rodzic'>Powrót do listy dzieci</li>  
+          <li routerLink='/rodzina/rodzic'>Powrót do listy dzieci</li>  
 					<li (click)="goToKid()">Przejdź na stronę dziecka</li>
 					<li routerLink='edytuj-dziecko' (click)="toggleMenu()">Edytuj profil dziecka</li>
 
@@ -52,8 +52,9 @@ export class ParentHeaderComponent implements OnInit {
   kid
 
   goToKid(){
-    this.users.currentKid = this.kid.login
-    this.router.navigate(['/dziecko'])
+    console.log(this.kidId)
+    this.users.currentKid = this.kidId;
+    this.router.navigate(['/rodzina/dziecko/'+this.kidId])
    }
 
   menuVisible = true
@@ -65,7 +66,9 @@ export class ParentHeaderComponent implements OnInit {
     private route:  ActivatedRoute,   
   ) { }
 
-  ngOnInit() {
+  kidId
+  ngOnInit() {  
+    this.kidId = this.route.snapshot.paramMap.get('kidId');
   }
 
 }

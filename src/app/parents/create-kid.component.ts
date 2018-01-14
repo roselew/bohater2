@@ -12,10 +12,13 @@ import { UsersService } from "../services/users.service";
 
       <app-spinner *ngIf="showSpinner"></app-spinner>
 
-      <view-kid *ngIf="!showSpinner" [kid]="kid" [codes]="codes" [codeExist]="codeExist"></view-kid>
+      <view-kid *ngIf="!showSpinner" [kid]="kid" [codes]="codes"></view-kid>
 
-    <button (click)="save()">DODAJ DZIECKO</button>
-    <button class="altButton" routerLink="../">Powrót</button>
+    <button *ngIf="!showSpinner" (click)="save()">DODAJ DZIECKO</button>
+
+    <a [routerLink]="['../']">
+      <div class="back">↩</div>
+    </a>
 
   </div>
 
@@ -55,14 +58,11 @@ export class CreateKidComponent implements OnInit {
     {name: 'code8', value: 7, checked: false},
     {name: 'code9', value: 8, checked: false}
   ];
-  codeExist
 
   save(){
       this.showSpinner = true
-      this.kid['codeExist'] = (this.codeExist == 'T') ? true : false;
       this.kid['code']=this.codes.filter(x => x.checked==true).map(x => x.value);
-      let parentId = this.users.currentUserEmail;
-      this.kid['parentId']=parentId;
+      this.kid['parentId']=this.users.currentUserEmail;
       this.kid['badges']=[false,false,false,false,false,false,false,false,false]
       this.users.createOneKid(this.kid)
       .then( () => {

@@ -13,16 +13,14 @@ import { Router, ActivatedRoute } from '@angular/router';
       
 
       <div class="title-container">
-          <button class="enter parent" (click)="goToRegister()">ZAREJESTRUJ</button>
           <app-spinner class="avatar-images" *ngIf="showSpinner"></app-spinner>
           <div class="avatar-images" *ngIf="!showSpinner">
             <img src="assets/bohater2.png" width="25%">
             <img src="assets/bohater.png" width="30%">
             <img src="assets/bohater3.png" width="25%">
           </div>
-          <button class="enter kid" (click)="goToLogin()" >ZALOGUJ</button>
-
-      </div>
+          <button class="enter parent" (click)="goToFamily()">ZAPRASZAMY</button>
+       </div>
   
       <a (click)="goTo('section02')" class="scrolling"><span></span>Dowiedz się więcej</a>
     </section>
@@ -75,6 +73,10 @@ import { Router, ActivatedRoute } from '@angular/router';
       <img src="assets/bohater.png" height="300px">
       <img src="assets/bohater3.png" height="200px">
       
+      <a [routerLink]="['/rodzina']">
+        <div class="back">❔</div>
+      </a>
+
   
       <a (click)="goTo('section01')" class="scrolling scrolling-reverse"><span></span>Powrót do góry</a>
     </section>	
@@ -96,15 +98,11 @@ export class WelcomeComponent implements OnInit {
     showSpinner: boolean = false
 
   
-    goToLogin() {
+    goToFamily() {
       this.showSpinner = true; 
-      this.router.navigate(['/rodzina-logowanie'])
+      this.router.navigate(['/rodzina'])
     }
 
-    goToRegister() {
-      this.showSpinner = true; 
-      this.router.navigate(['/rodzina-rejestracja'])
-    }
 
     ngOnInit(){
       // this.service.getKids().subscribe( kids => {

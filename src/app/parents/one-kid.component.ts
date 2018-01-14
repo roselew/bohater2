@@ -6,7 +6,7 @@ import { UsersService } from "../services/users.service";
   selector: 'one-kid',
   template: `
 
-   <parent-header [kid]="kid"></parent-header>
+   <parent-header *ngIf="kid" [kid]="kid"></parent-header>
    <div class="container" id="panel">
     <router-outlet></router-outlet>
    </div>
@@ -30,7 +30,7 @@ export class OneKidComponent implements OnInit {
       this.users.getOneKid(kidId)
         .subscribe( kid => {
           this.kid = kid;
-          this.parentId = this.kid['parentId']; 
+          if (this.kid) { this.parentId = this.kid['parentId'] }; 
         })
    }
 

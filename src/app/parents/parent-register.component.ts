@@ -14,7 +14,7 @@ import * as firebase from 'firebase/app';
 
   <app-spinner *ngIf="showSpinner"></app-spinner>
   
-    <form action='rodzic_login.html' *ngIf="!showSpinner">
+    <form *ngIf="!showSpinner">
     
       <input type='text' placeholder='E-mail' [(ngModel)]="parent['email']" name="email">
 
@@ -29,11 +29,11 @@ import * as firebase from 'firebase/app';
       </div>     
 
       <div class="double-radio">
-        <input type="radio" [(ngModel)]="codeExist" value="T" name="codeExist" id="code-left"><label for="code-left" class="double">Z hasłem</label>
-        <input type="radio" [(ngModel)]="codeExist" value="F" name="codeExist" id="code-right"><label for="code-right" class="double">Bez hasła</label>
+        <input type="radio" [(ngModel)]="parent['codeExist']" value="T" name="codeExist" id="code-left"><label for="code-left" class="double">Z hasłem</label>
+        <input type="radio" [(ngModel)]="parent['codeExist']" value="F" name="codeExist" id="code-right"><label for="code-right" class="double">Bez hasła</label>
       </div>
       
-      <div *ngIf="codeExist == 'T'" class="code-box">
+      <div *ngIf="parent['codeExist'] == 'T'" class="code-box">
         <label *ngFor="let code of codes">
           <input type="checkbox"
                   value="{{code.value}}"
@@ -48,6 +48,10 @@ import * as firebase from 'firebase/app';
 
     </form>
 
+    <a [routerLink]="['/rodzina']">
+      <div class="back">↩</div>
+    </a>
+
   </div>
   `,
   styles: [``],
@@ -60,11 +64,9 @@ export class ParentRegisterComponent implements OnInit {
     private router: Router,
     private route:ActivatedRoute,
     private renderer: Renderer2) { 
-      this.renderer.addClass(document.body,'parent')
+      this.renderer.addClass(document.body,'kid')
       this.renderer.addClass(document.body,'title-page')
     }
-
-  codeExist
 
   codes=[
     {name: 'code1', value: 0, checked: false},
@@ -82,7 +84,7 @@ export class ParentRegisterComponent implements OnInit {
   }
   
   ngOnDestroy() {
-    this.renderer.removeClass(document.body, 'parent');
+    this.renderer.removeClass(document.body, 'kid');
     this.renderer.removeClass(document.body, 'title-page');
   }
 
@@ -93,7 +95,6 @@ export class ParentRegisterComponent implements OnInit {
   addParent(){
      if (this.parent['password']===this.checkpassword){
         this.showSpinner = true;
-        this.parent['codeExist'] = (this.codeExist == 'T') ? true : false;
         this.parent['code']=this.codes.filter(x => x.checked==true).map(x => x.value);
         this.users.parentRegister(this.parent)
         .then ( () => this.showSpinner = false)

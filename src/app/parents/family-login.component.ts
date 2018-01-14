@@ -10,37 +10,41 @@ import * as firebase from 'firebase/app';
 
   <app-header [simpleH1]="'Rodzina'" [skewH1]="'Logowanie'"></app-header> 
 
-  <!--<div *ngIf="afAuth.authState | async; let user; else showLogin">
-  <h1>Hello {{ user.email }}!</h1>
-
-  <button (click)="logout()">Logout</button>
-</div> 
-<ng-template #showLogin>
-  <p>Please login.</p>
-</ng-template>-->
-
   <div class="title-container">
    
   <app-spinner *ngIf="showSpinner"></app-spinner>
 
     <form #formRef="ngForm" *ngIf="!showSpinner" (submit)="login()">
 
-      <input type='text' placeholder='Email' [(ngModel)]="parent['email']" name="email">
-        <!-- <span *ngIf="formRef.controls.email?.touched  || formRef.controls.email?.dirty"> 
+    <!--  <span *ngIf="(email.touched || email.dirty) && email.invalid">
+        <p>nie podałeś email</p>
+      </span> -->
+
+      <input type='text' placeholder='Email' [(ngModel)]="parent['email']" name="email" #email="ngModel" required>
+
+        <!-- <span > 
           <small *ngIf="formRef.controls.email?.errors?.required" class="form-text text-muted">Field is required</small>
           <small *ngIf="formRef.controls.email?.errors?.email" class="form-text text-muted">Invalid email format</small>
         </span> -->
 
       <input type='password' placeholder='Hasło' [(ngModel)]="parent['password']" name="password">
 
-      <input type='checkbox' name='remember'>
+      <input type='checkbox' name='remember' checked>
       <label for='checkbox'>Zapamiętaj mnie</label>
 
       <button type='submit'>ZALOGUJ</button>
 
     </form>
-    <a routerLink='/rodzic-rejestracja'>Nie masz konta? Zarejestruj się</a>
+
+    <button *ngIf="!showSpinner" routerLink='/rodzina-rejestracja' class="altButton">Nie masz konta ?</button>
   
+    <button *ngIf="!showSpinner" class="altButton">Nie pamiętasz hasła</button>
+
+    
+    <a [routerLink]="['/witaj']">
+       <div class="back">↩</div>
+    </a>
+
   </div>
 
 
@@ -82,7 +86,9 @@ export class FamilyLoginComponent implements OnInit {
     }
 
   parents
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
 
   ngOnDestroy() {

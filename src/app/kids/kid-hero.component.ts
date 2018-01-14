@@ -53,21 +53,22 @@ export class KidHeroComponent implements OnInit {
   ) { }
 
   kid 
+  kidId
   userMissions
   userHero
   nBadges 
   heroProgress
   ngOnInit() {
 
-    let kidId = this.users.getLoggedUser('kid');
+    this.kidId = this.users.getLoggedUser('kid');
 
-    this.service.fetchMissions(kidId)
+    this.service.fetchMissions(this.kidId)
       .subscribe(userMissions => {
       this.userMissions = userMissions;
       let nGainedBadges = this.service.getAllWeeksProgress(this.userMissions)
       .filter( x => (x.nAll===x.nDone && x.nAll!==0) ).length;
       
-      this.users.getOneKid(kidId)
+      this.users.getOneKid(this.kidId)
         .subscribe(kid => {
           this.kid= kid
           this.userHero = this.experts.getOneExpertHero(this.kid.heroId)
@@ -89,11 +90,9 @@ export class KidHeroComponent implements OnInit {
     } else { 
       this.showAlert(this.userHero.image,'Gratulacje','Właśnie zdobyłeś kolejną odznakę')
       this.kid.badges[i]=true
-      this.users.updateOneKid(this.kid)
-      .subscribe( kid=> {
-        this.kid = kid;
-        this.heroProgress = this.experts.getHeroPowers(this.kid.heroId, this.kid.badges);
-      }) 
+      this.users.updateOneKid(this.kid,this.kidId)
+      .then ( () => this.heroProgress = this.experts.getHeroPowers(this.kid.heroId, this.kid.badges) );
+       
     }
   }
 

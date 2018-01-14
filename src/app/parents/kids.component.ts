@@ -8,9 +8,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
   template: `
 
   <header>	
-	  <div [routerLink]="['/witaj']" class="header-banner">MENU</div>
+	  <div [routerLink]="['/witaj']" class="header-banner">Lista dzieci</div>
     <img src="assets/logo.png" class="logo">
-    <p class="logout" (click)="logout()">Witaj {{parent}}! <br> Wyloguj </p>
   </header>
 
   <div class="container">

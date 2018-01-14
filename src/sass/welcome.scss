@@ -26,64 +26,53 @@
 	padding-bottom: 20rem;
 }
 
-button.enter {
-	display: inline-block;
-	width: 80%;
-	margin: 3%;
+
+.back{
 	border: 3px white solid;
-	font: 0.8*$font_title_size $font_title_family;
-	margin-top: 50%;
-
-	@media (orientation: landscape){
-		width: 30%;
-		vertical-align: middle;
-		margin: 0 2%;
-	}
-	
-	&.parent { 
-		background-color: $color_undone;
-		&:hover{background-color: $color_back_parent; color: $color_text_parent;}
-	}
-	&.kid { 
-		background-color: $color_done;
-		&:hover{background-color: lighten($color_back_kid,10%); color: $color_text_kid;}
-	}
 }
-
-title.container{
-	vertical-align: middle;
-
-}
-
 
 .avatar-images{
 	text-align: center;
-	position: absolute;
-	top: 0%;
+	position: relative;
+	top: 0;
 	left:10%;
 	width: 80%;
 	@media (orientation: landscape){
-		position: relative;
-		top: 0;
-		left:0;
-		display: inline-block;
 		width: 30%;
-		vertical-align: middle;
+		left: 35%;
 	}
 }
 
+.title-container {
+	@media (orientation: landscape){
+		margin-top:0;
+	}
+}
+button.enter {
+	display: inline-block;
+	width: 80%;
+	border: 3px white solid;
+	background-color: $color_undone;
+	font: 0.8*$font_title_size $font_title_family;
+
+	@media (orientation: landscape){
+		width: 60%;	
+	}
+	
+}
 
 
 a.scrolling {
 	@media (orientation: landscape){
 		width: 30%;
 		margin-left: 35%;
+		bottom: 1rem;
 	}
 	//miejsce na strzałkę w dół
 	padding-top: 80px;
 
 	position: absolute;
-	bottom: 1rem;
+	bottom: 3rem;
 	left: 0px;
 	text-align: center;
 	z-index: 2;

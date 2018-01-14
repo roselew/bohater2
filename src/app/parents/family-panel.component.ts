@@ -8,36 +8,35 @@ import { ExpertsService } from '../services/experts.service';
   selector: 'family-panel',
   template: `
 
-  <app-header [simpleH1]="'Bohater'" [skewH1]="'Tygodnia'"></app-header> 
+  <div class="title-banner">
+    <h1>Rodzina</h1> <br>
+    <h1 class="font-skew">Bohaterów</h1> 
+  </div>
 
   <p *ngIf="parent" class="logout" (click)="logout()">Witaj {{parent.email}}! <br> Wyloguj </p>
 
   <div class="title-container">
 
-    <div *ngIf="parent" class="parent-card" [routerLink]="['/rodzic']">
-        <p>{{parent.name}}</p>
+    <div *ngIf="parent" class="kid-card parent-card" (click)="goToParent()">
+        <p>{{parent.gender}}</p>
+        <img src="assets/logoXL.png" class="parent-image">
     </div>
-
+    <br>
     <div *ngFor="let kid of kids; let i = index" class="kid-card" (click)="goToKid(kid)">
-      <img *ngIf="i%2==0" class="leftImage" src="{{experts.getHeroImage(kid.heroId)}}">
-      <img *ngIf="i%2==1"class="rightImage" src="{{experts.getHeroImage(kid.heroId)}}">
-      <div *ngIf="i%2==0" class="leftStars">
-        <div class="stars" *ngFor="let badge of kid.badges">
-          <star-svg *ngIf="badge==true"></star-svg>
-        </div>
-      </div>
-      <div *ngIf="i%2==1" class="rightStars">
-        <div class="stars" *ngFor="let badge of kid.badges">
-          <star-svg *ngIf="badge==true"></star-svg>
-        </div>
-      </div>
+      <img src="{{experts.getHeroImage(kid.heroId)}}">
       <p>{{kid.name}}</p>
-
+      <div class="allStars">
+        <div *ngFor="let badge of kid.badges">
+          <star-svg *ngIf="badge==true"></star-svg>
+        </div>
+      </div>
     </div>
 
     <p *ngIf="kids && kids.length == 0" class="smallTitle"> Wejdź w swój profil aby dodać dziecko </p>
     
-
+    <a [routerLink]="['/rodzina/edytuj']">
+    <div class="plus"><img src="assets/settings.svg" width="60%"></div>
+    </a>
 
   </div>
 
@@ -73,12 +72,9 @@ export class FamilyPanelComponent implements OnInit {
   parent 
    ngOnInit(){
 
-    
-
      this.users.getOneParent(this.users.currentUserEmail)
         .subscribe( parent => {
           this.parent = parent;
-
         })
 
      this.users.getParentKids()
@@ -89,13 +85,24 @@ export class FamilyPanelComponent implements OnInit {
    } 
 
    goToKid(kid){
-     if (kid.codeExist){
-      this.users.toLogUser = kid.login
+     if (kid.codeExist=='T'){
+      this.users.toLogUser = kid.id
       this.router.navigate(['rodzina/dziecko-logowanie'])
      } else {
-       this.users.currentKid = kid.login
-       this.router.navigate(['rodzina/dziecko/'+kid.login])
+       this.users.currentKid = kid.id
+       this.router.navigate(['rodzina/dziecko/'+kid.id])
      }
-    
    }
+
+   goToParent(){
+     if (this.parent.codeExist=='T'){
+       this.users.toLogUser = this.parent.email
+       this.router.navigate(['rodzina/rodzic-logowanie'])
+     } else {
+       this.users.currentParent = this.parent.email
+       this.router.navigate(['rodzina/rodzic'])
+     }
+
+     }
+   
 }

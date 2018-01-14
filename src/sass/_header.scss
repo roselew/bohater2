@@ -53,7 +53,8 @@ header{
 		right:0px;
 		width: 100%;
 		height: 100vh;
-		background-color: $color_back_parent;
+		background:  $color_back_parent url(../assets/background_parent.svg) top 125px center no-repeat;
+		background-size: 100%;	
 		// background-color: $color_back_parent;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
@@ -62,17 +63,20 @@ header{
 			display:block;
 			height: 11vh;
 			width: 100%;
-			font: $font_big_size $font_reg_family;
+			font: 1.2*$font_big_size $font_reg_family;
 			line-height: 11vh; 
 			color: $color_text_parent;
 			text-align: center;
-			margin-bottom: 5px;
+			margin-bottom: 10px;
+			background-color: rgba(white,0.4);
+			border-radius: 2rem;
+			box-shadow: 0 5px 10px 0 dimgray;
 		}
 		a{	
 			display:block;
 			height: 11vh;
 			width: 100%;
-			font: $font_big_size $font_reg_family;
+			font: 1.2*$font_big_size $font_reg_family;
 			line-height: 11vh;
 			color: $color_text_parent !important; 
 		}
@@ -81,6 +85,7 @@ header{
 		}
 		.nav-main {
 			margin-left: 1%;
+			margin-top: 10px;
 		}
 		.nav-main li {	
 			position: relative;
@@ -90,7 +95,6 @@ header{
 			// text-align: right;
 			padding: 2vh 0;
 			font: 1.5*$font_big_size $font_reg_family;
-			background-color: mix($color_back_parent, white);
 			vertical-align: bottom;
 			// line-height: 25vh;
 			img {
@@ -100,7 +104,10 @@ header{
 				height: 10vh;
 			}
 		}
-		.nav-add li { background-color: mix($color_back_parent, white);}
+		.nav-add {
+			margin-left: 1%;
+			margin-right:1%;
+		}
 	}
 }
 

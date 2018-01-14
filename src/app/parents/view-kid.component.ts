@@ -41,13 +41,13 @@ import { ExpertsService } from '../services/experts.service';
           </label> 
         
         </form>
+      </div>  
 
-        <div class="double-radio">
-          <input type="radio" [(ngModel)]="codeExist" value="T" name="codeExist" id="code-left"><label for="code-left" class="double">Z hasłem</label>
-          <input type="radio" [(ngModel)]="codeExist" value="F" name="codeExist" id="code-right"><label for="code-right" class="double">Bez hasła</label>
-        </div>
+
+      <input type="radio" [(ngModel)]="kid.codeExist" value="T" name="code-exist" id="code-left"><label for="code-left" class="double">Z hasłem</label>
+      <input type="radio" [(ngModel)]="kid.codeExist" value="F" name="code-exist" id="code-right"><label for="code-right" class="double">Bez hasła</label>
       
-        <div *ngIf="codeExist == 'T'" class="code-box">
+        <div *ngIf="kid.codeExist == 'T'" class="code-box">
           <label *ngFor="let code of codes">
             <input type="checkbox"
                     value="{{code.value}}"
@@ -58,7 +58,7 @@ import { ExpertsService } from '../services/experts.service';
           </label>     
         </div>
   
-      </div>  
+
 
   `,
   styles: [],
@@ -68,7 +68,6 @@ export class ViewKidComponent implements OnInit {
 
 @Input() kid 
 @Input() codes
-@Input() codeExist
 
 expertHeroesF
 expertHeroesM
@@ -81,6 +80,7 @@ expertHeroesM
   ngOnInit() { 
     this.expertHeroesF = this.experts.getExpertHeroes("F")
     this.expertHeroesM = this.experts.getExpertHeroes("M")
+    
    }
 
   selectHero(expertHero){

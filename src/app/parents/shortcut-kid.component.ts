@@ -7,38 +7,38 @@ import { UsersService } from '../services/users.service';
   selector: 'shortcut-kid',
   template: `
 
-  <a [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']" *ngIf="kid">
+  <a [routerLink]="['/rodzina/rodzic/dziecko/'+kidId+'/postepy/0']" *ngIf="kid">
     <div class="kid-label">{{kid.name}}
     </div>	
   </a>
 
 <div *ngIf="userMissions && userGifts">
 
-<div class="total-progress" [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']">
+<div class="total-progress" [routerLink]="['/rodzina/rodzic/dziecko/'+kidId+'/postepy/0']">
 <progress-week [userMissions]="userMissions"></progress-week> 
 </div>
 
   <div class="kid-icon">
-    <a [routerLink]="['/rodzic/dziecko/'+kidId+'/postepy/0']" [queryParams]="{filter: 'wait'}">
+    <a [routerLink]="['/rodzina/rodzic/dziecko/'+kidId+'/postepy/0']" [queryParams]="{filter: 'wait'}">
     <missions-to-accept [userMissions]="userMissions"></missions-to-accept> 
     </a>	
   </div>		
 
   <div class="kid-icon">		
-    <a [routerLink]="['/rodzic/dziecko/'+kidId+'/nagrody']">
+    <a [routerLink]="['/rodzina/rodzic/dziecko/'+kidId+'/nagrody']">
     <gifts-to-receive [userGifts]="userGifts"></gifts-to-receive> 
     </a>
   </div>
 
   <div class="kid-icon">
-  <a [routerLink]="['/rodzic/dziecko/'+kidId+'/misje/dodaj']">
+  <a [routerLink]="['/rodzina/rodzic/dziecko/'+kidId+'/misje/dodaj']">
     <img src="../../assets/list2.svg" class="enlarge">
     <p>Dodaj nową misję</p>
   </a>
 </div>
 
 <div class="kid-icon">
-  <a [routerLink]="['/rodzic/dziecko/'+kidId+'/punkty/punkty-ekstra']">
+  <a [routerLink]="['/rodzina/rodzic/dziecko/'+kidId+'/punkty/punkty-ekstra']">
     <img src="../../assets/addstars.svg" class="enlarge">
     <p>Dodaj punkty ekstra</p>
   </a>

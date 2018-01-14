@@ -19,7 +19,7 @@ export class AuthKidService implements CanActivate  {
   canActivate(
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot): boolean {
-      if (!!this.users.currentKid){
+      if (!!this.users.currentKid||!!this.users.currentParent){
         console.log('access granted')
         return true
       } else {

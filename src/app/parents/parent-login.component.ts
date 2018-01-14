@@ -56,8 +56,9 @@ export class ParentLoginComponent implements OnInit {
    let a2 = this.parent['code'];
 
    if (a1.length==a2.length && a1.every((v,i)=> v === a2[i])) {
-     console.log('suksec')
       this.showSpinner = true
+      this.users.currentParent = this.parent['email']
+      this.router.navigate(['rodzina/rodzic'])
    }
  }
  codes=[
@@ -106,8 +107,6 @@ export class ParentLoginComponent implements OnInit {
     this.users.getOneParent(this.users.currentUserEmail)
     .subscribe( parent => {
       this.parent = parent;
-      console.log(this.parent)
-      console.log(this.users.currentUserEmail)
     })
     
   }

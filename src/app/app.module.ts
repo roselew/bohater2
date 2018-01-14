@@ -80,6 +80,9 @@ import { AppSpinnerComponent } from './app-spinner.component';
 import { FamilyPanelComponent } from './parents/family-panel.component';
 import { FamilyLoginComponent } from './parents/family-login.component';
 import { FamilyComponent } from './parents/family.component';
+import { AuthFamilyService } from './services/auth-family.service';
+import { ParentEditComponent } from './parents/parent-edit.component';
+import { ViewParentComponent } from './parents/view-parent.component';
 
 
 @NgModule({
@@ -100,7 +103,8 @@ import { FamilyComponent } from './parents/family.component';
     ParentRegisterComponent,
     ShortcutKidComponent,
     ViewKidComponent, 
-    
+    ParentEditComponent,
+    ViewParentComponent,
     
     MissionsComponent,  
     CreateMissionComponent,
@@ -171,6 +175,7 @@ import { FamilyComponent } from './parents/family.component';
     GiftsService,
     AuthParentService,
     AuthKidService,
+    AuthFamilyService,
     UsersService,
     ExpertsService,
   ],

@@ -1,58 +1,56 @@
 
 @import '_zmienne';
 
+.title-banner {
+    margin-top: 5vw;
+}
+
 .kid-card {
     position: relative;
-    font: $font_title_size $font_title_family;
-    p{color: $color_base;}
-    width: 80%;
     display: inline-block;
+    width: 40vw;
+    height: 40vw;
+    margin: 2rem 3vw;
+    border-radius: 100%;
+    font: $font_big_size $font_title_family;
     box-shadow:  0 0 50px rgba($color_base, 0.8);
-    padding: 40px;
-    border-radius: 2rem; 
-    background-color: rgba(white,0.8);
-    margin: 90px 20px 20px 20px;
-    img.leftImage {
-        position:absolute;
-        left:20px;
-        bottom:20px;
-        height: 280px;
-    }
-    img.rightImage {
-        position:absolute;
-        right:20px;
-        bottom:20px;
-        height: 280px;
-    }
-    .stars {
-        display: inline-block;
-    }
-    .leftStars {
+    background-color: rgba(white,0.6);
+
+    p{
+        display: block;
+        width:100%;
+        border-radius: 2rem; 
+        color: $color_base;
+        background-color: white;
+        box-shadow: inherit;
+        padding: 10px;
         position: absolute;
-        top: -2rem;
-        right: 0;
+        bottom: -20px;
+
     }
-    .rightStars {
+
+    .parent-image {
+        padding: 10% 0;
+    }
+
+    img { 
+        position:relative;
+        height:70%;
+        top: 10%;
+    }
+
+    .allStars {
         position: absolute;
-        top: -2rem;
+        width:100%;
+        bottom: 2rem;;
         left: 0;
+        text-align: left;           
     }
+
+}
+ .parent-card{
+    margin-bottom: 5vw;
+    width: 30vw;
+    height: 30vw;
 }
 
-.parent-card {
-    font: $font_title_size $font_title_family;
-    p{color: $color_base;}
-    display: inline-block;
-    width: 80%;
-    padding: 40px;
-    border-radius: 2rem;
-    box-shadow:  0 0 50px rgba($color_base, 0.8);
-    background-color: rgba(white,0.8);
-
-    margin: 20px;
-    margin-top: 100px;
-    p {
-        margin-left: 240px;
-        text-align: left;
-    }
-}

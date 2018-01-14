@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 
 @Injectable()
-export class AuthParentService implements CanActivate  {
+export class AuthFamilyService implements CanActivate  {
   
   constructor(
     private auth: AuthService,
@@ -18,14 +18,18 @@ export class AuthParentService implements CanActivate  {
   
   canActivate(
     route: ActivatedRouteSnapshot, 
-    state: RouterStateSnapshot): boolean {
-      if (!!this.users.currentParent){
-        console.log('access granted')
-        return true
-      } else {
-        console.log('access denied')
-        this.router.navigate(['/rodzina/rodzic-logowanie']);
-      }
+    state: RouterStateSnapshot): Observable<boolean> | boolean {
+     return this.auth.parent
+      .take(1)
+      .map(parent => !!parent)
+      .do (loggedIn => {
+        if (!loggedIn) {
+          console.log('access denied')
+          this.router.navigate(['/rodzina-logowanie']);
+        } else {
+          console.log('access granted')
+        }
+      })
 
   }
   
