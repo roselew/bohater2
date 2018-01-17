@@ -13,11 +13,11 @@ import { Component, OnInit } from '@angular/core';
   styles: [`
 
   .spinner {
-    width: 150px;
-    height: 150px;
+    width: 10rem;
+    height: 10rem;
   
     position: relative;
-    margin: 100px auto;
+    margin: 2rem auto;
   }
   
   .double-bounce1, .double-bounce2 {

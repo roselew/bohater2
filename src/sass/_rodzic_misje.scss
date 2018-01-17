@@ -87,7 +87,7 @@
 					margin-left: 0.2%;
 					margin-right: 0.2%;
 					height: $input_height;
-					border: 2px solid $color_base;
+					border: $border_width solid $color_base;
 					border-radius: 1rem;
 					color:$color_dark_grey;
 					font: $font_mid_size $font_reg_family;

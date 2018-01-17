@@ -13,7 +13,7 @@
             width: 20vw;
             height: 20vw;
             margin: 3vw;
-            border: 2px solid $color_base;
+            border: $border_width solid $color_base;
             border-radius: 100%;
             color:$color_dark_grey;
             font: 1.5*$font_title_size $font_reg_family;

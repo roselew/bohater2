@@ -1,9 +1,10 @@
 @import '_zmienne';
 
 .mission-active li.circle-big{
-    display:block;
+    display:inline-block;
     position: relative;
     color: white;
+    margin: 2rem 25rem 8rem 2rem;
     p{
         position: absolute;
         left: 12rem;
@@ -11,7 +12,7 @@
         display: block;
         width: 20rem;
         text-align: left;
-        font: $font-big-size $font-reg-family;
+        font: $font-mid-size $font-reg-family;
     }
     .progress{
         width: 20rem;
@@ -38,7 +39,7 @@
             display: block;
             width: 20rem;
             text-align: left;
-            font: $font-big-size $font-reg-family;
+            font: $font-mid-size $font-reg-family;
             color:white;
         }
     }

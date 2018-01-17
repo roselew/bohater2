@@ -1,16 +1,14 @@
 .kid-container {
   position:relative;
-  //  height: 700px;
-    //border: 2px solid #008aff;
-    color: $color_text_parent;
-    width: 85%;
-    margin: 2.5rem auto;
-    margin-bottom: 3.5rem;
-    font: 2rem $font_reg_family;
-    text-align: center;
-    border-radius: $border_radius;
-    cursor: pointer;
-    background-color: transparentize(white,0.2);
+  color: $color_text_parent;
+  width: 85%;
+  margin: 2.5rem auto;
+  margin-bottom: 3.5rem;
+  font: 2rem $font_reg_family;
+  text-align: center;
+  border-radius: $border_radius;
+  cursor: pointer;
+  background-color: transparentize(white,0.2);
 
 }
 
@@ -43,7 +41,7 @@
   top: -2rem;
   color: white !important;
   border-radius: $border_radius;
-  border: 2px solid $color_base;
+  border: $border_width solid $color_base;
   position: relative;
   background-color: $color_base;
   text-align: center;

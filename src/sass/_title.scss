@@ -2,6 +2,8 @@
 .title-banner{
 	position: relative;
 	width: 100%;
+	max-width: $max_width;
+	margin: auto;
 	text-align: center;
 	
 	.logo {
@@ -58,13 +60,15 @@
 .title-container {
 	position: relative;
 	width: 100%;
+	max-width: $max_width;
+	margin: auto;
 	text-align: center;
 
 	@media (orientation: landscape){  
 		margin-top: 0rem;
 	}
 	button{
-		border: 2px white solid;
+		border: $border_width white solid;
 	}
 }
 

@@ -15,11 +15,11 @@
 
     input + img {
       cursor: pointer;
-      border: 2px solid transparent;
+      border: $border_width solid transparent;
     }
 
     input:checked + img {
-      border: 2px solid $color_base;
+      border: $border_width solid $color_base;
       border-radius: $border_radius; 
       background-color: white;
     }

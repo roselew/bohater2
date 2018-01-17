@@ -13,7 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
       
 
       <div class="title-container">
-          <app-spinner class="avatar-images" *ngIf="showSpinner"></app-spinner>
+          <app-spinner *ngIf="showSpinner"></app-spinner>
           <div class="avatar-images" *ngIf="!showSpinner">
             <img src="assets/bohater2.png" width="25%">
             <img src="assets/bohater.png" width="30%">

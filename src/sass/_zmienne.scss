@@ -14,6 +14,13 @@ $color_text_parent: #343F4B; //very dark grey
 $color_text_kid: white; 
 $color_alert: rgba(mix($color_back_kid,$color_dark_grey,50%),0.95);
 
+$max_width: 1000px;
+$background_space: 12vh;
+$width1: 770px;
+$width2: 1000px;
+$width3: 1200px;
+$width4: 1500px;
+
 //font definition
 @font-face {
     font-family: IntroRustH1-Base;
@@ -39,11 +46,12 @@ $border_radius: 2.0rem;
 // sizes
 
 	//header
-	$header_height: 7.5rem;
-	$header_logo_size: 7.5rem;
-	$header_logo_position: 1.0rem;
-	$header_banner_height: 6rem;
-	$header_hamburger_size: 4.0rem;
+	$header_logo_size: 7rem;
+	$header_logo_position: 1.5rem;
+	$header_banner_height: 4rem;
+	$header_banner_space: 1.5rem;
+	$header_hamburger_size: 3rem;
+	$header_height: ($header_banner_height + 2* $header_banner_space);
 
 	//missions
 	$mission_big_size: 10.0rem;
@@ -58,6 +66,8 @@ $border_radius: 2.0rem;
 	$input_width : 80%;
 	$input_height: 5.0rem;
 
+	//border
+	$border_width: 0.1rem;
 
 
 	//odznaki screen
@@ -67,7 +77,7 @@ $border_radius: 2.0rem;
 	$day_height: 4.5rem;
 	$day_margin: 1.75rem;
 	
-	$filter_height: 4rem;
+	$filter_height: 3rem;
 	$filter_button_width: calc(25% - 2px);
 	
 	//progressbar

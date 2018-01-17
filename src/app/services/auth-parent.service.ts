@@ -23,8 +23,14 @@ export class AuthParentService implements CanActivate  {
         console.log('access granted')
         return true
       } else {
-        console.log('access denied')
-        this.router.navigate(['/rodzina/rodzic-logowanie']);
+        if (!this.users.toLogUser){
+          console.log('access denied')
+          this.router.navigate(['/rodzina']);
+        } else {
+          console.log('access denied')
+          this.router.navigate(['/rodzina/rodzic-logowanie']);
+        }
+
       }
 
   }

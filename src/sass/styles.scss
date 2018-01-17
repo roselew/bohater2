@@ -18,11 +18,11 @@
  @import '_rodzic_logowania';
 
 body.parent{
-	background: $color_back_parent url(../assets/background_parent.svg) top 150px center no-repeat;
+	background: $color_back_parent url(../assets/background_parent.svg) top $background_space center no-repeat;
 	background-attachment: fixed;
 	background-size: 100%;
 	&.title-page{
-		background: darken($color_back_parent,30%) url(../assets/background_parent_title.svg) top 150px center no-repeat;
+		background: darken($color_back_parent,30%) url(../assets/background_parent_title.svg) top $background_space center no-repeat;
 		background-attachment: fixed;
 		background-size: 100%;
 		.header-banner{
@@ -36,11 +36,11 @@ body.parent{
 }
 
 body.kid{
-	background: $color_back_kid url(../assets/background_kid.svg) top 150px center no-repeat;
+	background: $color_back_kid url(../assets/background_kid.svg) top $background_space center no-repeat;
 	background-attachment: fixed;
 	background-size: 100%;
 	&.title-page{
-	background: $color_back_kid url(../assets/background_kid_title.svg) top 150px center no-repeat; 
+	background: $color_back_kid url(../assets/background_kid_title.svg) top $background_space center no-repeat; 
 	background-attachment: fixed;
 	background-size: 100%;
 	.header-banner{
@@ -53,8 +53,11 @@ body.kid{
 html {
 	height: 100%;
 	font-size: 62.5%;
-	@media(min-width: 1200px){
+	@media(min-width: $width3){
 		font-size: 93.75%;
+	}
+	@media(min-width: $width4){
+		font-size: 125%;
 	}
 	font-family: $font_reg_family;
 	h1{
@@ -107,7 +110,7 @@ input {
 	font: $font_big_size $font_reg_family;
 	line-height: $input_height;
 	vertical-align: middle;
-	border: 2px solid $color_base;
+	border: $border_width solid $color_base;
 	text-align: center;
 }
 
@@ -134,7 +137,7 @@ button.left, button.right {
 	width: $input_width/2;
 	background: none;
 	border-radius: 0;
-	border: 2px solid $color_base;
+	border: $border_width solid $color_base;
 	&:hover{background-color: $color_base;color: white;}
 	color: $color_text_parent;
 }
@@ -158,7 +161,7 @@ span.less, span.more {
 	vertical-align: middle;
 	line-height: $input_height;
 	color: white;		
-	border: 2px solid $color_base;
+	border: $border_width solid $color_base;
 	background-color: $color_base;	
 	cursor: pointer;
 }
@@ -184,6 +187,7 @@ span.more {
 	width: 80%;
 	margin-left: 10%;
 	border-radius: $border_radius;
+	font-size: $font_mid_size;
 }
 
 h1.smallTitle { font-size: 3rem;}
@@ -230,7 +234,7 @@ button{
 	font: $font_big_size $font_reg_family;
 	text-align: center;
 	border-radius: $border_radius;
-	border: 2px white solid;
+	border: $border_width white solid;
 	cursor: pointer;
 	&:disabled{
 		background-color: $color_dark_grey;
@@ -242,7 +246,7 @@ button{
 
 button.altButton{
 	background-color: white;
-	border: 2px solid $color_base;
+	border: $border_width solid $color_base;
 	color: $color_base;
 	&:hover{
 		background-color: $color_base;
@@ -259,7 +263,7 @@ input[type="radio"] {
 	& + label.double {
 		display:inline-block;
 		width:40%;
-		border: 2px solid $color_base;
+		border: $border_width solid $color_base;
 		color: $color_dark_grey;
 		vertical-align: middle;
 		cursor: pointer;
@@ -289,7 +293,7 @@ input[type="radio"] {
 	& + label.triple {
 		display:inline-block;
 		width:26.7%;
-		border: 2px solid $color_base;
+		border: $border_width solid $color_base;
 		color: $color_dark_grey;
 		vertical-align: middle;
 		cursor: pointer;
@@ -341,7 +345,7 @@ input[type=checkbox] {
 .code-box{
 	
 		@media(orientation: landscape){
-			width: 90vh;
+			width: 80vh;
 			margin: auto;
 		}
 	
@@ -355,7 +359,7 @@ input[type=checkbox] {
 				width: 20vw;
 				height: 20vw;
 				margin: 3vw;
-				border: 2px solid $color_base;
+				border: $border_width solid $color_base;
 				border-radius: 100%;
 				color:$color_dark_grey;
 				font: 1.5*$font_title_size $font_reg_family;
@@ -368,10 +372,10 @@ input[type=checkbox] {
 			@media (orientation: landscape){
 
 				& + span{
-					width: 20vh;
-					height: 20vh;
-					margin: 3vh;
-					line-height: 20vh;
+					width: 18vh;
+					height: 18vh;
+					margin: 2vh;
+					line-height: 18vh;
 				}
 			}
 	
@@ -394,11 +398,14 @@ input[type=checkbox] {
 
 .container {
 	position: relative;
-  width: 100%;
+	width: 100%;
+	max-width: $max_width;
+	margin: auto;
 	top: $header_height;
 	left: 0px;
 	text-align: center;
 	z-index:2;
+	padding-bottom: 2rem;
 
 	//alert on whole page
 	.alert{

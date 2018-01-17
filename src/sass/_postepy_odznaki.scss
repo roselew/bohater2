@@ -72,7 +72,7 @@
 
 		border-radius: 1.5rem;
 		color: $color_text_kid;
-		font: $font_big_size $font_reg_family;
+		font: $font_mid_size $font_reg_family;
 		text-align: center;
 		line-height: $day_height;
 		cursor: pointer;
@@ -235,6 +235,9 @@ ul.mission-unactive{
 
 //@import '_zmienne';
 
+
+
+
 .filter{
 	position:relative;
 	width: (100% - $odznaki_left - $odznaki_right);
@@ -249,7 +252,7 @@ ul.mission-unactive{
 		width: $filter_button_width;
 		padding-left: 0.5rem;
 		border-radius: 0px;
-		border-width: 2px;
+		border-width: $border_width;
 		border-style: solid;
 		background-size: 0.8*$filter_height;
 		background-position: left 20% center;
@@ -299,14 +302,15 @@ ul.mission-unactive{
 		position: absolute;
 		right: 10%;
 		bottom: 0.5rem;
-		height: $mission_small_size+0.25rem;
-		width: $mission_small_size+0.25rem;
+		height: 2rem;
+		width: 2rem;
 
 		color: $color_text_kid;
 		border-radius: $mission_small_size;
-		font: $font_mid_size $font_reg_family;
-		line-height: $mission_small_size;
+		font: $font_small_size $font_reg_family;
+		line-height: 2rem;
 	}
+
 	// hero img 
 	img.hero{
 		width: 15%;

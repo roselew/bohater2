@@ -194,7 +194,7 @@ li.circle-mid {
 	height: $mission_mid_size;
 	width: $mission_mid_size;
 	z-index: 500;
-	border: 2px white solid;
+	border: $border_width white solid;
 	border-radius: 100%;
 	background-color: $color_base;
 	color: white;
@@ -215,7 +215,7 @@ li.circle-mid {
 	height: $mission_mid_size;
 	width: $mission_mid_size;
 	z-index: 500;
-	border: 2px white solid;
+	border: $border_width white solid;
 	border-radius: 100%;
 	background-color: $color_base;
 	color: white;
