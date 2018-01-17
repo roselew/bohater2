@@ -6,7 +6,7 @@
 .kid .week a::after {background: url(../assets/calendar6.svg) top center no-repeat; background-size: 100%;}
 .week {
 	position: relative;
-	margin: 30px 0px 30px $odznaki_left;
+	margin: 1.5rem 0px 1.5rem $odznaki_left;
 	width: (100% - $odznaki_left - $odznaki_right);
 	text-align: center;	
 	font: $font_big_size $font_reg_family; 
@@ -18,11 +18,11 @@
 		position:relative;
 		&::after{
 			content: '';
-			height: 50px;
-			width: 50px;
+			height: 2.5rem;
+			width: 2.5rem;
 			position: absolute;
-			top: -25px;
-			right: -70px;
+			top: -1.5rem;
+			right: -3.5rem;
 
 			background: url(../assets/calendar5.svg) top center no-repeat; background-size: 100%;
 		}
@@ -70,13 +70,13 @@
 		width: ($odznaki_left - $odznaki_right);
 		height: $day_height;
 
-		border-radius: 30px;
+		border-radius: 1.5rem;
 		color: $color_text_kid;
 		font: $font_big_size $font_reg_family;
 		text-align: center;
 		line-height: $day_height;
 		cursor: pointer;
-		padding-right: 20px;
+		padding-right: 1rem;
 		
 
 		&::after{
@@ -84,7 +84,7 @@
       font: $font_small_size $font_reg_family;
 			line-height: $day_height/2;
 			position: absolute;
-			right: 15px;
+			right: 0.75rem;
 			top: $day_height/2 - $font_mid_size/2;
     }
     
@@ -102,7 +102,7 @@
 			font: $font_small_size $font_reg_family;
 			line-height: $day_height/2;
 			position: absolute;
-			right: 15px;
+			right: 0.75rem;
 			top: $day_height/2 - $font_mid_size/2;
 		}	
 	}
@@ -135,7 +135,7 @@
 	text-align: center;	
 
 	ul{
-		margin-top: 12px;
+		margin-top: 0.5rem;
 		display: inline-block;
 	}
 
@@ -167,11 +167,11 @@
 }
 
 .kid .day-line:after {
-    border-bottom: 5px solid $color_light_grey;	
+    border-bottom: 2px solid $color_light_grey;	
 }
 
 .parent .day-line:after {
-    border-bottom: 5px solid $color_dark_grey;	
+    border-bottom: 2px solid $color_dark_grey;	
 }
 
 
@@ -191,13 +191,13 @@
 		width: 18%;
 		height: $day_height;
 
-		border-radius: 30px;
+		border-radius: 1.5rem;
 		color: $color_text_kid;
 		font: $font_big_size $font_reg_family;
 		text-align: center;
 		line-height: $day_height;
 		cursor: pointer;
-		padding-right: 20px;
+		padding-right: 1rem;
 	}
 }
 
@@ -247,7 +247,7 @@ ul.mission-unactive{
 		display: inline-block;
 		height: $filter_height;
 		width: $filter_button_width;
-		padding-left: 10px;
+		padding-left: 0.5rem;
 		border-radius: 0px;
 		border-width: 2px;
 		border-style: solid;
@@ -259,8 +259,8 @@ ul.mission-unactive{
 	.show-all {
 	 	background-image: url(../assets/all_missions.svg);	
 	 	border-color: $color_base;
-	 	border-top-left-radius: 3.0rem;
-	 	border-bottom-left-radius: 3.0rem;
+	 	border-top-left-radius: $border_radius;
+	 	border-bottom-left-radius: $border_radius;
 		span{background-color: $color_base;}
 		&:hover{background-color: rgba($color_base,0.3);}
 	}
@@ -287,8 +287,8 @@ ul.mission-unactive{
 	.show-done {
 		border-color: $color_done;
 		background-image: url(../assets/like.svg);	
-		border-top-right-radius: 3.0rem;
-	 	border-bottom-right-radius: 3.0rem;
+		border-top-right-radius: $border_radius;
+	 	border-bottom-right-radius: $border_radius;
 		span{background-color: $color_done;}
 		&:hover{background-color: rgba($color_done,0.3);}
 	}
@@ -297,10 +297,10 @@ ul.mission-unactive{
 	//circle with number of missions
 	span{
 		position: absolute;
-		right: 20%;
-		bottom: 11px;
-		height: $mission_small_size+0.5rem;
-		width: $mission_small_size+0.5rem;
+		right: 10%;
+		bottom: 0.5rem;
+		height: $mission_small_size+0.25rem;
+		width: $mission_small_size+0.25rem;
 
 		color: $color_text_kid;
 		border-radius: $mission_small_size;
@@ -312,7 +312,7 @@ ul.mission-unactive{
 		width: 15%;
 		position: absolute;
 		left: -18%;
-		bottom: 50px;
+		bottom: 2.5rem;
 	}
 }
 

@@ -4,7 +4,7 @@
 
 li.circle-big {
 	position: relative;
-	margin: 2.0rem;
+	margin: 1.0rem;
 	display: inline-block;	
 	height: $mission_big_size;
 	width: $mission_big_size;
@@ -14,7 +14,7 @@ li.circle-big {
 	background-color: white;
 	cursor: pointer;
 	&:hover {
-		box-shadow: 0 0 100px rgba(black, 0.4);
+		box-shadow: 0 0 50px rgba(black, 0.4);
 	}
 
 	// mission icon
@@ -32,10 +32,10 @@ li.circle-big {
 	//star - background for points
 	.star {
 		position: absolute;
-		top:-3.0rem;
-		right:-4.0rem;
-		width: 10.0rem;
-		height: 10.0rem;
+		top:-1.5rem;
+		right:-2rem;
+		width: 5rem;
+		height: 5rem;
 		text-align: center;
 	}
 
@@ -43,20 +43,20 @@ li.circle-big {
 	// number of points for mission
 	span{
 		position: absolute;
-		top:-3.0rem;
-		right:-3.0rem;
+		top:-1.5rem;
+		right:-1.5rem;
 		color:white;
 		font: $font_big_size $font_reg_family;
 		display: block;
-		width:8.0rem;
-		height: 10.0rem;
+		width:4rem;
+		height: 5rem;
 		text-align: center;
-		line-height: 11.0rem;
+		line-height: 5.5rem;
 	}
 
 	p{
 		position: absolute;
-		bottom:-$font_mid_size*3-2.0rem;
+		bottom:-$font_mid_size*3-1rem;
 		left: -20%;
 		display: block;
 		width: 140%;
@@ -84,11 +84,11 @@ li.circle-big {
 }
 
 //space for name of mission
-.mission-neutral li.circle-big {margin: 4.0rem 4% $font_mid_size*5 4%; }
+.mission-neutral li.circle-big {margin: 2rem 4% $font_mid_size*5 4%; }
 
 li.circle-mid {
 	position: relative;
-	margin: 20px;
+	margin: 1.0rem;
 	display: inline-block;	
 	height: $mission_mid_size;
 	width: $mission_mid_size;
@@ -120,30 +120,30 @@ li.circle-mid {
 	//star - background for points
 	.star {
 		position: absolute;
-		top:-2.0rem;
-		right:-3.0rem;
-		width: 8.0rem;
-		height: 8.0rem;
+		top:-1rem;
+		right:-1.5rem;
+		width: 4rem;
+		height: 4rem;
 	}
 
 	// number of points for mission
 	span{
 		position: absolute;
-		top:-2.0rem;
-		right:-2.0rem;
+		top:-1rem;
+		right:-1rem;
 		color:white;
 		font: $font_mid_size $font_reg_family;
 		display: block;
-		width:6.0rem;
-		height: 8.0rem;
+		width: 3rem;
+		height: 4rem;
 		text-align: center;
-		line-height: 9.0rem;
+		line-height: 4.5rem;
 
 	}
 
 	p{
 		position: absolute;
-		bottom:-$font_mid_size*3-2.0rem;
+		bottom:-$font_mid_size*3-1rem;
 		display: block;
 		width: 100%;
 		height: $font_mid_size*3;
@@ -159,7 +159,7 @@ li.circle-mid {
 	height: $mission_small_size;
 	width: $mission_small_size;
 	border-radius: $mission_small_size;
-	margin: 10px;
+	margin: 0.5rem;
 }
 
 // ----- THUMBS to move missions UP or DOWN ----
@@ -189,12 +189,12 @@ li.circle-mid {
 
 .plus {
 	position: fixed;
-	bottom: 10px;
-	right: 10px;
+	bottom: 1rem;
+	right: 1rem;
 	height: $mission_mid_size;
 	width: $mission_mid_size;
 	z-index: 500;
-
+	border: 2px white solid;
 	border-radius: 100%;
 	background-color: $color_base;
 	color: white;
@@ -210,12 +210,12 @@ li.circle-mid {
 
 .back {
 	position: fixed;
-	bottom: 10px;
-	left: 10px;
+	bottom: 1rem;
+	left: 1rem;
 	height: $mission_mid_size;
 	width: $mission_mid_size;
 	z-index: 500;
-
+	border: 2px white solid;
 	border-radius: 100%;
 	background-color: $color_base;
 	color: white;
@@ -230,7 +230,7 @@ li.circle-mid {
 
 a {
 	.plus{
-	font: 4em $font_reg_family;
+	font: 2em $font_reg_family;
 	line-height: $mission_mid_size;
 	}
 }

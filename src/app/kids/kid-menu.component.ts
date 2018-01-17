@@ -9,7 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   template: `
 
   <ul>
-    <a routerLink="../bohater"><li class="menu-bohater" [ngStyle]="{'background': heroImage}"><p>BOHATER</p></li></a>
+    <a routerLink="../bohater"><li class="menu-bohater" [ngStyle]="{'background': heroImage,'background-size':heroImageSize}"><p>BOHATER</p></li></a>
     <a routerLink='../misje/0'><li class="menu-misje"><p>MISJE</p></li></a>
     <a routerLink="../odznaki/0"><li class="menu-odznaki"><p>ODZNAKI</p></li></a>
     <a routerLink="../nagrody"><li class="menu-nagrody"><p>NAGRODY</p></li></a>		
@@ -46,12 +46,14 @@ export class KidMenuComponent implements OnInit {
 
   kid
   heroImage
+  heroImageSize
   ngOnInit() {
     let kidId = this.users.getLoggedUser('kid');
     this.users.getOneKid(kidId)
     .subscribe( kid => {
       this.kid = kid
       this.heroImage = '#FDB524 url(../' + this.experts.getHeroImage(this.kid['heroId'])+') top 30% center no-repeat' 
+      this.heroImageSize = '40%';
      })
   }
 

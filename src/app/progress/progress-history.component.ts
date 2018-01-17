@@ -13,7 +13,7 @@ import { UsersService } from '../services/users.service';
         [routerLink]="['../',week.weekId]"
         class="div-highlight">
           
-      <p style="font-size: 3.5rem"> {{showWeekName(week)}} </p>
+      <p style="font-size: 1.5rem"> {{showWeekName(week)}} </p>
       
       <progress-bar-week 
         [waitWidth]="100*(week.nDone+week.nWait)/week.nAll" 

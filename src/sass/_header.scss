@@ -30,7 +30,7 @@ header{
 		font: $font_title_size $font_title_family;
 		text-align: center;
 		padding-left: 5%;
-		line-height: $header_banner_height+1.0rem;
+		line-height: $header_banner_height+0.5rem;
 		vertical-align: middle;
 	}
 
@@ -53,7 +53,7 @@ header{
 		right:0px;
 		width: 100%;
 		height: 100vh;
-		background:  $color_back_parent url(../assets/background_parent.svg) top 125px center no-repeat;
+		background:  $color_back_parent url(../assets/background_parent.svg) top 75px center no-repeat;
 		background-size: 100%;	
 		// background-color: $color_back_parent;
     transform: translateX(100%);
@@ -67,9 +67,9 @@ header{
 			line-height: 11vh; 
 			color: $color_text_parent;
 			text-align: center;
-			margin-bottom: 10px;
+			margin-bottom: 0.5rem;
 			background-color: rgba(white,0.4);
-			border-radius: 2rem;
+			border-radius: $border_radius;
 			box-shadow: 0 5px 10px 0 dimgray;
 		}
 		a{	
@@ -85,7 +85,7 @@ header{
 		}
 		.nav-main {
 			margin-left: 1%;
-			margin-top: 10px;
+			margin-top: 0.5rem;
 		}
 		.nav-main li {	
 			position: relative;

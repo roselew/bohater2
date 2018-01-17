@@ -11,7 +11,7 @@ import { ExpertsService } from '../services/experts.service';
   <div *ngIf="kid"> 
 
     <div class="odznaki">
-      <img src="{{userHero.image}}">
+      <img src="{{userHero.image}}" height="150px">
       <img *ngIf="nBadges>0" class="green" src="assets/ikony/o_pustaz.svg">
       <img *ngIf="nBadges==0" class="green" src="assets/ikony/o_pusta.svg">
       <hero-progress *ngIf="heroProgress && !alertVisible" [heroProgress]="heroProgress"></hero-progress>
@@ -23,7 +23,7 @@ import { ExpertsService } from '../services/experts.service';
         class="bohater" 
         (click)="choseBadge(i)">
           <p>{{badge.badgeName}}</p> 
-          <p style="bottom: -15rem">{{showBadgeGain(badge)}}</p>
+          <p style="bottom: -7.5rem">{{showBadgeGain(badge)}}</p>
           <img *ngIf="kid['badges'][i]==false" src="assets/ikony/o_pusta.svg" class="pusta">
           <img *ngIf="kid['badges'][i]==true" src="{{badge.icon}}">
         </li>

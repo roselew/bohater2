@@ -8,20 +8,17 @@ import { ExpertsService } from '../services/experts.service';
   selector: 'family-panel',
   template: `
 
-  <div class="title-banner">
-    <h1>Rodzina</h1> <br>
-    <h1 class="font-skew">Bohaterów</h1> 
-  </div>
+  <app-header [simpleH1]="'Rodzina'" [skewH1]="'Bohaterów'"></app-header> 
 
   <p *ngIf="parent" class="logout" (click)="logout()">Witaj {{parent.email}}! <br> Wyloguj </p>
 
   <div class="title-container">
 
-    <div *ngIf="parent" class="kid-card parent-card" (click)="goToParent()">
+    <div *ngIf="parent" class="kid-card" (click)="goToParent()">
         <p>{{parent.gender}}</p>
         <img src="assets/logoXL.png" class="parent-image">
     </div>
-    <br>
+
     <div *ngFor="let kid of kids; let i = index" class="kid-card" (click)="goToKid(kid)">
       <img src="{{experts.getHeroImage(kid.heroId)}}">
       <p>{{kid.name}}</p>
@@ -35,7 +32,7 @@ import { ExpertsService } from '../services/experts.service';
     <p *ngIf="kids && kids.length == 0" class="smallTitle"> Wejdź w swój profil aby dodać dziecko </p>
     
     <a [routerLink]="['/rodzina/edytuj']">
-    <div class="plus"><img src="assets/settings.svg" width="60%"></div>
+    <div class="plus"><img src="assets/settings.svg" width="40%"></div>
     </a>
 
   </div>

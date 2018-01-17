@@ -13,19 +13,23 @@
     margin: 2rem 3vw;
     border-radius: 100%;
     font: $font_big_size $font_title_family;
-    box-shadow:  0 0 50px rgba($color_base, 0.8);
+    box-shadow:  0 0 2.5rem rgba($color_base, 0.8);
     background-color: rgba(white,0.6);
-
+    @media(orientation: landscape){
+        width: 40vh;
+        height: 40vh;
+        margin: 1rem 3vh;
+    }
     p{
         display: block;
         width:100%;
-        border-radius: 2rem; 
+        border-radius: $border_radius; 
         color: $color_base;
         background-color: white;
         box-shadow: inherit;
-        padding: 10px;
+        padding: 0.5rem;
         position: absolute;
-        bottom: -20px;
+        bottom: -1rem;
 
     }
 
@@ -42,7 +46,7 @@
     .allStars {
         position: absolute;
         width:100%;
-        bottom: 2rem;;
+        bottom: 2rem;
         left: 0;
         text-align: left;           
     }
@@ -52,5 +56,11 @@
     margin-bottom: 5vw;
     width: 30vw;
     height: 30vw;
+    @media(orientation: landscape){
+        margin-bottom: 5vh;
+        width: 30vh;
+        height: 30vh;
+    }
 }
+
 

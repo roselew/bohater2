@@ -18,11 +18,11 @@
  @import '_rodzic_logowania';
 
 body.parent{
-	background: $color_back_parent url(../assets/background_parent.svg) top 275px center no-repeat;
+	background: $color_back_parent url(../assets/background_parent.svg) top 150px center no-repeat;
 	background-attachment: fixed;
 	background-size: 100%;
 	&.title-page{
-		background: darken($color_back_parent,30%) url(../assets/background_parent_title.svg) top 275px center no-repeat;
+		background: darken($color_back_parent,30%) url(../assets/background_parent_title.svg) top 150px center no-repeat;
 		background-attachment: fixed;
 		background-size: 100%;
 		.header-banner{
@@ -36,11 +36,11 @@ body.parent{
 }
 
 body.kid{
-	background: $color_back_kid url(../assets/background_kid.svg) top 275px center no-repeat;
+	background: $color_back_kid url(../assets/background_kid.svg) top 150px center no-repeat;
 	background-attachment: fixed;
 	background-size: 100%;
 	&.title-page{
-	background: $color_back_kid url(../assets/background_kid_title.svg) top 275px center no-repeat; 
+	background: $color_back_kid url(../assets/background_kid_title.svg) top 150px center no-repeat; 
 	background-attachment: fixed;
 	background-size: 100%;
 	.header-banner{
@@ -53,6 +53,9 @@ body.kid{
 html {
 	height: 100%;
 	font-size: 62.5%;
+	@media(min-width: 1200px){
+		font-size: 93.75%;
+	}
 	font-family: $font_reg_family;
 	h1{
 		font-family: $font_title_family;
@@ -90,8 +93,8 @@ body {
 
 form {
 	p{
-		font: $font_mid_size $font_reg_family;
-		margin-top: 4.0rem;
+		font: $font_big_size $font_reg_family;
+		margin-top: 2.0rem;
 		color: $color_text_parent;
 	}
 	margin: 0px;
@@ -108,24 +111,14 @@ input {
 	text-align: center;
 }
 
-form span {
-	display: inline-block;
-	font-size: $font_big_size;
-	background-color: white;
-	border: 5px solid $color_undone;
-	border-radius: 2rem;
-	color:$color_undone;
-	width: 80%;
-	padding: 2rem;
 
-}
 
 input[type='text'],input[type='password']{
 	display:block;
 	width: $input_width;
-	margin: 5.0rem auto;
-	padding: 2.0rem;
-	border-radius: 2.0rem;
+	margin: 2rem auto;
+	padding: 1.0rem;
+	border-radius: $border_radius;
 }
 
 input[type='number']{
@@ -161,7 +154,7 @@ span.less, span.more {
 	display:inline-block;
 	width:$input_width/4;
 	height: $input_height;
-	font: 7.0rem $font_reg_family;
+	font: 3.5rem $font_reg_family;
 	vertical-align: middle;
 	line-height: $input_height;
 	color: white;		
@@ -181,19 +174,19 @@ span.more {
 .smallTitle {
 	
 	span {
-		padding: 0.3rem 1.5rem;
+		padding: 0.15rem 0.75rem;
 		background-color: $color_base;
 		color:white;
 		border-radius: 100%;
 	}
-	padding: 2.0rem;
-	margin: 2.0rem 0;
+	padding: 1.0rem;
+	margin: 1rem 0;
 	width: 80%;
 	margin-left: 10%;
-	border-radius: 2.0rem;
+	border-radius: $border_radius;
 }
 
-h1.smallTitle { font-size: 6.0rem;}
+h1.smallTitle { font-size: 3rem;}
 
 .parent .smallTitle {
 	opacity: 0.5;
@@ -210,7 +203,7 @@ h1.smallTitle { font-size: 6.0rem;}
 .panelTitle {
   background: $color_base url(../assets/gift.svg) center left 20px no-repeat; background-size:80px; 
   color: white;
-  padding : 2.0rem;
+  padding : 1rem;
 }
 .buttonPanel {
 	display: inline-block;
@@ -231,12 +224,13 @@ table {
 button{
 	background-color: $color_base;
 	color:white;
-	padding: 3.0rem;
+	padding: 1.5rem;
 	width: $button_width;
-	margin: 4.0rem auto;
+	margin: 1.0rem auto;
 	font: $font_big_size $font_reg_family;
 	text-align: center;
 	border-radius: $border_radius;
+	border: 2px white solid;
 	cursor: pointer;
 	&:disabled{
 		background-color: $color_dark_grey;
@@ -260,7 +254,7 @@ input[type="radio"] {
 	display: none; 
 
 	& + label { 
-		margin-bottom: 5.0rem;}
+		margin-bottom: 2rem;}
 
 	& + label.double {
 		display:inline-block;
@@ -277,13 +271,13 @@ input[type="radio"] {
 	}
 
 	& + label.double:first-of-type{
-		border-bottom-left-radius: 20px;
-		border-top-left-radius: 20px;
+		border-bottom-left-radius: $border_radius;
+		border-top-left-radius: $border_radius;
 		margin-left: 0;
 	}
 	& + label.double:last-of-type{
-		border-bottom-right-radius: 20px;
-		border-top-right-radius: 20px;
+		border-bottom-right-radius:$border_radius;
+		border-top-right-radius: $border_radius;
 		margin-left: -14px;
 	}
 	&:checked + label.double {
@@ -309,13 +303,13 @@ input[type="radio"] {
 
 
 	& + label.triple:first-of-type{
-		border-bottom-left-radius: 20px;
-		border-top-left-radius: 20px;
+		border-bottom-left-radius: $border_radius;
+		border-top-left-radius: $border_radius;
 		margin-left: 0;
 	}
 	& + label.triple:last-of-type{
-		border-bottom-right-radius: 20px;
-		border-top-right-radius: 20px;
+		border-bottom-right-radius: $border_radius;
+		border-top-right-radius: $border_radius;
 	}
 	&:checked + label.triple {
 		background-color:$color_base;
@@ -326,13 +320,13 @@ input[type="radio"] {
 } 
 
 input[type=checkbox] {
-	margin-top: 1.0rem;
-	margin-right: 3.0rem;
-	position: relative;
-	cursor: pointer;
-	width: 4.0rem;
-	height: 4.0rem;
-	border: 2px solid $color_base;
+	// margin-top: 1.0rem;
+	// margin-right: 3.0rem;
+	// position: relative;
+	// cursor: pointer;
+	// width: 4.0rem;
+	// height: 4.0rem;
+	// border: 2px solid $color_base;
 
 	& + label {
 		position: relative;
@@ -346,6 +340,10 @@ input[type=checkbox] {
 
 .code-box{
 	
+		@media(orientation: landscape){
+			width: 90vh;
+			margin: auto;
+		}
 	
 		margin-top: 0px;
 	
@@ -365,6 +363,16 @@ input[type=checkbox] {
 				text-align: center;
 				line-height: 20vw;
 				background-color: rgba(white,0.4);
+			}
+
+			@media (orientation: landscape){
+
+				& + span{
+					width: 20vh;
+					height: 20vh;
+					margin: 3vh;
+					line-height: 20vh;
+				}
 			}
 	
 			&:checked + span {
@@ -394,7 +402,7 @@ input[type=checkbox] {
 
 	//alert on whole page
 	.alert{
-		padding: 4.0rem;
+		padding: 2rem;
 		position:fixed;
 		display: block;
 		top: $header_height;
@@ -405,7 +413,7 @@ input[type=checkbox] {
 		color:$color_text_kid;
 		
 		text-align: center;
-		line-height: 100px;
+		line-height: 5rem;
 		z-index: 499;
 		
 		ul {
@@ -420,8 +428,8 @@ input[type=checkbox] {
 		span.X {
 			position: absolute;
 			display: block;
-			right: 2.0rem;
-			top: 2.0rem;
+			right: 1rem;
+			top: 1rem;
 			width: $exit_button_size;
 			height: $exit_button_size;
 
@@ -480,7 +488,7 @@ input[type=checkbox] {
 }
 
 p.logout{
-	padding: 10px;
+	padding: 0.5rem;
 	color: white;
 	position: absolute;
 	right: 0;
@@ -529,7 +537,7 @@ p.logout{
 	.star{
 		display: inline-block;
         fill: $color_undone;
-		width: 4.0rem;
-		height: 4.0rem;
+		width: 2rem;
+		height: 2rem;
 	}
 }

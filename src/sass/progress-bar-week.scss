@@ -6,7 +6,7 @@
 	position: relative;
 	height: $progressbar_height;
 	width: (100% - $odznaki_left - $odznaki_right);
-	margin: 10px $odznaki_right 0px $odznaki_left;
+	margin: 0.5rem $odznaki_right 0px $odznaki_left;
 
 	.progress-undone {
 		position: absolute;
@@ -40,7 +40,7 @@
 
 	.logo {
 		position: absolute;
-		right: -10px;
+		right: -0.5rem;
 		top:  - ($progress_logo_size - $progressbar_height )/2;
 		width: $progress_logo_size;
 		height: $progress_logo_size;
@@ -48,7 +48,7 @@
 
 	p{
 		position: absolute;
-		left: -10rem;
+		left: -0.5rem;
 		padding-left: 1%;
 		font: $font_big_size $font_reg_family; 
 		color:$color_text_parent;
@@ -88,7 +88,7 @@
 .history {
 	background-color: $color_light_grey;
 	&:hover{background-color: darken($color_light_grey,20%);}
-	padding-bottom: 2.0rem;
+	padding-bottom: 1rem;
 	.week {margin-bottom: 0px;}
 	cursor: pointer;
 }

@@ -6,25 +6,25 @@
     color: white;
     p{
         position: absolute;
-        left: 1.5*$mission_big_size;
+        left: 12rem;
         top: 0;
         display: block;
-        width: 60.0rem;
+        width: 20rem;
         text-align: left;
         font: $font-big-size $font-reg-family;
     }
     .progress{
-        width: 60.0rem;
+        width: 20rem;
         position: absolute;
-        left: 1.5*$mission_big_size;
-        top: 8.0rem;
+        left: 12rem;
+        top: 5rem;
         margin: 0;
         img.img-right{
             position: absolute;
-            top: -15rem;
-            right: -40rem;
-            width: 10rem;
-            height: 10rem;
+            top: -7.5rem;
+            right: -20rem;
+            width: 5rem;
+            height: 5rem;
             display: block;
 
         }
@@ -34,9 +34,9 @@
         p {
             position: absolute;
             left: 0;
-            top: 8rem;
+            top: 4rem;
             display: block;
-            width: 60.0rem;
+            width: 20rem;
             text-align: left;
             font: $font-big-size $font-reg-family;
             color:white;
@@ -49,10 +49,10 @@
         background-color: $color-done;
         &::after {
             content: '';
-            width: 10rem;
-            height: 10rem;
+            width: 5rem;
+            height: 5rem;
             position: absolute;
-            top: -10rem;
+            top: -5rem;
             right: 0;
             background: url(../assets/gift.svg) center center no-repeat; background-size: 100%;
         }
@@ -62,6 +62,6 @@
 .mission-unactive, .mission-wait {
    li.circle-big {
         color: white;
-        margin-bottom: 8rem;
+        margin-bottom: 4rem;
    } 
 }

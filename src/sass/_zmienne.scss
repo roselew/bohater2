@@ -27,36 +27,36 @@ $color_alert: rgba(mix($color_back_kid,$color_dark_grey,50%),0.95);
 
 
 $font_title_family: 'IntroRustH1-Base', cursive;
-$font_title_size: 8.0rem;
+$font_title_size: 4.0rem;
 
 $font_reg_family: 'Lato-Regular', sans_serif;
-$font_big_size: 4.0rem;
-$font_mid_size: 3.2rem;
-$font_small_size: 2.4rem;
-$font_mini_size: 2.0rem;
+$font_big_size: 2.0rem;
+$font_mid_size: 1.6rem;
+$font_small_size: 1.2rem;
+$font_mini_size: 1.0rem;
 
 $border_radius: 2.0rem;
 // sizes
 
 	//header
-	$header_height: 15.0rem;
-	$header_logo_size: 15.0rem;
+	$header_height: 7.5rem;
+	$header_logo_size: 7.5rem;
 	$header_logo_position: 1.0rem;
-	$header_banner_height: 9.5rem;
-	$header_hamburger_size: 6.0rem;
+	$header_banner_height: 6rem;
+	$header_hamburger_size: 4.0rem;
 
 	//missions
-	$mission_big_size: 20.0rem;
-	$mission_mid_size: 15.0rem;	
-	$mission_small_size: 5.0rem;
+	$mission_big_size: 10.0rem;
+	$mission_mid_size: 7.5rem;	
+	$mission_small_size: 2.5rem;
 
 	//buttons
-	$exit_button_size: 8.0rem;
+	$exit_button_size: 4.0rem;
 	$button_width: 80%;
 	
 	//form inputs
 	$input_width : 80%;
-	$input_height: 10.0rem;
+	$input_height: 5.0rem;
 
 
 
@@ -64,15 +64,15 @@ $border_radius: 2.0rem;
 	$odznaki_left: 18%;  //screen division proportion
 	$odznaki_right: 3%;
 
-	$day_height: 9.0rem;
-	$day_margin: 3.5rem;
+	$day_height: 4.5rem;
+	$day_margin: 1.75rem;
 	
-	$filter_height: 8.0rem;
+	$filter_height: 4rem;
 	$filter_button_width: calc(25% - 2px);
 	
 	//progressbar
-	$bohater_size: 35.0rem;
+	$bohater_size: 17.5rem;
 	$progressbar_width: 75%;
-	$progressbar_height: 4.0rem;
-	$progress_logo_size: 8.5rem;
+	$progressbar_height: 2.0rem;
+	$progress_logo_size: 4rem;
 

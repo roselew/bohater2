@@ -44,7 +44,7 @@ import * as firebase from 'firebase/app';
 
 
   `,
-  styleUrls: ['../../sass/login.scss'],
+  styleUrls: [],
 
 })
 export class ParentLoginComponent implements OnInit {

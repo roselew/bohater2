@@ -69,12 +69,12 @@ import { Router, ActivatedRoute } from '@angular/router';
       </ul>
   
   
-      <img src="assets/bohater2.png" height="200px">
-      <img src="assets/bohater.png" height="300px">
-      <img src="assets/bohater3.png" height="200px">
+      <img src="assets/bohater2.png" height="100px">
+      <img src="assets/bohater.png" height="150px">
+      <img src="assets/bohater3.png" height="100px">
       
       <a [routerLink]="['/rodzina']">
-        <div class="back">❔</div>
+        <div class="plus">❔</div>
       </a>
 
   

@@ -1,10 +1,10 @@
 
 li.bohater {
 	position: relative;
-	margin: 6.0rem 5.0rem;
+	margin: 3rem 2rem;
 	display: inline-block;	
-	height: 20rem;
-	width: 20rem;
+	height: 7.5rem;
+	width: 7.5rem;
 	transition: all 1s;
 	transform-origin: 50% 50%;
 	&:hover{transform: scale(1.2);}
@@ -26,7 +26,7 @@ li.bohater {
 
 	p{
 		position: absolute;
-		bottom:-$font_mid_size*3-2.0rem;
+		bottom:-4rem;
 		left: -20%;
 		display: block;
 		width: 140%;
@@ -41,9 +41,8 @@ li.bohater {
 
 
 img.green {
-	width: 152px;
-	height: 151px;
-}
+	width: 5rem;
+} 
 img.green:hover{
 	border-color: #e9d566;
 	box-shadow: 0 0 100px rgba(255, 251, 0, 0.6);
@@ -57,7 +56,7 @@ div.odznaki {
 		width: 48%;		
 	}
 
-	margin-top: 10.0rem;
+	margin-top: 5rem;
 
 
 
@@ -75,12 +74,13 @@ div.odznaki {
 }
 
 .heroProgress{
-    padding: 20px;
+	padding: 1rem;
+	margin-left: 3rem;
 
 
   .progress-done p {
-    width: 200px;
-    left: -220px;
+    width: 10rem;
+    left: -11rem;
     text-align: right;
   }
 
@@ -90,3 +90,4 @@ div.odznaki {
 	  vertical-align: top;
   }
 }
+

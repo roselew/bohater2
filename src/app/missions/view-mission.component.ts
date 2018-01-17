@@ -17,9 +17,11 @@ import { Component, OnInit, Input } from '@angular/core';
 
     <p>Liczba punktów</p>
 
-    <span class="less" (click)="lessPoints()">-</span><input type="number" name="newMissionPoints" placeholder="Liczba punktów" [(ngModel)]="+mission.points"><span class="more" (click)="morePoints()">+</span>
-    </form>
+    <span class="less" (click)="lessPoints()">-</span><input type="number" name="newMissionPoints" placeholder="Punkty" [(ngModel)]="+mission.points"><span class="more" (click)="morePoints()">+</span>
+    
     <p>W które dni tygodnia?</p>
+    </form>
+    
     
     <div class="newMissionDays">
       <label *ngFor="let day of days">

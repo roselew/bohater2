@@ -4,7 +4,7 @@
 
 ul {
     @media (orientation: portrait){ 
-        margin-top: -15rem;
+        margin-top: -7.5rem;
     }
 }
 ul {
@@ -14,10 +14,10 @@ ul {
 
 	li {
 	text-align: center;
-	font: 5rem $font_title_family;
+	font: 2rem $font_title_family;
 	color: white;
 	border-radius: 100%;
-	border: 3px white solid;
+	border: 2px white solid;
 	position: absolute;
     }
 		p {
@@ -33,7 +33,7 @@ ul {
 li.menu-misje {
     @media (orientation: portrait){
         right: 2vw;
-        top: 275px;
+        top: 150px;
         margin-top: 60vw; 
         width: 30vw;
         height: 30vw;
@@ -53,7 +53,7 @@ li.menu-misje {
 li.menu-odznaki {
     @media (orientation: portrait){
         right: 10vw;
-        top: 275px;
+        top: 150px;
         margin-top: 3vw; 
         width: 35vw;
         height: 35vw;
@@ -73,7 +73,7 @@ li.menu-odznaki {
 li.menu-bohater{ 
     @media (orientation: portrait){
         left: 20vw;
-        top: 275px;
+        top: 150px;
         margin-top: 25vw;
         width: 60vw;
         height: 60vw;
@@ -95,7 +95,7 @@ li.menu-bohater{
 li.menu-nagrody{
     @media (orientation: portrait){
         left: 2vw;
-        top: 275px;
+        top: 150px;
         margin-top: 70vw; 
         width: 40vw;
         height: 40vw;

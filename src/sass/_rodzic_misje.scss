@@ -10,15 +10,20 @@
  		background-color: rgba($color_light_grey,0.95);
  		font: $font_big_size $font_reg_family;
  		text-align: center;
- 		line-height: 10.0rem;
+ 		line-height: 5.0rem;
 
-		 label.confirmation-label{font: $font_mid_size $font_reg_family;display:block;padding-top:5.0rem;}
+		 label.confirmation-label{
+			 font: $font_mid_size $font_reg_family;
+			 display:block;
+			 margin-top:1.0rem;
+			 text-align: left;
+			}
 		//z-index: 499;
 				//X button closing page
 		span.X, span.showMore {
 			position: absolute;
 			display: block;
-			right: 2.0rem;
+			right: 1.0rem;
 			top: 1.0rem;
 			width: $exit_button_size;
 			height: $exit_button_size;
@@ -39,15 +44,15 @@
 		}
 		ul {
 			position:relative;
-			height: $mission_mid_size+9.0rem;
+			height: $mission_mid_size+6.5rem;
 			overflow:hidden;
-			padding-right: 6.0rem;
-			li {margin-bottom: 8.0rem;}
+			padding-right: 3.0rem;
+			li {margin-bottom: 4.0rem;}
 		}
 		
 		h2 {
 			font: $font_mid_size $font_reg_family;
-			padding: 20px;
+			padding: 1.0rem;
 			background-color: rgba(darken($color_light_grey,10%),0.5);
 		}
 		
@@ -56,7 +61,7 @@
 			margin: auto;
 			font: $font_big_size $font_reg_family;
 			line-height: 1.5*$font_big_size;
-			margin-top: 6.0rem;
+			margin-top: 3.0rem;
 			background: none;
 		}
 
@@ -78,12 +83,12 @@
 				& + span{
 					display: inline-block;
 					width: (74%/7);
-					margin-top: 4.0rem;
-					margin-left: 0.5%;
-					margin-right: 0.5%;
+					margin-top: 1.0rem;
+					margin-left: 0.2%;
+					margin-right: 0.2%;
 					height: $input_height;
 					border: 2px solid $color_base;
-					border-radius: $border_radius;
+					border-radius: 1rem;
 					color:$color_dark_grey;
 					font: $font_mid_size $font_reg_family;
 					cursor: pointer;

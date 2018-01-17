@@ -1,7 +1,7 @@
 .avatars{
     position: relative;
     width: 80%;
-    margin: 3.0rem auto;
+    margin: 1.5rem auto;
 
     input{
       display: none;
@@ -9,11 +9,8 @@
     }
 
     img {
-      margin-left: 15px;
-      margin-right: 15px;
-      width: 200px;
-      height: 280px;
-      padding: 20px;
+      height: 12rem;
+      padding: 1rem;
     }
 
     input + img {
@@ -23,13 +20,13 @@
 
     input:checked + img {
       border: 2px solid $color_base;
-      border-radius: 2.0rem; 
+      border-radius: $border_radius; 
       background-color: white;
     }
 
     p{
-      font: 5rem "IntroRustH1-Base",cursive;
-      margin-top: 10px;
+      font: 2.5rem "IntroRustH1-Base",cursive;
+      margin-top: 0.5rem;
     }
 
  }

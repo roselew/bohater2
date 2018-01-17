@@ -1,7 +1,7 @@
 @import '_zmienne';
 
 #section01 { 
-	background: $color_back_kid url(../assets/background_kid_title.svg) top 275px center no-repeat; background-size: 100%;
+	background: $color_back_kid url(../assets/background_kid_title.svg) top 150px center no-repeat; background-size: 100%;
 	height: 100vh;
 }
 
@@ -10,7 +10,7 @@
 	p {color: $color_text_parent;}
 }
 
-#section03 { background-color: $color_back_kid; color: white; padding-top: 10.0rem;}
+#section03 { background-color: $color_back_kid; color: white; padding-top: 5.0rem;}
 
 #section04 { 
 	background-color: white; 
@@ -23,12 +23,12 @@
 	background-color: $color_back_kid;
 	color: white; 
 	text-align: center; 
-	padding-bottom: 20rem;
+	padding-bottom: 10rem;
 }
 
 
 .back{
-	border: 3px white solid;
+	border: 2px white solid;
 }
 
 .avatar-images{
@@ -38,11 +38,14 @@
 	left:10%;
 	width: 80%;
 	@media (orientation: landscape){
-		width: 30%;
-		left: 35%;
+		width: 50%;
+		display:inline-block;
+		vertical-align: middle;
+		left: auto;
 	}
 }
 
+.plus{border: 2px white solid;}
 .title-container {
 	@media (orientation: landscape){
 		margin-top:0;
@@ -50,13 +53,15 @@
 }
 button.enter {
 	display: inline-block;
-	width: 80%;
-	border: 3px white solid;
+	width: 100%;
+	border: 2px white solid;
 	background-color: $color_undone;
-	font: 0.8*$font_title_size $font_title_family;
+	font: 0.6*$font_title_size $font_title_family;
+	padding:1rem;
 
 	@media (orientation: landscape){
-		width: 60%;	
+		width: 49%;	
+		vertical-align: middle;
 	}
 	
 }
@@ -66,13 +71,13 @@ a.scrolling {
 	@media (orientation: landscape){
 		width: 30%;
 		margin-left: 35%;
-		bottom: 1rem;
+		bottom: 0;
 	}
 	//miejsce na strzałkę w dół
-	padding-top: 80px;
+	padding-top: 4rem;
 
 	position: absolute;
-	bottom: 3rem;
+	bottom: 1.5rem;
 	left: 0px;
 	text-align: center;
 	z-index: 2;
@@ -97,9 +102,9 @@ a.scrolling {
 		position: absolute;
 		top: 0;
 		left: 50%;
-		width: 4.0rem;
-		height: 4.0rem;
-		margin-left: -2.0rem;
+		width: 2.0rem;
+		height: 2.0rem;
+		margin-left: -1.0rem;
 		border-left: 2px solid #fff;
 		border-bottom: 2px solid #fff;
 		-webkit-transform: rotate(-45deg);
@@ -139,34 +144,34 @@ section {
 	position: relative;
 	width: 100%;
 	font: $font-mid-size $font-reg-family;
-	padding: 6.0rem 4.0rem;
+	padding: 3.0rem 2.0rem;
 	p{
-		padding: 3.0rem;
+		padding: 1.0rem;
 	}
 }
 
 
 .img-float-right{
-	width: 15.0rem;
+	width: 7.5rem;
 	float: right;
-	margin: 0 3.0rem;
+	margin: 0 1.5rem;
 }
 
 .img-float-left{
-	width: 15.0rem;
+	width: 7.5rem;
 	float: left;
-	margin: 0 3.0rem;
+	margin: 0 1.5rem;
 }
 
 ul.green-circle{
-	padding: 2.0rem;
-	li{text-align: left;padding: 3.0rem; padding-left: 6.0rem; position: relative;}
+	padding: 1.0rem;
+	li{text-align: left;padding: 1.5rem; padding-left: 3.0rem; position: relative;}
 	li:before{
 		content: ''; 
 		position: absolute;
 		left:0rem;
-		width: 40px;
-		height: 40px;
+		width: 2rem;
+		height: 2rem;
 		background: url(../assets/mission.svg) center center no-repeat; background-size:100%;
 	}
 	span {
@@ -179,20 +184,20 @@ ul.green-circle{
 	width: 100%;
 	position: relative;
 	text-align: right;
-	padding-right: 2.0rem;
+	padding-right: 1.0rem;
 	background-color: $color-base ;
 	font: 1.2*$font_title_size $font_title_family;
 	color:white;
 	img{
 		position: absolute;
-		left:10px;
+		left:0.5rem;
 		top: -0.5*$font_title_size;
 		height: 2.5*$font_title_size;
 	}
 	.font-skew {
 		position: absolute;
 		top: 1.2*$font_title_size;
-		right: 2.0rem;
+		right: 1.0rem;
 		-moz-transform: matrix( 0.99026806874157,-0.13917310096007,0.13917310096007,0.99026806874157,0,0);
 		-webkit-transform: matrix( 0.99026806874157,-0.13917310096007,0.13917310096007,0.99026806874157,0,0);
 		-ms-transform: matrix( 0.99026806874157,-0.13917310096007,0.13917310096007,0.99026806874157,0,0);
@@ -203,21 +208,21 @@ ul.green-circle{
 .logo-banner-point{
 	position: relative;
 	width:100%;
-	padding: 3.0rem;
+	padding: 1.5rem;
 	color:white;
 	background-color:$color_base;
 	text-align: left;
 	&:after{
 		content:'1';
 		color:white;
-		line-height: 10rem;
+		line-height: 5rem;
 		background-color: $color_undone;
 		border: 2px white solid;
-		width: 10rem;
-		height: 10rem;
+		width: 5rem;
+		height: 5rem;
 		position: absolute;
-		top:-4.0rem;
-		right: 6rem;
+		top:-2rem;
+		right: 3rem;
 		display:block;
 		border-radius: 100%;
 		text-align: center;
@@ -228,22 +233,22 @@ ul.green-circle{
 }
 
 .logo-banner-point-right{
-	margin-top: 3.0rem;
+	margin-top: 1.5rem;
 	text-align: right;
 	&:after{
 		content:'2';
-		left:6rem;
+		left:3rem;
 	}
 }
 
 
 
 ul.blue-square{
-	padding: 2.0rem;
-	li{padding: 2.0rem; }
+	padding: 1rem;
+	li{padding: 1rem; }
 	li:before{
 		content: '\25A0'; 
-		padding-right: 8px;
+		padding-right: 0.4rem;
 		color: $color_base; 
 	}
 }
@@ -253,14 +258,14 @@ ul.blue-square{
 @media (orientation: landscape){  
 
 	.logo-banner-point:after{
-		line-height: 7rem;
-		width: 7rem;
-		height: 7rem;
+		line-height: 3.5rem;
+		width: 3.5rem;
+		height: 3.5rem;
 	}
 
 	ul.green-circle{
-	padding: 1.0rem;
-	li{padding: 2.0rem; padding-left: 6.0rem; }
+	padding: 0.5rem;
+	li{padding: 1.0rem; padding-left: 3.0rem; }
 	}
 
 }
