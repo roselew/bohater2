@@ -44,7 +44,11 @@ import { Component, OnInit, Input } from '@angular/core';
    
 
   `,
-  styles: [],
+  styles: [`
+  .mission-neutral {
+    height: 12rem;    
+  }
+  `]
 
 })
 export class ViewMissionComponent implements OnInit {

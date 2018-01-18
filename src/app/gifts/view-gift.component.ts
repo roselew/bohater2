@@ -14,7 +14,11 @@ import { Component, OnInit, Input } from '@angular/core';
     <span class="less" (click)="lessPoints()">-</span><input type="number" name="newGiftPoints" placeholder="Liczba punktów" [(ngModel)]="+gift.points"><span class="more" (click)="morePoints()">+</span>
   </form>
   `,
-  styles: [],
+  styles: [`
+  .mission-neutral {
+    height: 12rem;    
+  }
+  `],
 
 })
 export class ViewGiftComponent implements OnInit {

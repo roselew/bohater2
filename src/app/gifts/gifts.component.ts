@@ -85,16 +85,16 @@ import { UsersService } from '../services/users.service';
   `,
   styles: [`
   .mission-neutral li.circle-big{
-    margin: 2rem 4% 7rem 4%;
+    margin: 2rem 4% 4rem 4%;
   }
   .chosenGiftsPanel{
     width: 100%;
     background-color:#f5f5f5;
-    margin: 4rem 0; 
+    margin: 2rem 0; 
   }
   .chosenGiftsPanel li.circle-big{
-    margin-top: 4rem;
-    margin-bottom: 12rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
   }
 
   .buttonPanel {
@@ -104,6 +104,9 @@ import { UsersService } from '../services/users.service';
     margin-bottom: 10px;
   }
 
+  .panelTitle {
+    background-size: 4rem;
+  }
  }
 
   `],

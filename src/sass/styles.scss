@@ -199,10 +199,14 @@ h1.smallTitle { font-size: 3rem;}
 }
 .kid .smallTitle {
 	opacity: 0.8;
+	background-color: rgba(white,0.6);
+	color:$color_back_kid;
+
+}
+.kid h1.smallTitle { 
 	background-color: $color_base;
 	color:white;
 }
-
 
 .panelTitle {
   background: $color_base url(../assets/gift.svg) center left 20px no-repeat; background-size:80px; 
