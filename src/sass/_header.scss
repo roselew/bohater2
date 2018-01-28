@@ -8,9 +8,7 @@ header{
 	top: 0px;
 	left: 0px;
 	width: 100%;
-	max-width: $max_width;
-	margin: auto;
-	height: $header_banner_height;
+	height: $header_banner_height + $header_banner_space;
 	z-index: 1000;
 	
 	//to change with real logo image

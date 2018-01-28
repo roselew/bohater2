@@ -38,7 +38,7 @@
 
 }
 
-  @media (orientation: landscape){  
+  @media (max-width:1000px) and (orientation: landscape){  
 
 	.title-banner {
 		.font-skew{
@@ -62,9 +62,10 @@
 	width: 100%;
 	max-width: $max_width;
 	margin: auto;
+	padding-bottom: 10rem;
 	text-align: center;
 
-	@media (orientation: landscape){  
+	@media (max-width:1000px) and (orientation: landscape){  
 		margin-top: 0rem;
 	}
 	button{

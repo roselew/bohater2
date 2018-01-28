@@ -27,16 +27,11 @@ $width4: 1500px;
     src: url(../assets/IntroRustH1-Base.otf);
 }
 
-@font-face {
-    font-family: Lato-Regular;
-    src: url(../assets/Lato-Regular.ttf);
-}
-
 
 $font_title_family: 'IntroRustH1-Base', cursive;
 $font_title_size: 4.0rem;
 
-$font_reg_family: 'Lato-Regular', sans_serif;
+$font_reg_family: 'Lato', sans_serif;
 $font_big_size: 2.0rem;
 $font_mid_size: 1.6rem;
 $font_small_size: 1.2rem;

@@ -56,9 +56,9 @@ html {
 	@media(min-width: $width3){
 		font-size: 93.75%;
 	}
-	@media(min-width: $width4){
-		font-size: 125%;
-	}
+	// @media(min-width: $width4){
+	// 	font-size: 125%;
+	// }
 	font-family: $font_reg_family;
 	h1{
 		font-family: $font_title_family;
@@ -80,6 +80,7 @@ a {
 }
 
 body {
+	height: 100%;
 	font: $font_big_size $font_reg_family;
 }
 
@@ -131,6 +132,39 @@ input[type='number']{
 
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+
+.remember {width: 80%; text-align: left;margin-left:10%;vertical-align: middle;}
+
+.remember input {
+	display: none;
+
+   & + span{
+	   display: inline-block;
+	   width: 3rem;
+	   margin-right: 2%;
+	   height: 3rem;
+	   border: $border_width solid $color_base;
+	   border-radius: 1rem;
+	   color:white;
+	   font: $font_mid_size $font_reg_family;
+	   cursor: pointer;
+	   text-align: center;
+	   line-height: 3rem;
+	   background-color: white;
+	& + p {
+		display: inline-block;
+		margin-top: 0;
+		font-size: $font_mid_size;
+		line-height: 3rem;
+	}
+   }
+
+   &:checked + span {
+	   background-color:$color_base;	
+	   border: $border_width solid white;
+   }
+
 }
 
 button.left, button.right {
@@ -249,9 +283,12 @@ button{
 }
 
 button.altButton{
+	padding: 1rem;
 	background-color: white;
 	border: $border_width solid $color_base;
+	border-radius: 0.5*$border_radius;
 	color: $color_base;
+	font: $font_mid_size $font_reg_family;
 	&:hover{
 		background-color: $color_base;
 		color:white;
@@ -409,7 +446,7 @@ input[type=checkbox] {
 	left: 0px;
 	text-align: center;
 	z-index:2;
-	padding-bottom: 2rem;
+	padding-bottom: 10rem;
 
 	//alert on whole page
 	.alert{

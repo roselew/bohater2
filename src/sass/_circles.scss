@@ -198,7 +198,7 @@ li.circle-mid {
 	border-radius: 100%;
 	background-color: $color_base;
 	color: white;
-	font: $font_title_size $font_reg_family;
+	font: $font_title_size $font_title_family;
 	line-height: $mission_mid_size;
 	text-align: center;
 	cursor: pointer;
@@ -217,9 +217,9 @@ li.circle-mid {
 	z-index: 500;
 	border: $border_width white solid;
 	border-radius: 100%;
-	background-color: $color_base;
+	background-color: $color_base ;
 	color: white;
-	font: $font_title_size $font_reg_family;
+	font: $font_title_size $font_title_family;
 	line-height: $mission_mid_size;
 	text-align: center;
 	cursor: pointer;
@@ -230,7 +230,7 @@ li.circle-mid {
 
 a {
 	.plus{
-	font: 2em $font_reg_family;
+	font: $font_title_size $font_title_family;
 	line-height: $mission_mid_size;
 	}
 }

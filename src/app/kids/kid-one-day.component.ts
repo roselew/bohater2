@@ -22,6 +22,10 @@ import { ExpertsService } from '../services/experts.service';
         [userMissions] = "userMissions"
         [heroImage] = "heroImage">
   </one-day-view>
+
+  <a [routerLink]="['../../']">
+    <div class="back">←</div>
+  </a>
     
    `,
   styles: [],

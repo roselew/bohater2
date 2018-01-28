@@ -16,7 +16,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   </ul>  
 
   <a [routerLink]="['/rodzina']">
-    <div class="back">↩</div>
+    <div class="back">←</div>
   </a>
 
   `,

@@ -74,7 +74,7 @@ import { Router, ActivatedRoute } from '@angular/router';
       <img src="assets/bohater3.png" height="100px">
       
       <a [routerLink]="['/rodzina']">
-        <div class="plus">❔</div>
+        <div class="plus">?</div>
       </a>
 
   

@@ -2,7 +2,7 @@
 
 #section01 { 
 	background: $color_back_kid url(../assets/background_kid_title.svg) top $background_space center no-repeat; background-size: 100%;
-	height: 100vh;
+	min-height: 100%;
 }
 
 #section02 { 
@@ -37,11 +37,15 @@
 	top: 0;
 	left:10%;
 	width: 80%;
-	@media (orientation: landscape){
+	@media (orientation: landscape) and (max-width: $width4){
 		width: 50%;
 		display:inline-block;
 		vertical-align: middle;
 		left: auto;
+	}
+	@media (orientation: landscape) and (min-width: $width4){
+		width: 50%;
+		left: 25%;
 	}
 }
 

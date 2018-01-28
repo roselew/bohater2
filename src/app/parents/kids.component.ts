@@ -8,7 +8,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   template: `
 
   <header>	
-	  <div [routerLink]="['/witaj']" class="header-banner">Lista dzieci</div>
+	  <div [routerLink]="['/witaj']" class="header-banner">Menu</div>
     <img src="assets/logo.png" class="logo">
   </header>
 
@@ -25,12 +25,16 @@ import { AngularFireAuth } from 'angularfire2/auth';
   </a>
 
   <a [routerLink]="['/rodzina']">
-    <div class="back">↩</div>
+    <div class="back">←</div>
   </a>
 
   <app-spinner *ngIf="showSpinner"></app-spinner>
   `,
-  styles: [],
+  styles: [`
+  @media (min-width: 1200px){  
+  .container {max-width: 1500px; margin-top: 5%;}
+  }
+  `],
 })
 export class KidsComponent implements OnInit {
 

@@ -68,64 +68,7 @@ export class UsersService {
 
   parentRegister(parent) {
     return this.afAuth.auth.createUserWithEmailAndPassword(parent.email, parent.password)
-      .then((user) => {
-        this.authState = user
-        this.createOneParent(user,parent)
-        this.router.navigate(['/rodzina']);
-      })
-      .catch(error => console.log(error));
   }
-
-  kidLogin(kid){
-    kid.email=kid.login+'@bt.com'
-    return this.afAuth.auth.signInWithEmailAndPassword(kid.email, kid.password)
-    .then((user) => {
-      this.authState = user
-      return this.router.navigate(['/dziecko']);
-    })
-    .catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      if (errorCode === 'auth/invalid-email') {
-        alert('Niepoprawny login');
-      } else if (errorCode === "auth/wrong-password") {
-        alert('Niepoprawne hasło');
-      } else {        
-        alert(errorMessage);
-      }
-      console.log(error)
-    });
-  }
-
-  // kidRegister(kid) {
-
-  //   var secondaryApp = firebase.initializeApp(environment.firebase, "Secondary")
-
-  //   kid.email = kid.login + '@bt.com'
-  //   return secondaryApp.auth().createUserWithEmailAndPassword(kid.email, kid.password)
-  //   .then((user) => 
-  //     this.createOneKid(user,kid).then( () => 
-  //       secondaryApp.delete().then( () => 
-  //         this.router.navigate(['/rodzic/dziecko/'+kid.login+'/misje'])
-  //       )      
-  //     )
-  //   )
-  //   .catch(function(error) {
-  //     var errorCode = error.code;
-  //     var errorMessage = error.message;
-  //     if (errorCode === 'auth/weak-password') {
-  //       alert('Hasło za słabe. Minimalna długość to 6 znaków');
-  //     } else if (errorCode === "auth/email-already-in-use") {
-  //       alert('Taki użytkownik jest już dostępny. Wybierz inny login');
-  //     } else {        
-  //       alert(errorMessage);
-  //     }
-  //     console.log(error)
-  //     secondaryApp.delete()
-  //   }) 
-  // }
-  
-
 
  // Returns true if user is logged in
   get authenticated(): boolean {

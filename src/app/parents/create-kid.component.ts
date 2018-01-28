@@ -17,7 +17,7 @@ import { UsersService } from "../services/users.service";
     <button *ngIf="!showSpinner" (click)="save()">DODAJ DZIECKO</button>
 
     <a [routerLink]="['../']">
-      <div class="back">↩</div>
+      <div class="back">←</div>
     </a>
 
   </div>

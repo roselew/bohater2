@@ -23,7 +23,7 @@ export class KidHeaderComponent implements OnInit {
 
   kidId
   ngOnInit() {
-    this.kidId = this.route.parent.snapshot.paramMap.get('kidId');
+    this.kidId = this.route.snapshot.paramMap.get('kidId');
   }
 
 }

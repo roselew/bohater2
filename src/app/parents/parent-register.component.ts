@@ -14,7 +14,7 @@ import * as firebase from 'firebase/app';
 
   <app-spinner *ngIf="showSpinner"></app-spinner>
   
-    <form *ngIf="!showSpinner">
+    <form (ngSubmit)="addParent()" *ngIf="!showSpinner">
     
       <input type='text' placeholder='E-mail' [(ngModel)]="parent['email']" name="email">
 
@@ -44,12 +44,12 @@ import * as firebase from 'firebase/app';
         </label>     
       </div>
 
-      <button type='submit' (click)="addParent()">ZAREJESTRUJ</button>
+      <button type='submit'>ZAREJESTRUJ</button>
 
     </form>
 
     <a [routerLink]="['/rodzina']">
-      <div class="back">↩</div>
+      <div class="back">←</div>
     </a>
 
   </div>
@@ -97,7 +97,12 @@ export class ParentRegisterComponent implements OnInit {
         this.showSpinner = true;
         this.parent['code']=this.codes.filter(x => x.checked==true).map(x => x.value);
         this.users.parentRegister(this.parent)
-        .then ( () => this.showSpinner = false)
+        .then ( user => {
+          this.users.createOneParent(user,this.parent)
+            .then( ()=> this.router.navigate(['/rodzina']) )
+            .catch( error => {alert(error.messageng ); this.showSpinner = false;} )
+          })
+        .catch(error => {alert(error.message); this.showSpinner = false;} );
       } else {
         alert('Hasło się nie zgadza')
       }

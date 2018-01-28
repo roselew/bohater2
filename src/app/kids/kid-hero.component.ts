@@ -15,7 +15,8 @@ import { ExpertsService } from '../services/experts.service';
       <img *ngIf="nBadges>0" class="green" src="assets/ikony/o_pustaz.svg">
       <img *ngIf="nBadges==0" class="green" src="assets/ikony/o_pusta.svg">
       <hero-progress *ngIf="heroProgress && !alertVisible" [heroProgress]="heroProgress"></hero-progress>
-      <p>Pozostały jeszcze {{nBadges}} odznaki do wykorzystania!</p>
+      <p *ngIf="nBadges==0">Musisz wykonać wszystkie misje w tygodniu aby zdobyć odznakę</p>
+      <p *ngIf="nBadges>0">Pozostały jeszcze {{nBadges}} odznaki do wykorzystania!</p>
     </div>
 
     <ul class="lista-odznak">
@@ -23,13 +24,18 @@ import { ExpertsService } from '../services/experts.service';
         class="bohater" 
         (click)="choseBadge(i)">
           <p>{{badge.badgeName}}</p> 
-          <p style="bottom: -7.5rem">{{showBadgeGain(badge)}}</p>
+          <p *ngIf="kid['badges'][i]==false" class="badge-gain">{{showBadgeGain(badge)}}</p>
+          <p *ngIf="kid['badges'][i]==true" class="badge-gain badge-gain-true">{{showBadgeGain(badge)}}</p>
           <img *ngIf="kid['badges'][i]==false" src="assets/ikony/o_pusta.svg" class="pusta">
           <img *ngIf="kid['badges'][i]==true" src="{{badge.icon}}">
         </li>
     </ul>
 
   </div>
+
+  <a [routerLink]="['../']">
+    <div class="back">←</div>
+  </a>
 
   <app-alert *ngIf="alertVisible" 
   (change)="alertVisible=false" 

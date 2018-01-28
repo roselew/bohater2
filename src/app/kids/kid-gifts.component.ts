@@ -94,6 +94,10 @@ import { MissionsService } from '../services/missions.service';
 
   </div>
 
+  <a [routerLink]="['../']">
+    <div class="back">←</div>
+  </a>
+
 `,
   styleUrls: ['../../sass/kid-gifts.scss'],
 })

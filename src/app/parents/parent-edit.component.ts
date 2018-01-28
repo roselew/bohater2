@@ -30,7 +30,7 @@ import * as firebase from 'firebase/app';
     </form>
 
     <a [routerLink]="['/rodzina']">
-      <div class="back">↩</div>
+      <div class="back">←</div>
     </a>
 
   </div>

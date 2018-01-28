@@ -4,6 +4,11 @@ import { Component, OnInit} from '@angular/core';
   selector: 'kid-progress',
   template: `
   <one-week [mode]=" 'kid' "></one-week>
+
+  <a [routerLink]="['../../']">
+    <div class="back">←</div>
+  </a>
+
   `,
   styles: [],
 

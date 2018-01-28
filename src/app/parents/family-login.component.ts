@@ -28,9 +28,13 @@ import * as firebase from 'firebase/app';
         </span> -->
 
       <input type='password' placeholder='Hasło' [(ngModel)]="parent['password']" name="password">
-
-      <input type='checkbox' name='remember' checked>
-      <label for='checkbox'>Zapamiętaj mnie</label>
+      
+      <div class="remember">
+      <label>
+        <input type='checkbox' name='remember' checked>
+        <span>X</span><p> Zapamiętaj mnie</p>
+      </label>
+      </div>
 
       <button type='submit'>ZALOGUJ</button>
 
@@ -42,7 +46,7 @@ import * as firebase from 'firebase/app';
 
     
     <a [routerLink]="['/witaj']">
-       <div class="back">↩</div>
+       <div class="back">←</div>
     </a>
 
   </div>

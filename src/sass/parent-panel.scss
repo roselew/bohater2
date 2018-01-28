@@ -1,6 +1,13 @@
 
 @import '_zmienne';
 
+
+@media (min-width: 1200px){  
+.title-container {max-width: 1500px; margin-top: 5%;}
+}
+
+
+
 .title-banner {
     margin-top: 5vw;
 }
@@ -9,7 +16,9 @@
     position: relative;
     display: inline-block;
     width: 40vw;
+    max-width: 250px;
     height: 40vw;
+    max-height: 250px;
     margin: 2rem 3vw;
     border-radius: 100%;
     font: $font_big_size $font_title_family;

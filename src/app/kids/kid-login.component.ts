@@ -24,7 +24,7 @@ import { UsersService } from "../services/users.service";
     </div>
 
     <a [routerLink]="['/rodzina']">
-      <div class="back">↩</div>
+      <div class="back">←</div>
     </a>
 
   </div>
