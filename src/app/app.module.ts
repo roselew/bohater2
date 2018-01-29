@@ -83,6 +83,7 @@ import { FamilyComponent } from './parents/family.component';
 import { AuthFamilyService } from './services/auth-family.service';
 import { ParentEditComponent } from './parents/parent-edit.component';
 import { ViewParentComponent } from './parents/view-parent.component';
+import { FamilyMailchangeComponent } from './parents/family-mailchange.component';
 
 
 @NgModule({
@@ -158,6 +159,7 @@ import { ViewParentComponent } from './parents/view-parent.component';
     FamilyPanelComponent,
     FamilyLoginComponent,
     FamilyComponent,
+    FamilyMailchangeComponent,
   ],
   
   imports: [

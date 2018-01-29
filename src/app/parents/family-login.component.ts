@@ -14,20 +14,19 @@ import * as firebase from 'firebase/app';
    
   <app-spinner *ngIf="showSpinner"></app-spinner>
 
-    <form #formRef="ngForm" *ngIf="!showSpinner" (submit)="login()">
+    <form #formRef="ngForm" *ngIf="!showSpinner" (submit)="login(formRef)">
 
-    <!--  <span *ngIf="(email.touched || email.dirty) && email.invalid">
-        <p>nie podałeś email</p>
-      </span> -->
+      <span class="info info__alert" *ngIf="(email.touched || email.dirty) && email.invalid">
+        Błędny adres email
+      </span> 
 
-      <input type='text' placeholder='Email' [(ngModel)]="parent['email']" name="email" #email="ngModel" required>
+      <input type='text' placeholder='Email' pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="parent['email']" name="email" #email="ngModel" required>
 
-        <!-- <span > 
-          <small *ngIf="formRef.controls.email?.errors?.required" class="form-text text-muted">Field is required</small>
-          <small *ngIf="formRef.controls.email?.errors?.email" class="form-text text-muted">Invalid email format</small>
-        </span> -->
+      <span class="info info__alert" *ngIf="(password.touched || password.dirty) && password.invalid">
+        Hasło musi mieć minimum 6 znaków
+      </span> 
 
-      <input type='password' placeholder='Hasło' [(ngModel)]="parent['password']" name="password">
+      <input type='password' placeholder='Hasło' pattern=".{6,}" [(ngModel)]="parent['password']" #password="ngModel" name="password" required>
       
       <div class="remember">
       <label>
@@ -36,13 +35,13 @@ import * as firebase from 'firebase/app';
       </label>
       </div>
 
-      <button type='submit'>ZALOGUJ</button>
+      <button *ngIf="formRef.valid" type='submit'>ZALOGUJ</button>
 
     </form>
 
     <button *ngIf="!showSpinner" routerLink='/rodzina-rejestracja' class="altButton">Nie masz konta ?</button>
-  
-    <button *ngIf="!showSpinner" class="altButton">Nie pamiętasz hasła</button>
+
+    <button *ngIf="!showSpinner" class="altButton" (click)="changePassoword()">Nie pamiętasz hasła</button>
 
     
     <a [routerLink]="['/witaj']">
@@ -73,6 +72,7 @@ export class FamilyLoginComponent implements OnInit {
 //   }
   
 
+
   constructor(
     public afAuth: AngularFireAuth,
     public users: UsersService,
@@ -83,15 +83,30 @@ export class FamilyLoginComponent implements OnInit {
       this.renderer.addClass(document.body,'title-page')
     }
 
-    login() {
-      this.showSpinner = true
-      this.users.parentLogin(this.parent)
-      .then ( () => this.showSpinner = false)
+    login(form) {
+      if(form.invalid){
+        console.log('cos jest zle')
+      } else {
+        this.showSpinner = true
+        this.users.parentLogin(this.parent)
+        .then ( () => this.showSpinner = false)
+      }
     }
 
   parents
   ngOnInit() {
 
+  }
+
+  changePassoword(){
+
+    let email = this.parent['email'];
+    if(email){
+      this.users.resetPassword(email);
+    }else{
+      alert('wpisz adres email na który mamy wysłać hasło')
+    }
+  
   }
 
 

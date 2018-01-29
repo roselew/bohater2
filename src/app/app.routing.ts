@@ -49,6 +49,7 @@ import { FamilyLoginComponent } from './parents/family-login.component';
 import { FamilyComponent } from './parents/family.component';
 import { AuthFamilyService } from './services/auth-family.service';
 import { ParentEditComponent } from './parents/parent-edit.component';
+import { FamilyMailchangeComponent } from './parents/family-mailchange.component';
 
 
 
@@ -64,7 +65,7 @@ const routes:Routes = [
         {path:'',                                       redirectTo: 'menu', pathMatch: 'full'},
         {path: 'menu',                                  component: FamilyPanelComponent},
         {path: 'edytuj',                                component: ParentEditComponent},
-
+        {path: 'edytuj-email',                          component: FamilyMailchangeComponent},
         // FOR KIDS ONLY
         {path: 'dziecko-logowanie',                     component: KidLoginComponent},
         {path: 'dziecko/:kidId',    component: KidComponent, canActivate: [ AuthKidService ], children: [

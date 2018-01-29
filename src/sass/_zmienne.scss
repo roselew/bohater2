@@ -24,11 +24,12 @@ $width4: 1500px;
 //font definition
 @font-face {
     font-family: IntroRustH1-Base;
-    src: url(../assets/IntroRustH1-Base.otf);
+	src: url(../assets/kropki.woff) format('woff'),
+	 	 url(../assets/kropki.ttf) format('truetype');
 }
 
 
-$font_title_family: 'IntroRustH1-Base', cursive;
+$font_title_family: 'IntroRustH1-Base', 'Arial Black', cursive;
 $font_title_size: 4.0rem;
 
 $font_reg_family: 'Lato', sans_serif;

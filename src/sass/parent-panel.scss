@@ -24,6 +24,7 @@
     font: $font_big_size $font_title_family;
     box-shadow:  0 0 2.5rem rgba($color_base, 0.8);
     background-color: rgba(white,0.6);
+    cursor: pointer;
     @media(orientation: landscape){
         width: 40vh;
         height: 40vh;

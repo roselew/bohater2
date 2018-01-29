@@ -21,9 +21,9 @@ import * as firebase from 'firebase/app';
   
       <button type='submit' (click)="addParent()">ZAPISZ ZMIANY</button>
 
-      <button class="altButton">Zmień hasło dla całej rodziny</button>
+      <button class="altButton" (click)="changePassoword()">Zmień hasło dla całej rodziny</button>
 
-      <button class="altButton">Zmień adres email</button>
+      <button class="altButton" [routerLink]="['/rodzina/edytuj-email']">Zmień adres email</button>
 
       <button class="altButton">Zmień hasło rodzica</button>
 
@@ -63,6 +63,14 @@ export class ParentEditComponent implements OnInit {
 
   parent
   status
+
+
+  changePassoword(){
+
+    let email = this.users.currentUserEmail;
+    this.users.resetPassword(email);
+
+  }
 
   ngOnInit() {
     this.users.getOneParent(this.users.currentUserEmail)

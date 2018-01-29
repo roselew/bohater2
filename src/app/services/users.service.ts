@@ -158,7 +158,17 @@ export class UsersService {
     return this.afs.doc(`kids/${kidId}`).update(kid) 
   }
 
-
+  resetPassword(email){
+    firebase.auth().sendPasswordResetEmail(email)
+    .then( ()=> {
+      alert('Na Twój adres trafił email, dzięki któremu zmienisz hasło');
+      this.router.navigate(['witaj']);
+    }).catch(function(error) {
+      alert(error.message)
+      // An error happened.
+    });
+  
+  }
 
   fetchParents() {
     return this.parents
@@ -207,6 +217,11 @@ export class UsersService {
     
   }
 
+  resetUserEmail(newMail){
+    let user = firebase.auth().currentUser;
+
+    return user.updateEmail(newMail)
+  }
 
 
 }
