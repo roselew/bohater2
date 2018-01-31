@@ -7,12 +7,12 @@ import { GiftsService } from "../services/gifts.service";
   template: `
 
 
-<img src="assets/logoXL.png" width="200px" height="200px">
+<img src="assets/logoXL.png" width="100px" height="100px">
 
 <form class="">
 
 	<input type="text" name="newMissionName" placeholder="Za co punkty?" [(ngModel)]="extraPoints['description']">
-	<span class="less" (click)="lessPoints()">-</span><input type="number" name="newMissionPoints" placeholder="Liczba punktów ekstra" [(ngModel)]="+extraPoints['points']"><span class="more" (click)="morePoints()">+</span>
+	<span class="less" (click)="lessPoints()">-</span><input type="number" name="newMissionPoints" placeholder="Ile punktów" [(ngModel)]="+extraPoints['points']"><span class="more" (click)="morePoints()">+</span>
 	<button (click)="save()">DODAJ PUNKTY</button>
 
 </form>

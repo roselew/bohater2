@@ -191,15 +191,15 @@ li.circle-mid {
 	position: fixed;
 	bottom: 1rem;
 	right: 1rem;
-	height: $mission_mid_size;
-	width: $mission_mid_size;
+	height: 5rem;
+	width: 5rem;
 	z-index: 500;
 	border: $border_width white solid;
 	border-radius: 100%;
 	background-color: $color_base;
 	color: white;
 	font: $font_title_size $font_title_family;
-	line-height: $mission_mid_size;
+	line-height: 5rem;
 	text-align: center;
 	cursor: pointer;
 	transition: all 1s;
@@ -212,15 +212,15 @@ li.circle-mid {
 	position: fixed;
 	bottom: 1rem;
 	left: 1rem;
-	height: $mission_mid_size;
-	width: $mission_mid_size;
+	height: 5rem;
+	width: 5rem;
 	z-index: 500;
 	border: $border_width white solid;
 	border-radius: 100%;
 	background-color: $color_base ;
 	color: white;
 	font: $font_title_size $font_title_family;
-	line-height: $mission_mid_size;
+	line-height: 5rem;
 	text-align: center;
 	cursor: pointer;
 	transition: all 1s;
@@ -231,6 +231,6 @@ li.circle-mid {
 a {
 	.plus{
 	font: $font_title_size $font_title_family;
-	line-height: $mission_mid_size;
+	line-height: 5rem;
 	}
 }

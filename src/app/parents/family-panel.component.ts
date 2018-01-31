@@ -32,7 +32,7 @@ import { ExpertsService } from '../services/experts.service';
     <p *ngIf="kids && kids.length == 0" class="smallTitle"> Wejdź w swój profil aby dodać dziecko </p>
     
     <a [routerLink]="['/rodzina/edytuj']">
-    <div class="plus"><img src="assets/settings.svg" width="40%"></div>
+    <div class="plus"><img src="assets/settings.svg" width="60%"></div>
     </a>
 
   </div>

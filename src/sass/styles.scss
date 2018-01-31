@@ -599,6 +599,8 @@ span.info+input{
 }
 
 span.info{
+	position: relative;
+	max-width: 80%;
 	display:inline-block;
 	vertical-align: middle;
 	font-size:1rem;
@@ -608,20 +610,26 @@ span.info{
 	background-color: rgba(white,0.5);
 	border-radius: $border-radius;
 	margin-bottom: 1rem;
+	@media(max-width: 1200px){
+		width:80%;
+	}
 	&::before{
+		position: absolute;
+		top:-1rem;
+		left: -1rem;
 		content:'?';
-		font-size:1rem;
+		font-size:1.5rem;
 		font-family: $font_reg_family;
 		font-style: bold;
-		line-height: 1.5rem;
+		//line-height: 2rem;
 		color:white;
 		border-radius: 100%;
 		border:1px white solid;
 		background-color: $color_base;
 		vertical-align: text-bottom;
 		display:inline-block;
-		width: 1.5rem;
-		height:1.5rem;
+		width: 2rem;
+		height:2rem;
 	}
 
 	&__alert{
@@ -633,10 +641,10 @@ span.info{
 			color: white;
 			border-color:white;
 			background-color: $color_undone;
-			font-size:1rem;
+			font-size:1.5rem;
 			font-family: $font_reg_family;
 			font-style: bold;
-			line-height: 1.5rem;
+			//line-height: 1.5rem;
 		}
 	}
 }

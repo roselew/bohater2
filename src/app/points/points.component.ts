@@ -28,9 +28,9 @@ import { MissionsService } from '../services/missions.service';
     <tr *ngFor="let oneItem of history"> 
       <td>{{ oneItem.date | date: 'shortDate' }} </td>
       <td>
-        <img *ngIf="(oneItem.type=='mission')" src="assets/mission.svg" height='50px'>
-        <img *ngIf="(oneItem.type=='gifts')" src="assets/gift.svg" height='50px'>
-        <img *ngIf="(oneItem.type=='ekstra punkty')" src="assets/addstars.svg" height='50px'>
+        <img *ngIf="(oneItem.type=='mission')" src="assets/mission.svg" height='40px'>
+        <img *ngIf="(oneItem.type=='gifts')" src="assets/gift.svg" height='40px'>
+        <img *ngIf="(oneItem.type=='ekstra punkty')" src="assets/addstars.svg" height='40px'>
       </td>
       <td>{{ oneItem.name }}</td>
       <td>{{ oneItem.points }}</td>
@@ -44,12 +44,14 @@ import { MissionsService } from '../services/missions.service';
   styles: [`
   table{
     width:80%;
-    margin-left:10%;
+    margin-left:7%;
   }
   th, td {
       padding: 1.0rem;
       border-bottom: 2px dotted #ddd;
+      vertical-align: middle;
   }
+
   tr:hover {background-color: #f5f5f5;}
   `],
 
