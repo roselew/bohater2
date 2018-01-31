@@ -14,21 +14,49 @@ import * as firebase from 'firebase/app';
 
   <app-spinner *ngIf="showSpinner"></app-spinner>
   
-    <form (ngSubmit)="addParent()" *ngIf="!showSpinner">
+    <form #formRef="ngForm" (ngSubmit)="register(formRef)" *ngIf="!showSpinner" >
     
-      <input type='text' placeholder='E-mail' [(ngModel)]="parent['email']" name="email">
+      <span class="info">
+        Ten adres mailowy będzie wykorzystywać cała Wasza rodzina do zalogowania się.
+      </span> 
 
-      <input type='password' placeholder='Hasło' [(ngModel)]="parent['password']" name="password">
+      <span class="info info__alert" *ngIf="(email.touched || email.dirty) && email.invalid">
+        Błędny adres email
+      </span> 
 
-      <input type='password' placeholder='Powtórz Hasło' [(ngModel)]="checkpassword" name="checkpassword">
+      <input type='text' placeholder='E-mail' pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required [(ngModel)]="parent['email']" name="email" #email="ngModel" >
 
-      <div class="triple-radio">
+      <span class="info">
+        To jest hasło <b>wspólne</b> dla całej rodziny
+      </span> 
+
+      <span class="info info__alert" *ngIf="(password.touched || password.dirty) && password.invalid">
+        Hasło musi zawierać minimum 6 znaków
+      </span> 
+
+      <input type='password' placeholder='Hasło' pattern=".{6,}" [(ngModel)]="parent['password']" #password="ngModel" name="password" required>
+      
+      <span class="info info__alert" *ngIf="(password2.touched || password2.dirty) && parent['password']!==checkpassword">
+        Podano różne hasła
+      </span> 
+
+      <input type='password' placeholder='Powtórz Hasło' pattern=".{6,}" [(ngModel)]="checkpassword" #password2="ngModel" name="checkpassword" required>
+
+      <span class="info" *ngIf="formRef.valid">
+        Kto będzie sprawdzać wykonanie misji? Jeśli mama i tata na zmianę wybierz <b>Rodzic</b>
+      </span> 
+
+      <div class="triple-radio" *ngIf="formRef.valid">
         <input type="radio" [(ngModel)]="parent['gender']" value="tata" name="parent-name" id="parent-left"><label for="parent-left" class="triple">Tata</label>
         <input type="radio" [(ngModel)]="parent['gender']" value="mama" name="parent-name" id="parent-center"><label for="parent-center" class="triple">Mama</label>
         <input type="radio" [(ngModel)]="parent['gender']" value="rodzic" name="parent-name" id="parent-right"><label for="parent-right" class="triple">Rodzic</label>
       </div>     
 
-      <div class="double-radio">
+      <span class="info" *ngIf="formRef.valid && parent['gender']">
+        Dostęp do profilu rodzica można dodatkowo zabezpieczyć hasłem przed dziećmi. 
+      </span> 
+
+      <div class="double-radio" *ngIf="formRef.valid && parent['gender']">
         <input type="radio" [(ngModel)]="parent['codeExist']" value="T" name="codeExist" id="code-left"><label for="code-left" class="double">Z hasłem</label>
         <input type="radio" [(ngModel)]="parent['codeExist']" value="F" name="codeExist" id="code-right"><label for="code-right" class="double">Bez hasła</label>
       </div>
@@ -44,7 +72,7 @@ import * as firebase from 'firebase/app';
         </label>     
       </div>
 
-      <button type='submit'>ZAREJESTRUJ</button>
+      <button *ngIf="formRef.valid && parent['gender'] && parent['codeExist'] && parent['password']===checkpassword" type='submit'>ZAREJESTRUJ</button>
 
     </form>
 
@@ -88,12 +116,18 @@ export class ParentRegisterComponent implements OnInit {
     this.renderer.removeClass(document.body, 'title-page');
   }
 
+
+
   checkpassword
   parent ={}
   showSpinner: boolean = false
 
-  addParent(){
+  register(form){
+
      if (this.parent['password']===this.checkpassword){
+       if (form.invalid){
+         console.log('cos jest zle')
+       } else {
         this.showSpinner = true;
         this.parent['code']=this.codes.filter(x => x.checked==true).map(x => x.value);
         this.users.parentRegister(this.parent)
@@ -103,6 +137,7 @@ export class ParentRegisterComponent implements OnInit {
             .catch( error => {alert(error.messageng ); this.showSpinner = false;} )
           })
         .catch(error => {alert(error.message); this.showSpinner = false;} );
+       }
       } else {
         alert('Hasło się nie zgadza')
       }

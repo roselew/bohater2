@@ -126,7 +126,6 @@ input[type='text'],input[type='password']{
 	&.ng-touched.ng-invalid,&.ng-dirty.ng-invalid{
 		border-color: $color_undone;
 		border-width: 3px;
-		margin-top: 0rem;
 	}
 }
 
@@ -595,19 +594,49 @@ p.logout{
 	}
 }
 
+span.info+input{
+	margin-top: 0rem;
+}
 
 span.info{
+	display:inline-block;
+	vertical-align: middle;
 	font-size:1rem;
-	color:$color_base;
-	padding: 0.5rem;
-	background-color: white;
+	line-height: 2rem;
+	color:$color_text_parent;
+	padding: 0.5rem 1rem;
+	background-color: rgba(white,0.5);
 	border-radius: $border-radius;
-	border:3px $color_base solid;
+	margin-bottom: 1rem;
+	&::before{
+		content:'?';
+		font-size:1rem;
+		font-family: $font_reg_family;
+		font-style: bold;
+		line-height: 1.5rem;
+		color:white;
+		border-radius: 100%;
+		border:1px white solid;
+		background-color: $color_base;
+		vertical-align: text-bottom;
+		display:inline-block;
+		width: 1.5rem;
+		height:1.5rem;
+	}
 
 	&__alert{
+		// background-color: white;
 		color:$color_undone;
-		border-color: $color_undone;
-
-
+		// border:3px $color_undone solid;
+		&::before{
+			content:'!';
+			color: white;
+			border-color:white;
+			background-color: $color_undone;
+			font-size:1rem;
+			font-family: $font_reg_family;
+			font-style: bold;
+			line-height: 1.5rem;
+		}
 	}
 }

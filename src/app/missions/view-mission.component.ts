@@ -35,13 +35,13 @@ import { Component, OnInit, Input } from '@angular/core';
     </div>
 
  
-  
-  <label class="confirmation-label">
+  <div class="remember">
+  <label class="confirmation-label remember">
     <input  type="checkbox" 
             [(ngModel)]="mission.confirmation">
-    Wykonanie misji musi być potwierdzone przez rodzica
+            <span>X</span><p> Wykonanie misji musi być potwierdzone przez rodzica</p>
   </label>
-   
+   </div>
 
   `,
   styles: [`
