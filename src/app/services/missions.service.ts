@@ -42,11 +42,19 @@ export class MissionsService {
     return this.userMission 
   }
 
+  finishOneMission(missionId){
+    let today = new Date().setHours(0,0,0,0);
+
+    this.userMissionDoc = this.afs.doc(`userMissions/${missionId}`) 
+    return this.userMissionDoc.set({"finish": today},{merge:true})
+
+  }
+
   updateOneMission(mission,missionId){
     this.userMissionDoc = this.afs.doc(`userMissions/${missionId}`) 
     this.userMissionDoc.update(mission)  
     this.userMission=this.userMissionDoc.valueChanges()
-    return this.userMission
+    return this.userMission;
   }
 
   deleteOneMission(mission){

@@ -34,7 +34,7 @@ import { UsersService } from '../services/users.service';
 
  </div>
 
-<p class="smallTitle">Dziecko zdobyło {{totalPoints}} pkt </p>
+<p class="smallTitle">W sumie dziecko zdobyło {{allPoints}} pkt. <br> Do wykorzystania pozostały {{totalPoints}} pkt.</p>
 
   <ul class="mission-neutral mission-done">
   <li 
@@ -123,6 +123,7 @@ export class GiftsComponent implements OnInit {
   kid = {};
   userMissions
   userGifts
+  allPoints = 0
   totalPoints = 0
   unusedGifts
   availableGifts
@@ -162,7 +163,9 @@ export class GiftsComponent implements OnInit {
 
   calculatePoints(){
     this.totalPoints = 0
+    this.allPoints = 0
     for (let mission of this.userMissions){
+      this.allPoints += mission['doneDates'].length * parseInt(mission['points'])
       this.totalPoints += mission['doneDates'].length * parseInt(mission['points'])
     }
     for (let gifts of this.chosenGifts){
@@ -172,6 +175,7 @@ export class GiftsComponent implements OnInit {
       this.totalPoints -= parseInt(gifts['points'])
     }
     for (let points of this.extraPoints){
+      this.allPoints += parseInt(points['points'])
       this.totalPoints += parseInt(points['points'])
     }
   }

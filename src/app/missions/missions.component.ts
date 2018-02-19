@@ -32,7 +32,7 @@ import { MissionsService } from "../services/missions.service";
     class="circle-big"> 
       <p>
         <span class="dayList"> {{showDays(mission)}}</span>
-        {{mission.name}}
+        {{mission.name}} <br> <span class="period"> od {{mission.start | date:'d.M.yy'}} do {{mission.finish| date:'d.M.yy'}}</span>
       </p>
       <img src="{{mission.icon}}">
       <star-svg></star-svg>
@@ -42,7 +42,17 @@ import { MissionsService } from "../services/missions.service";
     <div class="plus" routerLink="dodaj">+</div>
        
         `,
-  styles: [],
+  styles: [`
+  .period{
+    font-size: 1rem;
+    position:relative;
+    line-height: 2rem;
+    width: 100%;
+    top:auto;
+    right:auto;
+    color:#777B88;
+  }
+    `],
 })
 export class MissionsComponent implements OnInit {
 

@@ -74,8 +74,8 @@ const routes:Routes = [
             { path: 'misje/:dayId',                         component: KidMissionsComponent},
             { path: 'nagrody',                              component: KidGiftsComponent},
             { path: 'bohater',                              component: KidHeroComponent},
-            { path: 'odznaki/historia',                     component: ProgressHistoryComponent},       
-            { path: 'odznaki/:weekId',                      component: KidProgressComponent},
+            { path: 'postepy/historia',                     component: ProgressHistoryComponent},       
+            { path: 'postepy/:weekId',                      component: KidProgressComponent},
         ]},
 
         // FOR PARENTS ONLY 

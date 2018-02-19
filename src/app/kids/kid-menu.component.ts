@@ -11,7 +11,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   <ul>
     <a routerLink="../bohater"><li class="menu-bohater" [ngStyle]="{'background': heroImage,'background-size':heroImageSize}"><p>BOHATER</p></li></a>
     <a routerLink='../misje/0'><li class="menu-misje"><p>MISJE</p></li></a>
-    <a routerLink="../odznaki/0"><li class="menu-odznaki"><p>ODZNAKI</p></li></a>
+    <a routerLink="../postepy/0"><li class="menu-odznaki"><p>POSTĘPY</p></li></a>
     <a routerLink="../nagrody"><li class="menu-nagrody"><p>NAGRODY</p></li></a>		
   </ul>  
 

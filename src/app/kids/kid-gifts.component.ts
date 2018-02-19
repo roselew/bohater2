@@ -12,7 +12,8 @@ import { MissionsService } from '../services/missions.service';
      Nie masz żadnych nagród. Poproś rodzica o dodanie.
   </p>
 
- <p *ngIf="userGifts && userMissions && extraPoints" class="smallTitle">Obecnie masz {{totalPoints}} pkt</p>
+ <p *ngIf="userGifts && userMissions && extraPoints" class="smallTitle">W sumie zdobyłeś już {{allPoints}} punkty! <br> Na nagrody zostało {{totalPoints}} pkt.</p>
+
 
   <ul class="mission-neutral mission-done mission-active">
     <li *ngFor="let userGift of availableGifts"
@@ -65,8 +66,18 @@ import { MissionsService } from '../services/missions.service';
     </li> 
   </ul> 
 
-  <p *ngIf="receivedGifts && receivedGifts.length>0" class="smallTitle">Dostałeś już te nagrody</p>
-  <ul  class="mission-neutral mission-unactive"> 
+  <p *ngIf="extraPoints && extraPoints.length>0" class="smallTitle">Zdobyte punkty ekstra</p>
+  <ul  class="mission-neutral"> 
+  <li *ngFor="let extraPoint of extraPoints"
+    class="circle-big">
+    <p>{{ extraPoint.description }} </p>
+    <img style="height:60%" src="assets/like.svg">
+    <star-svg></star-svg>
+    <span> {{extraPoint.points}}</span>
+  </li>
+
+  <p *ngIf="receivedGifts && receivedGifts.length>0" class="smallTitle">Zdobyte nagrody</p>
+  <ul  class="mission-neutral"> 
     <li *ngFor="let userGift of receivedGifts"
       class="circle-big">
       <p>{{ userGift.name }} </p>
@@ -75,6 +86,11 @@ import { MissionsService } from '../services/missions.service';
       <span> {{userGift.points}}</span>
     </li> 
   </ul>  
+
+
+
+
+
 
 <!-- pop up window for changing mission status -->
   <div *ngIf="selectedGift" class="alert">
@@ -116,6 +132,7 @@ export class KidGiftsComponent implements OnInit {
   kid = {};
   userMissions
   userGifts
+  allPoints=0
   totalPoints = 0
   unusedGifts
   availableGifts
@@ -155,8 +172,10 @@ export class KidGiftsComponent implements OnInit {
  }
 
   calculatePoints(){
+    this.allPoints = 0;
     this.totalPoints = 0;
     for (let mission of this.userMissions){
+      this.allPoints += mission['doneDates'].length * parseInt(mission['points'])
       this.totalPoints += mission['doneDates'].length * parseInt(mission['points'])
     }
     for (let gifts of this.chosenGifts){
@@ -166,6 +185,7 @@ export class KidGiftsComponent implements OnInit {
       this.totalPoints -= parseInt(gifts['points'])
     }
     for (let points of this.extraPoints){
+      this.allPoints += parseInt(points['points'])
       this.totalPoints += parseInt(points['points'])
     }
   }
