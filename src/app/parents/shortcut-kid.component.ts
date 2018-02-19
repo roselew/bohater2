@@ -73,10 +73,10 @@ export class ShortcutKidComponent implements OnInit {
 
   ready = 0
 
-  ngOnInit() {
+  ngOnInit(){
 
     this.usersService.getOneKid(this.kidId)
-      .subscribe ( kid => {this.kid = kid} )
+    .subscribe ( kid => {this.kid = kid} )
 
     this.giftsService.fetchGifts(this.kidId)
       .subscribe ( userGifts => this.userGifts = userGifts)

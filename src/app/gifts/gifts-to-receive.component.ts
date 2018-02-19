@@ -21,7 +21,8 @@ export class GiftsToReceiveComponent implements OnInit {
 
   totalToReceive
 
-  ngOnInit() {
+  ngOnInit() {}
+  ngOnChanges(){
      this.totalToReceive = this.userGifts.filter(x => x.status==='chosen').length;
   }
 

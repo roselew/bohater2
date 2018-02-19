@@ -22,7 +22,7 @@ import { ExpertsService } from '../services/experts.service';
     <ul class="lista-odznak">
       <li *ngFor="let badge of userHero['badges']; let i = index"
         class="bohater" 
-        (click)="choseBadge(i)">
+        (click)="select(badge,i)">
           <p>{{badge.badgeName}}</p> 
           <p *ngIf="kid['badges'][i]==false" class="badge-gain">{{showBadgeGain(badge)}}</p>
           <p *ngIf="kid['badges'][i]==true" class="badge-gain badge-gain-true">{{showBadgeGain(badge)}}</p>
@@ -32,6 +32,41 @@ import { ExpertsService } from '../services/experts.service';
     </ul>
 
   </div>
+
+  <!-- pop up window for changing mission status -->
+  <div *ngIf="selectedBadge" class="alert">
+    <span class="X" (click)="selectedBadge=null"> X </span>
+
+    <ul class="mission-neutral">
+      <li style="width: 80%; background: none; border:none" class="circle-big">
+        <p> {{selectedBadge.badgeName}} </p>
+        <p style="bottom: -10rem"> {{showBadgeGain(selectedBadge)}}</p>
+        <img style="height: 100%; width: 8rem" src="{{selectedBadge.icon}}">
+      </li>
+    </ul>
+
+    <button (click)="choseBadge()">Wybieram tę odznakę</button>
+    <button (click)="selectedBadge=null">Jeszcze się zastanowię</button>
+
+  </div>
+
+    <!-- pop up window for changing mission status -->
+    <div *ngIf="editBadge" class="alert">
+    <span class="X" (click)="editBadge=null"> X </span>
+
+    <ul class="mission-neutral">
+      <li style="width: 80%; background: none; border:none" class="circle-big">
+        <p> {{editBadge.badgeName}} </p>
+        <p style="bottom: -10rem"> {{showBadgeGain(editBadge)}}</p>
+        <img style="height: 100%; width: 8rem" src="{{editBadge.icon}}">
+      </li>
+    </ul>
+
+    <button (click)="deleteBadge()">Chcę inną odznakę</button>
+    <button (click)="editBadge=null">Wróć do listy moich odznak</button>
+
+  </div>
+
 
   <a [routerLink]="['../']">
     <div class="back">←</div>
@@ -64,6 +99,10 @@ export class KidHeroComponent implements OnInit {
   userHero
   nBadges 
   heroProgress
+  selectedBadge
+  editBadge
+  selectedIndex
+
   ngOnInit() {
 
     this.kidId = this.users.getLoggedUser('kid');
@@ -87,20 +126,41 @@ export class KidHeroComponent implements OnInit {
 
   }
 
-
-  choseBadge(i){
+  select(userBadge,i){
     if (this.kid.badges[i]==true){
-      this.showAlert(this.userHero.image,this.userHero.badges[i].badgeName,'Ta odznaka jest już Twoja !')
+      this.editBadge=userBadge;
+      this.selectedIndex=i;
     } else if ( this.nBadges<=0 ) {
       this.showAlert(this.userHero.image,'Niestety','Musiszy wykonać więcej misji żeby zdobyć tą nagrodę')
     } else { 
-      this.showAlert(this.userHero.image,'Gratulacje','Właśnie zdobyłeś kolejną odznakę')
-      this.kid.badges[i]=true
-      this.users.updateOneKid(this.kid,this.kidId)
-      .then ( () => this.heroProgress = this.experts.getHeroPowers(this.kid.heroId, this.kid.badges) );
-       
+      this.selectedBadge=userBadge;
+      this.selectedIndex=i;
     }
   }
+
+  choseBadge(){
+
+      this.showAlert(this.userHero.image,'Gratulacje','Właśnie zdobyłeś kolejną odznakę')
+      this.kid.badges[this.selectedIndex]=true
+      this.users.updateOneKid(this.kid,this.kidId)
+      .then ( () => {
+        this.selectedBadge=null; 
+        this.heroProgress = this.experts.getHeroPowers(this.kid.heroId, this.kid.badges) 
+      });
+       
+  }
+
+  deleteBadge(){
+
+    this.showAlert(this.userHero.image,'OK','Wybierz inną odznakę')
+    this.kid.badges[this.selectedIndex]=false
+    this.users.updateOneKid(this.kid,this.kidId)
+    .then ( () => {
+      this.editBadge=null; 
+      this.heroProgress = this.experts.getHeroPowers(this.kid.heroId, this.kid.badges) 
+    });
+     
+}
 
   showBadgeGain(badge){
     if (badge.gained[0]>0){

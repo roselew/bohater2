@@ -59,10 +59,7 @@ export class ExpertMissionComponent implements OnInit {
       this.mission['doneDates']=[];
       this.mission['waitDates']=[];
       this.service.createOneMission(this.mission)
-        .subscribe( mission=> {
-          this.mission= mission;
-          this.router.navigate(['../../'],{relativeTo:this.route});
-        });
+      .then( ()=>   this.router.navigate(['../../'],{relativeTo:this.route}))
     }
 
 }

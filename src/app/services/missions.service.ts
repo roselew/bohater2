@@ -56,8 +56,7 @@ export class MissionsService {
   }
 
  createOneMission(mission){
-    this.userMissionsCollection.add(mission)
-    return this.userMissions
+  return this.userMissionsCollection.add(mission)
   }
   
   //dodatkowo bohater 

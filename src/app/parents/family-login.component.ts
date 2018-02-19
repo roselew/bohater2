@@ -31,7 +31,7 @@ import * as firebase from 'firebase/app';
       <div class="remember">
       <label>
         <input type='checkbox' name='remember' checked>
-        <span>X</span><p> Zapamiętaj mnie</p>
+        <!--<span>X</span><p> Zapamiętaj mnie</p>-->
       </label>
       </div>
 

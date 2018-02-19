@@ -46,7 +46,7 @@ export class HeroProgressComponent implements OnInit {
   doSetTimeout(i){
     let target= this.heroProgress
     setTimeout( () => this.showProgress=this.showProgress.map(function(x,index){ return x=i/100*target[index]}) 
-    , 1000 + (i*50));
+    , 1000 + (i*10));
   }
 
 
