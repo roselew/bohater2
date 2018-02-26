@@ -49,9 +49,9 @@ getHeroPowers(heroId,badges){
 
   
 expertMissions = [ 
-  {      id: 1,      name: "Zęby rano",               icon: "assets/ikony/m_zeby.svg"     },    
-  {      id: 2,      name: "Zęby wieczór",            icon: "assets/ikony/m_zeby.svg"     },    
-  {      id: 3,      name: "Posprzątać pokój",        icon: "assets/room.svg"             },    
+  {      id: 1,      name: "Zęby rano",               icon: "assets/ikony/m_zeby_rano.svg"     },    
+  {      id: 2,      name: "Zęby wieczór",            icon: "assets/ikony/m_zeby_wieczor.svg"     },    
+  {      id: 3,      name: "Posprzątać pokój",        icon: "assets/ikony/m_pokoj.svg"             },    
   {      id: 4,      name: "Poskładać zabawki",       icon: "assets/ikony/m_zabawki.svg"  },    
   {      id: 5,      name: "Opróżnić zmywarkę",       icon: "assets/ikony/m_zmywarka.svg" },    
   {      id: 6,      name: "Wstawić pranie",          icon: "assets/ikony/m_pranie.svg"   },    
@@ -81,17 +81,19 @@ expertGifts = [
   {      id: 3,      name: "Wycieczka na weekend",    icon: "assets/ikony/n_wycieczka.svg"},    
   {      id: 4,      name: "Aquapark ",               icon: "assets/swimming-pool.svg"    },    
   {      id: 5,      name: "15 min na gry",           icon: "assets/ikony/n_kwadrans.svg" },    
-  {      id: 6,      name: "30 min na gry",           icon: "assets/ikony/n_pol2.svg"      },    
+  {      id: 6,      name: "30 min na gry",           icon: "assets/ikony/n_pol.svg"      },    
   {      id: 7,      name: "45 min na gry",           icon: "assets/ikony/n_trzyczwarte.svg"},    
   {      id: 8,      name: "Nowa gra",                icon: "assets/ikony/n_pad.svg"      },    
-  {      id: 9,      name: "Nowa zabawka",            icon: "assets/ikony/n_prezent.svg"  },    
+  {      id: 9,      name: "Nowa zabawka",            icon: "assets/ikony/m_zabawki.svg"  },    
   {      id: 10,     name: "Wieczór gier",            icon: "assets/ikony/n_gry.svg"      },    
   {      id: 11,     name: "Deser",                   icon: "assets/ikony/n_deser.svg"    },    
   {      id: 12,     name: "Późniejszy powrót do domu",icon: "assets/ikony/n_powrot.svg"  },    
   {      id: 13,     name: "Deskorolka",              icon: "assets/ikony/n_deska.svg"    },    
   {      id: 14,     name: "Niespodzianka",           icon: "assets/ikony/n_prezent.svg"  },    
   {      id: 15,     name: "Klocki LEGO",             icon: "assets/ikony/n_lego.svg"     },
-  {      id: 16,     name: "Wyjście na łyżwy",        icon: "assets/ice-skate.svg"        }
+  {      id: 16,     name: "Wyjście na łyżwy",        icon: "assets/ice-skate.svg"        },
+  {      id: 17,     name: "Spacer",                  icon: "assets/tree.svg"             },
+  {      id: 18,     name: "Wyjście na plac zabaw",   icon:"assets/ikony/n_slider.svg"    }
 ]
   
 expertHeroes = [
