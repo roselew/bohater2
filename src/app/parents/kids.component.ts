@@ -8,7 +8,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   template: `
 
   <header>	
-	  <div [routerLink]="['/witaj']" class="header-banner">Menu</div>
+	  <div [routerLink]="['/rodzina/menu']" class="header-banner">Menu</div>
     <img src="assets/logo.png" class="logo">
   </header>
 
