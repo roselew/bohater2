@@ -8,7 +8,7 @@ import { GiftsService } from '../services/gifts.service';
   <div class="edit">
     <span class="X" routerLink='../../'> X </span>
     <view-gift [gift]="gift"></view-gift>
-    <button (click)="chose()">Odbierz nagrodę</button>
+    <button style="margin-top: 2rem" (click)="chose()">Odbierz nagrodę</button>
     <button (click)="update()">Zapisz zmiany</button>
     <button class="altButton" (click)="remove()">Usuń</button>
   </div>

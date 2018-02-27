@@ -42,12 +42,13 @@ export class CreateMissionComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.mission['icon']="assets/clipboard.svg"
     this.mission['confirmation']=true;
   }
 
   save(){
     let kidId = this.route.parent.snapshot.paramMap.get('kidId');
-    this.mission['kidId']=parseInt(kidId);
+    this.mission['kidId']=kidId;
     let today = new Date()
     today.setHours(0,0,0,0);
     this.mission['start']=today.getTime();

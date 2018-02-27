@@ -36,6 +36,8 @@ export class CreateGiftComponent implements OnInit {
         });
       }
       
-  ngOnInit() { }
+  ngOnInit() { 
+    this.gift['icon']="assets/ikony/n_prezent.svg"
+  }
 
 }

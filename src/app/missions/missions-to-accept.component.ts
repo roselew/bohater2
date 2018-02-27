@@ -23,7 +23,7 @@ export class MissionsToAcceptComponent implements OnInit {
 
   ngOnInit() {}
   ngOnChanges(){
-     this.totalToAccept = this.userMissions.map(x=>x['waitDates'].length).reduce((a, b) => a + b, 0);
+     this.totalToAccept = this.userMissions.filter(x=>!x.finish).map(x=>x['waitDates'].length).reduce((a, b) => a + b, 0);
   }
  
 }

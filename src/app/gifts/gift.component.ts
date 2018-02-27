@@ -8,8 +8,7 @@ import { GiftsService } from '../services/gifts.service';
   <div class="edit">
     <span class="X" routerLink='../'> X </span>
     <view-gift [gift]="gift"></view-gift>
-    <p>Obecny status - {{gift['status']}}</p>
-    <button (click)="update()">Zapisz zmiany</button>
+    <button style="margin-top: 2rem" (click)="update()">Zapisz zmiany</button>
     <button class="altButton" (click)="remove()">Usuń nagrodę</button>
   </div>
    `,
